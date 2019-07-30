@@ -30,6 +30,8 @@ import org.springframework.stereotype.Component;
 
 public class Basket implements Serializable {
 	
+	private int milesnsmith97;
+	
 	@FormParam("basketId")
 	@Value("-1")
 	private int basketId;
