@@ -1,0 +1,8 @@
+html {
+    background:url("https://images.pexels.com/photos/1407857/pexels-photo-1407857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
