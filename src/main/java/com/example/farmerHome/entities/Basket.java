@@ -30,7 +30,12 @@ import org.springframework.stereotype.Component;
 
 public class Basket implements Serializable {
 
+
 	private int gregchappell;
+
+
+	private int MonicaAbreu;
+	
 
 	private int joseph;
 
@@ -40,6 +45,7 @@ public class Basket implements Serializable {
 	private int basketId;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	
 	// Many to Many relationship with products
 
@@ -93,6 +99,7 @@ public class Basket implements Serializable {
 	public String toString() {
 		return "Basket [basketId=" + basketId + "]";
 	}
+	
 	
 
 }
