@@ -18,8 +18,7 @@ import com.example.farmerHome.entities.Farmer;
 public class FarmerApplicationTest {
 
 	
-	@Autowired
-	Farmer farmer;
+
 	
 	@Autowired
 	FarmerService farmerService;
@@ -38,6 +37,7 @@ public class FarmerApplicationTest {
 	@Test
 	public void addFarmerUsingService() {
 		//farmer.setFarmerID(1001);
+		Farmer farmer = new Farmer();
 		farmer.setFarmerName("Faith's Fresh Fruits");
 		farmer.setFarmLocation("NEWCASTLE");
 		farmer.setProducts("freshest shit around mate");

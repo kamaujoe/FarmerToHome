@@ -10,10 +10,13 @@ import com.example.farmerHome.entities.ProductCategories;
 
 @Component
 public interface ProductRepository extends CrudRepository<Product, Integer>{
+
 	//Select/filter queries
 	public List<Product> findByCategory(ProductCategories category);
 	
 	public List<Product> findByPrice(Double min, Double max);
 	
 	public List<Product> findByExpiryDate(Integer min, Integer max);
+	
+	//public List<Product> findByDiscount(Double min, Double max);
 }

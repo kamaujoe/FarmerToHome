@@ -8,7 +8,7 @@ import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
 
-public class ProductLifecicleListener {
+public class ProductLifecycleListener {
 	
 	//life-cycle methods
 	// @<Event>

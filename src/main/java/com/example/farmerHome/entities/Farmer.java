@@ -1,6 +1,9 @@
 package com.example.farmerHome.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,21 +11,22 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.context.annotation.Scope;
+
+//@Component
 
 @Entity
 @Table(name="JPA_FARMER")
 @Scope("prototype")
-//@Component
 @XmlRootElement
 @EntityListeners({FarmerLifecycleListener.class})
 public class Farmer implements Serializable {
-	
-	
 	
 	@FormParam("farmerID")
 	private int farmerID;
@@ -37,6 +41,18 @@ public class Farmer implements Serializable {
 	private String farmLocation;
 	
 	
+	//Many to Many with Products
+	private Set<Product> farmerProds = new HashSet<>();
+	
+	@ManyToMany(mappedBy="suppliers")
+	@XmlTransient
+	public Set<Product> getFarmerProds() {
+		return farmerProds;
+	}
+	
+	public void setFarmerProds(Set<Product> farmerProds) {
+		this.farmerProds = farmerProds;
+	}
 	
 	
 	//-> Default constructor
@@ -44,10 +60,8 @@ public class Farmer implements Serializable {
 		System.out.println("Farmer created");
 	}
 
-	
-	
+
 	//-> GETTERS AND SETTERS
-	
 	@Id
 	@Column(name="farmer_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)

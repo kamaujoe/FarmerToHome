@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,20 +16,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+//@Component -> disabled for form parameter processing
 
-@Component
 @Scope("prototype")
 @Entity
 @Table(name = "JPA_BASKET")
-
+@EntityListeners({BasketLifecycleListener.class})
+@XmlRootElement
 public class Basket implements Serializable {
+<<<<<<< HEAD
 
 	private int Faith;
 
@@ -40,6 +46,8 @@ public class Basket implements Serializable {
 
 	private int joseph;
 
+=======
+>>>>>>> branch 'master' of https://github.com/kamaujoe/FarmerToHome.git
 	
 	@FormParam("basketId")
 	@Value("-1")
@@ -49,29 +57,27 @@ public class Basket implements Serializable {
 	
 	
 	// Many to Many relationship with products
-
-	private Set<Product> orders = new HashSet<>();
+	private Set<Product> items = new HashSet<>();
 	
-	@ManyToMany(cascade = CascadeType.DETACH, fetch=FetchType.LAZY)
-	@JoinTable(name="JPA_ORDERS", joinColumns=@JoinColumn(name="basket_id_fk"),
-			inverseJoinColumns = @JoinColumn(name = "product_id_fk"))
-	public Set<Product> getOrders() {
-		return orders;
-	}	
-	public void setOrders(Set<Product> orders) {
-		this.orders = orders;
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinTable(name="JPA_ITEMS", joinColumns=@JoinColumn(name="FK_BASKETID"),
+			inverseJoinColumns = @JoinColumn(name = "FK_PRODUCTID"))
+	//@XmlTransient //ignore the collections while using api
+	public Set<Product> getItems() {
+		return items;
 	}
-	
+	public void setItems(Set<Product> items) {
+		this.items = items;
+	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
 	// Many to One relationship with Consumers
-	
 	private Consumer currentConsumer;
 	
 	@ManyToOne
-	@JoinColumn(name="consumer_id_fk")
+	@JoinColumn(name="FK_CONSUMERID")
 	public Consumer getCurrentConsumer() {
 		return currentConsumer;
 	}
@@ -83,24 +89,30 @@ public class Basket implements Serializable {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
-	
 	public Basket() {
 		System.out.println("Basket Created");
-		
 	}
-	@Id
+
+
+	
+	
+	@Id //declare the property as Primary Key
 	@Column(name = "Basket_Id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getBasketId() {
 		return basketId;
-		
 	}
 	
+	
+	public void setBasketId(int basketId) {
+		this.basketId = basketId;
+	}
 	@Override
 	public String toString() {
 		return "Basket [basketId=" + basketId + "]";
 	}
-	
-	
 
+	
+	
+	
 }

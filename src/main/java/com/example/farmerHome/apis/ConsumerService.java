@@ -81,8 +81,52 @@ public class ConsumerService {
 	public void deleteByConsno(
 			@PathParam("consno")int consno) {
 		consumerRepository.deleteById(consno);
-		
-		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	@GET
+//	@Path("/fetchBasketProducts")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public List<Product> fetchProductByBasket(
+//			@QueryParam("basketId")Integer basketId){
+//		return productRepository.findByBasketId(basketId);
+//	}
+//	
+//	@GET
+//	@Path("/fetchProductsByConsumer")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public List<Consumer> fetchProductByConsumer(
+//			@QueryParam("conso")Integer conso){
+//		Basket currentBasketId = consumerRepository.findByConso(conso);
+//		return productRepository.findByBasketId(currentBasketId);
+//	}
+//	
+//
+//	
+//	
+//	@DELETE //delete http method
+//	@Path("/delete/{basketId}")
+//	public void deleteByBasketId(@PathParam("basketId")int basketId) {
+//		basketRepsoitory.deleteById(basketId);
+//	}
+//	
+//	@DELETE //delete http method
+//	@Path("/deleteProduct/{ProductId}")
+//	public void deleteByProductId(@PathParam("productId")int productId) {
+//		basketRepsoitory.deleteById(productId);
+//	}
+//	
+
+	
 
 }
