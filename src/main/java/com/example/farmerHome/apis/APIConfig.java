@@ -9,6 +9,8 @@ public class APIConfig extends ResourceConfig {
 	public APIConfig() {
 		register(CORSFilter.class);
 		register(ConsumerService.class);
+		register(ProductService.class);
+		register(FarmerService.class);
 	}
 
 }
