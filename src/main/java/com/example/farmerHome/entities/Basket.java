@@ -29,6 +29,8 @@ import org.springframework.stereotype.Component;
 @Table(name = "JPA_BASKET")
 
 public class Basket implements Serializable {
+
+	private int Faith;
 	
 	@FormParam("basketId")
 	@Value("-1")
