@@ -10,6 +10,7 @@ public class APIConfig extends ResourceConfig {
 	public APIConfig() {
 		//register each service class in ResourceConfig
 		register(ProductService.class);
-    register(FarmerService.class);
+		register(FarmerService.class);
 	}
+}
 
