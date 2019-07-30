@@ -1,9 +1,12 @@
 package com.example.farmerHome.apis;
 
 
+import java.util.Set;
+
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.farmerHome.entities.Farmer;
+import com.example.farmerHome.entities.Product;
 import com.example.farmerHome.repositories.FarmerRepository;
 
 
@@ -28,6 +32,9 @@ public class FarmerService {
 	
 	@Autowired
 	private FarmerRepository farmerRepository;
+	
+	@Autowired
+	private ProductService productService;
 	
 	public FarmerService() {
 		System.out.println("Farmer service created");
@@ -46,7 +53,7 @@ public class FarmerService {
 		//-> this code takes in user input and if the data exist in the database, 
 			// it changes the current data, if not it saves it as new farmer data
 		
-		Farmer currentFarmer = findByFarmerID(farmer.getFarmerID());
+		Farmer currentFarmer = findByFarmerId(farmer.getFarmerId());
 		if(currentFarmer!=null) {
 			
 			currentFarmer.setFarmerName(farmer.getFarmerName());
@@ -68,26 +75,52 @@ public class FarmerService {
 	
 	//-> FIND FARMER IN DATABASE
 
-	@Path("/find/{farmerID}")
+	@Path("/find/{farmerId}")
 	@GET
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_ATOM_XML})
+	@Produces(MediaType.APPLICATION_JSON)
 	@Transactional
-	public Farmer findByFarmerID(@PathParam("farmerID") int farmerID) {
+	public Farmer findByFarmerId(@PathParam("farmerId") int farmerId) {
 		try {
-			Farmer farmer = farmerRepository.findById(farmerID).get();
+			Farmer farmer = farmerRepository.findById(farmerId).get();
 			return farmer;
 		} 
-		catch (Exception e) {	e.printStackTrace();
+		catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	
 	//-> DELETE FARMER FROM DATABASE USING ID
 	
 	@DELETE //-> delete HTTP Method
-	@Path("/delete/{farmerID}")
-	public void deleteFarmerByID(@PathParam("farmerID") int farmerID) {
+	@Path("/delete/{farmerId}")
+	public void deleteFarmerById(@PathParam("farmerId") int farmerId) {
 		
-		farmerRepository.deleteById(farmerID);
+		farmerRepository.deleteById(farmerId);
+	}
+	
+	//Ask Sameer about postman error 
+	//failed to lazily initialize a collection of role: com.example.farmerHome.entities.Farmer.farmerProds, could not initialize proxy - no Session
+	//product is assigned in db but gives that error in postman
+	@POST //HTTP method
+	@Path("/assign/product") //URL 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
+	@Produces(MediaType.APPLICATION_JSON) //output format
+	@Transactional
+	public Set<Product> assignProduct(@FormParam("productId") int productId, 
+									  @FormParam("farmerId") int farmerId) {
+		try {
+			Farmer far = findByFarmerId(farmerId);
+			Product prod = productService.findByProductId(productId);
+			
+			prod.getSuppliers().add(far);
+			prod = productService.registerOrUpdateProduct(prod);
+	
+			return far.getFarmerProds();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
