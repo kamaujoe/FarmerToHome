@@ -29,6 +29,8 @@ import org.springframework.stereotype.Component;
 @Table(name = "JPA_BASKET")
 
 public class Basket implements Serializable {
+
+	private int MonicaAbreu;
 	
 	@FormParam("basketId")
 	@Value("-1")
@@ -36,17 +38,18 @@ public class Basket implements Serializable {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
 	// Many to Many relationship with products
 
-	private Set<Products> orders = new HashSet<>();
+	private Set<Product> orders = new HashSet<>();
 	
 	@ManyToMany(cascade = CascadeType.DETACH, fetch=FetchType.LAZY)
 	@JoinTable(name="JPA_ORDERS", joinColumns=@JoinColumn(name="basket_id_fk"),
 			inverseJoinColumns = @JoinColumn(name = "product_id_fk"))
-	public Set<Products> getOrders() {
+	public Set<Product> getOrders() {
 		return orders;
 	}	
-	public void setOrders(Set<Products> orders) {
+	public void setOrders(Set<Product> orders) {
 		this.orders = orders;
 	}
 	
@@ -88,6 +91,7 @@ public class Basket implements Serializable {
 	public String toString() {
 		return "Basket [basketId=" + basketId + "]";
 	}
+	
 	
 
 }

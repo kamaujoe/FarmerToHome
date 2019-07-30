@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.farmerHome.entities.Basket;
 import com.example.farmerHome.entities.Consumer;
+import com.example.farmerHome.entities.Product;
 import com.example.farmerHome.repositories.BasketRepository;
 import com.example.farmerHome.repositories.ConsumerRepository;
 import com.example.farmerHome.repositories.ProductRepository;
@@ -45,9 +46,9 @@ public class BasketService {
 	@GET
 	@Path("/fetchProducts")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Products> fetchProductByBasket(
+	public List<Product> fetchProductByBasket(
 			@QueryParam("basketId")Integer basketId){
-			return productRepository.findByBasketId(basketId);
+		return productRepository.findByBasketId(basketId);
 	}
 	
 	@GET
@@ -101,7 +102,7 @@ public class BasketService {
 	public Basket registerOrUpdateBasket(@BeanParam Basket ba) {
 		Basket currentBa = findByBasketId(ba.getBasketId());
 		if(currentBa!= null) {
-			currentBa.setCurrentConsumer(ba.getConso);
+			currentBa.setCurrentConsumer(ba.getCurrentConsumer());
 			
 			ba = basketRepsoitory.save(currentBa);
 			
@@ -139,10 +140,10 @@ public class BasketService {
 	@Path("/assign/products")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Set<Products>assignProduct(@FormParam("basketId") int basketId, @FormParam("productId") int productId) {
+	public Set<Product>assignProduct(@FormParam("basketId") int basketId, @FormParam("productId") int productId) {
 		try {
 			Basket ba = findByBasketId(basketId);
-			Products pr = productsService.findById(productId).get();
+			Product pr = productRepository.findById(productId).get();
 			
 			ba.getOrders().add(pr);
 			ba = registerOrUpdateBasket(ba);
