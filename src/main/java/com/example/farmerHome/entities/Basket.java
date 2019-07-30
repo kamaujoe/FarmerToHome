@@ -35,6 +35,7 @@ public class Basket implements Serializable {
 	private int MonicaAbreu;
 
 	
+	private int milesnsmith97;
 	private int joseph;
 	
 	@FormParam("basketId")
