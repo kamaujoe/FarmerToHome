@@ -30,22 +30,16 @@ import org.springframework.stereotype.Component;
 
 public class Basket implements Serializable {
 
-<<<<<<< HEAD
 	private int Faith;
 
-=======
 
 	private int gregchappell;
 
->>>>>>> branch 'master' of https://github.com/kamaujoe/FarmerToHome.git
 	private int MonicaAbreu;
 	
 	private int milesnsmith97;
-<<<<<<< HEAD
 
-=======
 
->>>>>>> branch 'master' of https://github.com/kamaujoe/FarmerToHome.git
 	private int joseph;
 
 	
