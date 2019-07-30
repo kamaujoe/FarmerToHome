@@ -119,6 +119,18 @@ public class ProductService {
 		return productRepository.findByExpiryDate(min, max);
 	}
 	
+	
+/*	//ASK SAMEERRRRR////
+	@GET
+	@Path("/fetchByDiscount")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Product> fetchProductsByDiscount(
+			@QueryParam("min") int min, 
+			@QueryParam("max") int max) {
+		return productRepository.findByDiscount(min, max);
+	}*/
+	
+	
 	@DELETE
 	@Path("/delete/{productId}")
 	public void deleteByProductId(@PathParam("productId") int productId) {

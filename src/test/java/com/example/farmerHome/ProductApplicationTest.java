@@ -25,25 +25,25 @@ public class ProductApplicationTest {
 	ProductService productService;
 	
 	@Test
-	public void exampleProjectTest() {
-		System.out.println("Products test case scenarios");
+	public void exampleProductTest() {
+		System.out.println("Product test case scenarios");
 	}
 
 	// CRUD OPERATIONS - Add
-//	@Test
-//	public void addProductUsingService() {
-//		Product prod = new Product();
-//		prod.setName("Rice");
-//		prod.setCategory(ProductCategories.BAKERY_DAIRY);
-//		prod.setPrice(1.20);
-//		prod.setQuantity(1);
-//		prod.setExpiry_date(5);
-//		prod.setSize(ProductSizes.MEDIUM);
-//		
-//		prod = productService.registerOrUpdateProduct(prod);
-//		
-//		assertNotNull(prod);
-//	}
+	@Test
+	public void addProductUsingService() {
+		Product prod = new Product();
+		prod.setName("Rice");
+		prod.setCategory(ProductCategories.BAKERY_DAIRY);
+		prod.setPrice(1.20);
+		prod.setQuantity(1);
+		prod.setExpiry_date(5);
+		prod.setSize(ProductSizes.MEDIUM);
+		
+		prod = productService.registerOrUpdateProduct(prod);
+		
+		assertNotNull(prod);
+	}
 
 	// CRUD OPERATIONS - find product by Id
 	@Test
@@ -67,36 +67,36 @@ public class ProductApplicationTest {
 //		
 //	}
 	
-	// SELECT/FILTER QUERIES FOR MYSQL - fetch by price range
-	@Test
-	public void fetchByPriceUsingService() {
-		List<Product> prods = productService.fetchProductsByPriceRange(1, 2);
-		for (Product product : prods) {
-			System.out.println(product);
-		}
-		assertEquals(prods.size(),2);
-	}
-	
-	
-	// SELECT/FILTER QUERIES FOR MYSQL - fetch by expiry date interval
-	@Test
-	public void fetchByExpiryDateUsingService() {
-		List<Product> prods = productService.fetchProductsByExpiryDate(2, 7);
-		for (Product product : prods) {
-			System.out.println(product);
-		}
-		assertEquals(prods.size(), 2);
-	}
-	
-	// SELECT/FILTER QUERIES FOR MYSQL - fetch by category
-	@Test
-	public void fetchByCategoryUsingService() {
-		List<Product> prods = productService.fetchProductsByCategory(ProductCategories.BAKERY_DAIRY);
-		for (Product product : prods) {
-			System.out.println(product);
-		}	
-		assertEquals(prods.size(), 2);
-	}
+//	// SELECT/FILTER QUERIES FOR MYSQL - fetch by price range
+//	@Test
+//	public void fetchByPriceUsingService() {
+//		List<Product> prods = productService.fetchProductsByPriceRange(1, 2);
+//		for (Product product : prods) {
+//			System.out.println(product);
+//		}
+//		assertEquals(prods.size(),2);
+//	}
+//	
+//	
+//	// SELECT/FILTER QUERIES FOR MYSQL - fetch by expiry date interval
+//	@Test
+//	public void fetchByExpiryDateUsingService() {
+//		List<Product> prods = productService.fetchProductsByExpiryDate(2, 7);
+//		for (Product product : prods) {
+//			System.out.println(product);
+//		}
+//		assertEquals(prods.size(), 2);
+//	}
+//	
+//	// SELECT/FILTER QUERIES FOR MYSQL - fetch by category
+//	@Test
+//	public void fetchByCategoryUsingService() {
+//		List<Product> prods = productService.fetchProductsByCategory(ProductCategories.BAKERY_DAIRY);
+//		for (Product product : prods) {
+//			System.out.println(product);
+//		}	
+//		assertEquals(prods.size(), 2);
+//	}
 	
 
 	

@@ -1,16 +1,22 @@
 package com.example.farmerHome.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -25,8 +31,6 @@ import org.springframework.stereotype.Component;
 @EntityListeners({ConsumerLifecycleListener.class})
 public class Consumer implements Serializable {
 
-	@FormParam("consno")
-	@Value("-1")
 	private int consno;
 	
 	@FormParam("name")
@@ -45,10 +49,26 @@ public class Consumer implements Serializable {
 	@Value("12345")
 	private long phone;
 	
+	//One to Many - One Consumer -> Many Baskets
+	private Set<Basket> orderHistory = new HashSet<>();
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentConsumer")
+	@XmlTransient //ignore the collections while using api
+	public Set<Basket> getOrderHistory() {
+		return orderHistory;
+	}
+
+	public void setOrderHistory(Set<Basket> orderHistory) {
+		this.orderHistory = orderHistory;
+	}
+	
+	
 	public Consumer() {
 		System.out.println("Consumer Created");
 	}
 	
+
+
 	@Id
 	@Column(name="consumer_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)

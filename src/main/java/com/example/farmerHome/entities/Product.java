@@ -1,20 +1,29 @@
 package com.example.farmerHome.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -60,6 +69,38 @@ public class Product implements Serializable { //manage serialization of Objects
 	//@Value("Default product size")
 	@FormParam("size")
 	ProductSizes size;
+	
+	//Many to Many with Basket
+	private Set<Basket> items = new HashSet<>();
+	
+	//mapped by - check the configuration for Many to Many association in Basket class, getOrders()
+	@ManyToMany(mappedBy="items")
+	@XmlTransient //ignore the collections while using api
+	public Set<Basket> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<Basket> items) {
+		this.items = items;
+	}
+
+
+	//Many to Many with Farmer
+	private Set<Farmer> suppliers = new HashSet<>();
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinTable(name="JPA_SUPPLIERS",
+		joinColumns=@JoinColumn(name="FK_PRODUCTID"),
+		inverseJoinColumns=@JoinColumn(name="FK_FARMERID"))
+	@XmlTransient //ignore the collections while using api
+	public Set<Farmer> getSuppliers() {
+		return suppliers;
+	}
+
+	public void setSuppliers(Set<Farmer> suppliers) {
+		this.suppliers = suppliers;
+	}
+
 	
 	
 	@Id //declaring the property as Primary Key
@@ -129,6 +170,7 @@ public class Product implements Serializable { //manage serialization of Objects
 		this.size = size;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", quantity=" + quantity
@@ -139,5 +181,18 @@ public class Product implements Serializable { //manage serialization of Objects
 	//default constructor
 	public Product() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public double productDiscount() {
+		double discount;
+		if (expiry_date >= 9) {
+			discount = price * 0.5;
+			return discount;
+		} else if (expiry_date == 8) {
+			discount = price * 0.25;
+			return discount;
+		} else {
+			return price;
+		}
 	}
 }

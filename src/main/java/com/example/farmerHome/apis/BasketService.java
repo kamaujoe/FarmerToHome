@@ -35,125 +35,46 @@ import com.example.farmerHome.repositories.ProductRepository;
 public class BasketService {
 	
 	@Autowired
-	private BasketRepository basketRepsoitory;
+	private BasketRepository basketRepository;
 	
-	@Autowired
-	private ConsumerRepository consumerRepository;
-	
-	@Autowired
-	private ProductRepository productRepository;
-	
-	@GET
-	@Path("/fetchBasketProducts")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Product> fetchProductByBasket(
-			@QueryParam("basketId")Integer basketId){
-		return productRepository.findByBasketId(basketId);
+	public BasketService() {
+		System.out.println("Basket Service Created");
 	}
 	
-	@GET
-	@Path("/fetchProductsByConsumer")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Consumer> fetchProductByConsumer(
-			@QueryParam("conso")Integer conso){
-		Basket currentBasketId = consumerRepository.findByConso(conso);
-		return productRepository.findByBasketId(currentBasketId);
-	}
-	
-	@Path("/find/{basketId}")
-	@GET //HTTP method used to call the api
-	@Produces({//declare all possible content types of return value
-		MediaType.APPLICATION_JSON, // object to be given in json
-		MediaType.APPLICATION_XML // Object to be given in XML
-	})
-	@Transactional // help to fetch dependent data
-	public Basket findByBasketId(
-			// use the path parameter as the argument for the method
-			@PathParam("basketId")int basketId) {
-		try {
-			Basket ba = basketRepsoitory.findById(basketId).get();
-		
-			return ba;
-					
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	
-	@DELETE //delete http method
-	@Path("/delete/{basketId}")
-	public void deleteByBasketId(@PathParam("basketId")int basketId) {
-		basketRepsoitory.deleteById(basketId);
-	}
-	
-	@DELETE //delete http method
-	@Path("/deleteProduct/{ProductId}")
-	public void deleteByProductId(@PathParam("productId")int productId) {
-		basketRepsoitory.deleteById(productId);
-	}
-	
-	@POST
+/*	@POST
 	@Path("/register")
 	@Produces(MediaType.APPLICATION_JSON) // object to be given in json
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Transactional
-	public Basket registerOrUpdateBasket(@BeanParam Basket ba) {
-		Basket currentBa = findByBasketId(ba.getBasketId());
-		if(currentBa!= null) {
-			currentBa.setCurrentConsumer(ba.getCurrentConsumer());
-			
-			ba = basketRepsoitory.save(currentBa);
-			
-		}
-		else{ba = basketRepsoitory.save(ba);
-		}
-		
+	@Transactional*/
+	public Basket registerOrUpdateBasket(Basket ba) {
+		ba = basketRepository.save(ba);
 		System.out.println("Basket Registered" + ba);
 		return ba;
 	}
 	
-	@POST
-	@Path("/assign/consumer")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+/*	@GET //HTTP method used to call the api
+	@Path("/find/{basketId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	//used to fetch all collections which are initialised using Lazy initialisation 
-	@Transactional 
-	@org.springframework.transaction.annotation.Transactional
-	public Basket assignConsumer(@FormParam("basketId") int basketId, 
-			@FormParam("consno")int consno) {
+	@Transactional // help to fetch dependent data
+*/	public Basket findByBasketId(
+			// use the path parameter as the argument for the method
+			@PathParam("basketId")int basketId) {
 		try {
-			
-			Basket ba = findByBasketId(basketId);
-			Consumer con = consumerRepository.findById(consno).get();
-			con.getUsers().add(con);
-			ba.setCurrentConsumer(con);
-			registerOrUpdateBasket(ba);
+			Basket ba = basketRepository.findById(basketId).get();
+			System.out.println(ba.getItems().size() + " Orders fetched");
 			return ba;
-		} catch(Exception e) {
-			e.printStackTrace();
-		return null;
-	}}
-
-	@Transactional
-	@POST
-	@Path("/assign/product")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Set<Product>assignProduct(@FormParam("basketId") int basketId, @FormParam("productId") int productId) {
-		try {
-			Basket ba = findByBasketId(basketId);
-			Product pr = productRepository.findById(productId).get();
-			//since it is Many to Many, we just need to assign in on direction
-			ba.getOrders().add(pr);
-			ba = registerOrUpdateBasket(ba);
-			//update the association in the join table
-			return ba.getOrders();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
+	
+	
+/*	@DELETE
+	@Path("/delete/{basketId}")*/
+	public void deleteByProductId(@PathParam("basketId") int basketId) {
+		basketRepository.deleteById(basketId);
+	}
+
+
 }
