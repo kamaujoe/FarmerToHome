@@ -32,13 +32,11 @@ public class Basket implements Serializable {
 
 	private int Faith;
 
-
 	private int gregchappell;
 
 	private int MonicaAbreu;
 	
 	private int milesnsmith97;
-
 
 	private int joseph;
 
