@@ -44,7 +44,7 @@ public class BasketService {
 	private ProductRepository productRepository;
 	
 	@GET
-	@Path("/fetchProducts")
+	@Path("/fetchBasketProducts")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> fetchProductByBasket(
 			@QueryParam("basketId")Integer basketId){
@@ -56,7 +56,7 @@ public class BasketService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Consumer> fetchProductByConsumer(
 			@QueryParam("conso")Integer conso){
-		currentBasketId = consumerRepository.findByConso(conso);
+		Basket currentBasketId = consumerRepository.findByConso(conso);
 		return productRepository.findByBasketId(currentBasketId);
 	}
 	
@@ -102,7 +102,7 @@ public class BasketService {
 	public Basket registerOrUpdateBasket(@BeanParam Basket ba) {
 		Basket currentBa = findByBasketId(ba.getBasketId());
 		if(currentBa!= null) {
-			currentBa.setCurrentConsumer(ba.getConso);
+			currentBa.setCurrentConsumer(ba.getCurrentConsumer());
 			
 			ba = basketRepsoitory.save(currentBa);
 			
@@ -125,7 +125,7 @@ public class BasketService {
 		try {
 			
 			Basket ba = findByBasketId(basketId);
-			Consumer con = consumerRepository.findById(conso).get();
+			Consumer con = consumerRepository.findById(consno).get();
 			con.getUsers().add(con);
 			ba.setCurrentConsumer(con);
 			registerOrUpdateBasket(ba);
@@ -140,10 +140,10 @@ public class BasketService {
 	@Path("/assign/products")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Set<Products>assignProduct(@FormParam("basketId") int basketId, @FormParam("productId") int productId) {
+	public Set<Product>assignProduct(@FormParam("basketId") int basketId, @FormParam("productId") int productId) {
 		try {
 			Basket ba = findByBasketId(basketId);
-			Products pr = productsService.findById(productId).get();
+			Product pr = productRepository.findById(productId).get();
 			
 			ba.getOrders().add(pr);
 			ba = registerOrUpdateBasket(ba);
