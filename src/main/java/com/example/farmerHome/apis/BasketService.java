@@ -48,7 +48,7 @@ public class BasketService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> fetchProductByBasket(
 			@QueryParam("basketId")Integer basketId){
-			return productRepository.findByBasketId(basketId);
+		return productRepository.findByBasketId(basketId);
 	}
 	
 	@GET

@@ -29,6 +29,8 @@ import org.springframework.stereotype.Component;
 @Table(name = "JPA_BASKET")
 
 public class Basket implements Serializable {
+
+	private int MonicaAbreu;
 	
 	private int milesnsmith97;
 	private int joseph;
@@ -38,6 +40,7 @@ public class Basket implements Serializable {
 	private int basketId;
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	
 	// Many to Many relationship with products
 
@@ -91,6 +94,7 @@ public class Basket implements Serializable {
 	public String toString() {
 		return "Basket [basketId=" + basketId + "]";
 	}
+	
 	
 
 }
