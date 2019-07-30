@@ -2,5 +2,33 @@
     
 
 <p>seller-profile works!</p>
-
+<table>
+    <div>
+        <td>
+            <span
+                    [hidden]="inputEfarmerName.valid || inputEfarmerName.pristine"
+                    class="alert alert-danger">
+                        Name Should Not Be Less That 6 Characters
+                </span>
+            </div>
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Location: </th>
+        <td *ngIf="!isEditable">{{farmerLocation}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="farmerLocation">
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Products: </th>
+        <td *ngIf="!isEditable">{{products}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="products">
+        </td>
+    </tr>
+    <hr>
+</table>
 </html>
