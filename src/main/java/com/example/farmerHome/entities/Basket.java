@@ -1,6 +1,7 @@
 package com.example.farmerHome.entities;
 
 import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,7 +35,6 @@ import org.springframework.stereotype.Component;
 @EntityListeners({BasketLifecycleListener.class})
 @XmlRootElement
 public class Basket implements Serializable {
-	
 	@FormParam("basketId")
 	@Value("-1")
 	private int basketId;
