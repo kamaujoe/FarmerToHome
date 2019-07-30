@@ -29,27 +29,34 @@ public class BasketApplicationTest {
 		System.out.println("Basket test case scenarios");
 	}
 	
-/*	// CRUD OPERATIONS - Add
+	// CRUD OPERATIONS - Add
 	@Test
 	public void addBasketUsingService() {
 		Basket basket = new Basket();
 		basket = basketService.registerOrUpdateBasket(basket);
 		assertNotNull(basket);
-	}*/
+	}
 	
 	// CRUD OPERATIONS - Find basket by id
 	@Test
 	public void findByBasketIdUsingService() {
-		int basketId = 6;
+		int basketId = 1;
 		assertNotNull(basketService.findByBasketId(basketId));
 	}
 	
-/*	// CRUD OPERATIONS - Delete basket by id
+	// CRUD OPERATIONS - Delete basket by id
 	@Test
 	public void deleteByBasketIdUsingService() {
-		int basketId = 9;
+		int basketId = 2;
 		basketService.deleteByProductId(basketId);
 		assertNull(basketService.findByBasketId(basketId));
-	}*/
+	}
 
+ 
+ 
+
+ 
+ 
+
+ 
 }

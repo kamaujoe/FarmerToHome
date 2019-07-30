@@ -28,8 +28,8 @@ import org.springframework.context.annotation.Scope;
 @EntityListeners({FarmerLifecycleListener.class})
 public class Farmer implements Serializable {
 	
-	@FormParam("farmerId")
-	private int farmerId;
+	@FormParam("farmerID")
+	private int farmerID;
 	
 	@FormParam("farmerName")
 	private String farmerName;
@@ -65,12 +65,12 @@ public class Farmer implements Serializable {
 	@Id
 	@Column(name="farmer_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int getFarmerId() {
-		return farmerId;
+	public int getFarmerID() {
+		return farmerID;
 	}
 
-	public void setFarmerId(int farmerId) {
-		this.farmerId = farmerId;
+	public void setFarmerID(int farmerID) {
+		this.farmerID = farmerID;
 	}
 
 	@Column(name="farmer_name", nullable=false, length=25)
@@ -106,7 +106,7 @@ public class Farmer implements Serializable {
 	//-> ToString
 	@Override
 	public String toString() {
-		return "Farmer [farmerId=" + farmerId + ", farmerName=" + farmerName + ", products=" + products
+		return "Farmer [farmerID=" + farmerID + ", farmerName=" + farmerName + ", products=" + products
 				+ ", farmLocation=" + farmLocation + "]";
 	}
 	

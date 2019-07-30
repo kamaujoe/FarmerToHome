@@ -23,15 +23,15 @@ public class ConsumerApplicationTest {
 	public void addConsumerUsingService() {
 		Consumer con = new Consumer();
 		con.setConsno(4);
-		con.setName("Consumer");
+		con.setName("Consumer 4");
 		con.setEmail("consumer4@test.com");
-		con.setAddress("Test Lane");
+		con.setAddress("4 Test Lane");
 		con.setPhone(447777788);
 		con = conService.registerOrUpdateConsumer(con);
 		assertNotNull(con);
 	}
 	
-/*	@Test
+	@Test
 	public void findByConsnoUsingService() {
 		int consno = 1;
 		assertNotNull(conService.findByConsno(consno));
@@ -49,5 +49,9 @@ public class ConsumerApplicationTest {
 		System.out.println();
 	}
 	
-*/	
+	@Test
+	public void contextLoads() {
+		System.out.println("System Test Executed");
+	}
+	
 }

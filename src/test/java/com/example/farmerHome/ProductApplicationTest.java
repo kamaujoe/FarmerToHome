@@ -35,20 +35,20 @@ public class ProductApplicationTest {
 		Product prod = new Product();
 		prod.setName("Rice");
 		prod.setCategory(ProductCategories.BAKERY_DAIRY);
-		prod.setPrice(4.5);
-		prod.setQuantity(2);
+		prod.setPrice(1.20);
+		prod.setQuantity(1);
 		prod.setExpiry_date(5);
-		prod.setSize(ProductSizes.LARGE);
+		prod.setSize(ProductSizes.MEDIUM);
 		
 		prod = productService.registerOrUpdateProduct(prod);
 		
 		assertNotNull(prod);
 	}
-/*
+
 	// CRUD OPERATIONS - find product by Id
 	@Test
 	public void findByProductIdUsingService() {
-		int productId = 8;
+		int productId = 1;
 		assertNotNull(productService.findByProductId(productId));
 	}
 
@@ -57,7 +57,7 @@ public class ProductApplicationTest {
 	public void getAllProductsUsingService() {
 		assertNotNull(productService.getAllProducts());
 	}
-*/
+
 	// CRUD OPERATIONS - Delete
 //	@Test
 //	public void deleteByProductIdUsingService() {
