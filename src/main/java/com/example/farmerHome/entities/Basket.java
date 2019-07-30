@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,21 +28,9 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @Entity
 @Table(name = "JPA_BASKET")
+@EntityListeners({BasketLifecycleListener.class})
 
 public class Basket implements Serializable {
-
-	private int Faith;
-
-
-	private int gregchappell;
-
-	private int MonicaAbreu;
-	
-	private int milesnsmith97;
-
-
-	private int joseph;
-
 	
 	@FormParam("basketId")
 	@Value("-1")

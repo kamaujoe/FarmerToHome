@@ -19,7 +19,7 @@ import com.example.farmerHome.entities.ProductSizes;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProductsApplicationTest {
+public class ProductApplicationTest {
 	
 	@Autowired
 	ProductService productService;

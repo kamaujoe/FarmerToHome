@@ -118,7 +118,8 @@ public class BasketService {
 	@Path("/assign/consumer")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Transactional
+	//used to fetch all collections which are initialised using Lazy initialisation 
+	@Transactional 
 	@org.springframework.transaction.annotation.Transactional
 	public Basket assignConsumer(@FormParam("basketId") int basketId, 
 			@FormParam("consno")int consno) {
@@ -137,17 +138,17 @@ public class BasketService {
 
 	@Transactional
 	@POST
-	@Path("/assign/products")
+	@Path("/assign/product")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Set<Product>assignProduct(@FormParam("basketId") int basketId, @FormParam("productId") int productId) {
 		try {
 			Basket ba = findByBasketId(basketId);
 			Product pr = productRepository.findById(productId).get();
-			
+			//since it is Many to Many, we just need to assign in on direction
 			ba.getOrders().add(pr);
 			ba = registerOrUpdateBasket(ba);
-			
+			//update the association in the join table
 			return ba.getOrders();
 		} catch (Exception e) {
 			e.printStackTrace();
