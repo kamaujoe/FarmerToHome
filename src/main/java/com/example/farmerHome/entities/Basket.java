@@ -34,20 +34,6 @@ import org.springframework.stereotype.Component;
 @EntityListeners({BasketLifecycleListener.class})
 @XmlRootElement
 public class Basket implements Serializable {
-<<<<<<< HEAD
-
-	private int Faith;
-
-	private int gregchappell;
-
-	private int MonicaAbreu;
-	
-	private int milesnsmith97;
-
-	private int joseph;
-
-=======
->>>>>>> branch 'master' of https://github.com/kamaujoe/FarmerToHome.git
 	
 	@FormParam("basketId")
 	@Value("-1")
