@@ -1,6 +1,7 @@
 package com.example.farmerHome.apis;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.BeanParam;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.example.farmerHome.entities.Farmer;
 import com.example.farmerHome.entities.Product;
 import com.example.farmerHome.entities.ProductCategories;
 import com.example.farmerHome.repositories.ProductRepository;
@@ -29,6 +31,9 @@ public class ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private FarmerService farmerService;
 	
 	
 	public ProductService() {
@@ -73,8 +78,8 @@ public class ProductService {
 			return prod;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 
 	@GET
@@ -136,4 +141,5 @@ public class ProductService {
 	public void deleteByProductId(@PathParam("productId") int productId) {
 		productRepository.deleteById(productId);
 	}
+
 }
