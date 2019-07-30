@@ -41,6 +41,7 @@ public class Basket implements Serializable {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	int jid;
 	
 	// Many to Many relationship with products
 	private Set<Product> items = new HashSet<>();
