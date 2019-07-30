@@ -44,7 +44,7 @@ public class BasketService {
 	private ProductRepository productRepository;
 	
 	@GET
-	@Path("/fetchProducts")
+	@Path("/fetchBasketProducts")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Product> fetchProductByBasket(
 			@QueryParam("basketId")Integer basketId){
@@ -56,7 +56,7 @@ public class BasketService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Consumer> fetchProductByConsumer(
 			@QueryParam("conso")Integer conso){
-		currentBasketId = consumerRepository.findByConso(conso);
+		Basket currentBasketId = consumerRepository.findByConso(conso);
 		return productRepository.findByBasketId(currentBasketId);
 	}
 	
@@ -125,7 +125,7 @@ public class BasketService {
 		try {
 			
 			Basket ba = findByBasketId(basketId);
-			Consumer con = consumerRepository.findById(conso).get();
+			Consumer con = consumerRepository.findById(consno).get();
 			con.getUsers().add(con);
 			ba.setCurrentConsumer(con);
 			registerOrUpdateBasket(ba);
