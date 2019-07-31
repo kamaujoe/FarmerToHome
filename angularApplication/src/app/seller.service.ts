@@ -12,7 +12,7 @@ export class SellerService {
 
   constructor(private httpsvc:HttpClient) {
 
-    this.rootURL="http://localhost:9999/seller-profile"
+    this.rootURL="http://localhost:8080/farmers"
    }
 
    findFarmerByFarmerId(farmerId):Observable<SellerProfileComponent> {
