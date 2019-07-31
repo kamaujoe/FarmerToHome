@@ -10,7 +10,7 @@ export class SellerProfileComponent implements OnInit {
 
   farmerId: number
   farmerName: String
-  farmerLocation: String
+  farmLocation: String
   products: String
 
   isEditable: boolean
@@ -24,9 +24,9 @@ export class SellerProfileComponent implements OnInit {
     this.isSellerFormVisable=false
     this.isSellerFormValid=true
 
-    this.farmerId=1
+    this.farmerId=3
     this.farmerName="Farmer Joe"
-    this.farmerLocation="Leeds"
+    this.farmLocation="Leeds"
     this.products="Whole Foods"
   }
 
@@ -39,7 +39,7 @@ export class SellerProfileComponent implements OnInit {
       response => {
         this.farmerId = response.farmerId
         this.farmerName = response.farmerName
-        this.farmerLocation = response.farmerLocation
+        this.farmLocation = response.farmLocation
         this.products = response.products
       }
     )
@@ -53,7 +53,7 @@ export class SellerProfileComponent implements OnInit {
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({
       farmerId:this.farmerId, farmerName:this.farmerName,
-      farmerLocation:this.farmerLocation, products:this.products
+      farmLocation:this.farmLocation, products:this.products
     }).subscribe(
       response => {
         this.fetchCurrentSellerFromService()
