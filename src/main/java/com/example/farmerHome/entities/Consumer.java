@@ -31,6 +31,8 @@ import org.springframework.stereotype.Component;
 @EntityListeners({ConsumerLifecycleListener.class})
 public class Consumer implements Serializable {
 
+	@FormParam("consno")
+	@Value("-1")
 	private int consno;
 	
 	@FormParam("name")
