@@ -1,1 +1,57 @@
-<p>seller-profile works!</p>
+<html>
+<br>
+<br>
+<br>
+<br>
+
+<h2>Seller Information</h2>
+<br>
+<br>
+<table align="center">
+    <th>Number: </th>
+    <td>{{farmerId}}</td>
+    <br>
+    <td>
+        <button (click)="toggleEdits()">
+                {{isEditable?"Save":"Edit"}}</button>
+    </td>
+    <tr>
+            <th>Name: </th>
+            <td *ngIf="!isEditable">{{farmerName}}</td>
+            <td *ngIf="isEditable">
+                <div class="form-group">
+                    <input [(ngModel)]="farmerName"
+                    #inputEname="ngModel"
+                    minlength="6"
+                    maxlength="45">
+    
+        <div>
+        <td>
+            <span
+                    [hidden]="inputEfarmerName.valid || inputEfarmerName.pristine"
+                    class="alert alert-danger">
+                        Name Should Not Be Less That 6 Characters
+                </span>
+        </td>
+        </div>
+    </tr>
+    <br>
+    <tr>
+        <th>Location: </th>
+        <td *ngIf="!isEditable">{{farmLocation}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="farmLocation">
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Products: </th>
+        <td *ngIf="!isEditable">{{products}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="products">
+        </td>
+    </tr>
+    <hr>
+</table>
+</html>
+

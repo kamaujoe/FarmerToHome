@@ -18,6 +18,10 @@ import { SellerProfileComponent } from './seller-profile/seller-profile.componen
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { UserBuyerProfileComponent } from './user-buyer-profile/user-buyer-profile.component';
 import { DiscountsComponent } from './discounts/discounts.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -40,7 +44,9 @@ import { DiscountsComponent } from './discounts/discounts.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

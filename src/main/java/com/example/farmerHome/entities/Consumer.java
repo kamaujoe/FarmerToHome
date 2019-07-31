@@ -30,7 +30,8 @@ import org.springframework.stereotype.Component;
 @XmlRootElement
 @EntityListeners({ConsumerLifecycleListener.class})
 public class Consumer implements Serializable {
-
+	
+	@Value("-1")
 	private int consno;
 	
 	@FormParam("name")

@@ -31,37 +31,43 @@ import com.example.farmerHome.repositories.ProductRepository;
 
 @Component
 @Scope("singleton")
-@Path("/Basket/")
+@Path("/basket/")
 public class BasketService {
 	
 	@Autowired
 	private BasketRepository basketRepository;
 	
+	@Autowired
+	private ProductService productService;
+	
+	@Autowired
+	private ProductRepository productRepository;
+	
+
 	public BasketService() {
 		System.out.println("Basket Service Created");
 	}
 	
-/*	@POST
+	@POST
 	@Path("/register")
 	@Produces(MediaType.APPLICATION_JSON) // object to be given in json
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Transactional*/
-	public Basket registerOrUpdateBasket(Basket ba) {
+	@Transactional
+	public Basket registerOrUpdateBasket(@BeanParam Basket ba) {
 		ba = basketRepository.save(ba);
 		System.out.println("Basket Registered" + ba);
 		return ba;
 	}
 	
-/*	@GET //HTTP method used to call the api
+	@GET //HTTP method used to call the api
 	@Path("/find/{basketId}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON) 
 	@Transactional // help to fetch dependent data
-*/	public Basket findByBasketId(
+	public Basket findByBasketId(@PathParam("basketId") int basketId) {
 			// use the path parameter as the argument for the method
-			@PathParam("basketId")int basketId) {
 		try {
 			Basket ba = basketRepository.findById(basketId).get();
-			System.out.println(ba.getItems().size() + " Orders fetched");
+			System.out.println(ba.getItems().size() + " Basket items fetched");
 			return ba;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,11 +76,44 @@ public class BasketService {
 	}
 	
 	
-/*	@DELETE
-	@Path("/delete/{basketId}")*/
+	@DELETE
+	@Path("/delete/{basketId}")
 	public void deleteByProductId(@PathParam("basketId") int basketId) {
 		basketRepository.deleteById(basketId);
 	}
+
+
+	@POST //HTTP method
+	@Path("/assign/product") //URL 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
+	@Produces(MediaType.APPLICATION_JSON) //output format
+	@Transactional
+	public Set<Product> assignProduct(@FormParam("basketId") int basketId, 
+									  @FormParam("productId") int productId) {
+		try {
+			Basket bas = findByBasketId(basketId);
+			Product prod = productService.findByProductId(productId);
+			
+			bas.getItems().add(prod);
+			bas = registerOrUpdateBasket(bas);
+			
+			return bas.getItems();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
+	//TO DO - GET ORDER HISTORY FEATURE
+/*	@GET
+	@Path("/get/orderHistory/{consumeId}")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
+	@Transactional
+	public Iterable<Product> orderHistory(@) {
+		return basketRepository.findAll();
+	}
+	*/
 
 
 }

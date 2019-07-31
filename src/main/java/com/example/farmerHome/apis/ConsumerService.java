@@ -3,6 +3,7 @@ package com.example.farmerHome.apis;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,7 +16,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.farmerHome.entities.Basket;
 import com.example.farmerHome.entities.Consumer;
+import com.example.farmerHome.repositories.BasketRepository;
 import com.example.farmerHome.repositories.ConsumerRepository;
 
 @Component
@@ -25,7 +28,11 @@ public class ConsumerService {
 	
 	@Autowired
 	private ConsumerRepository consumerRepository;
-
+	
+	@Autowired
+	private BasketService basketService;
+	
+	
 	public ConsumerService() {
 		System.out.println("Consumer Service Created");
 	}
@@ -61,19 +68,16 @@ public class ConsumerService {
 
 	@GET
 	@Path("/find/{consno}")
-	@Produces({
-		MediaType.APPLICATION_JSON,
-		MediaType.APPLICATION_XML
-	})
+	@Produces(MediaType.APPLICATION_JSON)
 	@Transactional
-	public Consumer findByConsno(
-			@PathParam("consno") int consno) {
+	public Consumer findByConsno(@PathParam("consno") int consno) {
 		try {
 			return consumerRepository.findById(consno).get();
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
+
 	}
 
 	@DELETE
@@ -83,50 +87,27 @@ public class ConsumerService {
 		consumerRepository.deleteById(consno);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	@GET
-//	@Path("/fetchBasketProducts")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Product> fetchProductByBasket(
-//			@QueryParam("basketId")Integer basketId){
-//		return productRepository.findByBasketId(basketId);
-//	}
-//	
-//	@GET
-//	@Path("/fetchProductsByConsumer")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Consumer> fetchProductByConsumer(
-//			@QueryParam("conso")Integer conso){
-//		Basket currentBasketId = consumerRepository.findByConso(conso);
-//		return productRepository.findByBasketId(currentBasketId);
-//	}
-//	
-//
-//	
-//	
-//	@DELETE //delete http method
-//	@Path("/delete/{basketId}")
-//	public void deleteByBasketId(@PathParam("basketId")int basketId) {
-//		basketRepsoitory.deleteById(basketId);
-//	}
-//	
-//	@DELETE //delete http method
-//	@Path("/deleteProduct/{ProductId}")
-//	public void deleteByProductId(@PathParam("productId")int productId) {
-//		basketRepsoitory.deleteById(productId);
-//	}
-//	
+	@POST
+	@Path("/assign/basket")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
+	@Produces(MediaType.APPLICATION_JSON) //output format
+	@Transactional
+	public Basket assignBasket(@FormParam("basketId") int basketId,
+							   @FormParam("consno") int consno) {
+		try {
+			Basket bas = basketService.findByBasketId(basketId);
+			Consumer con = findByConsno(consno);
+			
+			con.getOrderHistory().add(bas);
+			bas.setCurrentConsumer(con);
+			
+			bas = basketService.registerOrUpdateBasket(bas);
+			return bas;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
-	
 
 }

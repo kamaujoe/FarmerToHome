@@ -18,12 +18,8 @@ import com.example.farmerHome.entities.Farmer;
 public class FarmerApplicationTest {
 
 	
-
-	
 	@Autowired
 	FarmerService farmerService;
-	
-	
 	
 	
 	@Test
@@ -31,7 +27,6 @@ public class FarmerApplicationTest {
 		System.out.println("system test executed");
 	}
 
-	
 	
 	//-> ADD NEW FARMER TO DATABASE
 	@Test
@@ -45,13 +40,13 @@ public class FarmerApplicationTest {
 		assertNotNull(farmer);
 	}
 	
-	//-> FIND FARMER IN DATABASE
+	
+/*	//-> FIND FARMER IN DATABASE
 	@Test
 	public void findFarmerUsingService() {
 		int farmerID = 6;
 		assertNotNull(farmerService.findByFarmerID(farmerID));
 	}
-	
 	
 	
 	//-> DELETE FARMER FROM DATABASE
@@ -61,5 +56,5 @@ public class FarmerApplicationTest {
 		int farmerID = 10;
 		farmerService.deleteFarmerByID(farmerID);
 		assertNull(farmerService.findByFarmerID(farmerID));
-	}
+	}*/
 }
