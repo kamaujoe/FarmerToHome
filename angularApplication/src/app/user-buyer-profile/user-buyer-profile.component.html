@@ -1,3 +1,54 @@
 <html>
-<p>user-buyer-profile works!</p>
+<br>
+<br>
+<h2>Consumer Information</h2>
+
+<table>
+    <th>Number: </th>
+    <td>{{consno}}</td>
+    <br>
+    <td>
+        <button (click)="toggleEdits()">
+            {{isEditable?"Save":"Edit"}}
+        </button>
+    </td>
+    <br>
+    <br>
+    <tr>
+        <th>Name: </th>
+        <td *ngIf="!isEditable">{{name}}</td>
+        <td *ngIf="isEditable">
+            <div class="form-group">
+                <input [(ngModel)]="name"
+                #inputEname="ngModel"
+                minlength="6"
+                maxlength="45">
+
+                <span
+                    [hidden]="inputEname.valid || inputEname.pristine"
+                    class="alert alert-danger">
+                        Name Should Not Be Less Than 6 Characters
+                </span>
+            </div>
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Address: </th>
+        <td *ngIf="!isEditable">{{address}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="address">
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Phone Number: </th>
+        <td *ngIf="!isEditable">{{phone}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="phone">
+        </td>
+    </tr>
+    
+    
+</table>
 </html>
