@@ -21,10 +21,10 @@ export class ConsumerService {
   updateUserOnServer(consumer):Observable<UserBuyerProfileComponent> {
     const httpOptions = {
       headers: new HttpHeaders(
-        {"Content-Type":"application/x-ww-form-urlencoded"}
+        {"Content-Type":"application/x-www-form-urlencoded"}
       )
     }
-    var reqBody = "consno="+consumer.consno+"&name="+consumer.consumer_name+"&address="+consumer.address+"&phone="+consumer.phone
+    var reqBody = "consno="+consumer.consno+"&name="+consumer.name+"&address="+consumer.address+"&phone="+consumer.phone
     return this.httpsvc.post<UserBuyerProfileComponent>(
                                       this.rootURL+"/register",
                                       reqBody,httpOptions
