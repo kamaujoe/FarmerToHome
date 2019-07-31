@@ -26,7 +26,7 @@ import com.example.farmerHome.repositories.FarmerRepository;
 
 @Component
 @Scope("singleton")
-@Path("/farmers/")
+@Path("/farmer/")
 public class FarmerService {
 	
 	
@@ -99,9 +99,7 @@ public class FarmerService {
 		farmerRepository.deleteById(farmerId);
 	}
 	
-	//Ask Sameer about postman error 
-	//failed to lazily initialize a collection of role: com.example.farmerHome.entities.Farmer.farmerProds, could not initialize proxy - no Session
-	//product is assigned in db but gives that error in postman
+
 	@POST //HTTP method
 	@Path("/assign/product") //URL 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
@@ -114,8 +112,11 @@ public class FarmerService {
 			Product prod = productService.findByProductId(productId);
 			
 			prod.getSuppliers().add(far);
-			prod = productService.registerOrUpdateProduct(prod);
-	
+			productService.registerOrUpdateProduct(prod);
+			
+			far = findByFarmerId(farmerId);
+			//store count in a variable that can be called 
+			int count = far.getFarmerProds().size();
 			return far.getFarmerProds();
 			
 		} catch (Exception e) {
@@ -123,4 +124,5 @@ public class FarmerService {
 			return null;
 		}
 	}
+
 }

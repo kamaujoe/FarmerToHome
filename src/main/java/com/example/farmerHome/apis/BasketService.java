@@ -31,7 +31,7 @@ import com.example.farmerHome.repositories.ProductRepository;
 
 @Component
 @Scope("singleton")
-@Path("/baskets/")
+@Path("/basket/")
 public class BasketService {
 	
 	@Autowired
@@ -67,7 +67,7 @@ public class BasketService {
 			// use the path parameter as the argument for the method
 		try {
 			Basket ba = basketRepository.findById(basketId).get();
-			System.out.println(ba.getItems().size() + " Orders fetched");
+			System.out.println(ba.getItems().size() + " Basket items fetched");
 			return ba;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,10 +104,16 @@ public class BasketService {
 		}
 	}
 	
-	//get products in basket
+	
+	//TO DO - GET ORDER HISTORY FEATURE
 /*	@GET
-	@Path("/products/{basketId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Iterable<Product> getallProducts(@FormParam("basketId") int basketId) {
-		return }*/
+	@Path("/get/orderHistory/{consumeId}")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
+	@Transactional
+	public Iterable<Product> orderHistory(@) {
+		return basketRepository.findAll();
+	}
+	*/
+
+
 }
