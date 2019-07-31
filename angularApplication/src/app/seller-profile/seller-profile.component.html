@@ -1,9 +1,31 @@
 <html>
-    
+<br>
+<br>
+<br>
+<br>
 
-<p>seller-profile works!</p>
-<table>
-    <div>
+<h2>Seller Information</h2>
+<br>
+<br>
+<table align="center">
+    <th>Number: </th>
+    <td>{{farmerId}}</td>
+    <br>
+    <td>
+        <button (click)="toggleEdits()">
+                {{isEditable?"Save":"Edit"}}</button>
+    </td>
+    <tr>
+            <th>Name: </th>
+            <td *ngIf="!isEditable">{{farmerName}}</td>
+            <td *ngIf="isEditable">
+                <div class="form-group">
+                    <input [(ngModel)]="farmerName"
+                    #inputEname="ngModel"
+                    minlength="6"
+                    maxlength="45">
+    
+        <div>
         <td>
             <span
                     [hidden]="inputEfarmerName.valid || inputEfarmerName.pristine"
@@ -11,7 +33,8 @@
                         Name Should Not Be Less That 6 Characters
                 </span>
         </td>
-    </div>
+        </div>
+    </tr>
     <br>
     <tr>
         <th>Location: </th>
