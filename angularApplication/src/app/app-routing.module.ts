@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'eggs-meat-fish', component: EggsMeatFishComponent},
   { path: 'fruit-vegetables', component: FruitVegetablesComponent},
   { path: 'individual-products', component: IndividualProductsComponent},
-  { path: 'login-redirection', component: LoginRedirectionPageComponent},
+  { path: 'login-redirection-page', component: LoginRedirectionPageComponent},
   { path: 'seller-admin-dashboard', component: SellerAdminDashboardComponent},
   { path: 'seller-login-registration', component: SellerLoginRegistrationComponent},
   { path: 'seller-profile', component: SellerProfileComponent},
@@ -36,7 +36,6 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)]
 })
 export class AppRoutingModule { }

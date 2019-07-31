@@ -19,58 +19,39 @@
             <ul class="navbar-nav">
             
             <li class="nav-item">
-            <a class="nav-link" href="#">HOME</a>
+            <a class="nav-link" routerLink="">HOME</a>
             </li>
             
             <li class="nav-item">
-            <a class="nav-link" href="#">FRUIT & VEGETABLES</a>
+            <a class="nav-link" routerLink="/fruit-vegetables">FRUIT & VEGETABLES</a>
             </li>
             
             <li class="nav-item">
-            <a class="nav-link" href="#">BAKERY & DAIRY</a>
+            <a class="nav-link" routerLink="/bakery-dairy">BAKERY & DAIRY</a>
             </li>
     
             <li class="nav-item">
-            <a class="nav-link" href="#">BEVERAGES</a>
+            <a class="nav-link" routerLink="/beverages">BEVERAGES</a>
             </li>
                   
             <li class="nav-item">
-            <a class="nav-link" href="#">EGGS, MEAT & FISH</a>
+            <a class="nav-link" routerLink="/eggs-meat-fish">EGGS, MEAT & FISH</a>
             </li>
     
             <li class="nav-item">
-            <a class="nav-link" href="#">LOGIN/REGISTER</a>
+            <a class="nav-link" routerLink="/discounts">SALE</a>
+            </li>
+
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/login-redirection-page">LOGIN/REGISTER</a>
             </li>
     
             <li class="nav-item">
-            <a class="nav-link" href="#">BASKET</a>
+            <a class="nav-link" routerLink="/basket">BASKET</a>
             </li>
     
             </ul>
         
           </nav>
         </div>
-
-
-
-<section id="tabs">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xs-12 ">
-                      <nav>
-                          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                              <a class="nav-item nav-link active" id="nav-home-tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Pay</a>
-                              <a class="nav-item nav-link" id="nav-profile-tab" routerLink="/fuit-vegetables" role="tab" aria-controls="nav-fuit-vegetables" aria-selected="false">Fruit & Vegetables</a>
-                              <a class="nav-item nav-link" id="nav-contact-tab" routerLink="/bakery-dairy" role="tab" aria-controls="nav-bakery-dairy" aria-selected="false">Bakery & Dairy</a>
-                              <a class="nav-item nav-link" id="nav-about-tab" routerLink="/beverages" role="tab" aria-controls="nav-beverages" aria-selected="false">Beverages</a>
-                              <a class="nav-item nav-link" id="nav-about-tab" routerLink="/eggs-meat-fish" role="tab" aria-controls="nav-eggs-meat-fish" aria-selected="false">Eggs, Meat & Fish</a>
-                          </div>
-                      </nav>
-                  
-                  </div>
-              </div>
-          </div>
-</section>
-
-
 <router-outlet></router-outlet>
