@@ -12,7 +12,7 @@ export class SellerService {
 
   constructor(private httpsvc:HttpClient) {
 
-    this.rootURL="http://localhost:9999/seller-profile"
+    this.rootURL="http://localhost:8080/farmers"
    }
 
    findFarmerByFarmerId(farmerId):Observable<SellerProfileComponent> {
@@ -23,10 +23,10 @@ export class SellerService {
    updateFarmerOnServer(farmer):Observable<SellerProfileComponent> {
      const httpOptions = {
        headers: new HttpHeaders(
-         {"Content-Type":"application/x-ww-form-urlencoded"}
+         {"Content-Type":"application/x-www-form-urlencoded"}
        )
      }
-     var reqBody = "farmerId="+farmer.farmerId+"&farmerName="+farmer.farmerName+"&farmerLocation="+farmer.farmerLocation+"&products="+farmer.products
+     var reqBody = "farmerId="+farmer.farmerId+"&farmerName="+farmer.farmerName+"&farmLocation="+farmer.farmLocation+"&products="+farmer.products
      return this.httpsvc.post<SellerProfileComponent>(
                                     this.rootURL+"/register", 
                                     reqBody,httpOptions
