@@ -21,8 +21,11 @@ export class BakeryDairyComponent implements OnInit {
   // }
 
   ngOnInit() {
-    this.productService.getAllProducts().subscribe(
-         res=>{this.products = res}
+    // this.productService.getAllProducts().subscribe(
+    //      res=>{this.products = res}
+    // )
+    this.productService.fetchProductsByCategory().subscribe(
+      res => {this.products = res}
     )
   }
 

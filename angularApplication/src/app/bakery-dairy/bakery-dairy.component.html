@@ -10,13 +10,12 @@
     <tr>    
     <td>id</td>
         <td>Name</td>
-        <td>Price</td>
+        <td>Price(£)</td>
         <td>Quantity</td>
         <td>Expiry Date</td>
-        <td>Category</td>
         <td>Size</td>
     </tr>
-    <tr *ngFor ="let p of products; let i = index">
+    <tr *ngFor ="let p of productCategory; let i = index">
         <td>{{p.productId}}</td>
         <td>{{p.name}}</td>
         <td>{{p.price}}</td>
