@@ -1,1 +1,30 @@
+
+<html>
+    
 <p>bakery-dairy works!</p>
+
+<br>
+<br>
+<table class="table table-light">
+    <tr><th>Bakery and Dairy Products</th></tr>
+    <tr>    
+    <td>id</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Expiry Date</td>
+        <td>Category</td>
+        <td>Size</td>
+    </tr>
+    <tr *ngFor ="let p of products; let i = index">
+        <td>{{p.productId}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.quantity}}</td>
+        <td>{{p.expiry_date}}</td>
+        <td>{{p.category}}</td>
+        <td>{{p.size}}</td>
+    </tr>
+</table>
+
+</html>

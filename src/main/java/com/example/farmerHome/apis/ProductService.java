@@ -26,7 +26,7 @@ import com.example.farmerHome.repositories.ProductRepository;
 
 @Component //indicate to Spring to create an object of this class as a component
 @Scope("singleton") //creates one object per application - Default option
-@Path("/products/") //map the URL pattern with the class as service
+@Path("/product/") //map the URL pattern with the class as service
 public class ProductService {
 
 	@Autowired
@@ -81,6 +81,24 @@ public class ProductService {
 			return null;
 		}
 	}
+	
+	//TO DO - SEARCH FEATURE
+/*	@GET
+	@Path("/find/{productName}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Transactional 
+	public Product findByProductName(@PathParam("productName") String productName) {
+		//fetches product details from DB by productId
+		//@PathParam - argument for the method
+		try {
+		Product prod = 
+		System.out.println(prod);
+			return prod;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}*/
 
 	@GET
 	@Path("/allProducts")
