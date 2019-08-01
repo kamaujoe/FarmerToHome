@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.BasketApplicationTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.287 s - in com.example.farmerHome.BasketApplicationTest
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 8.615 s <<< FAILURE! - in com.example.farmerHome.BasketApplicationTest
+findByBasketIdUsingService(com.example.farmerHome.BasketApplicationTest)  Time elapsed: 0.124 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.farmerHome.BasketApplicationTest.findByBasketIdUsingService(BasketApplicationTest.java:44)
+
