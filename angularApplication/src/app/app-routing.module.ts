@@ -15,6 +15,7 @@ import { SellerAdminDashboardComponent } from './seller-admin-dashboard/seller-a
 import { SellerLoginRegistrationComponent } from './seller-login-registration/seller-login-registration.component';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { UserBuyerProfileComponent } from './user-buyer-profile/user-buyer-profile.component';
+import { FarmerComponent } from './farmer/farmer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'seller-admin-dashboard', component: SellerAdminDashboardComponent},
   { path: 'seller-login-registration', component: SellerLoginRegistrationComponent},
   { path: 'seller-profile', component: SellerProfileComponent},
-  { path: 'user-buyer-profile', component: UserBuyerProfileComponent}
+  { path: 'user-buyer-profile', component: UserBuyerProfileComponent},
+  // { path: 'farmer', component:FarmerComponent}
 
 ];
 
