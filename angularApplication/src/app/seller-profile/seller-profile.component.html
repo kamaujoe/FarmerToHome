@@ -1,42 +1,43 @@
 <br>
 <br>
-<h2>Supplier Information</h2>
+<br>
+<br>
 
+<h2>Seller Information</h2>
+<br>
+<br>
 <table>
     <th>Number: </th>
     <td>{{farmerId}}</td>
     <br>
     <td>
         <button (click)="toggleEdits()">
-            {{isEditable?"Save":"Edit"}}
-        </button>
+                {{isEditable?"Save":"Edit"}}</button>
     </td>
-    <br>
-    <br>
     <tr>
-        <th>Name: </th>
-        <td *ngIf="!isEditable">{{farmerName}}</td>
-        <td *ngIf="isEditable">
-            <div class="form-group">
-                <input [(ngModel)]="farmerName"
-                #inputEfarmerName="ngModel"
-                minlength="6"
-                maxlength="45">
-
+            <th>Name: </th>
+            <td *ngIf="!isEditable">{{farmerName}}</td>
+            <td *ngIf="isEditable">
+                <div class="form-group">
+                    <input [(ngModel)]="farmerName"
+                    #inputEname="ngModel"
+                    minlength="6"
+                    maxlength="45">
                 <span
                     [hidden]="inputEfarmerName.valid || inputEfarmerName.pristine"
                     class="alert alert-danger">
                         Name Should Not Be Less That 6 Characters
                 </span>
-            </div>
-        </td>
+                </div>
+            </td>
+        
     </tr>
     <br>
     <tr>
         <th>Location: </th>
-        <td *ngIf="!isEditable">{{farmerLocation}}</td>
+        <td *ngIf="!isEditable">{{farmLocation}}</td>
         <td *ngIf="isEditable">
-            <input [(ngModel)]="farmerLocation">
+            <input [(ngModel)]="farmLocation">
         </td>
     </tr>
     <br>
@@ -48,3 +49,4 @@
         </td>
     </tr>
 </table>
+

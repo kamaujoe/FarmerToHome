@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller.service';
+import { Farmer } from '../farmer';
 
 @Component({
   selector: 'app-seller-profile',
@@ -10,23 +11,29 @@ export class SellerProfileComponent implements OnInit {
 
   farmerId: number
   farmerName: String
-  farmerLocation: String
+  farmLocation: String
   products: String
 
+  farmers: Farmer[]
+
+  allFarmers: Farmer[]
+
+  
   isEditable: boolean
   isSellerFormVisable: boolean
 
   isSellerFormValid: boolean
   invalidFormMessage: boolean
 
+  
   constructor(private farmerSvc:SellerService) { 
     this.isEditable=false
     this.isSellerFormVisable=false
     this.isSellerFormValid=true
 
-    this.farmerId=1
+    this.farmerId=3
     this.farmerName="Farmer Joe"
-    this.farmerLocation="Leeds"
+    this.farmLocation="Leeds"
     this.products="Whole Foods"
   }
 
@@ -39,7 +46,7 @@ export class SellerProfileComponent implements OnInit {
       response => {
         this.farmerId = response.farmerId
         this.farmerName = response.farmerName
-        this.farmerLocation = response.farmerLocation
+        this.farmLocation = response.farmLocation
         this.products = response.products
       }
     )
@@ -53,7 +60,7 @@ export class SellerProfileComponent implements OnInit {
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({
       farmerId:this.farmerId, farmerName:this.farmerName,
-      farmerLocation:this.farmerLocation, products:this.products
+      farmLocation:this.farmLocation, products:this.products
     }).subscribe(
       response => {
         this.fetchCurrentSellerFromService()
