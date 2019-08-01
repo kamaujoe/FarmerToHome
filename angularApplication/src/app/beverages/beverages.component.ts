@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoriesService } from '../categories.service';
+import { Products } from '../products';
+import { ProductsService } from '../products.service';
+
 
 @Component({
   selector: 'app-beverages',
@@ -7,25 +9,16 @@ import { CategoriesService } from '../categories.service';
   styleUrls: ['./beverages.component.css']
 })
 export class BeveragesComponent implements OnInit {
-  productId : number
-  productName : string
-  price : number
-  quantity : number
-  size : string
-  expiry_date : number
-  category : string
-
-  constructor(private bevsvc : CategoriesService) {
-    this.category = "BAKERY_DAIRY"
-   }
-
-  ngOnInit() {
+  products: Products[]
+  constructor(private productService: ProductsService) { 
+    this.products=[]
   }
 
-fetchAllBevarages(){
-  this.bevsvc.getProductsByCategory(this.category).subscribe(
-  response => {
-  this.productId = response.productId}) 
-}
+  ngOnInit() {
+    this.productService.fetchProductsByCategory("BEVERAGES").subscribe(
+      res => {
+        this.products = res}
+    )
+  }
 
 }

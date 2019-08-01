@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Products } from '../products';
 import { ProductsService } from '../products.service';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-bakery-dairy',
@@ -24,8 +25,9 @@ export class BakeryDairyComponent implements OnInit {
     // this.productService.getAllProducts().subscribe(
     //      res=>{this.products = res}
     // )
-    this.productService.fetchProductsByCategory().subscribe(
-      res => {this.products = res}
+    this.productService.fetchProductsByCategory("BAKERY_DAIRY").subscribe(
+      res => {
+        this.products = res}
     )
   }
 
