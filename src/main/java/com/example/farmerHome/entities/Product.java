@@ -38,6 +38,7 @@ import org.springframework.stereotype.Component;
 @NamedQueries({@NamedQuery(name="Product.findByPrice", query="select p from Product p where p.price between :min and :max"),
 			   @NamedQuery(name="Product.findByExpiryDate", query="select p from Product p where p.expiry_date between :min and :max"),
 			   @NamedQuery(name="Product.findByCategory", query="select p from Product p where p.category = :category")})
+			   
 
 @XmlRootElement
 public class Product implements Serializable { //manage serialization of Objects

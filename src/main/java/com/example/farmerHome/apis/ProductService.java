@@ -73,9 +73,7 @@ public class ProductService {
 		//fetches product details from DB by productId
 		//@PathParam - argument for the method
 		try {
-		Product prod = productRepository.findById(productId).get();
-		System.out.println(prod);
-			return prod;
+			return productRepository.findById(productId).get();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
