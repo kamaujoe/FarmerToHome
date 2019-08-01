@@ -20,8 +20,8 @@ export class ProductsService {
   }
 
   //fetch by category
-  fetchProductsByCategory():Observable<Products[]>{
-    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory")
+  fetchProductsByCategory(cat_name):Observable<Products[]>{
+    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory?category="+cat_name)
   }
 
 
