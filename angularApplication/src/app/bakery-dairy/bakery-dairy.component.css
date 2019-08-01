@@ -7,3 +7,9 @@ html {
     background-position: center; 
 }
 
+.title-bakery {
+    font-family: 'Prata', serif;
+    color: white; 
+    font-size: 60pt;
+    text-align: center;
+}

@@ -6,3 +6,10 @@ html {
     background-attachment: fixed;
     background-position: center; 
 }
+
+.title-fruit {
+    font-family: 'Prata', serif;
+    color: white; 
+    font-size: 60pt;
+    text-align: center;
+}

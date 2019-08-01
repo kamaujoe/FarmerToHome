@@ -7,9 +7,10 @@ html {
     background-position: center; 
 }
 
-/* .div.title-bev {
+.title-bev {
     font-family: 'Prata', serif;
-    color: white;
+    color: rgb(61, 26, 61);
     font-size: 60pt;
     text-align: center;
-} */
+    text-shadow: 50px;
+}

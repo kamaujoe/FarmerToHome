@@ -6,3 +6,10 @@ html {
     background-attachment: fixed;
     background-position: center; 
 }
+
+.title-egg {
+    font-family: 'Prata', serif;
+    color: white; 
+    font-size: 60pt;
+    text-align: center;
+}
