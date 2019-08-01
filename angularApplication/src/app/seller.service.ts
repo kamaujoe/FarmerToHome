@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
+import { Farmer } from './farmer';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,13 @@ export class SellerService {
                                     reqBody,httpOptions
      )
    }
+
+   loadAllFarmersFromServer():Observable<Farmer[]>{
+    return this.httpsvc.get<Farmer[]>(
+        "http://localhost:8080/farmers/list")
+  }
+
+   
+   
 
 }

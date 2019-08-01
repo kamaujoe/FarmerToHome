@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../seller.service';
+import { Farmer } from '../farmer';
 
 @Component({
   selector: 'app-seller-profile',
@@ -13,12 +14,18 @@ export class SellerProfileComponent implements OnInit {
   farmLocation: String
   products: String
 
+  farmers: Farmer[]
+
+  allFarmers: Farmer[]
+
+  
   isEditable: boolean
   isSellerFormVisable: boolean
 
   isSellerFormValid: boolean
   invalidFormMessage: boolean
 
+  
   constructor(private farmerSvc:SellerService) { 
     this.isEditable=false
     this.isSellerFormVisable=false
