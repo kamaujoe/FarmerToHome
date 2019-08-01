@@ -13,7 +13,7 @@ export class FarmerService {
 
   constructor(private httpsvc:HttpClient) {
 
-    this.rootURL="http://localhost:8080/farmers"
+    this.rootURL="http://localhost:8080/farmer"
    }
 
 
@@ -25,7 +25,7 @@ export class FarmerService {
 
   loadAllFarmersFromServer():Observable<Farmer[]>{
     return this.httpsvc.get<Farmer[]>(
-        "http://localhost:8080/farmers/list")
+        "http://localhost:8080/farmer/list")
   }
 
    registerFarmerOnServer(farmer):Observable<FarmerComponent>{
