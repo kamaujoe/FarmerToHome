@@ -40,8 +40,8 @@ public class FarmerHomeApplicationTests {
 	//One to Many [Consumer - Basket]
 	@Test
 	public void assignConsumerToBasket(){
-		int basketId = 6;
-		int consno = 7;
+		int basketId = 14;
+		int consno = 1;
 		Basket basket = consumerService.assignBasket(consno, basketId);
 		assertNotNull(basket.getCurrentConsumer());
 	}
@@ -50,8 +50,8 @@ public class FarmerHomeApplicationTests {
 	//Many to Many [Product - Basket]
 	@Test
 	public void assignProductToBasket() {
-		int basketId = 6;
-		int productId = 12;
+		int basketId = 14;
+		int productId = 10;
 		Set<Product> prods = basketService.assignProduct(basketId, productId);
 		assertNotNull(prods);		
 	}
@@ -60,8 +60,8 @@ public class FarmerHomeApplicationTests {
 	//Many to Many [Farmer - Product]
 	@Test
 	public void assignFarmerToProduct() {
-		int productId = 12;
-		int farmerId = 11;
+		int productId = 3;
+		int farmerId = 5;
 		Set<Product> products = farmerService.assignProduct(productId, farmerId);	
 		assertNotNull(products);
 	}
