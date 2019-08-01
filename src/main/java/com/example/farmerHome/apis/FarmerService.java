@@ -82,6 +82,7 @@ public class FarmerService {
 	public Farmer findByFarmerId(@PathParam("farmerId") int farmerId) {
 		try {
 			Farmer farmer = farmerRepository.findById(farmerId).get();
+			System.out.println(farmer.getFarmerProds().size() + " Farmer Products fetched");
 			return farmer;
 		} 
 		catch (Exception e) {
