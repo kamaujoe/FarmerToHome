@@ -1,7 +1,27 @@
 <html>
+<br><br><br><br><br>
 <div class="title-bev">
-<h1>BEVERAGES</h1>
+<p><b>BEVERAGES</b></p>
 </div>
 
+<br>
+<br>
+<table class="table table-dark">
+    <tr><th></th></tr>
+    <tr>    
+        <td>Name</td>
+        <td>Price(£)</td>
+        <td>Quantity</td>
+        <td>Expiry (days)</td>
+        <td>Size</td>
+    </tr>
+    <tr *ngFor ="let p of products; let i = index">
+        <td>{{p.name}}</td>
+        <td>{{p.price}}</td>
+        <td>{{p.quantity}}</td>
+        <td>{{p.expiry_date}}</td>
+        <td>{{p.size}}</td>
+    </tr>
+</table> 
 
 </html>

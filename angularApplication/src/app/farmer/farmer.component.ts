@@ -3,16 +3,16 @@ import { Farmer } from '../farmer';
 import { FarmerService } from '../farmer.service';
 
 @Component({
-  selector: 'app-seller-login-registration',
-  templateUrl: './seller-login-registration.component.html',
-  styleUrls: ['./seller-login-registration.component.css']
+  selector: 'app-farmer',
+  templateUrl: './farmer.component.html',
+  styleUrls: ['./farmer.component.css']
 })
-export class SellerLoginRegistrationComponent implements OnInit {
+export class FarmerComponent implements OnInit {
 
   farmerId: number
-  farmerName: String
-  products: String
-  farmLocation: String
+  farmerName: string
+  products: string
+  farmLocation: string
 
   farmers: Farmer[]
 
