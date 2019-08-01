@@ -1,4 +1,3 @@
-<html>
 <br>
 <br>
 <br>
@@ -7,7 +6,7 @@
 <h2>Seller Information</h2>
 <br>
 <br>
-<table align="center">
+<table>
     <th>Number: </th>
     <td>{{farmerId}}</td>
     <br>
@@ -24,14 +23,14 @@
                     #inputEname="ngModel"
                     minlength="6"
                     maxlength="45">
-    
+            </td>
         <div>
         <td>
             <span
                     [hidden]="inputEfarmerName.valid || inputEfarmerName.pristine"
                     class="alert alert-danger">
                         Name Should Not Be Less That 6 Characters
-                </span>
+            </span>
         </td>
         </div>
     </tr>
@@ -51,7 +50,5 @@
             <input [(ngModel)]="products">
         </td>
     </tr>
-    <hr>
 </table>
-</html>
 
