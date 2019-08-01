@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.farmerHome.entities.Basket;
 import com.example.farmerHome.entities.Consumer;
+import com.example.farmerHome.repositories.BasketRepository;
 import com.example.farmerHome.repositories.ConsumerRepository;
 
 @Component
@@ -107,8 +108,6 @@ public class ConsumerService {
 			return null;
 		}
 	}
-	
-	
-	
+
 
 }

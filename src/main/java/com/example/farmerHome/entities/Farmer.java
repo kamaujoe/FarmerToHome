@@ -45,7 +45,6 @@ public class Farmer implements Serializable {
 	private Set<Product> farmerProds = new HashSet<>();
 	
 	@ManyToMany(mappedBy="suppliers")
-	@XmlTransient
 	public Set<Product> getFarmerProds() {
 		return farmerProds;
 	}

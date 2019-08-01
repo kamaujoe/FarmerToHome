@@ -183,6 +183,8 @@ public class Product implements Serializable { //manage serialization of Objects
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+/*	//TO DO - FETCH BY DISCOUNT FEATURE
 	public double productDiscount() {
 		double discount;
 		if (expiry_date >= 9) {
@@ -195,4 +197,26 @@ public class Product implements Serializable { //manage serialization of Objects
 			return price;
 		}
 	}
+	
+	//TO DO - SEARCH BUTTON FEATURE
+    public List<Product> getSearchProducts() {
+
+        List<Product> products;
+
+        if(null == keyword || "".equals(keyword)) {
+            products = new ArrayList<Product>();
+        } else {
+            products = productRepository.getInstance()
+                .searchByProductName(keyword);
+        }
+
+        List<ProductBean> productBeans = new ArrayList<ProductBean>();
+
+        for(Product product: products) {
+            ProductBean productBean = new ProductBean();
+            productBean.setProduct(product);
+            productBeans.add(productBean);
+        }
+        return productBeans;
+    }*/
 }

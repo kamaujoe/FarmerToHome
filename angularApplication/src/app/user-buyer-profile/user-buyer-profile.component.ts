@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { ConsumerService } from '../user.service';
 
 @Component({
   selector: 'app-user-buyer-profile',
@@ -19,12 +19,12 @@ export class UserBuyerProfileComponent implements OnInit {
   isUserFormValid: boolean
   invalidFromMessage: boolean
 
-  constructor(private userSvc:UserService) {
+  constructor(private userSvc:ConsumerService) {
     this.isEditable = false
     this.isUserFormVisable = false
     this.isUserFormValid = true
 
-    this.consno=12
+    this.consno=9
     this.name="Consumer"
     this.address="Example"
     this.phone=12345

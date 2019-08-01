@@ -6,11 +6,11 @@ import { UserBuyerProfileComponent } from './user-buyer-profile/user-buyer-profi
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class ConsumerService {
 
   rootURL: String
   constructor(private httpsvc:HttpClient) { 
-    this.rootURL="http://localhost:9999/user-profile"
+    this.rootURL="http://localhost:8080/consumer"
   }
 
   findUserByUserId(consno):Observable<UserBuyerProfileComponent>{
@@ -18,13 +18,13 @@ export class UserService {
     (this.rootURL+"/find/"+consno)
   }
 
-  updateUserOnServer(user):Observable<UserBuyerProfileComponent> {
+  updateUserOnServer(consumer):Observable<UserBuyerProfileComponent> {
     const httpOptions = {
       headers: new HttpHeaders(
-        {"Content-Type":"application/x-ww-form-urlencoded"}
+        {"Content-Type":"application/x-www-form-urlencoded"}
       )
     }
-    var reqBody = "consno="+user.consno+"&name="+user.name+"&address="+user.address+"&phone="+user.phone
+    var reqBody = "consno="+consumer.consno+"&name="+consumer.name+"&address="+consumer.address+"&phone="+consumer.phone
     return this.httpsvc.post<UserBuyerProfileComponent>(
                                       this.rootURL+"/register",
                                       reqBody,httpOptions
