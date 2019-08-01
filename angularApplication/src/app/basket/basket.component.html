@@ -10,9 +10,19 @@
 							<th style="width:22%" class="text-center">Subtotal</th>
 							<th style="width:10%"></th>
 						</tr>
+						<p></p>
+						<p></p>
+							<tr>
+								<th>Product</th>
+								<th>Product Information</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th>Subtotal</th>
+								<th></th>
+							</tr>
 					</thead>
 					<tbody>
-                        <tr *ngFor = "let a of currentBasket; let i = index">
+                        <tr *ngFor = "let a of currentBasket.items; let i = index">
 							<td data-th="Product">
 								<div class="row">
                                     <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/>
@@ -21,15 +31,15 @@
 									</div>
 								</div>
                             </td>
-                            <td>Product ID : {{a.productId}}</td>
-							<td data-th="Price">£{{price}}</td>
+                            <td>{{a.name}} - {{a.category}}</td>
+							<td data-th="Price">£{{a.price}}</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
+								<input type="number" class="form-control text-center" value={{a.quantity}}>
 							</td>
-							<td data-th="Subtotal" class="text-center">£1.99</td>
+							<td data-th="Subtotal" class="text-center">£{{(a.price)*(a.quantity)}}</td>
 							<td class="actions" data-th="button">
 								<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-sm" (click) = "deleteProduct(i)"><i class="fa fa-trash-o"></i></button>								
+								<button class="btn btn-danger btn-sm" (click) = "deleteProduct(i, a.productId)"><i class="fa fa-trash-o"></i></button>								
 							</td>
 						</tr>
 					</tbody>
@@ -38,7 +48,9 @@
 						<tr>
 							<td><a href="http://localhost:9999/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total £1.99</strong></td>
+						
+							<td class="hidden-xs text-center"><strong>Total: £{{total}}</strong></td>
+						
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
