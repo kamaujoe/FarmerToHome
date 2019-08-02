@@ -141,7 +141,7 @@ public class ProductService {
 	}
 	
 	
-/*	//ASK SAMEERRRRR////
+/*	//TO DO - Fetch by discount feature//
 	@GET
 	@Path("/fetchByDiscount")
 	@Produces(MediaType.APPLICATION_JSON)
