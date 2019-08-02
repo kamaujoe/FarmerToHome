@@ -28,6 +28,10 @@ public class ProductApplicationTest {
 	public void exampleProductTest() {
 		System.out.println("Product test case scenarios");
 	}
+	
+/*	//Generating data
+	@Test
+	public void generateData() {}*/
 
 	// CRUD OPERATIONS - Add
 	@Test
