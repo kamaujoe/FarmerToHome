@@ -2,64 +2,63 @@ import { Component, OnInit } from '@angular/core';
 import { Basket } from './basket';
 import { Product } from './product';
 
+import { JsonPipe } from '@angular/common';
+import { BasketItemsService } from '../basket-items.service';
+
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
   styleUrls: ['./basket.component.css']
 })
+
 export class BasketComponent implements OnInit {
 
-  allProducts : Product[]
-  currentProducts : Product[]
-  currentBasket : Basket[]
-  subTotal : number
+  
+  
+  currentBasket : Basket
+  total : number
 
+ 
 
-  constructor() {
-    this.currentBasket = [{
-      basketId : 1, 
-      productId : 2, 
-      consno : 1
-     }]
+  basketId : number
 
-    this.allProducts = [{
-      productId : 1,
-      productName : "Rice",
-      productPrice : 5.5,
-      productQuantity : 2,
-      productSize : "Medium"},
-    {
-      productId : 4,
-      productName : "Apples",
-      productPrice : 2.3,
-      productQuantity : 10,
-      productSize : "Small"},
-    {
-      productId : 2,
-      productName : "Fish",
-      productPrice : 9,
-      productQuantity : 2,
-      productSize : "Large"
-    }]
-    }
+  
+
+  constructor(private prodsvc: BasketItemsService) {
+
+    this.basketId = 14 // use consumer login Id to pull basket Id
     
-    //starting to create current project section from all products.
+  }
+    
+
 
   ngOnInit() {
+    this.fetchCurrentProductsFromBasket()
   }
 
-  deleteProduct(index){
-    this.currentBasket.splice(index, 1)
+  deleteProduct(index, productId){
+    this.currentBasket.items.splice(index, 1)
+    this.prodsvc.deleteFromBasket(productId, this.basketId).subscribe(
+      response => {
+        this.currentBasket = response
+      }
+    )
   }
 
-  fetchProductIdFromBasket(){
+  fetchCurrentProductsFromBasket(){
+    this.prodsvc.getBasketItems(this.basketId).subscribe( 
+      response => {
+        
+        this.currentBasket = response}
+   
+    )
   }
-
-  calculateSubtotal(price, quantity){
-    this.subTotal = price*quantity
-    return this.subTotal
-  }
+    
   calculateTotal(){   
+    this.currentBasket.items.forEach(currentBasketItem => 
+      {this.total+=(currentBasketItem.price)*(currentBasketItem.quantity)}
+      )
+    
   }
 
 }
