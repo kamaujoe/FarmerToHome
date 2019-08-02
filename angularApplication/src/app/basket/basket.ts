@@ -1,6 +1,10 @@
+import { Product } from './product';
+
 export interface Basket {
 
-basketId : number
-productId : number
-consno : number
+    basketId:number
+    items:Product[]
+    consumer:string
+    
+
 }

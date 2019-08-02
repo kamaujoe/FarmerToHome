@@ -53,7 +53,6 @@ export class FarmerComponent implements OnInit {
           this.farmerName = response.farmerName
           this.products=response.products
           this.farmLocation = response.farmLocation
-
       } 
     )
 
