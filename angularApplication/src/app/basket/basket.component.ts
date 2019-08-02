@@ -38,6 +38,7 @@ export class BasketComponent implements OnInit {
 
   deleteProduct(index, productId){
     this.currentBasket.items.splice(index, 1)
+    
     this.prodsvc.deleteFromBasket(productId, this.basketId).subscribe(
       response => {
         this.currentBasket = response
