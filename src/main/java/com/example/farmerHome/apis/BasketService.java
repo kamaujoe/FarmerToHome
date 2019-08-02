@@ -29,6 +29,7 @@ import com.example.farmerHome.repositories.ProductRepository;
 
 
 
+
 @Component
 @Scope("singleton")
 @Path("/basket/")
@@ -75,6 +76,8 @@ public class BasketService {
 		}
 	}
 	
+
+	
 	
 	@DELETE
 	@Path("/delete/{basketId}")
@@ -104,8 +107,33 @@ public class BasketService {
 		}
 	}
 	
+	@POST //HTTP method
+	@Path("/deleteFromBasket") //URL 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
+	@Produces(MediaType.APPLICATION_JSON) //output format
+	@Transactional
+	public Set<Product> deleteProduct(@FormParam("basketId") int basketId, 
+									  @FormParam("productId") int productId) {
+		try {
+			Basket bas = findByBasketId(basketId);
+			Product prod = productService.findByProductId(productId);
+			
+			System.out.println(productId);
+			bas.getItems().remove(prod);
+		
+			
+			basketRepository.save(bas);
+			
+			
+			return bas.getItems();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
-	//TO DO - GET ORDER HISTORY FEATURE
+	
+
 /*	@GET
 	@Path("/get/orderHistory/{consumeId}")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format

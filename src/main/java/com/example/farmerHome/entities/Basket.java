@@ -33,8 +33,11 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "JPA_BASKET")
 @EntityListeners({BasketLifecycleListener.class})
+
+
 @XmlRootElement
 public class Basket implements Serializable {
+	
 	@FormParam("basketId")
 	@Value("-1")
 	private int basketId;
