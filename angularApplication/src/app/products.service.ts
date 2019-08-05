@@ -11,7 +11,7 @@ export class ProductsService {
 
   url: string
   constructor(private httpsvc:HttpClient) { 
-    this.url="http://localhost:8080/products"
+    this.url="http://localhost:8080/product"
   }
 
   //simple get for all products

@@ -14,16 +14,15 @@
         <td>Name</td>
         <td>Price(£)</td>
         <td>Quantity</td>
-        <td>Expiry (days)</td>
         <td>Size</td>
     </tr>
-    <tr *ngFor ="let p of products; let i = index">
+    <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
         <td>{{p.name}}</td>
         <td>{{p.price}}</td>
         <td>{{p.quantity}}</td>
-        <td>{{p.expiry_date}}</td>
         <td>{{p.size}}</td>
     </tr>
 </table>
+<pagination-controls (pageChange)="p =$event"></pagination-controls>
 
 </html>

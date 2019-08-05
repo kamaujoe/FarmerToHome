@@ -6,7 +6,7 @@ export interface Product {
     price : number
     quantity : number
     size : string
-    expiryDate : number
+    expiry_date : number
     category : string
   
 }
