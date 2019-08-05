@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.farmerHome.apis.BasketService;
+import com.example.farmerHome.apis.CategoryService;
 import com.example.farmerHome.apis.ConsumerService;
 import com.example.farmerHome.apis.FarmerService;
 import com.example.farmerHome.apis.ProductService;
@@ -35,8 +36,21 @@ public class FarmerHomeApplicationTests {
 	@Autowired
 	FarmerService farmerService;
 	
+	@Autowired
+	CategoryService categoryService;
+	
 	
 	//MANAGE ASSOCIATIONS
+	//One to Many [Category - Product]
+	@Test
+	public void assignCategoryToProduct() {
+		int productId = 0;
+		int categoryId = 0;
+		Product prod = categoryService.assignProduct(productId, categoryId);
+		assertNotNull(prod.getCurrentCategory());
+	}
+	
+	
 	//One to Many [Consumer - Basket]
 	@Test
 	public void assignConsumerToBasket(){
