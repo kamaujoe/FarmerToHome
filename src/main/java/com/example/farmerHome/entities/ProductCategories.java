@@ -4,5 +4,5 @@ public enum ProductCategories {
 	FRUIT_VEGETABLES,
 	BAKERY_DAIRY,
 	BEVERAGES,
-	EGGS_MEAT_FISH
+	EGGS_MEAT_FISH,
 }

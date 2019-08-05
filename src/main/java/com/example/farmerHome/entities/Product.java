@@ -51,7 +51,7 @@ public class Product implements Serializable {
 	@FormParam("price")
 	private double price;
 	
-	@FormParam("expiryDate")
+	@FormParam("expiry_date")
 	private int expiry_date;
 	
 	@FormParam("size")

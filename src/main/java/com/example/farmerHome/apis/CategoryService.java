@@ -39,14 +39,14 @@ public class CategoryService {
 		System.out.println("Category service created");
 	}
 	
-	@POST //HTTP method to send the form data
+/*	@POST //HTTP method to send the form data
 	@Path("/register") //URL pattern 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //form data
 	@Produces(MediaType.APPLICATION_JSON) //JSON data
 	@Transactional //to help fetching dependent data
 	public Category registerOrUpdateCategory(@BeanParam Category cat) {
 		Category currentCat = findByCategoryId(cat.getCategoryId());
-		
+	
 		if (currentCat != null) { //update
 			currentCat.setCategory(cat.getCategory());
 			cat = categoryRepository.save(currentCat);
@@ -55,7 +55,7 @@ public class CategoryService {
 		}
 		System.out.println("Category assigned " + cat);
 		return cat;
-	}
+	}*/
 	
 	@GET
 	@Path("/find/{categoryId}")
