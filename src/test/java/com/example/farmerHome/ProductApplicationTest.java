@@ -28,19 +28,14 @@ public class ProductApplicationTest {
 	public void exampleProductTest() {
 		System.out.println("Product test case scenarios");
 	}
-	
-/*	//Generating data
-	@Test
-	public void generateData() {}*/
 
+	
 	// CRUD OPERATIONS - Add
 	@Test
 	public void addProductUsingService() {
 		Product prod = new Product();
 		prod.setName("Rice");
-		prod.setCategory(ProductCategories.BAKERY_DAIRY);
 		prod.setPrice(4.5);
-		prod.setQuantity(2);
 		prod.setExpiry_date(5);
 		prod.setSize(ProductSizes.LARGE);
 		
@@ -101,7 +96,6 @@ public class ProductApplicationTest {
 //		}	
 //		assertEquals(prods.size(), 2);
 //	}
-	
 
 	
 }

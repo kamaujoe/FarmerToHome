@@ -50,10 +50,8 @@ public class ProductService {
 		
 		if (currentProd != null) { //update the existing product with form values
 			currentProd.setName(prod.getName());
-			currentProd.setCategory(prod.getCategory());
 			currentProd.setExpiry_date(prod.getExpiry_date());
 			currentProd.setPrice(prod.getPrice());
-			currentProd.setQuantity(prod.getQuantity());
 			currentProd.setSize(prod.getSize());
 			//save changes in repository
 			prod = productRepository.save(currentProd);
@@ -107,13 +105,6 @@ public class ProductService {
 		return products;
 	}
 	
-	@GET
-	@Path("/fetchByCategory")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Product> fetchProductsByCategory(
-			@QueryParam("category") ProductCategories category) {
-		return productRepository.findByCategory(category);
-	}
 
 	@GET
 	@Path("/fetchByPrice")
@@ -140,6 +131,15 @@ public class ProductService {
 		return productRepository.findByExpiryDate(min, max);
 	}
 	
+	@GET
+	@Path("/fetchByCategory")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Product> fetchProductsByCategory(
+			@QueryParam("category") ProductCategories category) {
+		return productRepository.findByCategory(category);
+	}
+
+
 	
 /*	//TO DO - Fetch by discount feature//
 	@GET
