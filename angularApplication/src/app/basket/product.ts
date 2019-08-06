@@ -8,8 +8,8 @@ export interface Product {
     price : number
     quantity : number
     size : string
-
     expiryDate : number
+    
     currentCategory : Category
 
 }
