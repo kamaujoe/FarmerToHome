@@ -39,7 +39,7 @@ public class FarmerHomeApplicationTests {
 	@Autowired
 	CategoryService categoryService;
 	
-	
+/*	
 	//MANAGE ASSOCIATIONS
 	//One to Many [Category - Product]
 	@Test
@@ -80,6 +80,6 @@ public class FarmerHomeApplicationTests {
 		assertNotNull(products);
 	}
 	
-
+*/
 
 }

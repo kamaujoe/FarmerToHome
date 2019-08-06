@@ -24,6 +24,7 @@ import com.example.farmerHome.entities.Product;
 import com.example.farmerHome.repositories.FarmerRepository;
 
 
+
 @Component
 @Scope("singleton")
 @Path("/farmer/")
@@ -73,7 +74,7 @@ public class FarmerService {
 	}
 
 	
-	//-> FIND FARMER IN DATABASE
+	//-> FIND FARMER IN DATABASE BY FARMER ID
 
 	@Path("/find/{farmerId}")
 	@GET
@@ -90,6 +91,20 @@ public class FarmerService {
 			return null;
 		}
 	}
+	
+	//-> FIND ALL FARMERS IN DATABASE
+	
+	@GET
+	@Path("/list")
+	@Produces({MediaType.APPLICATION_JSON})
+	@Transactional
+	public Iterable<Farmer> getAllFarmers(){
+		Iterable<Farmer> farmers = farmerRepository.findAll();
+		return farmers;
+	}
+	
+
+	
 	
 	//-> DELETE FARMER FROM DATABASE USING ID
 	
