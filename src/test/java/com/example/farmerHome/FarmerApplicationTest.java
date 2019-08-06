@@ -22,11 +22,11 @@ public class FarmerApplicationTest {
 	FarmerService farmerService;
 	
 	
-	@Test
+/*	@Test
 	public void contextLoads() {
 		System.out.println("system test executed");
 	}
-
+*/
 	
 	//-> ADD NEW FARMER TO DATABASE
 	@Test
@@ -35,7 +35,7 @@ public class FarmerApplicationTest {
 		Farmer farmer = new Farmer();
 		farmer.setFarmerName("Faith's Fresh Fruits");
 		farmer.setFarmLocation("NEWCASTLE");
-		farmer.setProducts("freshest shit around mate");
+		farmer.setProducts("freshest fruit around");
 		farmer = farmerService.registerOrUpdateFarmer(farmer);
 		assertNotNull(farmer);
 	}
@@ -44,8 +44,8 @@ public class FarmerApplicationTest {
 /*	//-> FIND FARMER IN DATABASE
 	@Test
 	public void findFarmerUsingService() {
-		int farmerID = 6;
-		assertNotNull(farmerService.findByFarmerID(farmerID));
+		int farmerId = 6;
+		assertNotNull(farmerService.findByFarmerId(farmerId));
 	}
 	
 	
@@ -53,8 +53,8 @@ public class FarmerApplicationTest {
 	@Test
 	public void deleteFarmerUsingService() {
 		
-		int farmerID = 10;
-		farmerService.deleteFarmerByID(farmerID);
-		assertNull(farmerService.findByFarmerID(farmerID));
+		int farmerId = 10;
+		farmerService.deleteFarmerById(farmerId);
+		assertNull(farmerService.findByFarmerId(farmerId));
 	}*/
 }

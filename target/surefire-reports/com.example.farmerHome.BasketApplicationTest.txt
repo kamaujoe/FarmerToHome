@@ -1,12 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.BasketApplicationTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 9.847 s <<< FAILURE! - in com.example.farmerHome.BasketApplicationTest
-deleteByBasketIdUsingService(com.example.farmerHome.BasketApplicationTest)  Time elapsed: 0.379 s  <<< ERROR!
-org.springframework.dao.EmptyResultDataAccessException: No class com.example.farmerHome.entities.Basket entity with id 9 exists!
-	at com.example.farmerHome.BasketApplicationTest.deleteByBasketIdUsingService(BasketApplicationTest.java:51)
-
-findByBasketIdUsingService(com.example.farmerHome.BasketApplicationTest)  Time elapsed: 0.028 s  <<< FAILURE!
-java.lang.AssertionError
-	at com.example.farmerHome.BasketApplicationTest.findByBasketIdUsingService(BasketApplicationTest.java:44)
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.681 s - in com.example.farmerHome.BasketApplicationTest
