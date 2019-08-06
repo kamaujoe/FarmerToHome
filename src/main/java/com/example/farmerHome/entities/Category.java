@@ -30,12 +30,10 @@ import org.springframework.stereotype.Component;
 @Table(name="JPA_CATEGORY")
 @Scope("prototype")
 @EntityListeners({CategoryLifecycleListener.class})
-//@NamedQueries(@NamedQuery(name="Category.findByCategory", query="select p from Category c where p.category = :category"))
 
 @XmlRootElement
 public class Category implements Serializable {
 	
-	@FormParam("categoryId")
 	private int categoryId;
 	
 	@FormParam("category")

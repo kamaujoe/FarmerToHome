@@ -39,7 +39,7 @@ public class CategoryService {
 		System.out.println("Category service created");
 	}
 	
-/*	@POST //HTTP method to send the form data
+	@POST //HTTP method to send the form data
 	@Path("/register") //URL pattern 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //form data
 	@Produces(MediaType.APPLICATION_JSON) //JSON data
@@ -55,7 +55,7 @@ public class CategoryService {
 		}
 		System.out.println("Category assigned " + cat);
 		return cat;
-	}*/
+	}
 	
 	@GET
 	@Path("/find/{categoryId}")
@@ -106,6 +106,6 @@ public class CategoryService {
 			return null;
 		}
 	}
-	
+
 
 }
