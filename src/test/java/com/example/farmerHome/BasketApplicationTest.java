@@ -37,7 +37,7 @@ public class BasketApplicationTest {
 		assertNotNull(basket);
 	}
 	
-	// CRUD OPERATIONS - Find basket by id
+/*	// CRUD OPERATIONS - Find basket by id
 	@Test
 	public void findByBasketIdUsingService() {
 		int basketId = 6;
@@ -50,6 +50,6 @@ public class BasketApplicationTest {
 		int basketId = 9;
 		basketService.deleteByProductId(basketId);
 		assertNull(basketService.findByBasketId(basketId));
-	}
+	}*/
 
 }

@@ -26,14 +26,14 @@ public class CategoryApplicationTest {
 	}
 	
 	
-/*	//CRUD - add category to database
+	//CRUD - add category to database
 	@Test
 	public void addCategoryUsingService() {
 		Category cat = new Category();
-		cat.setCategory(ProductCategories.BEVERAGES);
+		cat.setCategory(ProductCategories.BAKERY_DAIRY);
 		cat = categoryService.registerOrUpdateCategory(cat);	
 		assertNotNull(cat);
-	}*/
+	}
 	
 /*	//CRUD - find by category id
 	@Test
