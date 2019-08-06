@@ -25,6 +25,12 @@ export class ProductsService {
     return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory?category="+cat_name)
   }
 
+  //fetch by expiry date - discount page
+  fetchProductByExpiryDate(min, max):Observable<Products[]>{
+    return this.httpsvc.get<Products[]>(this.url+"//fetchByExpiryDate?" + "&min=" + min + "&max=" + max)
+  }
+
+
   addProductsToBasket(productId, basketId):Observable<Basket>{const httpOptions = {
     headers: new HttpHeaders(
       {"Content-Type" : "application/x-www-form-urlencoded"}
