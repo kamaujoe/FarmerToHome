@@ -1,20 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.FarmerHomeApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 2, Errors: 2, Skipped: 0, Time elapsed: 0.202 s <<< FAILURE! - in com.example.farmerHome.FarmerHomeApplicationTests
-assignConsumerToBasket(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.048 s  <<< ERROR!
-java.lang.NullPointerException
-	at com.example.farmerHome.FarmerHomeApplicationTests.assignConsumerToBasket(FarmerHomeApplicationTests.java:60)
-
-assignCategoryToProduct(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.046 s  <<< ERROR!
-java.lang.NullPointerException
-	at com.example.farmerHome.FarmerHomeApplicationTests.assignCategoryToProduct(FarmerHomeApplicationTests.java:50)
-
-assignFarmerToProduct(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.04 s  <<< FAILURE!
-java.lang.AssertionError
-	at com.example.farmerHome.FarmerHomeApplicationTests.assignFarmerToProduct(FarmerHomeApplicationTests.java:80)
-
-assignProductToBasket(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.054 s  <<< FAILURE!
-java.lang.AssertionError
-	at com.example.farmerHome.FarmerHomeApplicationTests.assignProductToBasket(FarmerHomeApplicationTests.java:70)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in com.example.farmerHome.FarmerHomeApplicationTests
+initializationError(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.Exception: No runnable methods
 
