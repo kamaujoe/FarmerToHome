@@ -11,7 +11,7 @@ export class CategoriesService {
   rootURL : string
 
   constructor(private httpsvc:HttpClient) {
-    this.rootURL ="http://localhost:8080/products/"
+    this.rootURL ="http://localhost:8080/product/"
    }
 
 getProductsByCategory(category):Observable<any>{

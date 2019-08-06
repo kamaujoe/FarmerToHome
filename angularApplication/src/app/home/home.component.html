@@ -29,7 +29,13 @@
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
+
+            <td>{{p.quantity}}</td>
+            <td>{{p.currentCategory.category}}</td>
+            <td>{{p.expiry_date}}</td>
+
             <td>{{p.size}}</td>
+            <td><button (click) = "addProducts(p.productId)"></button></td>
         </tr>
     </table> 
     <pagination-controls (pageChange)="p =$event"></pagination-controls>

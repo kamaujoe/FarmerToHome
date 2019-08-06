@@ -1,3 +1,5 @@
+import { Category } from './category';
+
 export interface Product {
 
 
@@ -6,7 +8,8 @@ export interface Product {
     price : number
     quantity : number
     size : string
-    expiry_date : number
-    category : string
-  
+    expiryDate : number
+    
+    currentCategory : Category
+
 }
