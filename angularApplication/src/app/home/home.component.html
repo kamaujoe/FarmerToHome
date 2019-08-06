@@ -33,9 +33,10 @@
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
             <td>{{p.quantity}}</td>
-            <td>{{p.category}}</td>
+            <td>{{p.currentCategory.category}}</td>
             <td>{{p.expiry_date}}</td>
             <td>{{p.size}}</td>
+            <td><button (click) = "addProducts(p.productId)"></button></td>
         </tr>
     </table> 
 </html>
