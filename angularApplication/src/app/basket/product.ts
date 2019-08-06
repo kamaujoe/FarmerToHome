@@ -4,11 +4,11 @@ export interface Product {
 
 
     productId : number
-    productName : string
+    name : string
     price : number
     quantity : number
     size : string
-    expiryDate : number
+    expiry_date : number
     
     currentCategory : Category
 

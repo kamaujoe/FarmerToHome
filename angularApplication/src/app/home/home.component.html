@@ -24,20 +24,34 @@
         <tr>    
             <td>Name</td>
             <td>Price(£)</td>
+            
+            
+            <td>Category</td>
+            <td>Expirty Date</td>
             <td>Size</td>
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
 
-            <td>{{p.quantity}}</td>
+            
             <td>{{p.currentCategory.category}}</td>
             <td>{{p.expiry_date}}</td>
 
             <td>{{p.size}}</td>
-            <td><button (click) = "addProducts(p.productId)"></button></td>
+            <td><input type="number" name = "quantity" min = "0" max = "12"></td>
+            <td><button (click) = "addProducts(p.productId)" (click) = "quantityAdd(p.productId, quantity)"></button></td>
+
+        </tr>
+</table>
+
+    <table>
+        <tr *ngFor = "let u of currentQuantity">
+            <td>productId{{u.productId}}</td>
+            <td>quantity{{u.quantity}}</td>
         </tr>
     </table> 
+
     <pagination-controls (pageChange)="p =$event"></pagination-controls>
    
 </html>
