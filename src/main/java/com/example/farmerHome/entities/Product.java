@@ -29,7 +29,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component // - disabled for @FormParam processing
+// @Component // - disabled for @FormParam processing
 
 @Scope("prototype") //one copy for each test case
 @Entity
