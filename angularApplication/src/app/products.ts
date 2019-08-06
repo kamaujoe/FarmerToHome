@@ -1,9 +1,11 @@
+import { Category } from './basket/category';
+
 export interface Products {
-    productId: number;
-    name: string;
-    price: number;
-    quantity: number;
-    expiry_date: number;
-    category: string;
-    size: string;
+    productId: number
+    name: string
+    price: number
+    quantity: number
+    // expiryDate: number;
+    category: Category
+    size: string
 }
