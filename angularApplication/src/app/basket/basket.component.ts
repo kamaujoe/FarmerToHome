@@ -34,16 +34,18 @@ export class BasketComponent implements OnInit {
 
   ngOnInit() {
     this.fetchCurrentProductsFromBasket()
+    this.calculateTotal()
   }
 
-  deleteProduct(index, productId){
-    this.currentBasket.items.splice(index, 1)
+  deleteProduct(productId){
+    
     
     this.prodsvc.deleteFromBasket(productId, this.basketId).subscribe(
       response => {
         this.currentBasket = response
       }
     )
+    location.reload()
   }
 
   fetchCurrentProductsFromBasket(){
@@ -57,9 +59,11 @@ export class BasketComponent implements OnInit {
     
   calculateTotal(){   
     this.currentBasket.items.forEach(currentBasketItem => 
-      {this.total+=(currentBasketItem.price)*(currentBasketItem.quantity)}
+      {this.total=+(currentBasketItem.price)*(currentBasketItem.quantity)}
       )
     
   }
+ 
+  
 
 }

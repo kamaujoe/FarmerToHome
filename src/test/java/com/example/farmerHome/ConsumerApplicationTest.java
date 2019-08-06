@@ -18,7 +18,7 @@ public class ConsumerApplicationTest {
 
 	@Autowired
 	ConsumerService conService;
-	
+/*	
 	@Test
 	public void addConsumerUsingService() {
 		Consumer con = new Consumer();
@@ -30,7 +30,7 @@ public class ConsumerApplicationTest {
 		con = conService.registerOrUpdateConsumer(con);
 		assertNotNull(con);
 	}
-	
+	*/
 /*	@Test
 	public void findByConsnoUsingService() {
 		int consno = 1;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Products } from '../products';
 import { ProductsService } from '../products.service';
 import { stringify } from '@angular/compiler/src/util';
+import { Basket } from '../basket/basket';
 
 @Component({
   selector: 'app-bakery-dairy',
@@ -9,10 +10,13 @@ import { stringify } from '@angular/compiler/src/util';
   styleUrls: ['./bakery-dairy.component.css']
 })
 export class BakeryDairyComponent implements OnInit {
-
+  basketId : number
   products: Products[]
+  currentProduct: Basket
+
   constructor(private productService: ProductsService) { 
     this.products=[]
+    this.basketId = 14
   }
 
   // getProducts(){
@@ -30,6 +34,13 @@ export class BakeryDairyComponent implements OnInit {
         this.products = res}
     )
   }
-
+  addProducts(productId){
+    this.productService.addProductsToBasket(productId, 
+      this.basketId).subscribe(
+      response => {
+        this.currentProduct = response
+      }
+    )
+  }
 
 }

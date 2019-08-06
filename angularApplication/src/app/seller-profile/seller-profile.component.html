@@ -11,8 +11,10 @@
     <td>{{farmerId}}</td>
     <br>
     <td>
-        <button (click)="toggleEdits()">
-                {{isEditable?"Save":"Edit"}}</button>
+        <button 
+        (click)="toggleEdits()">
+                {{isEditable?"Save":"Edit"}}
+        </button>
     </td>
     <tr>
             <th>Name: </th>
@@ -48,5 +50,82 @@
             <input [(ngModel)]="products">
         </td>
     </tr>
+    <br>
+    <tr>
+        <th>Farmer Products: </th>
+        <td *ngIf="!isEditable">{{farmerProds}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="farmerProds">
+        </td>
+    </tr>
 </table>
+<br>
+<h2>Products</h2>
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Size</th>
+        <th>Expiry Date</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th><button (click)="showProductForm()">+</button></th>
+    </tr>
+    <tr *ngFor="let a of farmerProds; let i = index">
+        <td>{{a.productId}}</td>
+        <td>{{a.name}}</td>
+        <td>{{a.category}}</td>
+        <td>{{a.size}}</td>
+        <td>{{a.expiry_date}}</td>
+        <td>{{a.price}}</td>
+        <td>{{a.quantity}}</td>
+        <td>{{i+1}}</td>
+        <td><button (click)="deleteProduct(i)">X</button></td>
+    </tr>
+</table>
+<br>
+
+<!-- <h2>Category</h2>
+<table>
+    <tr>
+        <th>
+            Number:
+        </th>
+        <td *ngIf="!isEditable">{{currentCategory.categoryId}</td>
+        <td *ngIf="isEditable">
+            <select id="cat-select" #selectCategory [(ngModel)="currentCategory"
+            (change)="updateSelection(selectCategory.value)">
+            
+            <option *ngFor="let cat of allCategories" value="{{cat.categoryId}}">
+                {{cat.categoryId}}::{{category}}
+            </option>
+        </select>
+        </td>
+    
+    </tr>
+</table> -->
+<form *ngIf="isProductFormVisable"
+        (submit) = "assignNewProduct()">
+    <table>
+        <tr>
+            <td>
+                <select name="productId" #selectProductId (change)="updateSelectedProductId(selectProductId.value)">
+                    <option *ngFor="let p of farmerProds"
+                        value="{{p.productId}}">
+                        {{p.productId}}::{{p.name}}
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Add">
+            </td>
+            <td>
+                <div [hidden]="isProductFormValid">
+                    {{invalidFormMessage}}
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
 
