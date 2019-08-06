@@ -10,12 +10,18 @@ import { Basket } from '../basket/basket';
 })
 export class HomeComponent implements OnInit {
 
+
+    quantity : number
+    
     productId : number
     basketId : number
     products: Products[]
     currentProduct : Basket
 
     constructor(private productService: ProductsService) {
+
+      this.quantity = 1
+
       this.basketId = 14 
       this.products=[] }
 
