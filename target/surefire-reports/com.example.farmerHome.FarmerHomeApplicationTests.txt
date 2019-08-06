@@ -1,8 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.FarmerHomeApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.095 s <<< FAILURE! - in com.example.farmerHome.FarmerHomeApplicationTests
-assignConsumerToBasket(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.067 s  <<< ERROR!
+Tests run: 3, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 0.162 s <<< FAILURE! - in com.example.farmerHome.FarmerHomeApplicationTests
+assignConsumerToBasket(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.051 s  <<< ERROR!
 java.lang.NullPointerException
 	at com.example.farmerHome.FarmerHomeApplicationTests.assignConsumerToBasket(FarmerHomeApplicationTests.java:46)
+
+assignFarmerToProduct(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.05 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.farmerHome.FarmerHomeApplicationTests.assignFarmerToProduct(FarmerHomeApplicationTests.java:66)
+
+assignProductToBasket(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.05 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.farmerHome.FarmerHomeApplicationTests.assignProductToBasket(FarmerHomeApplicationTests.java:56)
 
