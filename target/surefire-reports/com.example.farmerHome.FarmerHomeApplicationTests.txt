@@ -5,3 +5,11 @@ Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAIL
 initializationError(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.Exception: No runnable methods
 
+assignFarmerToProduct(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.05 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.farmerHome.FarmerHomeApplicationTests.assignFarmerToProduct(FarmerHomeApplicationTests.java:66)
+
+assignProductToBasket(com.example.farmerHome.FarmerHomeApplicationTests)  Time elapsed: 0.05 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.example.farmerHome.FarmerHomeApplicationTests.assignProductToBasket(FarmerHomeApplicationTests.java:56)
+
