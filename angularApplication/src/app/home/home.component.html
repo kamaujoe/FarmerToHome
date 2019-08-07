@@ -26,16 +26,17 @@
             <td>Price(£)</td>
             
             
-            <td>Category</td>
+            
             <td>Expirty Date</td>
             <td>Size</td>
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
+            
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
 
             
-            <td>{{p.currentCategory.category}}</td>
+            
             <td>{{p.expiry_date}}</td>
 
             <td>{{p.size}}</td>

@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TestSearchComponent } from './test-search/test-search.component';
 
 
 
@@ -43,7 +44,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SellerProfileComponent,
     BuyerDashboardComponent,
     UserBuyerProfileComponent,
-    DiscountsComponent
+    DiscountsComponent,
+    TestSearchComponent
   ],
   imports: [
     BrowserModule,
