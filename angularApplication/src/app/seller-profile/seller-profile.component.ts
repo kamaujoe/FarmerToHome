@@ -45,14 +45,14 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=3
+    this.farmerId=1
     this.farmerName="Farmer Joe"
     this.farmLocation="Leeds"
     this.products="Whole Foods"
     
     this.assignedProducts =
     [
-      {productId:4,productName:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
+      {productId:4,product_name:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,currentCategory:[]}
     ]
   }
 
@@ -111,25 +111,25 @@ export class SellerProfileComponent implements OnInit {
     this.assignedProducts.splice(index, 1)
   }
 
-  addNewProduct(pproductId,pproductName,pprice,pquantity,psize,pexpiry_date,pcategory) {
+  addNewProduct(pproductId,pproduct_name,pprice,pquantity,psize,pexpiry_date,pcategory) {
     if(isNaN(pproductId))
     {
       this.isProductFormValid=false
       this.invalidFormMessage="Product ID must be a number"
     }
-    else if(pproductName.length<4){
+    else if(pproduct_name.length<4){
       this.isProductFormValid=false
       this.invalidFormMessage="Product name must be greater than 4 characters"
     }
     else {
       this.assignedProducts.push({
         productId:pproductId,
-        productName:pproductName,
+        product_name:pproduct_name,
         price:pprice,
         quantity:pquantity,
         size:psize,
         expiry_date:pexpiry_date,
-        category:pcategory
+        currentCategory:pcategory
       })
       this.isProductFormVisable=false
       this.isProductFormValid=true
