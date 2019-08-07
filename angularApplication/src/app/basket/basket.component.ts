@@ -26,7 +26,7 @@ export class BasketComponent implements OnInit {
 
   constructor(private prodsvc: BasketItemsService) {
 
-    this.basketId = 14 // use consumer login Id to pull basket Id
+    this.basketId = 75 // use consumer login Id to pull basket Id
     
   }
     
