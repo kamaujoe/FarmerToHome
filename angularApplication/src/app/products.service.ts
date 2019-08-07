@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient,  HttpHeaders } from '../../node_modules/@angular/common/http'
 import { Observable } from 'rxjs';
 import { Products } from './products'
-import { Product } from './basket/product';
 import { Basket } from './basket/basket';
 
 @Injectable({
@@ -21,13 +20,13 @@ export class ProductsService {
   }
 
   //fetch by category
-  fetchProductsByCategory(cat_name):Observable<Products[]>{
-    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory?category="+cat_name)
+  fetchProductsByCategory(categoryId):Observable<Products[]>{
+    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory/"+categoryId)
   }
 
   //fetch by expiry date - discount page
   fetchProductByExpiryDate(min, max):Observable<Products[]>{
-    return this.httpsvc.get<Products[]>(this.url+"//fetchByExpiryDate?" + "&min=" + min + "&max=" + max)
+    return this.httpsvc.get<Products[]>(this.url+"/fetchByExpiryDate?" + "&min=" + min + "&max=" + max)
   }
 
 

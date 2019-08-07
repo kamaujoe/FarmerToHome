@@ -10,6 +10,6 @@ export interface Product {
     size : string
     expiry_date : number
     
-    currentCategory : Category
+    currentCategory : Category[]
 
 }

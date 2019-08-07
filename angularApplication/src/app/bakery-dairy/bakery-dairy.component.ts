@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Products } from '../products';
 import { ProductsService } from '../products.service';
-import { stringify } from '@angular/compiler/src/util';
 import { Basket } from '../basket/basket';
 
 @Component({
@@ -16,7 +15,7 @@ export class BakeryDairyComponent implements OnInit {
 
   constructor(private productService: ProductsService) { 
     this.products=[]
-    this.basketId = 14
+    this.basketId = 75 
   }
 
   // getProducts(){
@@ -29,7 +28,7 @@ export class BakeryDairyComponent implements OnInit {
     // this.productService.getAllProducts().subscribe(
     //      res=>{this.products = res}
     // )
-    this.productService.fetchProductsByCategory("BAKERY_DAIRY").subscribe(
+    this.productService.fetchProductsByCategory(85).subscribe(
       res => {
         this.products = res}
     )
