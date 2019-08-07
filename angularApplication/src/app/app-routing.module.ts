@@ -16,6 +16,8 @@ import { SellerLoginRegistrationComponent } from './seller-login-registration/se
 import { SellerProfileComponent } from './seller-profile/seller-profile.component';
 import { UserBuyerProfileComponent } from './user-buyer-profile/user-buyer-profile.component';
 import { FarmerComponent } from './farmer/farmer.component';
+import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
+import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -31,8 +33,10 @@ const routes: Routes = [
   { path: 'login-redirection-page', component: LoginRedirectionPageComponent},
   { path: 'seller-admin-dashboard', component: SellerAdminDashboardComponent},
   { path: 'seller-login-registration', component: SellerLoginRegistrationComponent},
+  { path: 'seller-registration', component: SellerRegistrationComponent},
   { path: 'seller-profile', component: SellerProfileComponent},
   { path: 'user-buyer-profile', component: UserBuyerProfileComponent},
+  { path: 'consumer-registration', component: ConsumerRegistrationComponent},
   // { path: 'farmer', component:FarmerComponent}
 
 ];

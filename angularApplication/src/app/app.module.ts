@@ -22,6 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
+import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
 
 
 
@@ -43,7 +45,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SellerProfileComponent,
     BuyerDashboardComponent,
     UserBuyerProfileComponent,
-    DiscountsComponent
+    DiscountsComponent,
+    ConsumerRegistrationComponent,
+    SellerRegistrationComponent
   ],
   imports: [
     BrowserModule,
