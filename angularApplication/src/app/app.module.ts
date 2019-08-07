@@ -45,7 +45,11 @@ import { TestSearchComponent } from './test-search/test-search.component';
     BuyerDashboardComponent,
     UserBuyerProfileComponent,
     DiscountsComponent,
-    TestSearchComponent
+
+
+    Consumer-RegistrationComponent,
+    Seller-RegistrationComponent
+
   ],
   imports: [
     BrowserModule,
