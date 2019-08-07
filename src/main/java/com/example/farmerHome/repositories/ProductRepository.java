@@ -12,7 +12,7 @@ import com.example.farmerHome.entities.ProductCategories;
 public interface ProductRepository extends CrudRepository<Product, Integer>{
 
 	//Select/filter queries
-	public List<Product> findByCategory(ProductCategories category);
+	public List<Product> findByCategoryId(Integer fk_categoryId);
 	
 	public List<Product> findByPrice(Double min, Double max);
 	
