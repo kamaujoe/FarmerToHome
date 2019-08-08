@@ -45,7 +45,7 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=3
+    this.farmerId=8
     this.farmerName="Farmer Joe"
     this.farmLocation="Leeds"
     this.products="Whole Foods"
@@ -111,6 +111,34 @@ export class SellerProfileComponent implements OnInit {
     this.assignedProducts.splice(index, 1)
   }
 
+<<<<<<< HEAD
+  addNewProduct(pproductId,pproductName,pprice,pquantity,psize,pexpiry_date,pcategory) {
+    if(isNaN(pproductId))
+    {
+      this.isProductFormValid=false
+      this.invalidFormMessage="Product ID must be a number"
+    }
+    else if(pproductName.length<4){
+      this.isProductFormValid=false
+      this.invalidFormMessage="Product name must be greater than 4 characters"
+    }
+    else {
+      this.assignedProducts.push({
+        productId:pproductId,
+        name:pproductName,
+        price:pprice,
+        quantity:pquantity,
+        size:psize,
+        expiry_date:pexpiry_date,
+        currentCategory:pcategory
+      })
+      this.isProductFormVisable=false
+      this.isProductFormValid=true
+      this.invalidFormMessage=""
+    }
+
+  }
+=======
   // addNewProduct(pproductId,pproductName,pprice,pquantity,psize,pexpiry_date,pcategory) {
   //   if(isNaN(pproductId))
   //   {
@@ -137,6 +165,7 @@ export class SellerProfileComponent implements OnInit {
   //   }
 
   // }
+>>>>>>> 2fa3e049a40e5497668675e91f5bf5e62cb9d81a
 
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({

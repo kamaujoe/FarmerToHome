@@ -25,6 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
 import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
+
 
 
 
@@ -54,7 +56,8 @@ import { SellerRegistrationComponent } from './seller-registration/seller-regist
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
