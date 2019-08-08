@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       
       
      
-      this.basketId = 14 
+      this.basketId = 1 
       this.products=[] }
 
   ngOnInit() {
