@@ -2,12 +2,13 @@
     --input-padding-x: 1.7rem;
     --input-padding-y: .75rem;
   }
-  
+
   body {
     background:url("https://images.pexels.com/photos/58723/pexels-photo-58723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
     background-attachment: fixed;
-    background-position: center; 
+    background-position: center;
+
   }
   
   .card-signin {
