@@ -4,6 +4,12 @@ import { ProductsService } from '../products.service';
 import { Basket } from '../basket/basket';
 import { Quantity } from '../basket/quantity';
 
+
+
+
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +21,7 @@ export class HomeComponent implements OnInit {
   
     currentBasket : Basket[]
         
-    currentQuantity : Quantity[]
+    currentQuantity : Quantity[] = []
 
    
     productId : number
@@ -23,9 +29,11 @@ export class HomeComponent implements OnInit {
     products: Products[]
     currentProduct : Basket
 
+    
+
     constructor(private productService: ProductsService) {
       
-      
+    
      
       this.basketId = 14 
       this.products=[] }
@@ -36,8 +44,12 @@ export class HomeComponent implements OnInit {
       this.products = res}
       )
 
-    
+   
+   
+  
     }
+
+    
 
     addProducts(productId){
       this.productService.addProductsToBasket(productId, 
@@ -50,10 +62,11 @@ export class HomeComponent implements OnInit {
   
     quantityAdd(currentProductId, Q){
       console.log(Q)
-      this.currentQuantity = 
-      [
-        {productId: currentProductId, quantity: Q}
-      ]
+      this.currentQuantity.push({productId: currentProductId, quantity: Q})
+      
       
     }
+  
+
+  
 }

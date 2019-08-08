@@ -18,7 +18,7 @@ export class BasketComponent implements OnInit {
   currentBasket : Basket
   total : number
 
- 
+  quantity: number
 
   basketId : number
 
@@ -26,7 +26,8 @@ export class BasketComponent implements OnInit {
 
   constructor(private prodsvc: BasketItemsService) {
 
-    this.basketId = 75 // use consumer login Id to pull basket Id
+    this.basketId = 14 // use consumer login Id to pull basket Id
+    
     
   }
     
@@ -59,7 +60,7 @@ export class BasketComponent implements OnInit {
     
   calculateTotal(){   
     this.currentBasket.items.forEach(currentBasketItem => 
-      {this.total=+(currentBasketItem.price)*(currentBasketItem.quantity)}
+      {this.total=+(currentBasketItem.price)*(this.quantity)}
       )
     
   }

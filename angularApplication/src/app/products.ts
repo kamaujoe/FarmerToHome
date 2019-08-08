@@ -2,10 +2,10 @@ import { Category } from './basket/category';
 
 export interface Products {
     productId: number
-    name: string
+    product_name: string
     price: number
     quantity: number
     // expiryDate: number;
-    category: Category
+    currentCategory: Category[]
     size: string
 }
