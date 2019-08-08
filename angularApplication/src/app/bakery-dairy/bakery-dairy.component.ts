@@ -16,7 +16,7 @@ export class BakeryDairyComponent implements OnInit {
 
   constructor(private productService: ProductsService) { 
     this.products=[]
-    this.basketId = 14
+    this.basketId = 75
   }
 
   // getProducts(){
@@ -29,7 +29,7 @@ export class BakeryDairyComponent implements OnInit {
     // this.productService.getAllProducts().subscribe(
     //      res=>{this.products = res}
     // )
-    this.productService.fetchProductsByCategory("BAKERY_DAIRY").subscribe(
+    this.productService.fetchProductsByCategory(85).subscribe(
       res => {
         this.products = res}
     )

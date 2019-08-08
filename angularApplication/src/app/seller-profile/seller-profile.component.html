@@ -16,6 +16,9 @@
                 {{isEditable?"Save":"Edit"}}
         </button>
     </td>
+    <br>
+    <br>
+    <br>
     <tr>
             <th>Name: </th>
             <td *ngIf="!isEditable">{{farmerName}}</td>
@@ -43,7 +46,7 @@
         </td>
     </tr>
     <br>
-    <tr>
+    <!-- <tr>
         <th>Products: </th>
         <td *ngIf="!isEditable">{{products}}</td>
         <td *ngIf="isEditable">
@@ -57,7 +60,7 @@
         <td *ngIf="isEditable">
             <input [(ngModel)]="farmerProds">
         </td>
-    </tr>
+    </tr> -->
 </table>
 <br>
 <h2>Products</h2>
@@ -74,8 +77,8 @@
     </tr>
     <tr *ngFor="let a of farmerProds; let i = index">
         <td>{{a.productId}}</td>
-        <td>{{a.name}}</td>
-        <td>{{a.category}}</td>
+        <td>{{a.product_name}}</td>
+        <td>{{a.currentCategory}}</td>
         <td>{{a.size}}</td>
         <td>{{a.expiry_date}}</td>
         <td>{{a.price}}</td>
@@ -86,25 +89,6 @@
 </table>
 <br>
 
-<!-- <h2>Category</h2>
-<table>
-    <tr>
-        <th>
-            Number:
-        </th>
-        <td *ngIf="!isEditable">{{currentCategory.categoryId}</td>
-        <td *ngIf="isEditable">
-            <select id="cat-select" #selectCategory [(ngModel)="currentCategory"
-            (change)="updateSelection(selectCategory.value)">
-            
-            <option *ngFor="let cat of allCategories" value="{{cat.categoryId}}">
-                {{cat.categoryId}}::{{category}}
-            </option>
-        </select>
-        </td>
-    
-    </tr>
-</table> -->
 <form *ngIf="isProductFormVisable"
         (submit) = "assignNewProduct()">
     <table>
@@ -128,4 +112,23 @@
         </tr>
     </table>
 </form>
+<!-- <h2>Category</h2>
+<table>
+    <tr>
+        <th>
+            Number:
+        </th>
+        <td *ngIf="!isEditable">{{currentCategory.categoryId}</td>
+        <td *ngIf="isEditable">
+            <select id="cat-select" #selectCategory [(ngModel)="currentCategory"
+            (change)="updateSelection(selectCategory.value)">
+            
+            <option *ngFor="let cat of allCategories" value="{{cat.categoryId}}">
+                {{cat.categoryId}}::{{category}}
+            </option>
+        </select>
+        </td>
+    
+    </tr>
+</table> -->
 

@@ -54,7 +54,8 @@ public class ConsumerService {
 		Consumer currentCon = findByConsno(con.getConsno());
 		if(currentCon!=null) {
 			currentCon.setEmail(con.getEmail());
-			currentCon.setName(con.getName());
+			currentCon.setFirstName(con.getFirstName());
+			currentCon.setLastName(con.getLastName());
 			currentCon.setAddress(con.getAddress());
 			currentCon.setPhone(con.getPhone());
 			con = consumerRepository.save(currentCon);
