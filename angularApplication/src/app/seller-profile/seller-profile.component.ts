@@ -50,17 +50,10 @@ export class SellerProfileComponent implements OnInit {
     this.farmLocation="Leeds"
     this.products="Whole Foods"
     
-<<<<<<< HEAD
-    this.assignedProducts =
-    [
-      //{productId:4,name:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
-    ]
-=======
     // this.assignedProducts =
     // [
     //   {productId:4,name:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
     // ]
->>>>>>> 2fa3e049a40e5497668675e91f5bf5e62cb9d81a
   }
 
   ngOnInit() {
