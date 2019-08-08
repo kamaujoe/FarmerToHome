@@ -21,8 +21,8 @@ export class ProductsService {
   }
 
   //fetch by category
-  fetchProductsByCategory(cat_name):Observable<Products[]>{
-    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory?category="+cat_name)
+  fetchProductsByCategory(categoryId):Observable<Products[]>{
+    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory/"+categoryId)
   }
 
   //fetch by expiry date - discount page

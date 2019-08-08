@@ -18,8 +18,9 @@
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
             <td>{{p.quantity}}</td>
-
+            <td>{{p.currentCategory.category}}</td>
             <td>{{p.size}}</td>
+            <td><button (click) = "addProducts(p.productId)"></button></td>
         </tr>
     </table> 
     <pagination-controls (pageChange)="p =$event"></pagination-controls>
