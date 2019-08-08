@@ -19,7 +19,7 @@ export class FruitVegetablesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.fetchProductsByCategory(107).subscribe(
+    this.productService.fetchProductsByCategory(117).subscribe(
       res => {
         this.products = res}
     )
