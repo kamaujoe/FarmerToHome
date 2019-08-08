@@ -25,7 +25,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
+
 @Entity
 @Table(name="JPA_CATEGORY")
 @Scope("prototype")
@@ -37,7 +38,7 @@ public class Category implements Serializable {
 	private int categoryId;
 	
 	@FormParam("category")
-	private ProductCategories category;
+	private String category;
 
 	//One to Many - One Category -> Many Products
 	private Set<Product> categoryProds = new HashSet<>();
@@ -60,18 +61,17 @@ public class Category implements Serializable {
 		return categoryId;
 	}
 
-
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
 	
-	@Column(name="product_category", nullable=false)
-	@Enumerated(EnumType.STRING)
-	public ProductCategories getCategory() {
+	
+	@Column(name="product_category", nullable=false, length=20)
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(ProductCategories category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
