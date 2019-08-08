@@ -1,7 +1,6 @@
 package com.example.farmerHome;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,8 +21,8 @@ public class ConsumerApplicationTest {
 	@Test
 	public void addConsumerUsingService() {
 		Consumer con = new Consumer();
-		con.setConsno(4);
-		con.setName("Consumer");
+		//con.setConsno(4);
+		con.setFirstName("Consumer");
 		con.setEmail("consumer4@test.com");
 		con.setAddress("Test Lane");
 		con.setPhone(447777788);
@@ -38,7 +37,7 @@ public class ConsumerApplicationTest {
 	}
 	
 	@Test
-	public void deleteByConsnoUsingService() {
+//	public void deleteByConsnoUsingService() {
 		int consno = 1;
 		conService.deleteByConsno(consno);
 		assertNull(conService.findByConsno(consno));

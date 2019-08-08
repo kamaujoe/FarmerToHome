@@ -1,13 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.BasketApplicationTest
 -------------------------------------------------------------------------------
-
-
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.056 s <<< FAILURE! - in com.example.farmerHome.BasketApplicationTest
-addBasketUsingService(com.example.farmerHome.BasketApplicationTest)  Time elapsed: 0.064 s  <<< ERROR!
-org.springframework.orm.jpa.JpaSystemException: could not read a hi value - you need to populate the table: hibernate_sequence; nested exception is org.hibernate.id.IdentifierGenerationException: could not read a hi value - you need to populate the table: hibernate_sequence
-	at com.example.farmerHome.BasketApplicationTest.addBasketUsingService(BasketApplicationTest.java:36)
-Caused by: org.hibernate.id.IdentifierGenerationException: could not read a hi value - you need to populate the table: hibernate_sequence
-	at com.example.farmerHome.BasketApplicationTest.addBasketUsingService(BasketApplicationTest.java:36)
-
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.79 s - in com.example.farmerHome.BasketApplicationTest
