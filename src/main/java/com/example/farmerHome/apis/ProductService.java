@@ -35,6 +35,9 @@ public class ProductService {
 	@Autowired
 	private FarmerService farmerService;
 	
+	@Autowired
+	private CategoryService categoryService;
+	
 	
 	public ProductService() {
 		System.out.println("Product service created");
@@ -132,11 +135,15 @@ public class ProductService {
 	}
 	
 	@GET
-	@Path("/fetchByCategory")
+	@Path("/fetchByCategory/{categoryId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Product> fetchProductsByCategory(
-			@QueryParam("category") ProductCategories category) {
-		return productRepository.findByCategory(category);
+	@Transactional
+	public List<Product> fetchProductsByCategory(@PathParam("categoryId") int categoryId) {
+		try {
+			return productRepository.findByCategoryId(categoryId);
+		} catch(Exception e) {e.printStackTrace();
+		return null;
+		}
 	}
 
 
