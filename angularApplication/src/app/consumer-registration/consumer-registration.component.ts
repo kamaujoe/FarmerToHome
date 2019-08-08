@@ -62,6 +62,7 @@ export class ConsumerRegistrationComponent implements OnInit {
     }).subscribe(
       response =>{
         this.fetchCurrentConsumerFromService()
+        console.log(response)
       }
     )
   }
