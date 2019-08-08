@@ -23,10 +23,13 @@ public class ConsumerApplicationTest {
 	public void addConsumerUsingService() {
 		Consumer con = new Consumer();
 		con.setConsno(4);
-		con.setName("Consumer");
+		con.setFirstName("Hannah");
+		con.setLastName("Montana");
 		con.setEmail("consumer4@test.com");
 		con.setAddress("Test Lane");
 		con.setPhone(447777788);
+		con.setConsumerUsername("hannahMontana");
+		con.setConsumerPassword("password");
 		con = conService.registerOrUpdateConsumer(con);
 		assertNotNull(con);
 	}
