@@ -1,0 +1,17 @@
+html {
+    background:url("https://images.pexels.com/photos/39511/purple-grapes-vineyard-napa-valley-napa-vineyard-39511.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+
+.title-bev {
+    font-family: 'Prata', serif;
+    color: rgb(153, 152, 152);
+    font-size: 60pt;
+    text-align: center;
+
+
+}

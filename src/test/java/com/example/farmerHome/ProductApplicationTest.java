@@ -29,26 +29,25 @@ public class ProductApplicationTest {
 		System.out.println("Product test case scenarios");
 	}
 
+	
 	// CRUD OPERATIONS - Add
 	@Test
 	public void addProductUsingService() {
 		Product prod = new Product();
 		prod.setName("Rice");
-		prod.setCategory(ProductCategories.BAKERY_DAIRY);
-		prod.setPrice(1.20);
-		prod.setQuantity(1);
+		prod.setPrice(4.5);
 		prod.setExpiry_date(5);
-		prod.setSize(ProductSizes.MEDIUM);
+		prod.setSize(ProductSizes.LARGE);
 		
 		prod = productService.registerOrUpdateProduct(prod);
 		
 		assertNotNull(prod);
 	}
-
+/*
 	// CRUD OPERATIONS - find product by Id
 	@Test
 	public void findByProductIdUsingService() {
-		int productId = 1;
+		int productId = 8;
 		assertNotNull(productService.findByProductId(productId));
 	}
 
@@ -57,7 +56,7 @@ public class ProductApplicationTest {
 	public void getAllProductsUsingService() {
 		assertNotNull(productService.getAllProducts());
 	}
-
+*/
 	// CRUD OPERATIONS - Delete
 //	@Test
 //	public void deleteByProductIdUsingService() {
@@ -97,7 +96,6 @@ public class ProductApplicationTest {
 //		}	
 //		assertEquals(prods.size(), 2);
 //	}
-	
 
 	
 }

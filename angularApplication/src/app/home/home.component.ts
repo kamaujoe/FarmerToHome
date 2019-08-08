@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { Products } from '../products';
+import { ProductsService } from '../products.service';
+import { Basket } from '../basket/basket';
+import { Quantity } from '../basket/quantity';
+
+
+
+
+
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +17,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+
+  
+    currentBasket : Basket[]
+        
+    currentQuantity : Quantity[] = []
+
+   
+    productId : number
+    basketId : number
+    products: Products[]
+    currentProduct : Basket
+
+    
+
+    constructor(private productService: ProductsService) {
+      
+    
+     
+      this.basketId = 14 
+      this.products=[] }
 
   ngOnInit() {
-  }
+    this.productService.getAllProducts().subscribe(
+    res => {
+      this.products = res}
+      )
 
+   
+   
+  
+    }
+
+    
+
+    addProducts(productId){
+      this.productService.addProductsToBasket(productId, 
+        this.basketId).subscribe(
+        response => {
+          this.currentProduct = response
+        }
+      )
+    }
+  
+    quantityAdd(currentProductId, Q){
+      console.log(Q)
+      this.currentQuantity.push({productId: currentProductId, quantity: Q})
+      
+      
+    }
+  
+
+  
 }

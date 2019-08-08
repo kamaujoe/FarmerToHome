@@ -1,6 +1,7 @@
 package com.example.farmerHome.entities;
 
 import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +33,8 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "JPA_BASKET")
 @EntityListeners({BasketLifecycleListener.class})
+
+
 @XmlRootElement
 public class Basket implements Serializable {
 	
@@ -41,6 +44,7 @@ public class Basket implements Serializable {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	int jid;
 	
 	// Many to Many relationship with products
 	private Set<Product> items = new HashSet<>();

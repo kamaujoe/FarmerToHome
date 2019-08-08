@@ -1,1 +1,134 @@
-<p>seller-profile works!</p>
+<br>
+<br>
+<br>
+<br>
+
+<h2>Seller Information</h2>
+<br>
+<br>
+<table>
+    <th>Number: </th>
+    <td>{{farmerId}}</td>
+    <br>
+    <td>
+        <button 
+        (click)="toggleEdits()">
+                {{isEditable?"Save":"Edit"}}
+        </button>
+    </td>
+    <br>
+    <br>
+    <br>
+    <tr>
+            <th>Name: </th>
+            <td *ngIf="!isEditable">{{farmerName}}</td>
+            <td *ngIf="isEditable">
+                <div class="form-group">
+                    <input [(ngModel)]="farmerName"
+                    #inputEname="ngModel"
+                    minlength="6"
+                    maxlength="45">
+                <span
+                    [hidden]="inputEfarmerName.valid || inputEfarmerName.pristine"
+                    class="alert alert-danger">
+                        Name Should Not Be Less That 6 Characters
+                </span>
+                </div>
+            </td>
+        
+    </tr>
+    <br>
+    <tr>
+        <th>Location: </th>
+        <td *ngIf="!isEditable">{{farmLocation}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="farmLocation">
+        </td>
+    </tr>
+    <br>
+    <!-- <tr>
+        <th>Products: </th>
+        <td *ngIf="!isEditable">{{products}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="products">
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Farmer Products: </th>
+        <td *ngIf="!isEditable">{{farmerProds}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="farmerProds">
+        </td>
+    </tr> -->
+</table>
+<br>
+<h2>Products</h2>
+<table>
+    <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Size</th>
+        <th>Expiry Date</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th><button (click)="showProductForm()">+</button></th>
+    </tr>
+    <tr *ngFor="let a of farmerProds; let i = index">
+        <td>{{a.productId}}</td>
+        <td>{{a.product_name}}</td>
+        <td>{{a.currentCategory}}</td>
+        <td>{{a.size}}</td>
+        <td>{{a.expiry_date}}</td>
+        <td>{{a.price}}</td>
+        <td>{{a.quantity}}</td>
+        <td>{{i+1}}</td>
+        <td><button (click)="deleteProduct(i)">X</button></td>
+    </tr>
+</table>
+<br>
+
+<form *ngIf="isProductFormVisable"
+        (submit) = "assignNewProduct()">
+    <table>
+        <tr>
+            <td>
+                <select name="productId" #selectProductId (change)="updateSelectedProductId(selectProductId.value)">
+                    <option *ngFor="let p of farmerProds"
+                        value="{{p.productId}}">
+                        {{p.productId}}::{{p.name}}
+                    </option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Add">
+            </td>
+            <td>
+                <div [hidden]="isProductFormValid">
+                    {{invalidFormMessage}}
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
+<!-- <h2>Category</h2>
+<table>
+    <tr>
+        <th>
+            Number:
+        </th>
+        <td *ngIf="!isEditable">{{currentCategory.categoryId}</td>
+        <td *ngIf="isEditable">
+            <select id="cat-select" #selectCategory [(ngModel)="currentCategory"
+            (change)="updateSelection(selectCategory.value)">
+            
+            <option *ngFor="let cat of allCategories" value="{{cat.categoryId}}">
+                {{cat.categoryId}}::{{category}}
+            </option>
+        </select>
+        </td>
+    
+    </tr>
+</table> -->
+

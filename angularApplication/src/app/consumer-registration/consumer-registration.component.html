@@ -1,0 +1,39 @@
+<h2>USER REGISTRATION</h2>
+
+<table>
+    <tr>
+        <td>User ID</td>
+        <!-- <td>{{consno}}</td> -->
+    </tr>
+
+    <tr>
+        <td>First Name</td>
+        <!-- <td>{{firstName}}</td> -->
+        <td><input [(ngModel)]="firstName" placeholder="First Name" #ffirstName></td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <!-- <td>{{lastName}}</td> -->
+        <td><input [(ngModel)]="lastName" placeholder="Last Name" #flastName></td>
+    </tr>
+    <tr>
+        <td>Email Address</td>
+        <!-- <td>{{email}}</td> -->
+        <td><input [(ngModel)]="email" placeholder="Email Address" #femail></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <!-- <td>{{address}}</td> -->
+        <td><input [(ngModel)]="address" placeholder="Address" #faddress></td>
+    </tr>
+    <tr>
+        <td>Phone Number</td>
+        <!-- <td>{{phone}}</td> -->
+        <td><input [(ngModel)]="phone" placeholder="Phone Number" #fphone></td>
+    </tr>
+    <tr>
+        <td>
+            <button (click)="registerConsumerDetails()">Register</button>
+        </td>
+    </tr>
+</table>

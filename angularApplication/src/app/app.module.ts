@@ -18,6 +18,17 @@ import { SellerProfileComponent } from './seller-profile/seller-profile.componen
 import { BuyerDashboardComponent } from './buyer-dashboard/buyer-dashboard.component';
 import { UserBuyerProfileComponent } from './user-buyer-profile/user-buyer-profile.component';
 import { DiscountsComponent } from './discounts/discounts.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
+import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
+
+
+
 
 @NgModule({
   declarations: [
@@ -36,11 +47,17 @@ import { DiscountsComponent } from './discounts/discounts.component';
     SellerProfileComponent,
     BuyerDashboardComponent,
     UserBuyerProfileComponent,
-    DiscountsComponent
+    DiscountsComponent,
+    ConsumerRegistrationComponent,
+    SellerRegistrationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

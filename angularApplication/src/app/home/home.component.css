@@ -8,9 +8,9 @@ html {
 }
 
 .home {
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky; 
     position: sticky;
-    top: 0;
+    top: 0;     
 }
 .est {
     font-family: 'Prata', serif;

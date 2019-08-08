@@ -31,11 +31,17 @@ import org.springframework.stereotype.Component;
 @EntityListeners({ConsumerLifecycleListener.class})
 public class Consumer implements Serializable {
 
+	@FormParam("consno")
+	@Value("-1")
 	private int consno;
 	
-	@FormParam("name")
+	@FormParam("firstName")
 	@Value("Default Consumer")
-	private String name;
+	private String firstName;
+	
+	@FormParam("lastName")
+	@Value("Default Consumer")
+	private String lastName;
 	
 	@FormParam("email")
 	@Value("Default@gmail.com")
@@ -80,12 +86,23 @@ public class Consumer implements Serializable {
 	}
 	
 	@Column(name="consumer_name",nullable=false,length=45)
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+
+	@Column(name="consumer_last_name",nullable=false,length=45)
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -108,7 +125,8 @@ public class Consumer implements Serializable {
 	@Override
 	public String toString() {
 		return "Consumer [consno=" + consno 
-				+ ", name=" + name 
+				+ ", firstName=" + firstName
+				+ ", lastName=" + lastName
 				+ ", email=" + email 
 				+ ", address=" + address
 				+ ", phone=" + phone + "]";
