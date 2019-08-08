@@ -37,8 +37,7 @@ import org.springframework.stereotype.Component;
 @EntityListeners({ProductLifecycleListener.class})
 @NamedQueries({@NamedQuery(name="Product.findByPrice", query="select p from Product p where p.price between :min and :max"),
 			   @NamedQuery(name="Product.findByExpiryDate", query="select p from Product p where p.expiry_date between :min and :max"),
-			   @NamedQuery(name="Product.findByCategory", query="SELECT p from Product p where fk_categoryid = :category")}) 
-
+			   @NamedQuery(name="Product.findByCategoryId", query="select p from Product p where fk_categoryid = :fk_categoryid")}) 
 @XmlRootElement
 public class Product implements Serializable {
 	

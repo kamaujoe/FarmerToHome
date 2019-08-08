@@ -30,7 +30,7 @@ public class CategoryApplicationTest {
 	@Test
 	public void addCategoryUsingService() {
 		Category cat = new Category();
-		cat.setCategory(ProductCategories.BAKERY_DAIRY);
+		cat.setCategory(ProductCategories.FRUIT_VEGETABLES);
 		cat = categoryService.registerOrUpdateCategory(cat);	
 		assertNotNull(cat);
 	}
