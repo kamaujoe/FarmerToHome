@@ -50,10 +50,10 @@ export class SellerProfileComponent implements OnInit {
     this.farmLocation="Leeds"
     this.products="Whole Foods"
     
-    this.assignedProducts =
-    [
-      {productId:4,productName:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
-    ]
+    // this.assignedProducts =
+    // [
+    //   {productId:4,name:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
+    // ]
   }
 
   ngOnInit() {
@@ -111,32 +111,32 @@ export class SellerProfileComponent implements OnInit {
     this.assignedProducts.splice(index, 1)
   }
 
-  addNewProduct(pproductId,pproductName,pprice,pquantity,psize,pexpiry_date,pcategory) {
-    if(isNaN(pproductId))
-    {
-      this.isProductFormValid=false
-      this.invalidFormMessage="Product ID must be a number"
-    }
-    else if(pproductName.length<4){
-      this.isProductFormValid=false
-      this.invalidFormMessage="Product name must be greater than 4 characters"
-    }
-    else {
-      this.assignedProducts.push({
-        productId:pproductId,
-        productName:pproductName,
-        price:pprice,
-        quantity:pquantity,
-        size:psize,
-        expiry_date:pexpiry_date,
-        category:pcategory
-      })
-      this.isProductFormVisable=false
-      this.isProductFormValid=true
-      this.invalidFormMessage=""
-    }
+  // addNewProduct(pproductId,pproductName,pprice,pquantity,psize,pexpiry_date,pcategory) {
+  //   if(isNaN(pproductId))
+  //   {
+  //     this.isProductFormValid=false
+  //     this.invalidFormMessage="Product ID must be a number"
+  //   }
+  //   else if(pproductName.length<4){
+  //     this.isProductFormValid=false
+  //     this.invalidFormMessage="Product name must be greater than 4 characters"
+  //   }
+  //   else {
+  //     this.assignedProducts.push({
+  //       productId:pproductId,
+  //       name:pproductName,
+  //       price:pprice,
+  //       quantity:pquantity,
+  //       size:psize,
+  //       expiry_date:pexpiry_date,
+  //       category:pcategory
+  //     })
+  //     this.isProductFormVisable=false
+  //     this.isProductFormValid=true
+  //     this.invalidFormMessage=""
+  //   }
 
-  }
+  // }
 
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({
