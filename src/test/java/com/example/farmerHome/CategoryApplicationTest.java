@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.farmerHome.apis.CategoryService;
 import com.example.farmerHome.entities.Category;
-import com.example.farmerHome.entities.ProductCategories;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,7 +29,7 @@ public class CategoryApplicationTest {
 	@Test
 	public void addCategoryUsingService() {
 		Category cat = new Category();
-		cat.setCategory(ProductCategories.FRUIT_VEGETABLES);
+		cat.setCategory("Fruit_Vegetables");
 		cat = categoryService.registerOrUpdateCategory(cat);	
 		assertNotNull(cat);
 	}
