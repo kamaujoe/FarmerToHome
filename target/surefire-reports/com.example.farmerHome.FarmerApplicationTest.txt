@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.FarmerApplicationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s - in com.example.farmerHome.FarmerApplicationTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.03 s <<< FAILURE! - in com.example.farmerHome.FarmerApplicationTest
+addFarmerUsingService(com.example.farmerHome.FarmerApplicationTest)  Time elapsed: 0.02 s  <<< ERROR!
+org.springframework.orm.jpa.JpaSystemException: could not read a hi value - you need to populate the table: hibernate_sequence; nested exception is org.hibernate.id.IdentifierGenerationException: could not read a hi value - you need to populate the table: hibernate_sequence
+	at com.example.farmerHome.FarmerApplicationTest.addFarmerUsingService(FarmerApplicationTest.java:39)
+Caused by: org.hibernate.id.IdentifierGenerationException: could not read a hi value - you need to populate the table: hibernate_sequence
+	at com.example.farmerHome.FarmerApplicationTest.addFarmerUsingService(FarmerApplicationTest.java:39)
+
