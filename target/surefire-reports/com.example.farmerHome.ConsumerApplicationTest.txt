@@ -1,11 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.ConsumerApplicationTest
 -------------------------------------------------------------------------------
-
-
-java.lang.Error: 
-Unresolved compilation problem: 
-	The method setName(String) is undefined for the type Consumer
-
-	at com.example.farmerHome.ConsumerApplicationTest.addConsumerUsingService(ConsumerApplicationTest.java:26)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s - in com.example.farmerHome.ConsumerApplicationTest

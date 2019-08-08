@@ -37,7 +37,9 @@ import org.springframework.stereotype.Component;
 @EntityListeners({ProductLifecycleListener.class})
 @NamedQueries({@NamedQuery(name="Product.findByPrice", query="select p from Product p where p.price between :min and :max"),
 			   @NamedQuery(name="Product.findByExpiryDate", query="select p from Product p where p.expiry_date between :min and :max"),
-			   @NamedQuery(name="Product.findByCategoryId", query="select p from Product p where fk_categoryid = :fk_categoryid")}) 
+//			   @NamedQuery(name="Product.findByCategoryId", query="select p from Product p where fk_categoryid = :fk_categoryid")}) 
+			   @NamedQuery(name="Product.findByCategory", query="select p from Product p where fk_categoryid = :categoryId")}) 
+
 @XmlRootElement
 public class Product implements Serializable {
 	
@@ -172,40 +174,4 @@ public class Product implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-/*	//TO DO - FETCH BY DISCOUNT FEATURE
-	public double productDiscount() {
-		double discount;
-		if (expiry_date >= 9) {
-			discount = price * 0.5;
-			return discount;
-		} else if (expiry_date == 8) {
-			discount = price * 0.25;
-			return discount;
-		} else {
-			return price;
-		}
-	}
-	
-	//TO DO - SEARCH BUTTON FEATURE
-    public List<Product> getSearchProducts() {
-
-        List<Product> products;
-
-        if(null == keyword || "".equals(keyword)) {
-            products = new ArrayList<Product>();
-        } else {
-            products = productRepository.getInstance()
-                .searchByProductName(keyword);
-        }
-
-        List<ProductBean> productBeans = new ArrayList<ProductBean>();
-
-        for(Product product: products) {
-            ProductBean productBean = new ProductBean();
-            productBean.setProduct(product);
-            productBeans.add(productBean);
-        }
-        return productBeans;
-    }*/
 }

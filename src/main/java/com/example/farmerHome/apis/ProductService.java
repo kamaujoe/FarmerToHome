@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 
 import com.example.farmerHome.entities.Farmer;
 import com.example.farmerHome.entities.Product;
-import com.example.farmerHome.entities.ProductCategories;
 import com.example.farmerHome.repositories.ProductRepository;
 
 @Component //indicate to Spring to create an object of this class as a component
@@ -81,24 +80,7 @@ public class ProductService {
 		}
 	}
 	
-	//TO DO - SEARCH FEATURE
-/*	@GET
-	@Path("/find/{productName}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Transactional 
-	public Product findByProductName(@PathParam("productName") String productName) {
-		//fetches product details from DB by productId
-		//@PathParam - argument for the method
-		try {
-		Product prod = 
-		System.out.println(prod);
-			return prod;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-	}*/
-
+	
 	@GET
 	@Path("/allProducts")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -115,10 +97,6 @@ public class ProductService {
 	public List<Product> fetchProductsByPriceRange(
 			@QueryParam("min") double min, 
 			@QueryParam("max") double max) {
-		//Commented out as it was successfully tested with db
-		//List<Product> prods = productRepository.findByPrice(min, max);
-		//System.out.println(prods);
-		//return prods;
 		return productRepository.findByPrice(min, max);
 	}	
 	
@@ -128,35 +106,17 @@ public class ProductService {
 	public List<Product> fetchProductsByExpiryDate(
 			@QueryParam("min") int min, 
 			@QueryParam("max") int max) {
-		//List<Product> prods = productRepository.findByExpiryDate(min, max);
-		//System.out.println(prods);
-		//return prods;
 		return productRepository.findByExpiryDate(min, max);
 	}
 	
-	@GET
-	@Path("/fetchByCategory/{categoryId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Transactional
-	public List<Product> fetchProductsByCategory(@PathParam("categoryId") int categoryId) {
-		try {
-			return productRepository.findByCategoryId(categoryId);
-		} catch(Exception e) {e.printStackTrace();
-		return null;
-		}
-	}
-
-
 	
-/*	//TO DO - Fetch by discount feature//
 	@GET
-	@Path("/fetchByDiscount")
+	@Path("/fetchByCategory")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Product> fetchProductsByDiscount(
-			@QueryParam("min") int min, 
-			@QueryParam("max") int max) {
-		return productRepository.findByDiscount(min, max);
-	}*/
+	public List<Product> fetchProductsByCategory(
+			@QueryParam("categoryId") int categoryId){
+		return productRepository.findByCategory(categoryId);
+	}
 	
 	
 	@DELETE
