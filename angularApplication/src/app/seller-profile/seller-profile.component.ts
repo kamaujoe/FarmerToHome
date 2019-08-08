@@ -52,7 +52,7 @@ export class SellerProfileComponent implements OnInit {
     
     this.assignedProducts =
     [
-      {productId:4,productName:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
+      //{productId:4,name:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
     ]
   }
 
@@ -124,12 +124,12 @@ export class SellerProfileComponent implements OnInit {
     else {
       this.assignedProducts.push({
         productId:pproductId,
-        productName:pproductName,
+        name:pproductName,
         price:pprice,
         quantity:pquantity,
         size:psize,
         expiry_date:pexpiry_date,
-        category:pcategory
+        currentCategory:pcategory
       })
       this.isProductFormVisable=false
       this.isProductFormValid=true

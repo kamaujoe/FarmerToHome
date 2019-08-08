@@ -22,7 +22,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgxPaginationModule } from 'ngx-pagination';
-import { TestSearchComponent } from './test-search/test-search.component';
+import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
+import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
 
 
 
@@ -45,18 +48,16 @@ import { TestSearchComponent } from './test-search/test-search.component';
     BuyerDashboardComponent,
     UserBuyerProfileComponent,
     DiscountsComponent,
-
-
-    Consumer-RegistrationComponent,
-    Seller-RegistrationComponent
-
+    ConsumerRegistrationComponent,
+    SellerRegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
