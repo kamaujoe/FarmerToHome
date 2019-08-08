@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.farmerHome.apis.ProductService;
 import com.example.farmerHome.entities.Product;
-import com.example.farmerHome.entities.ProductCategories;
 import com.example.farmerHome.entities.ProductSizes;
 
 @RunWith(SpringRunner.class)

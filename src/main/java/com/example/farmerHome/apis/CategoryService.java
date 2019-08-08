@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component;
 
 import com.example.farmerHome.entities.Category;
 import com.example.farmerHome.entities.Product;
-import com.example.farmerHome.entities.ProductCategories;
 import com.example.farmerHome.repositories.CategoryRepository;
 
 @Component
