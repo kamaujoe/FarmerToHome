@@ -57,7 +57,7 @@ export class UserBuyerProfileComponent implements OnInit {
   }
 
   updateUserDetails() {
-    this.userSvc.updateUserOnServer({
+    this.userSvc.registerUserOnServer({
       consno:this.consno, 
       firstName:this.firstName,
       lastName:this.lastName,
