@@ -18,7 +18,7 @@ public class ConsumerApplicationTest {
 	@Autowired
 	ConsumerService conService;
 	
-	@Test
+/*	@Test
 	public void addConsumerUsingService() {
 		Consumer con = new Consumer();
 		con.setConsno(4);
@@ -31,7 +31,7 @@ public class ConsumerApplicationTest {
 		con.setConsumerPassword("password");
 		con = conService.registerOrUpdateConsumer(con);
 		assertNotNull(con);
-	}
+	}*/
 	
 /*	@Test
 	public void findByConsnoUsingService() {

@@ -24,18 +24,18 @@ public class BasketApplicationTest {
 	@Autowired
 	ConsumerService consumerService;
  
-	@Test
+/*	@Test
 	public void exampleBasketTest() {
 		System.out.println("Basket test case scenarios");
-	}
+	}*/
 	
 
-	@Test
+/*	@Test
 	public void addBasketUsingService() {
 		Basket basket = new Basket();
 		basket = basketService.registerOrUpdateBasket(basket);
 		assertNotNull(basket);
-	}
+	}*/
 	
 /*	// CRUD OPERATIONS - Find basket by id
 	@Test
