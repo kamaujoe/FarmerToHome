@@ -1,9 +1,17 @@
 /* background */
 html {
-    background:url("https://images.pexels.com/photos/1595108/pexels-photo-1595108.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background:url("https://images.pexels.com/photos/811109/pexels-photo-811109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
     height: 700px;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
+}
+
+
+.title-fruit {
+    font-family: 'Prata', serif;
+    color: rgb(206, 45, 45); 
+    font-size: 60pt;
+    text-align: center;
 }
