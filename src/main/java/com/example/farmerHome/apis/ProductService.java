@@ -1,5 +1,6 @@
 package com.example.farmerHome.apis;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -106,8 +107,16 @@ public class ProductService {
 	public List<Product> fetchProductsByExpiryDate(
 			@QueryParam("min") int min, 
 			@QueryParam("max") int max) {
-		return productRepository.findByExpiryDate(min, max);
+	
+		List<Product> prods = productRepository.findByExpiryDate(min, max);
+
+		for (Product product : prods) {
+			double discountPrice = (product.getPrice() * 0.5);
+			product.setPrice(discountPrice);
+		}
+		return prods;
 	}
+	
 	
 	
 	@GET
@@ -124,5 +133,6 @@ public class ProductService {
 	public void deleteByProductId(@PathParam("productId") int productId) {
 		productRepository.deleteById(productId);
 	}
+	
 
 }

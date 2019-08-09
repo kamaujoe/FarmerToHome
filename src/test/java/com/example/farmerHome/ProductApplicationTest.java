@@ -23,13 +23,13 @@ public class ProductApplicationTest {
 	@Autowired
 	ProductService productService;
 	
-	@Test
+/*	@Test
 	public void exampleProductTest() {
 		System.out.println("Product test case scenarios");
-	}
+	}*/
 
 	
-	// CRUD OPERATIONS - Add
+/*	// CRUD OPERATIONS - Add
 	@Test
 	public void addProductUsingService() {
 		Product prod = new Product();
@@ -41,7 +41,7 @@ public class ProductApplicationTest {
 		prod = productService.registerOrUpdateProduct(prod);
 		
 		assertNotNull(prod);
-	}
+	}*/
 /*
 	// CRUD OPERATIONS - find product by Id
 	@Test
@@ -96,5 +96,10 @@ public class ProductApplicationTest {
 //		assertEquals(prods.size(), 2);
 //	}
 
+/*	@Test
+	public void calculateProductDiscount() {
+		int productId = 123;
+		assertNotNull(productService.applyDiscount(productId));
+	}*/
 	
 }
