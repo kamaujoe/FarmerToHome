@@ -17,17 +17,36 @@
     <br>
     <br>
     <tr>
-        <th>Name: </th>
-        <td *ngIf="!isEditable">{{name}}</td>
+        <th>First Name: </th>
+        <td *ngIf="!isEditable">{{firstName}}</td>
         <td *ngIf="isEditable">
             <div class="form-group">
-                <input [(ngModel)]="name"
-                #inputEname="ngModel"
+                <input [(ngModel)]="firstName"
+                #inputEfirstName="ngModel"
                 minlength="6"
                 maxlength="45">
             
                 <span
-                    [hidden]="inputEname.valid || inputEname.pristine"
+                    [hidden]="inputEfirstName.valid || inputEfirstName.pristine"
+                    class="alert alert-danger">
+                        Name Should Not Be Less Than 6 Characters
+                </span>
+            </div>
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Last Name: </th>
+        <td *ngIf="!isEditable">{{lastName}}</td>
+        <td *ngIf="isEditable">
+            <div class="form-group">
+                <input [(ngModel)]="lastName"
+                #inputElastName="ngModel"
+                minlength="6"
+                maxlength="45">
+            
+                <span
+                    [hidden]="inputElastName.valid || inputElastName.pristine"
                     class="alert alert-danger">
                         Name Should Not Be Less Than 6 Characters
                 </span>
@@ -40,6 +59,14 @@
         <td *ngIf="!isEditable">{{address}}</td>
         <td *ngIf="isEditable">
             <input [(ngModel)]="address">
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <th>Email: </th>
+        <td *ngIf="!isEditable">{{email}}</td>
+        <td *ngIf="isEditable">
+            <input [(ngModel)]="email">
         </td>
     </tr>
     <br>

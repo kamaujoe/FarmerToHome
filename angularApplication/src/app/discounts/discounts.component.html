@@ -10,6 +10,8 @@
         <tr>    
             <td>Name</td>
             <td>Price(£)</td>
+            <td>Discount Price(£)</td>
+            <td>Days until expires:</td>
             <td>Quantity</td>
             <td>Category</td>
             <td>Size</td>
@@ -17,6 +19,8 @@
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
+            <td>{{p.price * 0.5}}</td>
+            <td>{{p.expiry_date}}</td>
             <td>{{p.quantity}}</td>
             <td>{{p.currentCategory.category}}</td>
             <td>{{p.size}}</td>
