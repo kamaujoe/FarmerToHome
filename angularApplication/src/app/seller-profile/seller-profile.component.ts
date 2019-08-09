@@ -45,7 +45,7 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=8
+    this.farmerId=6
     this.farmerName="Farmer Joe"
     this.farmLocation="Leeds"
     this.products="Whole Foods"
