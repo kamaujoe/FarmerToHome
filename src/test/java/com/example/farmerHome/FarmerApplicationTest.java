@@ -33,12 +33,16 @@ public class FarmerApplicationTest {
 	public void addFarmerUsingService() {
 		//farmer.setFarmerID(1001);
 		Farmer farmer = new Farmer();
-		farmer.setFarmerName("Faith's Fresh Fruits");
-		farmer.setFarmLocation("NEWCASTLE");
-		farmer.setProducts("freshest fruit around");
+		farmer.setFirstName("John");
+		farmer.setLastName("McGreen");
+		farmer.setAddress("123 Avenue");
+		farmer.setEmail("testfarmer@gmail.com");
+		farmer.setFarmerUsername("farmjohn");
+		farmer.setFarmerPassword("myfarmproducts");
+		farmer.setPhone(447777788);
 		farmer = farmerService.registerOrUpdateFarmer(farmer);
 		assertNotNull(farmer);
-	}
+	}*/
 	
 	
 /*	//-> FIND FARMER IN DATABASE
