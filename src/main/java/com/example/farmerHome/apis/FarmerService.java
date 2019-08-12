@@ -57,8 +57,13 @@ public class FarmerService {
 		Farmer currentFarmer = findByFarmerId(farmer.getFarmerId());
 		if(currentFarmer!=null) {
 			
-			currentFarmer.setFarmerName(farmer.getFarmerName());
-			currentFarmer.setFarmLocation(farmer.getFarmLocation());
+			currentFarmer.setFirstName(farmer.getFirstName());
+			currentFarmer.setLastName(farmer.getLastName());
+			currentFarmer.setAddress(farmer.getAddress());
+			currentFarmer.setEmail(farmer.getEmail());
+			currentFarmer.setFarmerUsername(farmer.getFarmerUsername());
+			currentFarmer.setFarmerPassword(farmer.getFarmerPassword());
+			currentFarmer.setPhone(farmer.getPhone());
 			farmer = farmerRepository.save(currentFarmer);
 		}
 		else {

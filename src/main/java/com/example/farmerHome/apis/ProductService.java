@@ -55,7 +55,6 @@ public class ProductService {
 			currentProd.setName(prod.getName());
 			currentProd.setExpiry_date(prod.getExpiry_date());
 			currentProd.setPrice(prod.getPrice());
-			currentProd.setSize(prod.getSize());
 			//save changes in repository
 			prod = productRepository.save(currentProd);
 		

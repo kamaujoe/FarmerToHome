@@ -54,8 +54,6 @@ public class Product implements Serializable {
 	@FormParam("expiry_date")
 	private int expiry_date;
 	
-	@FormParam("size")
-	ProductSizes size;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -146,27 +144,12 @@ public class Product implements Serializable {
 		this.expiry_date = expiry_date;
 	}
 	
-	@Column(name="product_size") //not nullable because some products won't have size
-	@Enumerated(EnumType.STRING)
-	public ProductSizes getSize() {
-		return size;
-	}
-
-	public void setSize(ProductSizes size) {
-		this.size = size;
-	}
-
 	
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId 
-				+ ", name=" + name 
-				+ ", price=" + price 
-				+ ", expiry_date="+ expiry_date 
-				+ ", size=" + size 
-				+ ", items=" + items 
-				+ ", suppliers=" + suppliers
-				+ ", currentCategory=" + currentCategory + "]";
+		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", expiry_date="
+				+ expiry_date + ", items=" + items + ", currentCategory=" + currentCategory
+				+ "]";
 	}
 
 	//default constructor
