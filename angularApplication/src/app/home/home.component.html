@@ -39,23 +39,14 @@ Filter By Search<input type="text" [(ngModel)]="term">
         <tr>    
             <td>Name</td>
             <td>Price(£)</td>
-            
-            
-            
-            <td>Expirty Date</td>
-            <td>Size</td>
+            <td>Expiry Date</td>
+            <td>Quantity</td>
+
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p} |filter:term; let i = index">
-            
-            
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
-
-            
-            
             <td>{{p.expiry_date}}</td>
-
-            <td>{{p.size}}</td>
             <td><input type="number" #quantity value = 0 name = "quantity" min = "0" max = "12"></td>
             <td><button (click) = "addProducts(p.productId)" (click) = "quantityAdd(p.productId, quantity.value)">+</button></td>
 
