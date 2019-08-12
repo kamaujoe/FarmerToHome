@@ -23,7 +23,7 @@ export class BeveragesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.fetchProductsByCategory(80).subscribe(
+    this.productService.fetchProductsByCategory(1).subscribe(
       res => {
         this.products = res}
     )

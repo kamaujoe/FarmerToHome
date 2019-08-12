@@ -19,13 +19,13 @@ public class CategoryApplicationTest {
 	@Autowired
 	CategoryService categoryService;
 	
-	@Test
+/*	@Test
 	public void exampleCategoryTest() {
 		System.out.println("Category test case scenarios");
-	}
+	}*/
 	
 	
-	//CRUD - add category to database
+/*	//CRUD - add category to database
 	@Test
 	public void addCategoryUsingService() {
 		Category cat = new Category();
@@ -33,7 +33,7 @@ public class CategoryApplicationTest {
 		cat = categoryService.registerOrUpdateCategory(cat);	
 		assertNotNull(cat);
 	}
-	
+	*/
 /*	//CRUD - find by category id
 	@Test
 	public void findCategoryUsingService() {

@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.farmerHome.apis.ProductService;
 import com.example.farmerHome.entities.Product;
-import com.example.farmerHome.entities.ProductSizes;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,10 +22,10 @@ public class ProductApplicationTest {
 	@Autowired
 	ProductService productService;
 	
-	@Test
+/*	@Test
 	public void exampleProductTest() {
 		System.out.println("Product test case scenarios");
-	}
+	}*/
 
 	
 	// CRUD OPERATIONS - Add
@@ -36,7 +35,6 @@ public class ProductApplicationTest {
 		prod.setName("Rice");
 		prod.setPrice(4.5);
 		prod.setExpiry_date(5);
-		prod.setSize(ProductSizes.LARGE);
 		
 		prod = productService.registerOrUpdateProduct(prod);
 		
@@ -96,5 +94,10 @@ public class ProductApplicationTest {
 //		assertEquals(prods.size(), 2);
 //	}
 
+/*	@Test
+	public void calculateProductDiscount() {
+		int productId = 123;
+		assertNotNull(productService.applyDiscount(productId));
+	}*/
 	
 }

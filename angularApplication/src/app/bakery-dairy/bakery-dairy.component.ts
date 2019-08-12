@@ -29,7 +29,7 @@ export class BakeryDairyComponent implements OnInit {
     // this.productService.getAllProducts().subscribe(
     //      res=>{this.products = res}
     // )
-    this.productService.fetchProductsByCategory(85).subscribe(
+    this.productService.fetchProductsByCategory(3).subscribe(
       res => {
         this.products = res}
     )

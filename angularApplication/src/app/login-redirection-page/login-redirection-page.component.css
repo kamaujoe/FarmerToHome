@@ -51,3 +51,20 @@ html {
 .selldet:hover {
     color: white;
 }
+/* 
+* {
+    box-sizing: border-box;
+    border: 100ch;
+}
+  
+.row {
+    display: flex; 
+    box-align:center;
+}
+  
+ 
+.column {
+    flex: 30%;
+    padding: 100px;
+    box-align:center;
+} */
