@@ -117,7 +117,7 @@ public class Product implements Serializable {
 		this.productId = productId;
 	}
 	
-	@Column(name="product_name", nullable=false, length=15)
+	@Column(name="product_name", nullable=false, length=45)
 	public String getName() {
 		return name;
 	}
