@@ -110,7 +110,7 @@ public class ProductService {
 		List<Product> prods = productRepository.findByExpiryDate(min, max);
 
 		for (Product product : prods) {
-			double discountPrice = (product.getPrice() * 0.5);
+			double discountPrice = (double)Math.round((product.getPrice() * 0.5)*100d)/100d;
 			product.setPrice(discountPrice);
 		}
 		return prods;

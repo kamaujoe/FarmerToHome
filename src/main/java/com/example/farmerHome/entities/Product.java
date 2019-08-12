@@ -73,7 +73,7 @@ public class Product implements Serializable {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//Many to Many with Farmer
+/*	//Many to Many with Farmer
 	private Set<Farmer> suppliers = new HashSet<>();
 	
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -88,7 +88,7 @@ public class Product implements Serializable {
 	public void setSuppliers(Set<Farmer> suppliers) {
 		this.suppliers = suppliers;
 	}
-
+*/
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Many to One with Category

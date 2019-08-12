@@ -132,7 +132,7 @@ public class FarmerService {
 			Farmer far = findByFarmerId(farmerId);
 			Product prod = productService.findByProductId(productId);
 			
-			prod.getSuppliers().add(far);
+//			prod.getSuppliers().add(far);
 			productService.registerOrUpdateProduct(prod);
 			
 			far = findByFarmerId(farmerId);
