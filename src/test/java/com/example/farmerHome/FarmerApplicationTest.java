@@ -28,7 +28,7 @@ public class FarmerApplicationTest {
 	}
 */
 	
-/*	//-> ADD NEW FARMER TO DATABASE
+	//-> ADD NEW FARMER TO DATABASE
 	@Test
 	public void addFarmerUsingService() {
 		//farmer.setFarmerID(1001);
@@ -39,7 +39,7 @@ public class FarmerApplicationTest {
 		farmer = farmerService.registerOrUpdateFarmer(farmer);
 		assertNotNull(farmer);
 	}
-	*/
+	
 	
 /*	//-> FIND FARMER IN DATABASE
 	@Test
