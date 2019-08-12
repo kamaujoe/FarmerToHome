@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.farmerHome.apis.ProductService;
 import com.example.farmerHome.entities.Product;
-import com.example.farmerHome.entities.ProductSizes;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,7 +35,6 @@ public class ProductApplicationTest {
 		prod.setName("Rice");
 		prod.setPrice(4.5);
 		prod.setExpiry_date(5);
-		prod.setSize(ProductSizes.LARGE);
 		
 		prod = productService.registerOrUpdateProduct(prod);
 		

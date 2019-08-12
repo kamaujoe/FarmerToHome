@@ -55,7 +55,6 @@ public class ProductService {
 			currentProd.setName(prod.getName());
 			currentProd.setExpiry_date(prod.getExpiry_date());
 			currentProd.setPrice(prod.getPrice());
-			currentProd.setSize(prod.getSize());
 			//save changes in repository
 			prod = productRepository.save(currentProd);
 		
@@ -111,7 +110,7 @@ public class ProductService {
 		List<Product> prods = productRepository.findByExpiryDate(min, max);
 
 		for (Product product : prods) {
-			double discountPrice = (product.getPrice() * 0.5);
+			double discountPrice = (double)Math.round((product.getPrice() * 0.5)*100d)/100d;
 			product.setPrice(discountPrice);
 		}
 		return prods;

@@ -13,7 +13,7 @@
             <td>Days until expires:</td>
             <td>Quantity</td>
             <td>Category</td>
-            <td>Size</td>
+
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
             <td>{{p.name}}</td>
@@ -21,7 +21,7 @@
             <td>{{p.expiry_date}}</td>
             <td>{{p.quantity}}</td>
             <td>{{p.currentCategory.category}}</td>
-            <td>{{p.size}}</td>
+ 
             <td><button (click) = "addProducts(p.productId)"></button></td>
         </tr>
     </table> 
