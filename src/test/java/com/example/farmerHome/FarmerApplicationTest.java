@@ -42,7 +42,7 @@ public class FarmerApplicationTest {
 		farmer.setPhone(447777788);
 		farmer = farmerService.registerOrUpdateFarmer(farmer);
 		assertNotNull(farmer);
-	}*/
+	}
 	
 	
 /*	//-> FIND FARMER IN DATABASE

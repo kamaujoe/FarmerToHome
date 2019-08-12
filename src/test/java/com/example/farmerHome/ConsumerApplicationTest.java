@@ -32,7 +32,7 @@ public class ConsumerApplicationTest {
 		con = conService.registerOrUpdateConsumer(con);
 		assertNotNull(con);
 	}
-	*/
+	
 /*	@Test
 	public void findByConsnoUsingService() {
 		int consno = 1;
