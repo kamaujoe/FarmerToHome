@@ -18,7 +18,7 @@ export class EggsMeatFishComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productService.fetchProductsByCategory(102).subscribe(
+    this.productService.fetchProductsByCategory(4).subscribe(
       res => {
         this.products = res}
     )

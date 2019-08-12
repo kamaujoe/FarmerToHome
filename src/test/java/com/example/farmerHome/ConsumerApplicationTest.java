@@ -18,7 +18,7 @@ public class ConsumerApplicationTest {
 	@Autowired
 	ConsumerService conService;
 	
-/*	@Test
+	@Test
 	public void addConsumerUsingService() {
 		Consumer con = new Consumer();
 		con.setConsno(4);
