@@ -32,8 +32,8 @@ public class CategoryApplicationTest {
 		cat.setCategory("Fruit_Vegetables");
 		cat = categoryService.registerOrUpdateCategory(cat);	
 		assertNotNull(cat);
-	}*/
-	
+	}
+	*/
 /*	//CRUD - find by category id
 	@Test
 	public void findCategoryUsingService() {
