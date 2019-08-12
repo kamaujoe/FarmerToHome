@@ -35,7 +35,7 @@
   
   .form-signin .btn {
     font-size: 80%;
-    border-radius: 5rem;
+    border-radius: 5px;
     letter-spacing: .1rem;
     font-weight: bold;
     padding: 1rem;
@@ -68,7 +68,7 @@
     line-height: 1.5;
     color: #495057;
     border: 1px solid transparent;
-    border-radius: .25rem;
+    border-radius: 5px;
     transition: all .1s ease-in-out;
   }
   
@@ -137,4 +137,15 @@
     .form-label-group input:-ms-input-placeholder {
       color: #777;
     }
+  }
+
+  .card-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 15px;
+  }
+
+  .buttons {
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    fon
   }

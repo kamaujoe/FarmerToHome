@@ -9,9 +9,9 @@ html {
 
 .login1 {
 
-    font-family: 'Prata', serif;
+    font-family: 'Pacifico', cursive;
     color: white;
-    font-size: 15pt;
+    font-size: 30pt;
     text-align: center;
 }
 .buylog {
@@ -51,20 +51,25 @@ html {
 .selldet:hover {
     color: white;
 }
-/* 
-* {
-    box-sizing: border-box;
-    border: 100ch;
+
+.jumbotron {
+    content: "";
+    font-family: 'Pacifico', cursive;
+    border-radius: 1rem;
+    background-color: white;
+    width:1025px;
+    max-width: 100%;
 }
-  
-.row {
-    display: flex; 
-    box-align:center;
+
+.subtitle {
+    font-family: 'Prata', serif;
 }
-  
- 
-.column {
-    flex: 30%;
-    padding: 100px;
-    box-align:center;
-} */
+
+.btn-lg {
+    padding: 7px 7px;
+    font-size: 25px;
+    border-radius: 5px;
+    width:40%;
+    margin:5px
+}
+

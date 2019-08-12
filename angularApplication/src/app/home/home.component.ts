@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
       
     
      
-      this.basketId = 75
+      this.basketId = 1
       this.products=[] }
 
   ngOnInit() {
@@ -43,13 +43,7 @@ export class HomeComponent implements OnInit {
     res => {
       this.products = res}
       )
-
-   
-   
-  
     }
-
-    
 
     addProducts(productId){
       this.productService.addProductsToBasket(productId, 
