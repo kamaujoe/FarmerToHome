@@ -11,7 +11,6 @@ com\example\farmerHome\entities\FarmerLifecycleListener.class
 com\example\farmerHome\entities\ProductSizes.class
 com\example\farmerHome\entities\Basket.class
 com\example\farmerHome\apis\CategoryService.class
-com\example\farmerHome\entities\ProductCategories.class
 com\example\farmerHome\repositories\ConsumerRepository.class
 com\example\farmerHome\entities\BasketLifecycleListener.class
 com\example\farmerHome\entities\CategoryLifecycleListener.class
