@@ -44,7 +44,7 @@ export class SellerService {
 
   loadAllProductsFromServer() {
     return this.httpsvc.get<Product[]>(
-          "http://localhost:8080/product/list "
+          "http://localhost:8080/product/allProducts"
     )
   }
 
@@ -76,6 +76,12 @@ export class SellerService {
     return this.httpsvc.post<FarmerComponent>(
       this.rootURL+"/assign/category",
       reqBody,httpOptions
+    )
+  }
+
+  deleteProduct(productId):Observable<Product[]> {
+    return this.httpsvc.delete<Product[]>(
+      "http://localhost:8080/product/delete"+productId
     )
   }
    

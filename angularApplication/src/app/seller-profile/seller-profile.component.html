@@ -3,20 +3,21 @@
 <br>
 <br>
 
-<h2>Seller Information</h2>
-<br>
-<br>
-<table>
+<h2>Seller Profile</h2>
+    <div class="container">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                  <div class="card-body">
+<table align="center">
     <th>Number: </th>
     <td>{{farmerId}}</td>
     <br>
     <td>
         <button 
-        (click)="toggleEdits()">
+        (click)="toggleEdits()" class="btn btn-lg btn-google btn-block text-uppercase">
                 {{isEditable?"Save":"Edit"}}
         </button>
     </td>
-    <br>
     <br>
     <br>
     <tr>
@@ -25,7 +26,7 @@
             <td *ngIf="isEditable">
                 <div class="form-group">
                     <input [(ngModel)]="farmerName"
-                    #inputEname="ngModel"
+                    #inputEfarmerName="ngModel"
                     minlength="6"
                     maxlength="45">
                 <span
@@ -62,29 +63,39 @@
         </td>
     </tr> -->
 </table>
-<br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <h2>Products</h2>
-<table>
+<div class="container">
+        <!-- <div class="col-sm-9 col-md-7 col-lg-5 mx-auto"> -->
+            <div class="card card-signin my-5">
+                  <div class="card-body">
+                        
+<table width=90% align="center">
     <tr>
         <th>Number</th>
         <th>Name</th>
-        <th>Category</th>
+        <!-- <th>Category</th> -->
         <th>Size</th>
         <th>Expiry Date</th>
         <th>Price</th>
-        <th>Quantity</th>
-        <th><button (click)="showProductForm()">+</button></th>
+        <th>Index</th>
+        <th><button (click)="showProductForm()" class="btn btn-lg btn-primary btn-block text-uppercase">+</button></th>
     </tr>
     <tr *ngFor="let a of farmerProds; let i = index">
         <td>{{a.productId}}</td>
         <td>{{a.product_name}}</td>
-        <td>{{a.currentCategory}}</td>
+        <!-- <td>{{a.currentCategory}}</td> -->
         <td>{{a.size}}</td>
         <td>{{a.expiry_date}}</td>
         <td>{{a.price}}</td>
-        <td>{{a.quantity}}</td>
+        <!-- <td>{{a.quantity}}</td> -->
         <td>{{i+1}}</td>
-        <td><button (click)="deleteProduct(i)">X</button></td>
+        <td><button (click)="deleteProduct(i)" class="btn btn-lg btn-danger btn-block text-lowercase">X</button></td>
     </tr>
 </table>
 <br>
@@ -97,12 +108,12 @@
                 <select name="productId" #selectProductId (change)="updateSelectedProductId(selectProductId.value)">
                     <option *ngFor="let p of farmerProds"
                         value="{{p.productId}}">
-                        {{p.productId}}::{{p.name}}
+                        {{p.productId}}::{{p.product_name}}
                     </option>
                 </select>
             </td>
             <td>
-                <input type="submit" value="Add">
+                <input type="submit" value="Add" class="btn btn-sm btn-secondary btn-block text-uppercase">
             </td>
             <td>
                 <div [hidden]="isProductFormValid">
@@ -112,6 +123,12 @@
         </tr>
     </table>
 </form>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+                
 <!-- <h2>Category</h2>
 <table>
     <tr>

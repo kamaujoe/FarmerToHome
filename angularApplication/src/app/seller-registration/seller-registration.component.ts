@@ -21,9 +21,9 @@ export class SellerRegistrationComponent implements OnInit {
   constructor(private farmerSvc:FarmerService) { 
 
     this.farmerId = 7
-    this.farmerName = "Oldman Joe's"
-    this.products = "vegetables, fruits and more!"
-    this.farmLocation = "Leeds"
+    this.farmerName = "Name"
+    this.products = "Products"
+    this.farmLocation = "Location"
 
   }
 
