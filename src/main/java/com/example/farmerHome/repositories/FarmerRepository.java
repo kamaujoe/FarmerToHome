@@ -5,8 +5,5 @@ import org.springframework.stereotype.Component;
 
 import com.example.farmerHome.entities.Farmer;
 
-
 @Component
-public interface FarmerRepository extends CrudRepository<Farmer, Integer> {
-
-}
+public interface FarmerRepository extends CrudRepository<Farmer, Integer> {}

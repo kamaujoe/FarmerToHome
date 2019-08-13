@@ -39,47 +39,41 @@ public class FarmerHomeApplicationTests {
 	@Autowired
 	CategoryService categoryService;
 	
-/*	
-	//MANAGE ASSOCIATIONS
-	//One to Many [Category - Product]
-	@Test
-	public void assignCategoryToProduct() {
-		int productId = 0;
-		int categoryId = 0;
-		Product prod = categoryService.assignProduct(productId, categoryId);
-		assertNotNull(prod.getCurrentCategory());
-	}
 	
-	
-	//One to Many [Consumer - Basket]
-	@Test
-	public void assignConsumerToBasket(){
-		int basketId = 14;
-		int consno = 1;
-		Basket basket = consumerService.assignBasket(consno, basketId);
-		assertNotNull(basket.getCurrentConsumer());
-	}
-	
-	
-	//Many to Many [Product - Basket]
-	@Test
-	public void assignProductToBasket() {
-		int basketId = 14;
-		int productId = 10;
-		Set<Product> prods = basketService.assignProduct(basketId, productId);
-		assertNotNull(prods);		
-	}
-	
-	
-	//Many to Many [Farmer - Product]
-	@Test
-	public void assignFarmerToProduct() {
-		int productId = 3;
-		int farmerId = 5;
-		Set<Product> products = farmerService.assignProduct(productId, farmerId);	
-		assertNotNull(products);
-	}
-	
-*/
-
+//	//MANAGE ASSOCIATIONS
+//	//One to Many [Category - Product]
+//	@Test
+//	public void assignCategoryToProduct() {
+//		int productId = 0;
+//		int categoryId = 0;
+//		Product prod = categoryService.assignProduct(productId, categoryId);
+//		assertNotNull(prod.getCurrentCategory());
+//	}
+//	
+//	//One to Many [Consumer - Basket]
+//	@Test
+//	public void assignConsumerToBasket(){
+//		int basketId = 14;
+//		int consno = 1;
+//		Basket basket = consumerService.assignBasket(consno, basketId);
+//		assertNotNull(basket.getCurrentConsumer());
+//	}
+//	
+//	//Many to Many [Product - Basket]
+//	@Test
+//	public void assignProductToBasket() {
+//		int basketId = 14;
+//		int productId = 10;
+//		Set<Product> prods = basketService.assignProduct(basketId, productId);
+//		assertNotNull(prods);		
+//	}
+//	
+//	//Many to Many [Farmer - Product]
+//	@Test
+//	public void assignFarmerToProduct() {
+//		int productId = 3;
+//		int farmerId = 5;
+//		Set<Product> products = farmerService.assignProduct(productId, farmerId);	
+//		assertNotNull(products);
+//	}
 }
