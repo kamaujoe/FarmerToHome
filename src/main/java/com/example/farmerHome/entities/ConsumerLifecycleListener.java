@@ -38,5 +38,4 @@ public class ConsumerLifecycleListener {
 	public void afterSelect(Consumer e) {
 		System.out.println("After Select: "+e);
 	}
-
 }

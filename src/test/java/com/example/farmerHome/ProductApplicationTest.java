@@ -22,48 +22,45 @@ public class ProductApplicationTest {
 	@Autowired
 	ProductService productService;
 	
-/*	@Test
+	
+	@Test
 	public void exampleProductTest() {
 		System.out.println("Product test case scenarios");
-	}*/
-
-	
-/*	// CRUD OPERATIONS - Add
-	@Test
-	public void addProductUsingService() {
-		Product prod = new Product();
-		prod.setName("Rice");
-		prod.setPrice(4.5);
-		prod.setExpiry_date(5);
-		
-		prod = productService.registerOrUpdateProduct(prod);
-		
-		assertNotNull(prod);
-	}*/
-/*
-	// CRUD OPERATIONS - find product by Id
-	@Test
-	public void findByProductIdUsingService() {
-		int productId = 8;
-		assertNotNull(productService.findByProductId(productId));
 	}
 
-	// CRUD OPERATIONS - get all products
-	@Test
-	public void getAllProductsUsingService() {
-		assertNotNull(productService.getAllProducts());
-	}
-*/
-	// CRUD OPERATIONS - Delete
+//	// CRUD - Add
+//	@Test
+//	public void addProductUsingService() {
+//		Product prod = new Product();
+//		prod.setProduct_name("Rice");
+//		prod.setPrice(4.5);
+//		prod.setExpiry_date(5);
+//		prod = productService.registerOrUpdateProduct(prod);
+//		assertNotNull(prod);
+//	}
+//
+//	// CRUD - find product by Id
+//	@Test
+//	public void findByProductIdUsingService() {
+//		int productId = 8;
+//		assertNotNull(productService.findByProductId(productId));
+//	}
+//
+//	// CRUD - get all products
+//	@Test
+//	public void getAllProductsUsingService() {
+//		assertNotNull(productService.getAllProducts());
+//	}
+//
+//	// CRUD - Delete
 //	@Test
 //	public void deleteByProductIdUsingService() {
 //		int productId = 8;
 //		productService.deleteByProductId(productId);
 //		assertNull(productService.findByProductId(productId));
-//		
 //	}
-	
-//	// SELECT/FILTER QUERIES FOR MYSQL - fetch by price range
+//	
+//	// MYSQL Queries - Fetch by price range
 //	@Test
 //	public void fetchByPriceUsingService() {
 //		List<Product> prods = productService.fetchProductsByPriceRange(1, 2);
@@ -73,8 +70,7 @@ public class ProductApplicationTest {
 //		assertEquals(prods.size(),2);
 //	}
 //	
-//	
-//	// SELECT/FILTER QUERIES FOR MYSQL - fetch by expiry date interval
+//	// MYSQL Queries - Fetch by expiry date
 //	@Test
 //	public void fetchByExpiryDateUsingService() {
 //		List<Product> prods = productService.fetchProductsByExpiryDate(2, 7);
@@ -84,20 +80,13 @@ public class ProductApplicationTest {
 //		assertEquals(prods.size(), 2);
 //	}
 //	
-//	// SELECT/FILTER QUERIES FOR MYSQL - fetch by category
+//	// MYSQL Queries - Fetch by category
 //	@Test
 //	public void fetchByCategoryUsingService() {
-//		List<Product> prods = productService.fetchProductsByCategory(ProductCategories.BAKERY_DAIRY);
+//		List<Product> prods = productService.fetchProductsByCategory(1);
 //		for (Product product : prods) {
 //			System.out.println(product);
 //		}	
 //		assertEquals(prods.size(), 2);
-//	}
-
-/*	@Test
-	public void calculateProductDiscount() {
-		int productId = 123;
-		assertNotNull(productService.applyDiscount(productId));
-	}*/
-	
+//	}	
 }

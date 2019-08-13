@@ -25,23 +25,26 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//@Component
+//@Component -> disabled for @FormParam processing
 
 @Entity
-@Table(name="JPA_CATEGORY")
 @Scope("prototype")
-@EntityListeners({CategoryLifecycleListener.class})
-
+@Table(name="JPA_CATEGORY")
 @XmlRootElement
+@EntityListeners({CategoryLifecycleListener.class})
 public class Category implements Serializable {
 	
+	@FormParam("categoryId")
 	private int categoryId;
 	
 	@FormParam("category")
 	private String category;
 
-	//One to Many - One Category -> Many Products
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//One to Many with Products
 	private Set<Product> categoryProds = new HashSet<>();
+	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="currentCategory")
 	@XmlTransient
 	public Set<Product> getCategoryProds() {
@@ -51,9 +54,17 @@ public class Category implements Serializable {
 	public void setCategoryProds(Set<Product> categoryProds) {
 		this.categoryProds = categoryProds;
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-	//Getters and Setters
+	
+	//-> Default constructor
+	public Category() {
+		System.out.println("Category created");
+	}
+	
+	
+	//-> Getters and Setters
 	@Id
 	@Column(name="category_id")
 	@GeneratedValue(strategy=GenerationType.AUTO) 
@@ -64,8 +75,7 @@ public class Category implements Serializable {
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	
-	
+		
 	@Column(name="product_category", nullable=false, length=20)
 	public String getCategory() {
 		return category;
@@ -75,6 +85,8 @@ public class Category implements Serializable {
 		this.category = category;
 	}
 
+	
+	//-> ToString
 	@Override
 	public String toString() {
 		return "Category [categoryId=" + categoryId + ", category=" + category + "]";
