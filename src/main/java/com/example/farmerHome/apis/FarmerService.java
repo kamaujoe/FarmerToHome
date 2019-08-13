@@ -1,6 +1,5 @@
 package com.example.farmerHome.apis;
 
-
 import java.util.Set;
 
 import javax.ws.rs.BeanParam;
@@ -23,13 +22,10 @@ import com.example.farmerHome.entities.Farmer;
 import com.example.farmerHome.entities.Product;
 import com.example.farmerHome.repositories.FarmerRepository;
 
-
-
 @Component
 @Scope("singleton")
 @Path("/farmer/")
 public class FarmerService {
-	
 	
 	@Autowired
 	private FarmerRepository farmerRepository;
@@ -41,22 +37,16 @@ public class FarmerService {
 		System.out.println("Farmer service created");
 	}
 
-	
-	//-> ADD FARMER TO DATABASE
-	
-	@POST //-> HTTP Meth0d to send the form Data
-	@Path("/register/") //-> URL Pattern
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //-> Form Data
-	@Produces(MediaType.APPLICATION_JSON) //-> JSON Data
-	@Transactional
+
+	@POST //-> HTTP Method 
+	@Path("/register/")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Produces(MediaType.APPLICATION_JSON) 
+	@Transactional //helps to fetch dependent data
 	public Farmer registerOrUpdateFarmer(@BeanParam Farmer farmer) {
-		
-		//-> this code takes in user input and if the data exist in the database, 
-			// it changes the current data, if not it saves it as new farmer data
-		
 		Farmer currentFarmer = findByFarmerId(farmer.getFarmerId());
-		if(currentFarmer!=null) {
-			
+		
+		if(currentFarmer!=null) { //update
 			currentFarmer.setFirstName(farmer.getFirstName());
 			currentFarmer.setLastName(farmer.getLastName());
 			currentFarmer.setAddress(farmer.getAddress());
@@ -65,24 +55,17 @@ public class FarmerService {
 			currentFarmer.setFarmerPassword(farmer.getFarmerPassword());
 			currentFarmer.setPhone(farmer.getPhone());
 			farmer = farmerRepository.save(currentFarmer);
-		}
-		else {
+		
+		} else { //create
 			farmer = farmerRepository.save(farmer);
 		}
 		System.out.println("Farmer Registered"+farmer);
 		return farmer;
-		
-		
-		//farmer = farmerRepository.save(farmer);
-		//System.out.println("Farmer Registered "+farmer);
-		//return farmer;
 	}
 
-	
-	//-> FIND FARMER IN DATABASE BY FARMER ID
 
-	@Path("/find/{farmerId}")
 	@GET
+	@Path("/find/{farmerId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Transactional
 	public Farmer findByFarmerId(@PathParam("farmerId") int farmerId) {
@@ -97,8 +80,7 @@ public class FarmerService {
 		}
 	}
 	
-	//-> FIND ALL FARMERS IN DATABASE
-	
+
 	@GET
 	@Path("/list")
 	@Produces({MediaType.APPLICATION_JSON})
@@ -108,23 +90,11 @@ public class FarmerService {
 		return farmers;
 	}
 	
-
 	
-	
-	//-> DELETE FARMER FROM DATABASE USING ID
-	
-	@DELETE //-> delete HTTP Method
-	@Path("/delete/{farmerId}")
-	public void deleteFarmerById(@PathParam("farmerId") int farmerId) {
-		
-		farmerRepository.deleteById(farmerId);
-	}
-	
-
-	@POST //HTTP method
-	@Path("/assign/product") //URL 
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) //input format
-	@Produces(MediaType.APPLICATION_JSON) //output format
+	@POST 
+	@Path("/assign/product") 
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Produces(MediaType.APPLICATION_JSON)
 	@Transactional
 	public Set<Product> assignProduct(@FormParam("productId") int productId, 
 									  @FormParam("farmerId") int farmerId) {
@@ -134,7 +104,6 @@ public class FarmerService {
 			
 			far.getFarmerProds().add(prod);
 			far = registerOrUpdateFarmer(far);
-			
 			return far.getFarmerProds();
 			
 		} catch (Exception e) {
@@ -143,4 +112,9 @@ public class FarmerService {
 		}
 	}
 
+	@DELETE
+	@Path("/delete/{farmerId}")
+	public void deleteFarmerById(@PathParam("farmerId") int farmerId) {
+		farmerRepository.deleteById(farmerId);
+	}
 }

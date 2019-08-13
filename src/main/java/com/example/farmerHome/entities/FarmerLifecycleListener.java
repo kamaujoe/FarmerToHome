@@ -7,14 +7,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
-
-
 public class FarmerLifecycleListener {
 	
 	@PrePersist
 	public void beforeInsert(Farmer f) {
-		System.out.println("Before Insert: "+f);
-		
+		System.out.println("Before Insert: "+f);		
 	}
 	
 	@PostPersist
@@ -41,6 +38,4 @@ public class FarmerLifecycleListener {
 	public void afterSelect(Farmer f) {
 		System.out.println("After Select: "+f);
 	}
-
-
 }
