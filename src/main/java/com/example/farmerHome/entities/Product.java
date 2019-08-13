@@ -115,12 +115,12 @@ public class Product implements Serializable {
 	}
 	
 	@Column(name="product_name", nullable=false, length=45)
-	public String getName() {
+	public String getProduct_name() {
 		return product_name;
 	}
 
-	public void setName(String name) {
-		this.product_name = name;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 
 	@Column(name="product_price", nullable=false)
@@ -144,7 +144,7 @@ public class Product implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", name=" + product_name + ", price=" + price + ", expiry_date="
+		return "Product [productId=" + productId + ", product_name=" + product_name + ", price=" + price + ", expiry_date="
 				+ expiry_date + ", items=" + items + ", currentCategory=" + currentCategory
 				+ "]";
 	}

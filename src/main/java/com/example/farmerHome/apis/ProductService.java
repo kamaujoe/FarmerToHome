@@ -52,7 +52,7 @@ public class ProductService {
 		Product currentProd = findByProductId(prod.getProductId());
 		
 		if (currentProd != null) { //update the existing product with form values
-			currentProd.setName(prod.getName());
+			currentProd.setProduct_name(prod.getProduct_name());
 			currentProd.setExpiry_date(prod.getExpiry_date());
 			currentProd.setPrice(prod.getPrice());
 			//save changes in repository
