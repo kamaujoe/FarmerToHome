@@ -132,12 +132,9 @@ public class FarmerService {
 			Farmer far = findByFarmerId(farmerId);
 			Product prod = productService.findByProductId(productId);
 			
-			prod.getSuppliers().add(far);
-			productService.registerOrUpdateProduct(prod);
+			far.getFarmerProds().add(prod);
+			far = registerOrUpdateFarmer(far);
 			
-			far = findByFarmerId(farmerId);
-			//store count in a variable that can be called 
-			int count = far.getFarmerProds().size();
 			return far.getFarmerProds();
 			
 		} catch (Exception e) {

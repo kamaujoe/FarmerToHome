@@ -46,7 +46,7 @@ public class Product implements Serializable {
 	private int productId;
 	
 	@FormParam("product_name")
-	private String name;
+	private String product_name;
 	
 	@FormParam("price")
 	private double price;
@@ -72,28 +72,25 @@ public class Product implements Serializable {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//Many to Many with Farmer
-	private Set<Farmer> suppliers = new HashSet<>();
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinTable(name="JPA_SUPPLIERS",
-		joinColumns=@JoinColumn(name="FK_PRODUCTID"),
-		inverseJoinColumns=@JoinColumn(name="FK_FARMERID"))
-	@XmlTransient //ignore the collections while using api
-	public Set<Farmer> getSuppliers() {
-		return suppliers;
+	//Many to Many with Farmer
+	private Set<Farmer> farmerProds = new HashSet<>();
+	@ManyToMany(mappedBy="farmerProds")
+	@XmlTransient
+	public Set<Farmer> getFarmerProds() {
+		return farmerProds;
 	}
 
-	public void setSuppliers(Set<Farmer> suppliers) {
-		this.suppliers = suppliers;
-	}
-
+	public void setFarmerProds(Set<Farmer> farmerProds) {
+		this.farmerProds = farmerProds;
+	}	
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Many to One with Category
 	private Category currentCategory;
 	
+
 	@ManyToOne
 	@JoinColumn(name="FK_CATEGORYID")
 	public Category getCurrentCategory() {
@@ -117,13 +114,13 @@ public class Product implements Serializable {
 		this.productId = productId;
 	}
 	
-	@Column(name="product_name", nullable=false, length=15)
-	public String getName() {
-		return name;
+	@Column(name="product_name", nullable=false, length=45)
+	public String getProduct_name() {
+		return product_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 
 	@Column(name="product_price", nullable=false)
@@ -147,7 +144,7 @@ public class Product implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", expiry_date="
+		return "Product [productId=" + productId + ", product_name=" + product_name + ", price=" + price + ", expiry_date="
 				+ expiry_date + ", items=" + items + ", currentCategory=" + currentCategory
 				+ "]";
 	}

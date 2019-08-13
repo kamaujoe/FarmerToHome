@@ -28,7 +28,7 @@ public class FarmerApplicationTest {
 	}
 */
 	
-	//-> ADD NEW FARMER TO DATABASE
+/*	//-> ADD NEW FARMER TO DATABASE
 	@Test
 	public void addFarmerUsingService() {
 		//farmer.setFarmerID(1001);

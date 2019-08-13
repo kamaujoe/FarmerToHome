@@ -28,7 +28,7 @@ public class ProductApplicationTest {
 	}*/
 
 	
-	// CRUD OPERATIONS - Add
+/*	// CRUD OPERATIONS - Add
 	@Test
 	public void addProductUsingService() {
 		Product prod = new Product();
@@ -39,7 +39,7 @@ public class ProductApplicationTest {
 		prod = productService.registerOrUpdateProduct(prod);
 		
 		assertNotNull(prod);
-	}
+	}*/
 /*
 	// CRUD OPERATIONS - find product by Id
 	@Test
