@@ -11,9 +11,13 @@ import { Product } from '../basket/product';
 export class SellerProfileComponent implements OnInit {
 
   farmerId: number
-  farmerName: String
-  farmLocation: String
-  products: String
+  firstName: String
+  lastName: String
+  email: String
+  address: String
+  phone: number
+  farmerUsername: String
+  farmerPassword: String
   
   farmers: Farmer[]
 
@@ -43,10 +47,14 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=4
-    this.farmerName="Farmer Joe"
-    this.farmLocation="Leeds"
-    this.products="Whole Foods"
+    this.farmerId=1
+    this.firstName="Joe"
+    this.lastName="Farmer"
+    this.address="Address"
+    this.email="Email"
+    this.phone=12345
+    this.farmerUsername="Username"
+    this.farmerPassword="Password"
     
     this.farmerProds =
     [
@@ -62,9 +70,13 @@ export class SellerProfileComponent implements OnInit {
     this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
       response => {
         this.farmerId = response.farmerId
-        this.farmerName = response.farmerName
-        this.farmLocation = response.farmLocation
-        this.products = response.products
+        this.firstName = response.firstName
+        this.lastName = response.lastName
+        this.address = response.address
+        this.phone = response.phone
+        this.email = response.email
+        this.farmerUsername = response.farmerUsername
+        this.farmerPassword = response.farmerPassword
         
         this.farmerProds = response.farmerProds
       }
@@ -141,9 +153,13 @@ export class SellerProfileComponent implements OnInit {
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({
       farmerId:this.farmerId, 
-      farmerName:this.farmerName,
-      farmLocation:this.farmLocation, 
-      products:this.products,
+      firstName:this.firstName,
+      lastName:this.lastName,
+      address:this.address, 
+      phone:this.phone,
+      email:this.email,
+      farmerUsername:this.farmerUsername,
+      farmerPassword:this.farmerPassword
     }).subscribe(
       response => {
         this.fetchCurrentSellerFromService()
