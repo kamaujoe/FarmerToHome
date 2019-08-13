@@ -10,9 +10,10 @@
                   <div class="card-body">
 
                         <table align="center">
-                            <th>Number: </th>
-                                <td>{{farmerId}}</td>
+                            <!-- <th>Number: </th>
+                                <td>{{farmerId}}</td> -->
     <br>
+                                <td><p></p></td>
                                 <td>
                                     <button 
                                         (click)="toggleEdits()" class="btn btn-sm btn-primary btn-block text-uppercase">
@@ -93,7 +94,7 @@
                             <th>Password: </th>
                                 <td *ngIf="!isEditable">{{farmerPassword}}</td>
                                 <td *ngIf="isEditable">
-                                    <input [(ngModel)]="farmerPassword">
+                                    <input [(ngModel)]="farmerPassword" type="password">
                                 </td>
                         </tr>
     <br>
@@ -112,7 +113,7 @@
                         
                     <table width=90% align="center">
                         <tr>
-                            <th>Number</th>
+                            <!-- <th>Number</th> -->
                             <th>Name</th>
                             <!-- <th>Category</th> -->
                             <th>Size</th>
@@ -122,7 +123,7 @@
                             <th><button (click)="showProductForm()" class="btn btn-lg btn-primary btn-block text-uppercase">+</button></th>
                         </tr>
                         <tr *ngFor="let a of farmerProds; let i = index">
-                            <td>{{a.productId}}</td>
+                            <!-- <td>{{a.productId}}</td> -->
                             <td>{{a.product_name}}</td>
                             <!-- <td>{{a.currentCategory}}</td> -->
                             <td>{{a.size}}</td>

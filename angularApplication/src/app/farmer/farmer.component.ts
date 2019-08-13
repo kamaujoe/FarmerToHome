@@ -23,14 +23,14 @@ export class FarmerComponent implements OnInit {
 
   constructor(private farmerSvc:FarmerService) { 
 
-    this.farmerId=1
-    this.firstName="Joe"
-    this.lastName="Farmer"
-    this.address="Address"
-    this.email="Email"
-    this.phone=12345
-    this.farmerUsername="Username"
-    this.farmerPassword="Password"
+    this.farmerId=-1
+    this.firstName
+    this.lastName
+    this.address
+    this.email
+    this.phone
+    this.farmerUsername
+    this.farmerPassword
 
   }
 

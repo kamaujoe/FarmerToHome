@@ -47,18 +47,24 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=1
-    this.firstName="Joe"
-    this.lastName="Farmer"
-    this.address="Address"
-    this.email="Email"
-    this.phone=12345
-    this.farmerUsername="Username"
-    this.farmerPassword="Password"
+    this.farmerId=5
+    this.fetchCurrentSellerFromService
+    this.firstName
+    this.lastName
+    this.address
+    this.email
+    this.phone
+    this.farmerUsername
+    this.farmerPassword
     
     this.farmerProds =
     [
-      {productId:4,product_name:"Rice",expiry_date:22/12/2019,size:"Large",price:1.99,currentCategory:[]}
+      // {productId:0,
+      //   product_name:"",
+      //   expiry_date:0,
+      //   size:"",
+      //   price:0,
+      //   currentCategory:[]}
     ]
   }
 
@@ -90,8 +96,8 @@ export class SellerProfileComponent implements OnInit {
 
   showProductForm() {
     this.isProductFormVisable = true
-
     this.loadFarmerProducts()
+    // this.assignNewProduct()
   }
 
   updateSelectedProductId(productId) {
@@ -120,8 +126,8 @@ export class SellerProfileComponent implements OnInit {
           })
   }
 
-  deleteProduct(index, productId) {
-    this.farmerProds.splice(index, 1, productId)
+  deleteProduct(index) {
+    this.farmerProds.splice(index, 1)
   }
 
   addNewProduct(pproductId,pproduct_name,pprice,psize,pexpiry_date,pcurrentCategory) {
