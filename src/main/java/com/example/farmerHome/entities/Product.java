@@ -46,7 +46,7 @@ public class Product implements Serializable {
 	private int productId;
 	
 	@FormParam("product_name")
-	private String name;
+	private String product_name;
 	
 	@FormParam("price")
 	private double price;
@@ -116,11 +116,11 @@ public class Product implements Serializable {
 	
 	@Column(name="product_name", nullable=false, length=45)
 	public String getName() {
-		return name;
+		return product_name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.product_name = name;
 	}
 
 	@Column(name="product_price", nullable=false)
@@ -144,7 +144,7 @@ public class Product implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", expiry_date="
+		return "Product [productId=" + productId + ", name=" + product_name + ", price=" + price + ", expiry_date="
 				+ expiry_date + ", items=" + items + ", currentCategory=" + currentCategory
 				+ "]";
 	}
