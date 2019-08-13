@@ -33,6 +33,7 @@ import org.springframework.context.annotation.Scope;
 public class Farmer implements Serializable {
 	
 	@FormParam("farmerId")
+	@Value("-1")
 	private int farmerId;
 	
 	@FormParam("firstName")
