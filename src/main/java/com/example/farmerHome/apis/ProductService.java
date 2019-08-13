@@ -84,10 +84,9 @@ public class ProductService {
 	@GET
 	@Path("/allProducts")
 	@Produces(MediaType.APPLICATION_JSON)
+	@Transactional
 	public Iterable<Product> getAllProducts() {
-		Iterable<Product> products = productRepository.findAll();
-		System.out.println(products);
-		return products;
+		return productRepository.findAll();
 	}
 	
 

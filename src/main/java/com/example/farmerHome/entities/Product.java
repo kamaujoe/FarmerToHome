@@ -72,28 +72,25 @@ public class Product implements Serializable {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*	//Many to Many with Farmer
-	private Set<Farmer> suppliers = new HashSet<>();
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinTable(name="JPA_SUPPLIERS",
-		joinColumns=@JoinColumn(name="FK_PRODUCTID"),
-		inverseJoinColumns=@JoinColumn(name="FK_FARMERID"))
-	@XmlTransient //ignore the collections while using api
-	public Set<Farmer> getSuppliers() {
-		return suppliers;
+	//Many to Many with Farmer
+	private Set<Farmer> farmerProds = new HashSet<>();
+	@ManyToMany(mappedBy="farmerProds")
+	@XmlTransient
+	public Set<Farmer> getFarmerProds() {
+		return farmerProds;
 	}
 
-	public void setSuppliers(Set<Farmer> suppliers) {
-		this.suppliers = suppliers;
-	}
-*/
+	public void setFarmerProds(Set<Farmer> farmerProds) {
+		this.farmerProds = farmerProds;
+	}	
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Many to One with Category
 	private Category currentCategory;
 	
+
 	@ManyToOne
 	@JoinColumn(name="FK_CATEGORYID")
 	public Category getCurrentCategory() {
