@@ -38,4 +38,3 @@ public class CategoryLifecycleListener {
 		System.out.println("After Select: "+c);
 	}
 }
-

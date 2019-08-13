@@ -1,8 +1,12 @@
 export interface Farmer {
 
     farmerId: number
-    farmerName: string
-    products: string
-    farmLocation: string
+    firstName: String
+    lastName: String
+    email: String
+    phone: number
+    address: String
+    farmerUsername: String
+    farmerPassword: String
 
 }

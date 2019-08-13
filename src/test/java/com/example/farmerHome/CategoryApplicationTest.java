@@ -19,42 +19,39 @@ public class CategoryApplicationTest {
 	@Autowired
 	CategoryService categoryService;
 	
-/*	@Test
+	
+	@Test
 	public void exampleCategoryTest() {
 		System.out.println("Category test case scenarios");
-	}*/
-	
-	
-/*	//CRUD - add category to database
-	@Test
-	public void addCategoryUsingService() {
-		Category cat = new Category();
-		cat.setCategory("Fruit_Vegetables");
-		cat = categoryService.registerOrUpdateCategory(cat);	
-		assertNotNull(cat);
-	}
-	*/
-/*	//CRUD - find by category id
-	@Test
-	public void findCategoryUsingService() {
-		int categoryId = 54 ;
-		assertNotNull(categoryService.findByCategoryId(categoryId));
 	}
 	
-	//CRUD - get all categories
-	@Test
-	public void getAllCategoriesUsingService() {
-		assertNotNull(categoryService.getAllCategories());
-	}
-	
-	//CRUD - delete by category id
-	@Test
-	public void deleteByCategoryIdUsingService() {
-		int categoryId = 55;
-		categoryService.deleteByCategoryId(categoryId);
-		assertNull(categoryService.findByCategoryId(categoryId));
-	}
-*/
-
-	
+//	//CRUD - Add category
+//	@Test
+//	public void addCategoryUsingService() {
+//		Category cat = new Category();
+//		cat.setCategory("Fruit_Vegetables");
+//		cat = categoryService.registerOrUpdateCategory(cat);	
+//		assertNotNull(cat);
+//	}
+//	
+//	//CRUD - Find by category id
+//	@Test
+//	public void findCategoryUsingService() {
+//		int categoryId = 54 ;
+//		assertNotNull(categoryService.findByCategoryId(categoryId));
+//	}
+//	
+//	//CRUD - Get all categories
+//	@Test
+//	public void getAllCategoriesUsingService() {
+//		assertNotNull(categoryService.getAllCategories());
+//	}
+//	
+//	//CRUD - Delete by category id
+//	@Test
+//	public void deleteByCategoryIdUsingService() {
+//		int categoryId = 55;
+//		categoryService.deleteByCategoryId(categoryId);
+//		assertNull(categoryService.findByCategoryId(categoryId));
+//	}
 }

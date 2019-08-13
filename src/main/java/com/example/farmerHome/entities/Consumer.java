@@ -22,17 +22,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//@Component
+//@Component -> disabled for @FormParam processing
 
-@Scope("prototype")
 @Entity
+@Scope("prototype")
 @Table(name="JPA_CONSUMER")
 @XmlRootElement
 @EntityListeners({ConsumerLifecycleListener.class})
 public class Consumer implements Serializable {
 
 	@FormParam("consno")
-	@Value("-1")
 	private int consno;
 	
 	@FormParam("firstName")
@@ -63,7 +62,8 @@ public class Consumer implements Serializable {
 	@Value("usernametest")
 	private String consumerUsername;
 	
-
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	//One to Many - One Consumer -> Many Baskets
 	private Set<Basket> orderHistory = new HashSet<>();
 	
@@ -77,13 +77,16 @@ public class Consumer implements Serializable {
 		this.orderHistory = orderHistory;
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
+	//-> Default constructor
 	public Consumer() {
 		System.out.println("Consumer Created");
 	}
 	
 
-
+	//-> Getters and Setters
 	@Id
 	@Column(name="consumer_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -157,15 +160,11 @@ public class Consumer implements Serializable {
 	}
 
 
+	//-> ToString
 	@Override
 	public String toString() {
 		return "Consumer [consno=" + consno + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", address=" + address + ", phone=" + phone + ", consumerPassword=" + consumerPassword
 				+ ", consumerUsername=" + consumerUsername + ", orderHistory=" + orderHistory + "]";
 	}
-
-
-	
-	
-	
 }

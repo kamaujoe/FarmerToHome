@@ -25,7 +25,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
 import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
 
-import { Ng2SearchPipeModule } from 'ng2-search-filter'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AboutUsComponent } from './about-us/about-us.component'
 
 
 
@@ -49,7 +50,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'
     UserBuyerProfileComponent,
     DiscountsComponent,
     ConsumerRegistrationComponent,
-    SellerRegistrationComponent
+    SellerRegistrationComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

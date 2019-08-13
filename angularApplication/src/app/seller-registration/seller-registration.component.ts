@@ -10,20 +10,31 @@ import { FarmerService } from '../farmer.service';
 export class SellerRegistrationComponent implements OnInit {
 
   farmerId: number
-  farmerName: String
-  products: String
-  farmLocation: String
+  firstName: String
+  lastName: String
+  email: String
+  address: String
+  phone: number
+  farmerUsername: String
+  farmerPassword: String
 
   farmers: Farmer[]
 
   allFarmers: Farmer[]
+  farmerName: any;
+  products: any;
+  farmLocation: any;
 
   constructor(private farmerSvc:FarmerService) { 
 
-    this.farmerId = 7
-    this.farmerName = "Name"
-    this.products = "Products"
-    this.farmLocation = "Location"
+    this.farmerId=1
+    this.firstName="Joe"
+    this.lastName="Farmer"
+    this.address="Address"
+    this.email="Email"
+    this.phone=12345
+    this.farmerUsername="Username"
+    this.farmerPassword="Password"
 
   }
 
@@ -49,10 +60,14 @@ export class SellerRegistrationComponent implements OnInit {
         // use the response to initialize the component properties
       response => { // assign the data received from server
           // as response to the current component
-          this.farmerId = response.farmerId
-          this.farmerName = response.farmerName
-          this.products=response.products
-          this.farmLocation = response.farmLocation
+        this.farmerId = response.farmerId
+        this.firstName = response.firstName
+        this.lastName = response.lastName
+        this.address = response.address
+        this.phone = response.phone
+        this.email = response.email
+        this.farmerUsername = response.farmerUsername
+        this.farmerPassword = response.farmerPassword
 
       } 
     )
@@ -60,7 +75,13 @@ export class SellerRegistrationComponent implements OnInit {
 
   registerFarmerDetails(){
     this.farmerSvc.registerFarmerOnServer({
-      farmerId:this.farmerId, farmerName: this.farmerName, products:this.products, farmLocation:this.farmLocation
+      farmerId:this.farmerId, 
+      firstName: this.firstName, 
+      email:this.email, 
+      address:this.address,
+      phone:this.phone,
+      farmerUsername:this.farmerUsername,
+      farmerPassword:this.farmerPassword
     }).subscribe(
       response =>{ // perform the following operation on successful post
               this.fetchCurrentFarmerFromService()

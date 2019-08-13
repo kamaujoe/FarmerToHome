@@ -34,8 +34,8 @@ export class FarmerService {
         {"Content-Type":"application/x-www-form-urlencoded"})
     }
     // key1=value1&keyn=valuen
-    var reqBody = "farmerId="+farmer.farmerId+"&farmerName="+
-                      farmer.farmerName+"&products="+farmer.products+"&farmLocation="+farmer.farmLocation
+    var reqBody = "farmerId="+farmer.farmerId+"&firstName="+
+                      farmer.firstName+"&lastName="+farmer.lastName+"&phone="+farmer.phone+"&email="+farmer.email+"&address="+farmer.address+"&farmerUsername="+farmer.farmerUsername+"&farmerPassword="+farmer.farmerPassword
     //  post(URL,body,httpOptionswithHeaders)
     
     return this.httpsvc.post<FarmerComponent>(
