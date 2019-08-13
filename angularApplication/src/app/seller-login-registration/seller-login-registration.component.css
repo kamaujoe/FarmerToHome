@@ -6,7 +6,7 @@
   }
   
   body {
-    background:url("https://images.pexels.com/photos/58723/pexels-photo-58723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background:url("https://images.pexels.com/photos/2594828/pexels-photo-2594828.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
     background-size: cover;
     background-attachment: fixed;
     background-position: center; 
@@ -106,7 +106,7 @@
   
   .btn-google {
     color: white;
-    background-color: #ea4335;
+    background-color: #ec3423;
   }
   
   .btn-facebook {
@@ -144,8 +144,3 @@
     font-size: 15px;
   }
 
-  .buttons {
-    font-family: 'Pacifico', cursive;
-    font-size: 25px;
-
-  }

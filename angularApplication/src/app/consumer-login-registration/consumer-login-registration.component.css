@@ -4,7 +4,7 @@
   }
 
   body {
-    background:url("https://images.pexels.com/photos/58723/pexels-photo-58723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background:url("https://images.pexels.com/photos/2594828/pexels-photo-2594828.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -33,7 +33,7 @@
   
   .form-signin .btn {
     font-size: 80%;
-    border-radius: 5rem;
+    border-radius: 5px;
     letter-spacing: .1rem;
     font-weight: bold;
     padding: 1rem;
@@ -66,7 +66,7 @@
     line-height: 1.5;
     color: #495057;
     border: 1px solid transparent;
-    border-radius: .25rem;
+    border-radius: 5px;
     transition: all .1s ease-in-out;
   }
   
@@ -104,7 +104,7 @@
   
   .btn-google {
     color: white;
-    background-color: #ea4335;
+    background-color: #ec3423;
   }
   
   .btn-facebook {
@@ -135,4 +135,9 @@
     .form-label-group input:-ms-input-placeholder {
       color: #777;
     }
+  }
+
+  .card-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 15px;
   }
