@@ -52,7 +52,7 @@ public class ProductService {
 		Product currentProd = findByProductId(prod.getProductId());
 		
 		if (currentProd != null) { //update the existing product with form values
-			currentProd.setName(prod.getName());
+			currentProd.setProduct_name(prod.getProduct_name());
 			currentProd.setExpiry_date(prod.getExpiry_date());
 			currentProd.setPrice(prod.getPrice());
 			//save changes in repository
@@ -84,10 +84,9 @@ public class ProductService {
 	@GET
 	@Path("/allProducts")
 	@Produces(MediaType.APPLICATION_JSON)
+	@Transactional
 	public Iterable<Product> getAllProducts() {
-		Iterable<Product> products = productRepository.findAll();
-		System.out.println(products);
-		return products;
+		return productRepository.findAll();
 	}
 	
 

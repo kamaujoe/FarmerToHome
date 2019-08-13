@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
@@ -63,7 +66,10 @@ public class Farmer implements Serializable {
 	//Many to Many with Products
 	private Set<Product> farmerProds = new HashSet<>();
 	
-	@ManyToMany(mappedBy="suppliers")
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinTable(name="JPA_FARMER_PRODS", 
+		joinColumns=@JoinColumn(name="FK_FARMERID"),
+		inverseJoinColumns=@JoinColumn(name="FK_PRODUCTID"))
 	@XmlTransient
 	public Set<Product> getFarmerProds() {
 		return farmerProds;
