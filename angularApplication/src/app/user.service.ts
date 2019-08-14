@@ -31,7 +31,14 @@ export class ConsumerService {
         {"Content-Type":"application/x-www-form-urlencoded"}
       )
     }
-    var reqBody = "consno="+consumer.consno+"&firstName="+consumer.firstName+"&lastName="+consumer.lastName+"&email="+consumer.email+"&address="+consumer.address+"&phone="+consumer.phone
+    var reqBody = "consno="+consumer.consno
+                +"&firstName="+consumer.firstName
+                +"&lastName="+consumer.lastName
+                +"&email="+consumer.email
+                +"&address="+consumer.address
+                +"&phone="+consumer.phone
+                +"&consumerUsername="+consumer.consumerUsername
+                +"&consumerPassword="+consumer.consumerPassword
     return this.httpsvc.post<UserBuyerProfileComponent>(
                                       this.rootURL+"/register",
                                       reqBody,httpOptions

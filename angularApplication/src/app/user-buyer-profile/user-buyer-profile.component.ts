@@ -14,6 +14,8 @@ export class UserBuyerProfileComponent implements OnInit {
   email: String
   address: String
   phone: number
+  consumerUsername: String;
+  consumerPassword: String;
 
   isEditable: boolean
   isUserFormVisable: boolean
@@ -26,19 +28,21 @@ export class UserBuyerProfileComponent implements OnInit {
     this.isUserFormVisable = false
     this.isUserFormValid = true
 
-    this.consno=9
-    this.firstName="Consumer"
-    this.lastName="Last"
-    this.email="consumerLast@test.com"
-    this.address="Example"
-    this.phone=12345
+    this.consno=1
+    this.firstName
+    this.lastName
+    this.email
+    this.address
+    this.phone
+    this.consumerUsername
+    this.consumerPassword
    }
 
   ngOnInit() {
-    this.fetchCurrentUserFromService()
+    this.fetchCurrentConsumerFromService()
   }
 
-  fetchCurrentUserFromService(){
+  fetchCurrentConsumerFromService(){
     this.userSvc.findUserByUserId(this.consno).subscribe(
       response => {
         this.consno = response.consno
@@ -47,26 +51,30 @@ export class UserBuyerProfileComponent implements OnInit {
         this.email = response.email
         this.address = response.address
         this.phone = response.phone
+        this.consumerUsername = response.consumerUsername
+        this.consumerPassword = response.consumerPassword
       }
     )
   }
 
   toggleEdits() {
     this.isEditable = !this.isEditable
-    this.updateUserDetails()
+    this.RegisterConsumerDetails()
   }
 
-  updateUserDetails() {
+  RegisterConsumerDetails() {
     this.userSvc.registerUserOnServer({
       consno:this.consno, 
       firstName:this.firstName,
       lastName:this.lastName,
       email:this.email,
       address:this.address, 
-      phone:this.phone
+      phone:this.phone,
+      consumerUsername:this.consumerUsername,
+      consumerPassword:this.consumerPassword
     }).subscribe(
       response => {
-        this.fetchCurrentUserFromService()
+        this.fetchCurrentConsumerFromService()
       }
     )
   }
