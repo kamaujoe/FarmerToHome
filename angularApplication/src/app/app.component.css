@@ -2,6 +2,7 @@
     margin-right: 0;
     float: none;
     width: 100%;
+    
   }
   .navbar ul.navbar-nav li {
     width: 33%;
@@ -10,5 +11,22 @@
 
 .navbar {
     font-family: 'Roboto', sans-serif;
-    font-size: 90%;
+    font-size: 90%;  
+   
+}
+
+.navbar a:hover {
+  color: rgb(255, 255, 255);
+}
+/* 
+.card-footer {
+  font-family: 'Pacifico', cursive;
+  color: white;
+  font-size: 30pt;
+  text-align: center;
+} */
+
+.table {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
 }

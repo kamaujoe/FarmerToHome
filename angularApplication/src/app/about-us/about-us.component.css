@@ -1,0 +1,39 @@
+html {
+    background:url("https://images.pexels.com/photos/1242348/pexels-photo-1242348.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+    background-size: 100%;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 100%
+}
+
+.home {
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0;     
+}
+.est {
+    font-family: 'Prata', serif;
+    color: rgb(0, 0, 0);
+    font-size: 20pt;
+    text-align: left;
+    padding-left: 22ch;
+}
+.title-home {
+    font-family: 'Prata', serif;
+    color: rgb(0, 0, 0);
+    font-size: 60pt;
+    text-align: center;
+}
+.home-subheading {
+    font-family: 'Prata', serif;
+    color: rgb(0, 0, 0);
+    font-size: 20pt;
+    text-align: left;
+    padding-left: 22ch;   
+}
+
+.images {
+    column-span: all;
+    width: 500px;
+}

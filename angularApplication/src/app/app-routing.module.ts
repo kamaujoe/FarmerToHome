@@ -18,6 +18,7 @@ import { UserBuyerProfileComponent } from './user-buyer-profile/user-buyer-profi
 import { FarmerComponent } from './farmer/farmer.component';
 import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
 import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'seller-profile', component: SellerProfileComponent},
   { path: 'user-buyer-profile', component: UserBuyerProfileComponent},
   { path: 'consumer-registration', component: ConsumerRegistrationComponent},
+  { path: 'about-us', component: AboutUsComponent}
   // { path: 'farmer', component:FarmerComponent}
 
 ];

@@ -30,10 +30,10 @@ export class SellerLoginRegistrationComponent implements OnInit {
 
   constructor(private farmerSvc:FarmerService, private router: Router, private authenSvc:SellerLoginAuthenticationService) { 
 
-    this.farmerId = 7
-    this.farmerName = "Oldman Joe's"
-    this.products = "vegetables, fruits and more!"
-    this.farmLocation = "Leeds"
+    this.farmerId 
+    this.farmerName 
+    this.products 
+    this.farmLocation 
 
     //->joe
     this.email = "kfermin2@springer.com"
@@ -65,9 +65,9 @@ export class SellerLoginRegistrationComponent implements OnInit {
       this.invalidLogin = true
   }
 
-  fetchCurrentSellerFromService(){
-    this.
-  }
+  // fetchCurrentSellerFromService(){
+  //   this.
+  // }
 
   //-> end
 

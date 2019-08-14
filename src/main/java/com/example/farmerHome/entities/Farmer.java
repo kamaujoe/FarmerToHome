@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
@@ -20,16 +23,17 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 
-//@Component
+//@Component -> disabled for @FormParam processing
 
 @Entity
-@Table(name="JPA_FARMER")
 @Scope("prototype")
+@Table(name="JPA_FARMER")
 @XmlRootElement
 @EntityListeners({FarmerLifecycleListener.class})
 public class Farmer implements Serializable {
 	
 	@FormParam("farmerId")
+	@Value("-1")
 	private int farmerId;
 	
 	@FormParam("firstName")
@@ -60,10 +64,15 @@ public class Farmer implements Serializable {
 	@Value("usernametest")
 	private String farmerUsername;
 	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	//Many to Many with Products
 	private Set<Product> farmerProds = new HashSet<>();
 	
-	@ManyToMany(mappedBy="suppliers")
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@JoinTable(name="JPA_FARMER_PRODS", 
+		joinColumns=@JoinColumn(name="FK_FARMERID"),
+		inverseJoinColumns=@JoinColumn(name="FK_PRODUCTID"))
 	@XmlTransient
 	public Set<Product> getFarmerProds() {
 		return farmerProds;
@@ -73,6 +82,8 @@ public class Farmer implements Serializable {
 		this.farmerProds = farmerProds;
 	}
 	
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	
 	//-> Default constructor
 	public Farmer() {
@@ -80,7 +91,7 @@ public class Farmer implements Serializable {
 	}
 
 
-	//-> GETTERS AND SETTERS
+	//-> Getters and Setters
 	@Id
 	@Column(name="farmer_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -157,14 +168,10 @@ public class Farmer implements Serializable {
 	
 	
 	//-> ToString
-
 	@Override
 	public String toString() {
 		return "Farmer [farmerId=" + farmerId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
 				+ email + ", address=" + address + ", phone=" + phone + ", farmerPassword=" + farmerPassword
 				+ ", farmerUsername=" + farmerUsername + ", farmerProds=" + farmerProds + "]";
 	}
-
-	
-
 }

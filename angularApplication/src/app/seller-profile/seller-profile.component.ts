@@ -11,18 +11,18 @@ import { Product } from '../basket/product';
 export class SellerProfileComponent implements OnInit {
 
   farmerId: number
-  farmerName: String
-  farmLocation: String
-  products: String
+  firstName: String
+  lastName: String
+  email: String
+  address: String
+  phone: number
+  farmerUsername: String
+  farmerPassword: String
   
-  assignedProducts: Product[]
-
-  farmerProds: Product[]
-  selectProductId: number
-
   farmers: Farmer[]
 
   allFarmers: Farmer[]
+  assignedProducts: Product[]
 
   
   isEditable: boolean
@@ -34,6 +34,8 @@ export class SellerProfileComponent implements OnInit {
   isProductFormVisable:boolean
   isProductFormValid:boolean
 
+  farmerProds: Product[]
+  selectProductId: number
 
   
   constructor(private farmerSvc:SellerService) { 
@@ -45,15 +47,25 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=6
-    this.farmerName="Farmer Joe"
-    this.farmLocation="Leeds"
-    this.products="Whole Foods"
+    this.farmerId=5
+    this.fetchCurrentSellerFromService
+    this.firstName
+    this.lastName
+    this.address
+    this.email
+    this.phone
+    this.farmerUsername
+    this.farmerPassword
     
-    // this.assignedProducts =
-    // [
-    //   {productId:4,name:"Rice",quantity:1,expiry_date:22/12/2019,size:"Large",price:1.99,category:"BAKERY_DAIRY"}
-    // ]
+    this.farmerProds =
+    [
+      // {productId:0,
+      //   product_name:"",
+      //   expiry_date:0,
+      //   size:"",
+      //   price:0,
+      //   currentCategory:[]}
+    ]
   }
 
   ngOnInit() {
@@ -64,11 +76,15 @@ export class SellerProfileComponent implements OnInit {
     this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
       response => {
         this.farmerId = response.farmerId
-        this.farmerName = response.farmerName
-        this.farmLocation = response.farmLocation
-        this.products = response.products
+        this.firstName = response.firstName
+        this.lastName = response.lastName
+        this.address = response.address
+        this.phone = response.phone
+        this.email = response.email
+        this.farmerUsername = response.farmerUsername
+        this.farmerPassword = response.farmerPassword
         
-        this.assignedProducts = response.assignedProducts
+        this.farmerProds = response.farmerProds
       }
     )
   }
@@ -80,13 +96,15 @@ export class SellerProfileComponent implements OnInit {
 
   showProductForm() {
     this.isProductFormVisable = true
-
     this.loadFarmerProducts()
+    // this.assignNewProduct()
   }
 
   updateSelectedProductId(productId) {
     this.selectProductId=productId
+    this.loadFarmerProducts()
   }
+  
 
   assignNewProduct() {
     this.farmerSvc.assignProductToSeller(
@@ -104,46 +122,50 @@ export class SellerProfileComponent implements OnInit {
         .subscribe(
           response =>{
             this.farmerProds = response
+            console.log(response)
           })
   }
 
   deleteProduct(index) {
-    this.assignedProducts.splice(index, 1)
+    this.farmerProds.splice(index, 1)
   }
 
-  // addNewProduct(pproductId,pproductName,pprice,pquantity,psize,pexpiry_date,pcategory) {
-  //   if(isNaN(pproductId))
-  //   {
-  //     this.isProductFormValid=false
-  //     this.invalidFormMessage="Product ID must be a number"
-  //   }
-  //   else if(pproductName.length<4){
-  //     this.isProductFormValid=false
-  //     this.invalidFormMessage="Product name must be greater than 4 characters"
-  //   }
-  //   else {
-  //     this.assignedProducts.push({
-  //       productId:pproductId,
-  //       name:pproductName,
-  //       price:pprice,
-  //       quantity:pquantity,
-  //       size:psize,
-  //       expiry_date:pexpiry_date,
-  //       category:pcategory
-  //     })
-  //     this.isProductFormVisable=false
-  //     this.isProductFormValid=true
-  //     this.invalidFormMessage=""
-  //   }
+  addNewProduct(pproductId,pproduct_name,pprice,psize,pexpiry_date,pcurrentCategory) {
+    if(isNaN(pproductId))
+    {
+      this.isProductFormValid=false
+      this.invalidFormMessage="Product ID must be a number"
+    }
+    else if(pproduct_name.length<4){
+      this.isProductFormValid=false
+      this.invalidFormMessage="Product name must be greater than 4 characters"
+    }
+    else {
+      this.farmerProds.push({
+        productId:pproductId,
+        product_name:pproduct_name,
+        price:pprice,
+        size:psize,
+        expiry_date:pexpiry_date,
+        currentCategory:pcurrentCategory
+      })
+      this.isProductFormVisable=false
+      this.isProductFormValid=true
+      this.invalidFormMessage=""
+    }
 
-  // }
+  }
 
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({
       farmerId:this.farmerId, 
-      farmerName:this.farmerName,
-      farmLocation:this.farmLocation, 
-      products:this.products,
+      firstName:this.firstName,
+      lastName:this.lastName,
+      address:this.address, 
+      phone:this.phone,
+      email:this.email,
+      farmerUsername:this.farmerUsername,
+      farmerPassword:this.farmerPassword
     }).subscribe(
       response => {
         this.fetchCurrentSellerFromService()
