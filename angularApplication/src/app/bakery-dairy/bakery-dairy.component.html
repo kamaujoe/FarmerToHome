@@ -18,7 +18,7 @@
 
     </tr>
     <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
-        <td>{{p.name}}</td>
+        <td>{{p.product_name}}</td>
         <td>£{{p.price}}</td>
         <td><input type="number" #quantity value = 0 name = "quantity" min = "0" max = "12"></td>
             <td><button (click) = "addProducts(p.productId)" (click) = "quantityAdd(p.productId, quantity.value)">+</button></td>
