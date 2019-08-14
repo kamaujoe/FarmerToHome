@@ -1,12 +1,15 @@
 /* background */
 html {
     background:url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
-    background-size: cover;
-    height: 700px;
+    background-position: center center;
+      /* Background image doesn't tile */
     background-repeat: no-repeat;
+        /* Background image is fixed in the viewport so that it doesn't move when 
+       the content's height is greater than the image's height */
     background-attachment: fixed;
-	background-position: center; 
-	border-radius: 1rem;
+        /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
 }
 
 .title-basket {	
@@ -23,7 +26,7 @@ html {
 }
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
-		width:20%;
+		
 		display: inline !important;
 		
 	}

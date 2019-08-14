@@ -1,12 +1,15 @@
 html {
     background:url("https://images.pexels.com/photos/717130/pexels-photo-717130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-size: cover;
-    height: 700px;
+    background-position: center center;
+      /* Background image doesn't tile */
     background-repeat: no-repeat;
+        /* Background image is fixed in the viewport so that it doesn't move when 
+       the content's height is greater than the image's height */
     background-attachment: fixed;
-    background-position: center; 
+        /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
 }
-
 .title-bakery {
     font-family: 'Prata', serif;
     color: white; 
