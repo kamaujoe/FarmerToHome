@@ -47,18 +47,24 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=1
-    this.firstName="Joe"
-    this.lastName="Farmer"
-    this.address="Address"
-    this.email="Email"
-    this.phone=12345
-    this.farmerUsername="Username"
-    this.farmerPassword="Password"
+    this.farmerId = 5
+    this.fetchCurrentSellerFromService
+    this.firstName
+    this.lastName
+    this.address
+    this.email
+    this.phone
+    this.farmerUsername
+    this.farmerPassword
     
     this.farmerProds =
     [
-      {productId:4,product_name:"Rice",expiry_date:22/12/2019,size:"Large",price:1.99,currentCategory:[]}
+      // {productId:0,
+      //   product_name:"",
+      //   expiry_date:0,
+      //   size:"",
+      //   price:0,
+      //   currentCategory:[]}
     ]
   }
 
@@ -85,18 +91,19 @@ export class SellerProfileComponent implements OnInit {
 
   toggleEdits() {
     this.isEditable = !this.isEditable
+    this.loadFarmerProducts()
     this.updateSellerDetails()
   }
 
   showProductForm() {
     this.isProductFormVisable = true
-
     this.loadFarmerProducts()
+    // this.assignNewProduct()
   }
 
-  updateSelectedProductId(productId) {
-    this.selectProductId=productId
-    this.loadFarmerProducts()
+  updateSelectedProductId(pid) {
+    this.selectProductId=pid
+    // this.loadFarmerProducts()
   }
   
 
@@ -120,12 +127,13 @@ export class SellerProfileComponent implements OnInit {
           })
   }
 
-  deleteProduct(index, productId) {
-    this.farmerProds.splice(index, 1, productId)
+  deleteProduct(index) {
+    this.farmerProds.splice(index, 1)
+    console.log(this.farmerProds)
   }
 
-  addNewProduct(pproductId,pproduct_name,pprice,psize,pexpiry_date,pcurrentCategory) {
-    if(isNaN(pproductId))
+  addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
+    if(isNaN(pid))
     {
       this.isProductFormValid=false
       this.invalidFormMessage="Product ID must be a number"
@@ -136,10 +144,10 @@ export class SellerProfileComponent implements OnInit {
     }
     else {
       this.farmerProds.push({
-        productId:pproductId,
+        productId:pid,
         product_name:pproduct_name,
         price:pprice,
-        size:psize,
+        // size:psize,
         expiry_date:pexpiry_date,
         currentCategory:pcurrentCategory
       })

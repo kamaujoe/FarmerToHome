@@ -21,25 +21,25 @@ export class SellerRegistrationComponent implements OnInit {
   farmers: Farmer[]
 
   allFarmers: Farmer[]
-  farmerName: any;
-  products: any;
-  farmLocation: any;
+  // farmerName: any;
+  // products: any;
+  // farmLocation: any;
 
   constructor(private farmerSvc:FarmerService) { 
 
-    this.farmerId=1
-    this.firstName="Joe"
-    this.lastName="Farmer"
-    this.address="Address"
-    this.email="Email"
-    this.phone=12345
-    this.farmerUsername="Username"
-    this.farmerPassword="Password"
+    this.farmerId
+    this.firstName
+    this.lastName
+    this.address
+    this.email
+    this.phone
+    this.farmerUsername
+    this.farmerPassword
 
   }
 
   ngOnInit() {
-    this.fetchCurrentFarmerFromService()
+    this.fetchCurrentSellerFromService()
   }
 
   // // register farmer in memory
@@ -55,7 +55,7 @@ export class SellerRegistrationComponent implements OnInit {
 
 
 
-  fetchCurrentFarmerFromService(){
+  fetchCurrentSellerFromService(){
     this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
         // use the response to initialize the component properties
       response => { // assign the data received from server
@@ -68,7 +68,6 @@ export class SellerRegistrationComponent implements OnInit {
         this.email = response.email
         this.farmerUsername = response.farmerUsername
         this.farmerPassword = response.farmerPassword
-
       } 
     )
   }
@@ -76,7 +75,8 @@ export class SellerRegistrationComponent implements OnInit {
   registerFarmerDetails(){
     this.farmerSvc.registerFarmerOnServer({
       farmerId:this.farmerId, 
-      firstName: this.firstName, 
+      firstName:this.firstName,
+      lastName:this.lastName,
       email:this.email, 
       address:this.address,
       phone:this.phone,
@@ -84,7 +84,7 @@ export class SellerRegistrationComponent implements OnInit {
       farmerPassword:this.farmerPassword
     }).subscribe(
       response =>{ // perform the following operation on successful post
-              this.fetchCurrentFarmerFromService()
+              this.fetchCurrentSellerFromService()
           } 
         )
       
