@@ -113,7 +113,6 @@ export class SellerProfileComponent implements OnInit {
     ).subscribe(
       response => {
         this.fetchCurrentSellerFromService()
-        this.assignNewProduct()
       }
     )
     this.isProductFormVisable=false
