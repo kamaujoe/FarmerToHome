@@ -49,6 +49,8 @@ public class ConsumerService {
 			currentCon.setLastName(con.getLastName());
 			currentCon.setAddress(con.getAddress());
 			currentCon.setPhone(con.getPhone());
+			currentCon.setConsumerUsername(con.getConsumerUsername());
+			currentCon.setConsumerPassword(con.getConsumerPassword());
 			con = consumerRepository.save(currentCon);
 		
 		} else { //create

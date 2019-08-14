@@ -24,6 +24,10 @@ export class SellerProfileComponent implements OnInit {
   allFarmers: Farmer[]
   assignedProducts: Product[]
 
+  pid: number
+  pname: string
+  pexpiryDate : number
+  pprice : number
   
   isEditable: boolean
   isSellerFormVisable: boolean
@@ -56,6 +60,12 @@ export class SellerProfileComponent implements OnInit {
     this.phone
     this.farmerUsername
     this.farmerPassword
+
+    this.pid=135
+    this.pname
+    this.pexpiryDate
+    this.pprice
+    
     
     this.farmerProds =
     [
@@ -106,6 +116,15 @@ export class SellerProfileComponent implements OnInit {
     // this.loadFarmerProducts()
   }
   
+  registerNewProduct(pid, pname, pexpiryDate, pprice) {
+    this.farmerSvc.registerProductOnServer(pid, pname, pexpiryDate, pprice).subscribe(
+       response => {
+          this.assignNewProduct()  
+       }
+    )
+    
+     this.isProductFormVisable=false
+  }
 
   assignNewProduct() {
     this.farmerSvc.assignProductToSeller(
@@ -132,31 +151,31 @@ export class SellerProfileComponent implements OnInit {
     console.log(this.farmerProds)
   }
 
-  addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
-    if(isNaN(pid))
-    {
-      this.isProductFormValid=false
-      this.invalidFormMessage="Product ID must be a number"
-    }
-    else if(pproduct_name.length<4){
-      this.isProductFormValid=false
-      this.invalidFormMessage="Product name must be greater than 4 characters"
-    }
-    else {
-      this.farmerProds.push({
-        productId:pid,
-        product_name:pproduct_name,
-        price:pprice,
-        // size:psize,
-        expiry_date:pexpiry_date,
-        currentCategory:pcurrentCategory
-      })
-      this.isProductFormVisable=false
-      this.isProductFormValid=true
-      this.invalidFormMessage=""
-    }
+  // addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
+  //   if(isNaN(pid))
+  //   {
+  //     this.isProductFormValid=false
+  //     this.invalidFormMessage="Product ID must be a number"
+  //   }
+  //   else if(pproduct_name.length<4){
+  //     this.isProductFormValid=false
+  //     this.invalidFormMessage="Product name must be greater than 4 characters"
+  //   }
+  //   else {
+  //     this.farmerProds.push({
+  //       productId:pid,
+  //       product_name:pproduct_name,
+  //       price:pprice,
+  //       // size:psize,
+  //       expiry_date:pexpiry_date,
+  //       currentCategory:pcurrentCategory
+  //     })
+  //     this.isProductFormVisable=false
+  //     this.isProductFormValid=true
+  //     this.invalidFormMessage=""
+  //   }
 
-  }
+  // }
 
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({

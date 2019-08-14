@@ -63,6 +63,17 @@ export class SellerService {
     )
   }
 
+  registerProductOnServer(pid, pname, pexpiryDate, pprice):Observable<Product[]> {
+    const httpOptions = {
+      headers: new HttpHeaders(
+        {"Content-Type":"application/x-www-form-urlencoded"})
+    }
+    var reqBody="productId"+pid+"&product_name="+pname+"&expiry_date="+pexpiryDate+"&price="+pprice
+    return this.httpsvc.post<Product[]>(
+    "http://localhost:8080/product/register",reqBody,httpOptions
+    )
+  }
+
   assignProductToSeller(farmerId,productId):Observable<Product[]> {
     const httpOptions= {
       headers: new HttpHeaders(
