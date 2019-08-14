@@ -6,7 +6,7 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
 	background-position: center; 
-	border-radius: 1px;
+	border-radius: 1rem;
 }
 
 .title-basket {	
@@ -14,7 +14,7 @@ html {
     color: rgba(0, 0, 0, 0.527); 
     font-size: 60pt;
 	text-align: center;
-	border-radius: 1px;
+	border-radius: 1rem;
 }
 
 /* bootstrap table */
@@ -25,6 +25,7 @@ html {
     table#cart tbody td .form-control{
 		width:20%;
 		display: inline !important;
+		
 	}
 	.actions .btn{
 		width:36%;
@@ -44,6 +45,7 @@ html {
 	table#cart tbody td:before {
 		content: attr(data-th); font-weight: bold;
 		display: inline-block; width: 8rem;
+		
 	}
 	
 	
@@ -51,4 +53,8 @@ html {
 	table#cart tfoot td{display:block; }
 	table#cart tfoot td .btn{display:block;}
 	
+	}
+
+	.table {
+		border-radius: 0.5rem; 
 	}
