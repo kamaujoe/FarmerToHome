@@ -4,5 +4,7 @@ export interface Farmer {
     farmerName: string
     products: string
     farmLocation: string
+    email: string
+    farmerPassword: string
 
 }

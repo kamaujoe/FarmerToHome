@@ -22,7 +22,7 @@ export class BasketComponent implements OnInit {
 
   basketId : number
 
-  
+
 
   constructor(private prodsvc: BasketItemsService) {
 

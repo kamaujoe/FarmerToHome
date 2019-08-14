@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Farmer } from '../farmer';
 import { FarmerService } from '../farmer.service';
+import { SellerLoginAuthenticationService } from '../seller-login-authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seller-login-registration',
@@ -14,17 +16,29 @@ export class SellerLoginRegistrationComponent implements OnInit {
   products: String
   farmLocation: String
 
+  //-> joe
+  email = ""
+  farmerPassword = ""
+  invalidLogin = false
+
+  //->end
+
+
   farmers: Farmer[]
 
   allFarmers: Farmer[]
 
-  constructor(private farmerSvc:FarmerService) { 
+  constructor(private farmerSvc:FarmerService, private router: Router, private authenSvc:SellerLoginAuthenticationService) { 
 
     this.farmerId = 7
     this.farmerName = "Oldman Joe's"
     this.products = "vegetables, fruits and more!"
     this.farmLocation = "Leeds"
 
+    //->joe
+    this.email = "kfermin2@springer.com"
+    this.farmerPassword = "WyMYIE"
+    //->end
   }
 
   ngOnInit() {
@@ -41,6 +55,22 @@ export class SellerLoginRegistrationComponent implements OnInit {
   showFarmer(){
     this.loadAllFarmers()
   }
+
+  ////-> Joe
+  checkLogin(){
+    if (this.authenSvc.authenticate(this.email, this.farmerPassword)){
+      this.router.navigate([""])
+      this.invalidLogin = false 
+    } else 
+      this.invalidLogin = true
+  }
+
+  fetchCurrentSellerFromService(){
+    this.
+  }
+
+  //-> end
+
 
 
 
