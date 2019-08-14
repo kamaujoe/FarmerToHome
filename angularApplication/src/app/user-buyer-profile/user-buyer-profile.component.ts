@@ -59,11 +59,7 @@ export class UserBuyerProfileComponent implements OnInit {
 
   toggleEdits() {
     this.isEditable = !this.isEditable
-<<<<<<< HEAD
-   // this.updateUserDetails()
-=======
     this.RegisterConsumerDetails()
->>>>>>> 399bed199f8569fcef3a0d73a31dd6b521342d10
   }
 
   RegisterConsumerDetails() {
