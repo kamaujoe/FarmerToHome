@@ -6,6 +6,7 @@ import { Farmer } from './farmer';
 import { Product } from './basket/product';
 import { Category } from './category';
 import { FarmerComponent } from './farmer/farmer.component';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'

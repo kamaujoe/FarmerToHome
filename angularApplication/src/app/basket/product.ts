@@ -7,7 +7,7 @@ export interface Product {
     product_name : string
     price : number
     
-    size : string
+    // size : string
     expiry_date : number
     
     currentCategory : Category[]
