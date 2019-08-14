@@ -53,22 +53,22 @@ export class UserBuyerProfileComponent implements OnInit {
 
   toggleEdits() {
     this.isEditable = !this.isEditable
-    this.updateUserDetails()
+   // this.updateUserDetails()
   }
 
-  updateUserDetails() {
-    this.userSvc.updateUserOnServer({
-      consno:this.consno, 
-      firstName:this.firstName,
-      lastName:this.lastName,
-      email:this.email,
-      address:this.address, 
-      phone:this.phone
-    }).subscribe(
-      response => {
-        this.fetchCurrentUserFromService()
-      }
-    )
-  }
+  // updateUserDetails() {
+  //   this.userSvc.updateUserOnServer({
+  //     consno:this.consno, 
+  //     firstName:this.firstName,
+  //     lastName:this.lastName,
+  //     email:this.email,
+  //     address:this.address, 
+  //     phone:this.phone
+  //   }).subscribe(
+  //     response => {
+  //       this.fetchCurrentUserFromService()
+  //     }
+  //   )
+  // }
 
 }

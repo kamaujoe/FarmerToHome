@@ -3,6 +3,9 @@ import { Products } from '../products';
 import { ProductsService } from '../products.service';
 import { Basket } from '../basket/basket';
 import { Quantity } from '../basket/quantity';
+import { OrderService } from '../order.service';
+import { Order } from '../basket/order';
+
 
 
 
@@ -20,8 +23,13 @@ export class HomeComponent implements OnInit {
 
   
     currentBasket : Basket[]
-        
-    currentQuantity : Quantity[] = []
+    addQua : Quantity
+    currentQuantity : Quantity[]
+    updateQuantity : Quantity
+
+    currentOrder : Order
+
+    orderId : number
 
    
     productId : number
@@ -31,10 +39,11 @@ export class HomeComponent implements OnInit {
 
     
 
-    constructor(private productService: ProductsService) {
+    constructor(private productService: ProductsService, private orderService: OrderService) {
       
     
      
+      
       this.basketId = 14 
       this.products=[] }
 
@@ -43,30 +52,64 @@ export class HomeComponent implements OnInit {
     res => {
       this.products = res}
       )
-
+      this.getOrders(this.basketId)
    
    
   
     }
 
-    
+    getOrders(basketId){
+      this.orderService.getOrderByBasket(basketId).subscribe(
+        res => {this.currentQuantity = res}
+      )
+    }
 
-    addProducts(productId){
-      this.productService.addProductsToBasket(productId, 
-        this.basketId).subscribe(
+    addQuantity(productId, quantity){
+      console.log(this.basketId, productId) // 14, 37
+      
+      this.orderService.getOrderByBasketProduct(this.basketId, productId).subscribe(
+        res => {
+          
+          this.currentOrder = res})
+          
+          
+          //this.orderId = this.currentOrder.orderId
+          
+          console.log(this.currentOrder.orderId)
+         
+
+      if(this.currentOrder.orderId = 0){
+
+      this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
         response => {
-          this.currentProduct = response
+          this.addQua = response
+        }
+      )}
+      else{
+        this.updateOrders(productId, quantity, this.currentOrder.orderId)
+        
+      }
+    }
+  
+    updateOrders(productId, quantity, orderId){
+      this.orderService.updateOrders(productId, quantity, this.basketId, orderId).subscribe(
+        res => {
+          this.updateQuantity = res
         }
       )
     }
   
-    quantityAdd(currentProductId, Q){
-      console.log(Q)
-      this.currentQuantity.push({productId: currentProductId, quantity: Q})
-      
-      
-    }
-  
 
-  
+
+
+
+
+
+    addProducts(productId){
+      
+      this.productService.addProductsToBasket(productId,this.basketId).subscribe(
+        
+        response => {this.currentProduct = response}
+      )
+    }  
 }

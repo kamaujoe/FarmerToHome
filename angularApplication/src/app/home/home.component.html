@@ -56,19 +56,28 @@ Filter By Search<input type="text" [(ngModel)]="term">
             <td>{{p.expiry_date}}</td>
 
             <td>{{p.size}}</td>
-            <td><input type="number" #quantity value = 0 name = "quantity" min = "0" max = "12"></td>
-            <td><button (click) = "addProducts(p.productId)" (click) = "quantityAdd(p.productId, quantity.value)">+</button></td>
+
+            
+                
+            
+            <td><select #quantity>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select></td>
+            <td><button (click) = "addProducts(p.productId)" (click) = "addQuantity(p.productId, quantity.value)">+</button></td>
 
         </tr>
 </table>
 
-    <table>
-        <tr *ngFor = "let u of currentQuantity">
-            <td>productId{{u.productId}}</td>
-            <td>quantity{{u.quantity}}</td>
-        </tr>
-    </table> 
 
+  
     <pagination-controls (pageChange)="p =$event"></pagination-controls>
    
 </html>
