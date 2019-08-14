@@ -27,7 +27,7 @@ export class SellerRegistrationComponent implements OnInit {
 
   constructor(private farmerSvc:FarmerService) { 
 
-    this.farmerId
+    this.farmerId=1
     this.firstName
     this.lastName
     this.address
