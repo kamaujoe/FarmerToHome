@@ -1,4 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: com.example.farmerHome.FarmerApplicationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s - in com.example.farmerHome.FarmerApplicationTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.example.farmerHome.FarmerApplicationTest
+initializationError(com.example.farmerHome.FarmerApplicationTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: No runnable methods
+

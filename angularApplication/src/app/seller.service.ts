@@ -6,6 +6,7 @@ import { Farmer } from './farmer';
 import { Product } from './basket/product';
 import { Category } from './category';
 import { FarmerComponent } from './farmer/farmer.component';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,15 @@ export class SellerService {
          {"Content-Type":"application/x-www-form-urlencoded"}
        )
      }
-     var reqBody = "farmerId="+farmer.farmerId+"&farmerName="+farmer.farmerName+"&farmLocation="+farmer.farmLocation+"&products="+farmer.products+"&farmerProds="+farmer.farmerProds
+     var reqBody = "farmerId="+farmer.farmerId
+                  +"&firstName="+farmer.firstName
+                  +"&lastName="+farmer.lastName
+                  +"&email="+farmer.email
+                  +"&phone="+farmer.phone
+                  +"&address="+farmer.address
+                  +"&farmerUsername="+farmer.farmerUsername
+                  +"&farmerPassword="+farmer.farmerPassword
+                  +"&farmerProds="+farmer.farmerProds
      return this.httpsvc.post<SellerProfileComponent>(
                                     this.rootURL+"/register", 
                                     reqBody,httpOptions
@@ -44,7 +53,7 @@ export class SellerService {
 
   loadAllProductsFromServer() {
     return this.httpsvc.get<Product[]>(
-          "http://localhost:8080/product/list "
+          "http://localhost:8080/product/allProducts"
     )
   }
 
@@ -76,6 +85,12 @@ export class SellerService {
     return this.httpsvc.post<FarmerComponent>(
       this.rootURL+"/assign/category",
       reqBody,httpOptions
+    )
+  }
+
+  deleteProduct(productId):Observable<Product[]> {
+    return this.httpsvc.delete<Product[]>(
+      "http://localhost:8080/product/delete"+productId
     )
   }
    

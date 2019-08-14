@@ -7,13 +7,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
-
 public class ProductLifecycleListener {
-	
-	//life-cycle methods
-	// @<Event>
-	// public void <name>(Entity e)
-	
+		
 	@PrePersist 
 	public void beforeInsert(Product p) {
 		System.out.println("Before Insert: "+p);
@@ -43,5 +38,4 @@ public class ProductLifecycleListener {
 	public void afterSelect(Product p) {
 		System.out.println("After Select: "+p);
 	}
-
 }

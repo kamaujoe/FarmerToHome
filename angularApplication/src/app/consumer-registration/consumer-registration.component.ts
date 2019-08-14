@@ -21,11 +21,11 @@ export class ConsumerRegistrationComponent implements OnInit {
   constructor(private consumerSvc:ConsumerService) {
   
   this.consno = 18
-  this.firstName = "Miles"
-  this.lastName = "Smith"
-  this.email = "test"
-  this.address = "consumer"
-  this.phone = 54321
+  this.firstName = "First Name"
+  this.lastName = "Last Name"
+  this.email = "Email Address"
+  this.address = "Address"
+  this.phone = 12345
 
   
    }
@@ -62,6 +62,7 @@ export class ConsumerRegistrationComponent implements OnInit {
     }).subscribe(
       response =>{
         this.fetchCurrentConsumerFromService()
+        console.log(response)
       }
     )
   }

@@ -22,12 +22,12 @@ export class ProductsService {
 
   //fetch by category
   fetchProductsByCategory(categoryId):Observable<Products[]>{
-    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory/"+categoryId)
+    return this.httpsvc.get<Products[]>(this.url+"/fetchByCategory?categoryId=" + categoryId)
   }
 
   //fetch by expiry date - discount page
   fetchProductByExpiryDate(min, max):Observable<Products[]>{
-    return this.httpsvc.get<Products[]>(this.url+"//fetchByExpiryDate?" + "&min=" + min + "&max=" + max)
+    return this.httpsvc.get<Products[]>(this.url+"/fetchByExpiryDate?" + "&min=" + min + "&max=" + max)
   }
 
 

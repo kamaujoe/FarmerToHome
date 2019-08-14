@@ -22,17 +22,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//@Component
+//@Component -> disabled for @FormParam processing
 
-@Scope("prototype")
 @Entity
+@Scope("prototype")
 @Table(name="JPA_CONSUMER")
 @XmlRootElement
 @EntityListeners({ConsumerLifecycleListener.class})
 public class Consumer implements Serializable {
 
 	@FormParam("consno")
-	@Value("-1")
 	private int consno;
 	
 	@FormParam("firstName")
@@ -55,6 +54,16 @@ public class Consumer implements Serializable {
 	@Value("12345")
 	private long phone;
 	
+	@FormParam("consumerPassword")
+	@Value("passwordtest")
+	private String consumerPassword;
+	
+	@FormParam("consumerUsername")
+	@Value("usernametest")
+	private String consumerUsername;
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	//One to Many - One Consumer -> Many Baskets
 	private Set<Basket> orderHistory = new HashSet<>();
 	
@@ -68,13 +77,16 @@ public class Consumer implements Serializable {
 		this.orderHistory = orderHistory;
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
+	//-> Default constructor
 	public Consumer() {
 		System.out.println("Consumer Created");
 	}
 	
 
-
+	//-> Getters and Setters
 	@Id
 	@Column(name="consumer_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -103,34 +115,56 @@ public class Consumer implements Serializable {
 		this.lastName = lastName;
 	}
 
+	@Column(name="email",nullable=false,length=45)
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	@Column(name="address",nullable=false,length=45)
 	public String getAddress() {
 		return address;
 	}
+	
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	@Column(name="phone",nullable=false)
 	public long getPhone() {
 		return phone;
 	}
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
+	
+	@Column(name="consumer_password",nullable=false,length=20)
+	public String getConsumerPassword() {
+		return consumerPassword;
+	}
 
+	public void setConsumerPassword(String consumerPassword) {
+		this.consumerPassword = consumerPassword;
+	}
+
+	@Column(name="consumer_username",nullable=false,length=45)
+	public String getConsumerUsername() {
+		return consumerUsername;
+	}
+
+	public void setConsumerUsername(String consumerUsername) {
+		this.consumerUsername = consumerUsername;
+	}
+
+
+	//-> ToString
 	@Override
 	public String toString() {
-		return "Consumer [consno=" + consno 
-				+ ", firstName=" + firstName
-				+ ", lastName=" + lastName
-				+ ", email=" + email 
-				+ ", address=" + address
-				+ ", phone=" + phone + "]";
+		return "Consumer [consno=" + consno + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", address=" + address + ", phone=" + phone + ", consumerPassword=" + consumerPassword
+				+ ", consumerUsername=" + consumerUsername + ", orderHistory=" + orderHistory + "]";
 	}
-	
-	
 }

@@ -56,6 +56,7 @@ export class UserBuyerProfileComponent implements OnInit {
    // this.updateUserDetails()
   }
 
+<<<<<<< HEAD
   // updateUserDetails() {
   //   this.userSvc.updateUserOnServer({
   //     consno:this.consno, 
@@ -70,5 +71,21 @@ export class UserBuyerProfileComponent implements OnInit {
   //     }
   //   )
   // }
+=======
+  updateUserDetails() {
+    this.userSvc.registerUserOnServer({
+      consno:this.consno, 
+      firstName:this.firstName,
+      lastName:this.lastName,
+      email:this.email,
+      address:this.address, 
+      phone:this.phone
+    }).subscribe(
+      response => {
+        this.fetchCurrentUserFromService()
+      }
+    )
+  }
+>>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
 
 }

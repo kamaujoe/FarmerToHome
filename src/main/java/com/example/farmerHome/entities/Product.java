@@ -29,40 +29,41 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//@Component // - disabled for @FormParam processing
+//@Component -> disabled for @FormParam processing
 
-@Scope("prototype") //one copy for each test case
 @Entity
+@Scope("prototype")
 @Table(name="JPA_PRODUCT")
+@XmlRootElement
 @EntityListeners({ProductLifecycleListener.class})
 @NamedQueries({@NamedQuery(name="Product.findByPrice", query="select p from Product p where p.price between :min and :max"),
 			   @NamedQuery(name="Product.findByExpiryDate", query="select p from Product p where p.expiry_date between :min and :max"),
-			   @NamedQuery(name="Product.findByCategoryId", query="select p from Product p where fk_categoryid = :fk_categoryid")}) 
-@XmlRootElement
+			   @NamedQuery(name="Product.findByCategory", query="select p from Product p where fk_categoryid = :categoryId")}) 
 public class Product implements Serializable {
 	
+	@FormParam("productId")
 	private int productId;
 	
 	@FormParam("product_name")
-	private String name;
+	@Value("Default name")
+	private String product_name;
 	
 	@FormParam("price")
+	@Value("-1")
 	private double price;
 	
 	@FormParam("expiry_date")
+	@Value("-1")
 	private int expiry_date;
 	
-	@FormParam("size")
-	ProductSizes size;
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Many to Many with Basket
 	private Set<Basket> items = new HashSet<>();
 	
-	//mapped by - check the configuration for Many to Many association in Basket class, getOrders()
 	@ManyToMany(mappedBy="items")
-	@XmlTransient //ignore the collections while using api
+	@XmlTransient
 	public Set<Basket> getItems() {
 		return items;
 	}
@@ -72,23 +73,20 @@ public class Product implements Serializable {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
-
-	//Many to Many with Farmer
-	private Set<Farmer> suppliers = new HashSet<>();
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	@JoinTable(name="JPA_SUPPLIERS",
-		joinColumns=@JoinColumn(name="FK_PRODUCTID"),
-		inverseJoinColumns=@JoinColumn(name="FK_FARMERID"))
-	@XmlTransient //ignore the collections while using api
-	public Set<Farmer> getSuppliers() {
-		return suppliers;
+	//Many to Many with Farmer
+	private Set<Farmer> farmerProds = new HashSet<>();
+	
+	@ManyToMany(mappedBy="farmerProds")
+	@XmlTransient
+	public Set<Farmer> getFarmerProds() {
+		return farmerProds;
 	}
 
-	public void setSuppliers(Set<Farmer> suppliers) {
-		this.suppliers = suppliers;
-	}
-
+	public void setFarmerProds(Set<Farmer> farmerProds) {
+		this.farmerProds = farmerProds;
+	}	
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Many to One with Category
@@ -105,10 +103,18 @@ public class Product implements Serializable {
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	@Id //declaring the property as Primary Key
-	@Column(name="product_Id") //column name
-	@GeneratedValue(strategy=GenerationType.AUTO) //auto-numbering
+	
+	
+	//-> Default constructor
+	public Product() {
+		System.out.println("Product created");
+	}
+	
+	
+	//-> Getters and Setters
+	@Id 
+	@Column(name="product_Id") 
+	@GeneratedValue(strategy=GenerationType.AUTO) 
 	public int getProductId() {
 		return productId;
 	}
@@ -117,13 +123,13 @@ public class Product implements Serializable {
 		this.productId = productId;
 	}
 	
-	@Column(name="product_name", nullable=false, length=15)
-	public String getName() {
-		return name;
+	@Column(name="product_name", nullable=false, length=45)
+	public String getProduct_name() {
+		return product_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 
 	@Column(name="product_price", nullable=false)
@@ -144,68 +150,11 @@ public class Product implements Serializable {
 		this.expiry_date = expiry_date;
 	}
 	
-	@Column(name="product_size") //not nullable because some products won't have size
-	@Enumerated(EnumType.STRING)
-	public ProductSizes getSize() {
-		return size;
-	}
-
-	public void setSize(ProductSizes size) {
-		this.size = size;
-	}
-
-	
+	//-> ToString
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId 
-				+ ", name=" + name 
-				+ ", price=" + price 
-				+ ", expiry_date="+ expiry_date 
-				+ ", size=" + size 
-				+ ", items=" + items 
-				+ ", suppliers=" + suppliers
-				+ ", currentCategory=" + currentCategory + "]";
+		return "Product [productId=" + productId + ", product_name=" + product_name + ", price=" + price + ", expiry_date="
+				+ expiry_date + ", items=" + items + ", currentCategory=" + currentCategory
+				+ "]";
 	}
-
-	//default constructor
-	public Product() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-/*	//TO DO - FETCH BY DISCOUNT FEATURE
-	public double productDiscount() {
-		double discount;
-		if (expiry_date >= 9) {
-			discount = price * 0.5;
-			return discount;
-		} else if (expiry_date == 8) {
-			discount = price * 0.25;
-			return discount;
-		} else {
-			return price;
-		}
-	}
-	
-	//TO DO - SEARCH BUTTON FEATURE
-    public List<Product> getSearchProducts() {
-
-        List<Product> products;
-
-        if(null == keyword || "".equals(keyword)) {
-            products = new ArrayList<Product>();
-        } else {
-            products = productRepository.getInstance()
-                .searchByProductName(keyword);
-        }
-
-        List<ProductBean> productBeans = new ArrayList<ProductBean>();
-
-        for(Product product: products) {
-            ProductBean productBean = new ProductBean();
-            productBean.setProduct(product);
-            productBeans.add(productBean);
-        }
-        return productBeans;
-    }*/
 }

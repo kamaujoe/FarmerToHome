@@ -22,20 +22,19 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-//@Component -> disabled for form parameter processing
+//@Component -> disabled for @FormParam processing
 
-@Scope("prototype")
 @Entity
+@Scope("prototype")
 @Table(name = "JPA_BASKET")
-@EntityListeners({BasketLifecycleListener.class})
-
-
 @XmlRootElement
+@EntityListeners({BasketLifecycleListener.class})
 public class Basket implements Serializable {
 	
 	@FormParam("basketId")
@@ -44,9 +43,7 @@ public class Basket implements Serializable {
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	int jid;
-	
-	// Many to Many relationship with products
+	//Many to Many relationship with Products
 	private Set<Product> items = new HashSet<>();
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
@@ -56,6 +53,7 @@ public class Basket implements Serializable {
 	public Set<Product> getItems() {
 		return items;
 	}
+	
 	public void setItems(Set<Product> items) {
 		this.items = items;
 	}
@@ -63,7 +61,7 @@ public class Basket implements Serializable {
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
-	// Many to One relationship with Consumers
+	//Many to One relationship with Consumers
 	private Consumer currentConsumer;
 	
 	@ManyToOne
@@ -75,34 +73,31 @@ public class Basket implements Serializable {
 		this.currentConsumer = currentConsumer;
 	}
 	
-
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
+	//-> Default constructor
 	public Basket() {
 		System.out.println("Basket Created");
 	}
-
-
 	
 	
-	@Id //declare the property as Primary Key
+	//-> Getters and Setters
+	@Id
 	@Column(name = "Basket_Id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public int getBasketId() {
 		return basketId;
 	}
 	
-	
 	public void setBasketId(int basketId) {
 		this.basketId = basketId;
 	}
+	
+	
+	//-> ToString
 	@Override
 	public String toString() {
 		return "Basket [basketId=" + basketId + "]";
 	}
-
-	
-	
-	
 }

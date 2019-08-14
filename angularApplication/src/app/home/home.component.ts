@@ -43,8 +43,12 @@ export class HomeComponent implements OnInit {
       
     
      
+<<<<<<< HEAD
       
       this.basketId = 14 
+=======
+      this.basketId = 1
+>>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
       this.products=[] }
 
   ngOnInit() {
@@ -52,6 +56,7 @@ export class HomeComponent implements OnInit {
     res => {
       this.products = res}
       )
+<<<<<<< HEAD
       this.getOrders(this.basketId)
    
    
@@ -81,6 +86,13 @@ export class HomeComponent implements OnInit {
       if(this.currentOrder.orderId = 0){
 
       this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
+=======
+    }
+
+    addProducts(productId){
+      this.productService.addProductsToBasket(productId, 
+        this.basketId).subscribe(
+>>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
         response => {
           this.addQua = response
         }
