@@ -11,9 +11,13 @@ import { Product } from '../basket/product';
 export class SellerProfileComponent implements OnInit {
 
   farmerId: number
-  farmerName: String
-  farmLocation: String
-  products: String
+  firstName: String
+  lastName: String
+  email: String
+  address: String
+  phone: number
+  farmerUsername: String
+  farmerPassword: String
   
   farmers: Farmer[]
 
@@ -43,14 +47,24 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=4
-    this.farmerName="Farmer Joe"
-    this.farmLocation="Leeds"
-    this.products="Whole Foods"
+    this.farmerId=5
+    this.fetchCurrentSellerFromService
+    this.firstName
+    this.lastName
+    this.address
+    this.email
+    this.phone
+    this.farmerUsername
+    this.farmerPassword
     
     this.farmerProds =
     [
-      {productId:4,product_name:"Rice",expiry_date:22/12/2019,size:"Large",price:1.99,currentCategory:[]}
+      // {productId:0,
+      //   product_name:"",
+      //   expiry_date:0,
+      //   size:"",
+      //   price:0,
+      //   currentCategory:[]}
     ]
   }
 
@@ -62,9 +76,13 @@ export class SellerProfileComponent implements OnInit {
     this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
       response => {
         this.farmerId = response.farmerId
-        this.farmerName = response.farmerName
-        this.farmLocation = response.farmLocation
-        this.products = response.products
+        this.firstName = response.firstName
+        this.lastName = response.lastName
+        this.address = response.address
+        this.phone = response.phone
+        this.email = response.email
+        this.farmerUsername = response.farmerUsername
+        this.farmerPassword = response.farmerPassword
         
         this.farmerProds = response.farmerProds
       }
@@ -78,8 +96,8 @@ export class SellerProfileComponent implements OnInit {
 
   showProductForm() {
     this.isProductFormVisable = true
-
     this.loadFarmerProducts()
+    // this.assignNewProduct()
   }
 
   updateSelectedProductId(productId) {
@@ -108,8 +126,8 @@ export class SellerProfileComponent implements OnInit {
           })
   }
 
-  deleteProduct(index, productId) {
-    this.farmerProds.splice(index, 1, productId)
+  deleteProduct(index) {
+    this.farmerProds.splice(index, 1)
   }
 
   addNewProduct(pproductId,pproduct_name,pprice,psize,pexpiry_date,pcurrentCategory) {
@@ -141,9 +159,13 @@ export class SellerProfileComponent implements OnInit {
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({
       farmerId:this.farmerId, 
-      farmerName:this.farmerName,
-      farmLocation:this.farmLocation, 
-      products:this.products,
+      firstName:this.firstName,
+      lastName:this.lastName,
+      address:this.address, 
+      phone:this.phone,
+      email:this.email,
+      farmerUsername:this.farmerUsername,
+      farmerPassword:this.farmerPassword
     }).subscribe(
       response => {
         this.fetchCurrentSellerFromService()

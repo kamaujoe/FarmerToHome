@@ -64,22 +64,40 @@
                 <form class="form-signin">
 
                   <div class="form-label-group">
-                        <label for="inputfarmerName">Name</label>
+                        <label for="inputEmail">Email</label>
                         <input 
-                            [(ngModel)]="farmerName" name="farmerName" #ffarmerName placeholder="Name" class="form-control" required autofocus>
+                            [(ngModel)]="email" name="email" #femail placeholder="Email" class="form-control" required autofocus>
                   </div>
-    
                   <div class="form-label-group">
-                        <label for="inputProducts">Products</label>
+                        <label for="inputfirstName">First Name</label>
                         <input 
-                            [(ngModel)]="products" name="farmerProducts" #fprods class="form-control" placeholder="Products" required>
+                            [(ngModel)]="firstName" name="firstName" #ffirstName placeholder="First Name" class="form-control" required autofocus>
                   </div>
-
                   <div class="form-label-group">
-                        <label for="inputFarmLocation">Location</label>
-                        <input 
-                            [(ngModel)]="farmLocation" name="farmLocation" #femail class="form-control" placeholder="Location" required>
-                  </div>
+                      <label for="inputlastName">Last Name</label>
+                      <input 
+                          [(ngModel)]="lastName" name="lastName" #flastName placeholder="Last Name" class="form-control" required autofocus>
+                </div>
+                <div class="form-label-group">
+                    <label for="inputAddress">Address</label>
+                    <input 
+                        [(ngModel)]="address" name="address" #faddress placeholder="Address" class="form-control" required autofocus>
+              </div>
+              <div class="form-label-group">
+                  <label for="inputPhone">Phone</label>
+                  <input 
+                      [(ngModel)]="phone" name="phone" #fphone placeholder="Phone Number" class="form-control" required autofocus>
+              </div>
+              <div class="form-label-group">
+                  <label for="inputfarmerUsername">Username</label>
+                  <input 
+                      [(ngModel)]="farmerUsername" name="farmerUsername" #ffarmerUsername placeholder="Username" class="form-control" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <label for="inputfarmerPassword">Password</label>
+                <input 
+                    [(ngModel)]="farmerPassword" name="farmerPassword" #ffarmerPassword placeholder="Password" class="form-control" required type="password">
+            </div>
                   <br>
                   <br>
     

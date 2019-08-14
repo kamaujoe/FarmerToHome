@@ -30,7 +30,15 @@ export class SellerService {
          {"Content-Type":"application/x-www-form-urlencoded"}
        )
      }
-     var reqBody = "farmerId="+farmer.farmerId+"&farmerName="+farmer.farmerName+"&farmLocation="+farmer.farmLocation+"&products="+farmer.products+"&farmerProds="+farmer.farmerProds
+     var reqBody = "farmerId="+farmer.farmerId
+                  +"&firstName="+farmer.firstName
+                  +"&lastName="+farmer.lastName
+                  +"&email="+farmer.email
+                  +"&phone="+farmer.phone
+                  +"&address="+farmer.address
+                  +"&farmerUsername="+farmer.farmerUsername
+                  +"&farmerPassword="+farmer.farmerPassword
+                  +"&farmerProds="+farmer.farmerProds
      return this.httpsvc.post<SellerProfileComponent>(
                                     this.rootURL+"/register", 
                                     reqBody,httpOptions
