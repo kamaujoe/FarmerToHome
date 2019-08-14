@@ -1,6 +1,7 @@
 package com.example.farmerHome.apis;
 
 
+import java.util.List;
 import java.util.Set;
 
 import javax.ws.rs.BeanParam;
@@ -12,16 +13,21 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.farmerHome.entities.Farmer;
 import com.example.farmerHome.entities.Product;
 import com.example.farmerHome.repositories.FarmerRepository;
+
 
 
 
@@ -30,6 +36,8 @@ import com.example.farmerHome.repositories.FarmerRepository;
 @Path("/farmer/")
 public class FarmerService {
 	
+	
+
 	
 	@Autowired
 	private FarmerRepository farmerRepository;
@@ -96,6 +104,21 @@ public class FarmerService {
 			return null;
 		}
 	}
+	
+	//-> Fetch Seller by Email and Password
+	
+	@GET
+	@Path("/fetchByEmailAndPass")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Farmer> fetchFarmerByEmailAndPass(
+			@QueryParam("email") String email,
+			@QueryParam("farmerPassword") String farmerPassword){
+		
+		return farmerRepository.findByEmailAndPass(email, farmerPassword);
+	}
+	
+	
+	
 	
 	//-> FIND ALL FARMERS IN DATABASE
 	

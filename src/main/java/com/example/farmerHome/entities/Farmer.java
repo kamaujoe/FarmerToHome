@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,6 +29,7 @@ import org.springframework.context.annotation.Scope;
 @Scope("prototype")
 @XmlRootElement
 @EntityListeners({FarmerLifecycleListener.class})
+@NamedQueries({@NamedQuery(name ="Farmer.findByEmailAndPass", query ="SELECT f FROM Farmer f WHERE email = :email AND farmer_password = :farmerPassword")})
 public class Farmer implements Serializable {
 	
 	@FormParam("farmerId")
@@ -42,7 +45,7 @@ public class Farmer implements Serializable {
 	
 	@FormParam("email")
 	@Value("Default@gmail.com")
-	private String email;
+	private static String email;
 	
 	@FormParam("address")
 	@Value("1 Default Lane")
@@ -54,7 +57,7 @@ public class Farmer implements Serializable {
 	
 	@FormParam("farmerPassword")
 	@Value("passwordtest")
-	private String farmerPassword;
+	private static String farmerPassword;
 	
 	@FormParam("farmerUsername")
 	@Value("usernametest")
@@ -111,7 +114,7 @@ public class Farmer implements Serializable {
 	}
 
 	@Column(name="email",nullable=false,length=45)
-	public String getEmail() {
+	public static String getEmail() {
 		return email;
 	}
 
@@ -138,7 +141,7 @@ public class Farmer implements Serializable {
 	}
 
 	@Column(name="farmer_password",nullable=false,length=45)
-	public String getFarmerPassword() {
+	public static String getFarmerPassword() {
 		return farmerPassword;
 	}
 
