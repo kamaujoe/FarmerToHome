@@ -47,7 +47,7 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=5
+    this.farmerId = 5
     this.fetchCurrentSellerFromService
     this.firstName
     this.lastName
@@ -91,6 +91,7 @@ export class SellerProfileComponent implements OnInit {
 
   toggleEdits() {
     this.isEditable = !this.isEditable
+    this.loadFarmerProducts()
     this.updateSellerDetails()
   }
 
@@ -100,9 +101,9 @@ export class SellerProfileComponent implements OnInit {
     // this.assignNewProduct()
   }
 
-  updateSelectedProductId(productId) {
-    this.selectProductId=productId
-    this.loadFarmerProducts()
+  updateSelectedProductId(pid) {
+    this.selectProductId=pid
+    // this.loadFarmerProducts()
   }
   
 
@@ -128,10 +129,11 @@ export class SellerProfileComponent implements OnInit {
 
   deleteProduct(index) {
     this.farmerProds.splice(index, 1)
+    console.log(this.farmerProds)
   }
 
-  addNewProduct(pproductId,pproduct_name,pprice,psize,pexpiry_date,pcurrentCategory) {
-    if(isNaN(pproductId))
+  addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
+    if(isNaN(pid))
     {
       this.isProductFormValid=false
       this.invalidFormMessage="Product ID must be a number"
@@ -142,10 +144,10 @@ export class SellerProfileComponent implements OnInit {
     }
     else {
       this.farmerProds.push({
-        productId:pproductId,
+        productId:pid,
         product_name:pproduct_name,
         price:pprice,
-        size:psize,
+        // size:psize,
         expiry_date:pexpiry_date,
         currentCategory:pcurrentCategory
       })

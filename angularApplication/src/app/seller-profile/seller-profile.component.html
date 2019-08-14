@@ -116,7 +116,7 @@
                             <!-- <th>Number</th> -->
                             <th>Name</th>
                             <!-- <th>Category</th> -->
-                            <th>Size</th>
+                            <!-- <th>Size</th> -->
                             <th>Expiry Date</th>
                             <th>Price</th>
                             <th>Index</th>
@@ -126,7 +126,7 @@
                             <!-- <td>{{a.productId}}</td> -->
                             <td>{{a.product_name}}</td>
                             <!-- <td>{{a.currentCategory}}</td> -->
-                            <td>{{a.size}}</td>
+                            <!-- <td>{{a.size}}</td> -->
                             <td>{{a.expiry_date}}</td>
                             <td>{{a.price}}</td>
                             <!-- <td>{{a.quantity}}</td> -->
@@ -140,16 +140,33 @@
                         (submit) = "assignNewProduct()">
                     <table>
                         <tr>
-                            <td>
+                                <th>Name: </th>
+                                <td *ngIf="!isProductFormVisable">{{product.product_name}}</td>
+                                <td *ngIf="isProductFormVisable">
+                                    <input [(ngModel)]="product_name" name="name">
+                                </td>
+                                <th>Expiry Date: </th>
+                                <td *ngIf="!isProductFormVisable">{{product.expiry_date}}</td>
+                                <td *ngIf="isProductFormVisable">
+                                    <input [(ngModel)]="expiry_date" name="expiry_date">
+                                </td>
+                                <th>Price: </th>
+                                <td *ngIf="!isProductFormVisable">{{product.price}}</td>
+                                <td *ngIf="isProductFormVisable">
+                                    <input [(ngModel)]="price" name="price">
+                                </td>
+                            <!-- <td>
                                 <select name="productId" #selectProductId (change)="updateSelectedProductId(selectProductId.value)">
                                     <option *ngFor="let p of farmerProds"
                                             value="{{p.productId}}">
                                                 {{p.productId}}::{{p.product_name}}
                                     </option>
                                 </select>
-                            </td>
+                            </td> -->
+                            
+                            
                             <td>
-                                <input type="submit" value="Add" class="btn btn-sm btn-secondary btn-block text-uppercase">
+                                <button value="Add" (click)="assignNewProduct()" class="btn btn-sm btn-secondary btn-block text-uppercase">Add</button>
                             </td>
                             <td>
                                 <div [hidden]="isProductFormValid">
