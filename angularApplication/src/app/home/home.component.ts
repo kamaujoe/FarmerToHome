@@ -5,6 +5,7 @@ import { Basket } from '../basket/basket';
 import { Quantity } from '../basket/quantity';
 import { OrderService } from '../order.service';
 import { Order } from '../basket/order';
+import { BasketItemsService } from '../basket-items.service';
 
 
 
@@ -23,12 +24,13 @@ export class HomeComponent implements OnInit {
 
   
     currentBasket : Basket[]
-    addQua : Quantity
+    addQua : Order
     currentQuantity : Quantity[]
     updateQuantity : Quantity
 
+    
     currentOrder : Order
-
+    quantity : number
     orderId : number
 
    
@@ -39,16 +41,13 @@ export class HomeComponent implements OnInit {
 
     
 
-    constructor(private productService: ProductsService, private orderService: OrderService) {
+    constructor(private productService: ProductsService, private orderService: OrderService, 
+      private basketItemService: BasketItemsService) {
       
     
-     
-<<<<<<< HEAD
+      
       
       this.basketId = 14 
-=======
-      this.basketId = 1
->>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
       this.products=[] }
 
   ngOnInit() {
@@ -56,66 +55,30 @@ export class HomeComponent implements OnInit {
     res => {
       this.products = res}
       )
-<<<<<<< HEAD
-      this.getOrders(this.basketId)
-   
-   
-  
-    }
+      this.calcQuantity()
+      
+     }
 
-    getOrders(basketId){
-      this.orderService.getOrderByBasket(basketId).subscribe(
-        res => {this.currentQuantity = res}
+    calcQuantity(){
+      this.orderService.getOrderByBasketProduct(this.basketId).subscribe(
+        res => {
+          this.addQua = res
+        }
       )
+      console.log(this.addQua)
+      
+
     }
+    
 
     addQuantity(productId, quantity){
       console.log(this.basketId, productId) // 14, 37
-      
-      this.orderService.getOrderByBasketProduct(this.basketId, productId).subscribe(
-        res => {
-          
-          this.currentOrder = res})
-          
-          
-          //this.orderId = this.currentOrder.orderId
-          
-          console.log(this.currentOrder.orderId)
-         
-
-      if(this.currentOrder.orderId = 0){
-
       this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
-=======
-    }
-
-    addProducts(productId){
-      this.productService.addProductsToBasket(productId, 
-        this.basketId).subscribe(
->>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
-        response => {
-          this.addQua = response
-        }
-      )}
-      else{
-        this.updateOrders(productId, quantity, this.currentOrder.orderId)
-        
-      }
-    }
-  
-    updateOrders(productId, quantity, orderId){
-      this.orderService.updateOrders(productId, quantity, this.basketId, orderId).subscribe(
-        res => {
-          this.updateQuantity = res
-        }
+        res => {this.currentOrder = res}
       )
+      
+    
     }
-  
-
-
-
-
-
 
     addProducts(productId){
       
@@ -124,4 +87,15 @@ export class HomeComponent implements OnInit {
         response => {this.currentProduct = response}
       )
     }  
+
+    deleteProducts(productId, basketId){
+      this.basketItemService.deleteFromBasket(productId, this.basketId).subscribe(
+        res => {this.currentProduct = res})
+
+      this.orderService.addOrders(productId, 0, this.basketId).subscribe(
+        res => {this.currentOrder = res}
+      )
+      
+
+    }
 }

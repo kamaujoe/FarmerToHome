@@ -40,7 +40,7 @@ export class ProductsService {
       return this.httpsvc.post<Basket>("http://localhost:8080/basket/assign/product", reqBody, httpOptions)
   }
 
-  
+
   }
 
 

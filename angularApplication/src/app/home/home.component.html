@@ -44,23 +44,18 @@
 
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p} |filter:term; let i = index">
-<<<<<<< HEAD
             
             
-            <td>{{p.name}}</td>
+            <td>{{p.product_name}}</td>
             <td>{{p.price}}</td>
-
-            
-            
             <td>{{p.expiry_date}}</td>
-
-            <td>{{p.size}}</td>
-
-            
-                
+            <td *ngFor = "let a of addQua">
+                {{a.quantity}}
+            </td>
+      
             
             <td><select #quantity>
-                <option value="0">0</option>
+                <option value="0">0</option >
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -70,27 +65,15 @@
                 <option value="7">7</option>
                 <option value="8">8</option>
             </select></td>
-            <td><button (click) = "addProducts(p.productId)" (click) = "addQuantity(p.productId, quantity.value)">+</button></td>
-=======
-            <td>{{p.product_name}}</td>
-            <td>£{{p.price}}</td>
-            <td>{{p.expiry_date}} days</td>
-            <td><input type="number" #quantity value = 0 name = "quantity" min = "0" max = "12"></td>
-            <td><button (click) = "addProducts(p.productId)" (click) = "quantityAdd(p.productId, quantity.value)">+</button></td>
->>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
+            <td><button (click) = "addProducts(p.productId)" (click) = "addQuantity(p.productId, quantity.value)">+</button>
+            <button (click) = "deleteProducts(p.productId)">-</button></td>
 
         </tr>
 </table>
 
 
-<<<<<<< HEAD
-  
-    <pagination-controls (pageChange)="p =$event"></pagination-controls>
-   
-=======
     <div class="pagination">
         <pagination-controls (pageChange)="p =$event"></pagination-controls>
     </div>
 </div>
->>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
 </html>

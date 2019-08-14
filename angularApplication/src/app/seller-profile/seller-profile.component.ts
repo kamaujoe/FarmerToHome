@@ -133,34 +133,6 @@ export class SellerProfileComponent implements OnInit {
     console.log(this.farmerProds)
   }
 
-<<<<<<< HEAD
-  // addNewProduct(pproductId,pproductName,pprice,pquantity,psize,pexpiry_date,pcategory) {
-  //   if(isNaN(pproductId))
-  //   {
-  //     this.isProductFormValid=false
-  //     this.invalidFormMessage="Product ID must be a number"
-  //   }
-  //   else if(pproductName.length<4){
-  //     this.isProductFormValid=false
-  //     this.invalidFormMessage="Product name must be greater than 4 characters"
-  //   }
-  //   else {
-  //     this.assignedProducts.push({
-  //       productId:pproductId,
-  //       name:pproductName,
-  //       price:pprice,
-  //       quantity:pquantity,
-  //       size:psize,
-  //       expiry_date:pexpiry_date,
-  //       category:pcategory
-  //     })
-  //     this.isProductFormVisable=false
-  //     this.isProductFormValid=true
-  //     this.invalidFormMessage=""
-  //   }
-
-  // }
-=======
   addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
     if(isNaN(pid))
     {
@@ -186,7 +158,6 @@ export class SellerProfileComponent implements OnInit {
     }
 
   }
->>>>>>> a3ff255f7fc51d9ccd0dfdde10c0ad31d137acaf
 
   updateSellerDetails() {
     this.farmerSvc.updateFarmerOnServer({
