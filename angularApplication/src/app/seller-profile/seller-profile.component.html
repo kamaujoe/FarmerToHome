@@ -140,20 +140,24 @@
                         (submit) = "assignNewProduct()">
                     <table>
                         <tr>
+                                <!-- <th>product Id: </th>
+                                <td *ngIf="!isProductFormVisable">{{product.productId}}</td>
+                                <td *ngIf="isProductFormVisable">
+                                    <input [(ngModel)]="productId" name="productId" #pid> -->
                                 <th>Name: </th>
                                 <td *ngIf="!isProductFormVisable">{{product.product_name}}</td>
                                 <td *ngIf="isProductFormVisable">
-                                    <input [(ngModel)]="product_name" name="name">
+                                    <input [(ngModel)]="product_name" name="pname" #pname>
                                 </td>
                                 <th>Expiry Date: </th>
                                 <td *ngIf="!isProductFormVisable">{{product.expiry_date}}</td>
                                 <td *ngIf="isProductFormVisable">
-                                    <input [(ngModel)]="expiry_date" name="expiry_date">
+                                    <input [(ngModel)]="expiry_date" name="pexpiryDate" #pexpiryDate>
                                 </td>
                                 <th>Price: </th>
                                 <td *ngIf="!isProductFormVisable">{{product.price}}</td>
                                 <td *ngIf="isProductFormVisable">
-                                    <input [(ngModel)]="price" name="price">
+                                    <input [(ngModel)]="price" name="pprice" #pprice>
                                 </td>
                             <!-- <td>
                                 <select name="productId" #selectProductId (change)="updateSelectedProductId(selectProductId.value)">
@@ -166,7 +170,7 @@
                             
                             
                             <td>
-                                <button value="Add" (click)="assignNewProduct()" class="btn btn-sm btn-secondary btn-block text-uppercase">Add</button>
+                                <button value="Add" (click)="registerNewProduct(pid, pname, pexpiryDate, pprice)" class="btn btn-sm btn-secondary btn-block text-uppercase">Add</button>
                             </td>
                             <td>
                                 <div [hidden]="isProductFormValid">
