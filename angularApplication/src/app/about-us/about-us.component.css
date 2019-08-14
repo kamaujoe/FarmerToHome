@@ -14,22 +14,26 @@ html {
 }
 .est {
     font-family: 'Prata', serif;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20pt;
     text-align: left;
     padding-left: 22ch;
 }
 .title-home {
     font-family: 'Prata', serif;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 60pt;
     text-align: center;
 }
 .home-subheading {
     font-family: 'Prata', serif;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20pt;
     text-align: left;
     padding-left: 22ch;   
 }
 
+.images {
+    column-span: all;
+    width: 500px;
+}

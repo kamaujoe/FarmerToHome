@@ -5,14 +5,16 @@ html {
     height: 700px;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center; 
+	background-position: center; 
+	border-radius: 1px;
 }
 
-.title-basket {
-    font-family: 'Prata', serif;
-    color: rgb(255, 255, 233); 
+.title-basket {	
+    font-family: 'Prata', serif;	
+    color: rgba(0, 0, 0, 0.527); 
     font-size: 60pt;
-    text-align: center;
+	text-align: center;
+	border-radius: 1px;
 }
 
 /* bootstrap table */

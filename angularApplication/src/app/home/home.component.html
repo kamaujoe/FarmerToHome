@@ -5,48 +5,47 @@
 
     <br><br><br><br><br><br><br><br><br><br><br>
 
-<div class="home">
-    <div class="est">
-        <p>Est. 2019</p>
-    </div>
+<div class="jumbotron">
+<div id="firstJBox">
+    <div class="home">
+        <div class="est">
+         <p>Est. 2019</p>
+        </div>
 
-    <div class="title-home">
+     <div class="title-home">
         <p><b>FARM TO HOME</b></p>
-    </div>
+        </div>
 
-    <div class="home-subheading">
+     <div class="home-subheading">
         <p>Premium quality goods.</p>
+        </div>
+    </div>
     </div>
 </div>
 
 
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 
 
-
-<div class="home-subheading">
-Filter By Search<input type="text" [(ngModel)]="term">
-</div>
-
-
-
-
+<div class="jumbotron jumbotron-fluid bg-dark">
+ Search for item: <input id="search-bar" type="text" [(ngModel)]="term">
+<br>
 <table class="table table-dark">
-        <tr><th></th></tr>
+<br>
         <tr>    
-            <td>Name</td>
-            <td>Price(£)</td>
-            <td>Expiry Date</td>
-            <td>Quantity</td>
+            <td>NAME</td>
+            <td>PRICE</td>
+            <td>EXPIRY</td>
+            <td>AMOUNT</td>
+            <td>ADD TO BASKET</td>
 
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p} |filter:term; let i = index">
             <td>{{p.name}}</td>
-            <td>{{p.price}}</td>
-            <td>{{p.expiry_date}}</td>
+            <td>£{{p.price}}</td>
+            <td>{{p.expiry_date}} days</td>
             <td><input type="number" #quantity value = 0 name = "quantity" min = "0" max = "12"></td>
             <td><button (click) = "addProducts(p.productId)" (click) = "quantityAdd(p.productId, quantity.value)">+</button></td>
 
@@ -60,6 +59,8 @@ Filter By Search<input type="text" [(ngModel)]="term">
         </tr>
     </table> 
 
-    <pagination-controls (pageChange)="p =$event"></pagination-controls>
-   
+    <div class="pagination">
+        <pagination-controls (pageChange)="p =$event"></pagination-controls>
+    </div>
+</div>
 </html>

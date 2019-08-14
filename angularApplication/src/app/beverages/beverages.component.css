@@ -9,9 +9,11 @@ html {
 
 .title-bev {
     font-family: 'Prata', serif;
-    color: rgb(153, 152, 152);
+    color: rgb(114, 114, 114);
     font-size: 60pt;
     text-align: center;
+}
 
-
+.table {
+    font-size: 15px;
 }

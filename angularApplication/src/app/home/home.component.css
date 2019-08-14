@@ -6,7 +6,9 @@ html {
     background-attachment: fixed;
     background-position: 50% 50%; 
 }
-
+.jumbotron {
+    background-color: transparent;
+}
 .home {
     position: -webkit-sticky; 
     position: sticky;
@@ -33,3 +35,31 @@ html {
     padding-left: 22ch;   
 }
 
+.jumbotron {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(170, 170, 170);
+    font-size: 20px;
+    
+
+    /* border-radius: 1rem; */
+ 
+    padding:1rem;
+    border:1px;
+}
+
+.pagination a {
+    border-radius: 5px;
+  }
+  
+.table {
+    font-size: 15px;
+}
+
+#search-bar {
+    width: 50%;
+    border-radius: 1rem;  
+}
+
+#search-bar a:hover {
+    background-color: #eee;
+}
