@@ -27,6 +27,7 @@
     <input id="search-bar" 
             type="text" 
             [(ngModel)]="term">
+            <br>
 
 <br>
 
@@ -38,6 +39,7 @@
             <td>EXPIRY</td>
             <td>AMOUNT</td>
             <td>ADD TO BASKET</td>
+            <td>DELETE</td>
 
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p} |filter:term; let i = index">
@@ -55,8 +57,9 @@
             </td>
             
            
-            <td><button (click) = "addQuantity(p.productId, quantity.value)" >+</button>
-            <button (click) = "deleteProducts(p.productId)">-</button></td>
+            <td><button class="btn btn-success" (click) = "addQuantity(p.productId, quantity.value)">+</button></td>
+
+            <td><button class="btn btn-danger" (click) = "deleteProducts(p.productId)">x</button></td>
 
         </tr>
     </table>

@@ -8,6 +8,7 @@ import { Consumer } from '../consumer';
   styleUrls: ['./consumer-registration.component.css']
 })
 export class ConsumerRegistrationComponent implements OnInit {
+  //declaring properties
   consno: number
   firstName: String
   lastName: String
@@ -19,6 +20,7 @@ export class ConsumerRegistrationComponent implements OnInit {
   consumer: Consumer[]
 
   constructor(private consumerSvc:ConsumerService) {
+    //initialising properties inside constructor
   this.consno=1
   this.firstName
   this.lastName
@@ -37,6 +39,7 @@ export class ConsumerRegistrationComponent implements OnInit {
     this.loadAllConsumers()
   }
 
+  ////////////////// fetching the current consumer by their ID  //////////////////
   fetchCurrentConsumerFromService() {
     this.consumerSvc.findUserByUserId(this.consno).subscribe(
       response => {
@@ -52,6 +55,7 @@ export class ConsumerRegistrationComponent implements OnInit {
     )
   }
 
+  //////////////////////  method for registering a new customer  /////////////////////////////
   registerConsumerDetails() {
     this.consumerSvc.registerUserOnServer({
       consno:this.consno, 
@@ -69,7 +73,7 @@ export class ConsumerRegistrationComponent implements OnInit {
       }
     )
   }
-
+  
   loadAllConsumers() {
     this.consumerSvc.loadAllUsersOnServer().subscribe(
       response => {

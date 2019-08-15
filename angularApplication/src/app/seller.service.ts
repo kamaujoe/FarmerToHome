@@ -12,6 +12,7 @@ import { FarmerComponent } from './farmer/farmer.component';
 export class SellerService {
   rootURL: String
 
+  /////////////////  conections to server methods  ////////////////////////
   constructor(private httpsvc:HttpClient) {
     this.rootURL="http://localhost:8080/farmer"
   }

@@ -5,24 +5,11 @@
 
 <h2>Seller Profile</h2>
     <div class="container">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
+        <div class="col-sm-20 col-md-20 col-lg-20 mx-auto">
+                <div class="card" style="width: ;">
                   <div class="card-body">
 
-                        <table align="center">
-                            <!-- <th>Number: </th>
-                                <td>{{farmerId}}</td> -->
-<br>
-                                <td><p></p></td>
-                                <td>
-                                    <button 
-                                        (click)="toggleEdits()" 
-                                        class="btn btn-sm btn-primary btn-block text-uppercase">
-                                            {{isEditable?"Save":"Edit"}}
-                                    </button>
-                                </td>
-<br>
-<br>
+                        <table class="table table lined">
                         <tr>
                             <th>First Name: </th>
                                 <td *ngIf="!isEditable">{{firstName}}</td>
@@ -63,7 +50,7 @@
                             <th>Email: </th>
                                 <td *ngIf="!isEditable">{{email}}</td>
                                 <td *ngIf="isEditable">
-                                    <input [(ngModel)]="email">
+                                    <input [(ngModel)]="email"> 
                                 </td>
                         </tr>
 <br>
@@ -92,10 +79,13 @@
                         </tr> 
 <br>
                         <tr>
-                            <th>Password: </th>
-                                <td *ngIf="!isEditable">{{farmerPassword}}</td>
-                                <td *ngIf="isEditable">
-                                    <input [(ngModel)]="farmerPassword" type="password">
+                                
+                            <td>
+                                    Need to edit your details?   <button 
+                                        (click)="toggleEdits()" 
+                                        class="btn btn-sm btn-primary btn-block text-uppercase" id="editbutton">
+                                            {{isEditable?"Save":"Edit"}}
+                                    </button>
                                 </td>
                         </tr>
 <br>

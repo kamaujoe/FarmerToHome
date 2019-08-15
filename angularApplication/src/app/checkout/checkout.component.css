@@ -44,13 +44,12 @@ html {
     font-family: 'Roboto', sans-serif;
     color: rgb(170, 170, 170);
     font-size: 20px;
-
     
 
-    border-radius: 0rem;
+    /* border-radius: 1rem; */
  
     padding:1rem;
-    border:0px;
+    border:1px;
 }
 
 .pagination a {
@@ -69,4 +68,3 @@ html {
 #search-bar a:hover {
     background-color: #eee;
 }
-

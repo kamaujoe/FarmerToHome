@@ -13,7 +13,7 @@
         </tr>
         
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
-            <td>{{p.name}}</td>
+            <td>{{p.product_name}}</td>
             <td>£{{p.price}}</td>
             <td>{{p.expiry_date}}days</td>
 
@@ -41,7 +41,11 @@
         </tr>
     </table> 
     
-<pagination-controls (pageChange)="p =$event"></pagination-controls>
+    <div class="jumbotron bg-dark" id="pag">
+            <div class="pagination">
+        <pagination-controls (pageChange)="p =$event"></pagination-controls>
+            </div>
+        </div>
     
 <script>
 </script>
