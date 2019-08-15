@@ -11,3 +11,7 @@ html {
        on the container's size */
     background-size: cover;
 }
+
+#editbutton {
+  width: 100%;  
+}

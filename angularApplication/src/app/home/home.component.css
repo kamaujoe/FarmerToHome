@@ -47,7 +47,7 @@ html {
 
     
 
-    border-radius: 1rem;
+    border-radius: 0rem;
  
     padding:1rem;
     border:0px;
@@ -69,3 +69,4 @@ html {
 #search-bar a:hover {
     background-color: #eee;
 }
+

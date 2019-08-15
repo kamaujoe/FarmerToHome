@@ -12,6 +12,7 @@
             <td>PRICE</td>
             <td>AMOUNT</td>
             <td>ADD TO BASKET</td>
+            <td>DELETE</td>
 
         </tr>
 
@@ -28,21 +29,18 @@
                         max = "12">
             </td>
 
-            <td>
-                <button (click) = "addProducts(p.productId)" 
-                        (click) = "quantityAdd(p.productId, quantity.value)">
-                        +
-                </button>
-            </td>
+            <td><button class="btn btn-success" (click) = "addQuantity(p.productId, quantity.value)">+</button></td>
 
-            <td>
-                <button (click) = "addProducts(p.productId)"></button>
-            </td>
+            <td><button class="btn btn-danger" (click) = "deleteProducts(p.productId)">x</button></td>
 
         </tr>
 
-    </table> 
+    </table>   
+
+<div class="jumbotron bg-dark" id="pag">
+        <div class="pagination">
+    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+        </div>
+    </div>
     
-<pagination-controls (pageChange)="p =$event"></pagination-controls>
-   
 </html>
