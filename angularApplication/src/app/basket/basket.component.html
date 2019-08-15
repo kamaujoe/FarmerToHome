@@ -17,66 +17,50 @@
 				<th style="width:22%" class="text-center">Subtotal</th>
 				<th style="width:10%"></th>
 			</tr>
+		
 <p></p>
 <p></p>						
-		</thead>
-			<tbody>
-                <tr *ngFor = "let a of currentBasket.items; let i = index">
-					<td data-th="Product">
-						<div class="row">
-                            <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." 	class="img-responsive"/>
-                            </div>
-								<div class="col-sm-10"></div>
-							</div>
-                    </td>
-                    <td>{{a.name}} - {{a.currentCategory.category}}</td>
-					<td data-th="Price">£{{a.price}}</td>
-					<td data-th="Quantity">
-						<input type="number" 
-								class="form-control text-center" 
-								value={{a.quantity}}>
-					</td>
-					<td data-th="Subtotal" 
-						class="text-center">£{{(a.price)*(a.quantity)}}
-					</td>
-					<td class="actions" 
-						data-th="button">
-							<button class="btn btn-info btn-sm">
-								<i class="fa fa-refresh"></i>
-							</button>
-							<button class="btn btn-danger btn-sm" 
-									(click) = "deleteProduct(a.productId)">
-										<i class="fa fa-trash-o"></i>
-							</button>								
-					</td>
-				</tr>
-			</tbody>
-		<tfoot>
+		
+		
 					
-				<tr>
-					<td>
-						<a href="http://localhost:9991/seller-login-registration" 
-							class="btn btn-warning ">
-							<i class="fa fa-angle-left"></i>
-								 Continue Shopping
-						</a>
-					</td>
-					<td colspan="2" 
-						class="hidden-xs">
-					</td>
-					<td class="hidden-xs text-center">
-						<strong>Total: £{{total}}</strong>
-					</td>
-					<td>
-						<a href="#" 
-							class="btn btn-success btn-block">
-									Checkout 
-							<i class="fa fa-angle-right"></i>
-						</a>
-					</td>
-				</tr>
-			</tfoot>
-	</table>
+							
+						
+					</thead>
+					<tbody>
+                        <tr *ngFor = "let a of currentBasket; let i = index">
+							<td data-th="Product">
+								<div class="row">
+                                    <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/>
+                                    </div>
+									<div class="col-sm-10">										
+									</div>
+								</div>
+                            </td>
+                            <td>{{a.product.product_name}} - {{a.product.currentCategory.category}}</td>
+							<td data-th="Price">£{{a.product.price}}</td>
+							<td data-th="Quantity">
+								<input type="number" class="form-control text-center" value={{a.quantity}} #Quantity>
+							</td>
+							<td data-th="Subtotal" class="text-center">£{{(a.product.price)*(a.quantity)}}</td>
+							<td class="actions" data-th="button">
+								<button class="btn btn-info btn-sm" (click) = "updateQuantity(Quantity.value, a.product.productId)"><i class="fa fa-refresh"></i></button>
+								<button class="btn btn-danger btn-sm" (click) = "deleteProduct(a.product.productId)"><i class="fa fa-trash-o"></i></button>								
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+					
+						<tr>
+							<td><a href="http://localhost:9991/" class="btn btn-warning "><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+						
+							<td class="hidden-xs text-center"><strong>Total: £{{total}}</strong></td>
+						
+							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a class="btn btn-success btn-block" (click) = "emptyBasket()">Empty Basket</a></td>
+						</tr>
+					</tfoot>
+				</table>
 </div>
 </html>
 

@@ -26,7 +26,8 @@ import { ConsumerRegistrationComponent } from './consumer-registration/consumer-
 import { SellerRegistrationComponent } from './seller-registration/seller-registration.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { AboutUsComponent } from './about-us/about-us.component'
+import { AboutUsComponent } from './about-us/about-us.component';
+import { OrderPipePipe } from './order-pipe.pipe'
 
 
 
@@ -51,7 +52,8 @@ import { AboutUsComponent } from './about-us/about-us.component'
     DiscountsComponent,
     ConsumerRegistrationComponent,
     SellerRegistrationComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    OrderPipePipe
   ],
   imports: [
     BrowserModule,

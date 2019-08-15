@@ -41,35 +41,24 @@
 
         </tr>
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p} |filter:term; let i = index">
+            
+            
             <td>{{p.product_name}}</td>
-            <td>£{{p.price}}</td>
-            <td>{{p.expiry_date}} days</td>
-
-            <td>
-                <input type="number" 
-                        #quantity 
-                        value = 0 
-                        name = "quantity" 
-                        min = "0" 
-                        max = "12">
-            </td>
-
-            <td>
-                <button (click) = "addProducts(p.productId)" 
-                        (click) = "quantityAdd(p.productId, quantity.value)">
-                        +
-                </button>
-            </td>
+            <td>{{p.price}}</td>
+            <td>{{p.expiry_date}}</td>
+            <!-- <td *ngFor = "let a of currentOrder">
+                <p *ngIf = "p.productId == a.product.productId" >{{a.quantity}}</p>
+            </td> -->
+            <!-- <td>{{quantity.value}}</td> -->
+            <td><input type="number" min="1" max="24" value= "1" #quantity></td>
+            
+           
+            <td><button (click) = "addQuantity(p.productId, quantity.value)">+</button>
+            <button (click) = "deleteProducts(p.productId)">-</button></td>
 
         </tr>
     </table>
 
-    <table>
-        <tr *ngFor = "let u of currentQuantity">
-            <td>productId{{u.productId}}</td>
-            <td>quantity{{u.quantity}}</td>
-        </tr>
-    </table> 
 
     <div class="pagination">
         <pagination-controls (pageChange)="p =$event"></pagination-controls>
