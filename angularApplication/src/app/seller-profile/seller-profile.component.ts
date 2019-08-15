@@ -9,6 +9,8 @@ import { Product } from '../basket/product';
   styleUrls: ['./seller-profile.component.css']
 })
 export class SellerProfileComponent implements OnInit {
+
+  ///////////////////  Declaring properties for farmers/ products  //////////////////////////
   farmerId: number
   firstName: String
   lastName: String
@@ -17,6 +19,7 @@ export class SellerProfileComponent implements OnInit {
   phone: number
   farmerUsername: String
   farmerPassword: String
+
   farmers: Farmer[]
   allFarmers: Farmer[]
 
@@ -39,6 +42,7 @@ export class SellerProfileComponent implements OnInit {
   assignedProducts: Product[]
   
   constructor(private farmerSvc:SellerService) { 
+    //////////////////  initialising the properties for the farmer as well as products /////////////////////////
     this.isEditable=false
     this.isSellerFormVisable=false
     this.isSellerFormValid=true
@@ -84,12 +88,14 @@ export class SellerProfileComponent implements OnInit {
     )
   }
 
+  ///////////////  method created to determin whether a form is editable or not //////////////////////
   toggleEdits() {
     this.isEditable = !this.isEditable
     this.loadFarmerProducts()
     this.updateSellerDetails()
   }
 
+  //////////////  method to allow editable form to be visible/ invisible to user  /////////////////////
   showProductForm() {
     this.isProductFormVisable = true
     this.loadFarmerProducts()
@@ -133,6 +139,23 @@ export class SellerProfileComponent implements OnInit {
     console.log(this.farmerProds)
   }
 
+  updateSellerDetails() {
+    this.farmerSvc.updateFarmerOnServer({
+      farmerId:this.farmerId, 
+      firstName:this.firstName,
+      lastName:this.lastName,
+      address:this.address, 
+      phone:this.phone,
+      email:this.email,
+      farmerUsername:this.farmerUsername,
+      farmerPassword:this.farmerPassword
+    }).subscribe(
+      response => {
+        this.fetchCurrentSellerFromService()
+      }
+    )
+  }
+
   // addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
   //   if(isNaN(pid))
   //   {
@@ -158,22 +181,5 @@ export class SellerProfileComponent implements OnInit {
   //   }
 
   // }
-
-  updateSellerDetails() {
-    this.farmerSvc.updateFarmerOnServer({
-      farmerId:this.farmerId, 
-      firstName:this.firstName,
-      lastName:this.lastName,
-      address:this.address, 
-      phone:this.phone,
-      email:this.email,
-      farmerUsername:this.farmerUsername,
-      farmerPassword:this.farmerPassword
-    }).subscribe(
-      response => {
-        this.fetchCurrentSellerFromService()
-      }
-    )
-  }
 
 }

@@ -19,6 +19,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -58,6 +59,46 @@ public class Basket implements Serializable {
 		this.items = items;
 	}
 	
+
+	//many to many extra column
+
+
+	@Id //declare the property as Primary Key
+	@Column(name = "Basket_Id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int getBasketId() {
+		return basketId;
+	}
+	
+	public void setBasketId(int basketId) {
+		this.basketId = basketId;
+	}
+	
+
+	private Set<Order> order = new HashSet<Order>();
+	
+	public void addProduct(Order product) {
+		this.order.add(product);
+	}
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "basket")
+	@XmlTransient
+	public Set<Order> getOrder(){
+		return order;
+	}
+	
+	public void setOrder(Set<Order> product) {
+		this.order = product;
+	}
+	public void addOrder(Order order) {
+		this.order.add(order);
+	}
+	
+
+
+
+
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
@@ -82,17 +123,7 @@ public class Basket implements Serializable {
 	}
 	
 	
-	//-> Getters and Setters
-	@Id
-	@Column(name = "Basket_Id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	public int getBasketId() {
-		return basketId;
-	}
-	
-	public void setBasketId(int basketId) {
-		this.basketId = basketId;
-	}
+
 	
 	
 	//-> ToString
