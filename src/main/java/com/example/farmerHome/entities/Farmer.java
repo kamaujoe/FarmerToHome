@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -30,6 +32,7 @@ import org.springframework.context.annotation.Scope;
 @Table(name="JPA_FARMER")
 @XmlRootElement
 @EntityListeners({FarmerLifecycleListener.class})
+@NamedQueries({@NamedQuery(name ="Farmer.findByEmailAndPass", query ="SELECT f FROM Farmer f WHERE email = :email AND farmer_password = :farmerPassword")})
 public class Farmer implements Serializable {
 	
 	@FormParam("farmerId")
