@@ -1,6 +1,5 @@
 <html>
-        
-            <div> <a href=""><img src="assets\images\SALE.png" ></a></div>
+<div> <a href=""><img src="assets\images\SALE.png" class="responsive"></a></div>
 
     <table class="table table-dark">
         <tr>    
@@ -12,22 +11,38 @@
             <td>CATEGORY</td>
 
         </tr>
+        
         <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p}; let i = index">
             <td>{{p.name}}</td>
             <td>£{{p.price}}</td>
             <td>{{p.expiry_date}}days</td>
-              <!-- <td>{{p.quantity}}</td> -->
-        <td><input type="number" #quantity value = 0 name = "quantity" min = "0" max = "12"></td>
-        <td><button (click) = "addProducts(p.productId)" (click) = "quantityAdd(p.productId, quantity.value)">+</button></td>
+
+            <td>
+                <input type="number" 
+                        #quantity 
+                        value = 0 
+                        name = "quantity" 
+                        min = "0" 
+                        max = "12">
+            </td>
+
+            <td>
+                <button (click) = "addProducts(p.productId)" 
+                        (click) = "quantityAdd(p.productId, quantity.value)">
+                        +
+                </button>
+            </td>
+
             <td>{{p.currentCategory.category}}</td>
  
-            <td><button (click) = "addProducts(p.productId)"></button></td>
+            <td>
+                <button (click) = "addProducts(p.productId)"></button>
+            </td>
         </tr>
     </table> 
     
-    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+<pagination-controls (pageChange)="p =$event"></pagination-controls>
     
-    <script>
-
-    </script>
+<script>
+</script>
 </html>

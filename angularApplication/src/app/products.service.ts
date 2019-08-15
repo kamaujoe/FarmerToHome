@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient,  HttpHeaders } from '../../node_modules/@angular/common/http'
 import { Observable } from 'rxjs';
 import { Products } from './products'
-import { Product } from './basket/product';
 import { Basket } from './basket/basket';
 import { Order } from './basket/order';
 
@@ -10,8 +9,8 @@ import { Order } from './basket/order';
   providedIn: 'root'
 })
 export class ProductsService {
-
   url: string
+
   constructor(private httpsvc:HttpClient) { 
     this.url="http://localhost:8080/product"
   }

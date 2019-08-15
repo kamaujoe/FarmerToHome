@@ -9,7 +9,6 @@ import { Product } from '../basket/product';
   styleUrls: ['./seller-profile.component.css']
 })
 export class SellerProfileComponent implements OnInit {
-
   farmerId: number
   firstName: String
   lastName: String
@@ -18,11 +17,8 @@ export class SellerProfileComponent implements OnInit {
   phone: number
   farmerUsername: String
   farmerPassword: String
-  
   farmers: Farmer[]
-
   allFarmers: Farmer[]
-  assignedProducts: Product[]
 
   pid: number
   pname: string
@@ -40,10 +36,9 @@ export class SellerProfileComponent implements OnInit {
 
   farmerProds: Product[]
   selectProductId: number
-
+  assignedProducts: Product[]
   
   constructor(private farmerSvc:SellerService) { 
-
     this.isEditable=false
     this.isSellerFormVisable=false
     this.isSellerFormValid=true
@@ -66,16 +61,7 @@ export class SellerProfileComponent implements OnInit {
     this.pexpiryDate
     this.pprice
     
-    
-    this.farmerProds =
-    [
-      // {productId:0,
-      //   product_name:"",
-      //   expiry_date:0,
-      //   size:"",
-      //   price:0,
-      //   currentCategory:[]}
-    ]
+    this.farmerProds = []
   }
 
   ngOnInit() {
@@ -93,7 +79,6 @@ export class SellerProfileComponent implements OnInit {
         this.email = response.email
         this.farmerUsername = response.farmerUsername
         this.farmerPassword = response.farmerPassword
-        
         this.farmerProds = response.farmerProds
       }
     )
@@ -108,12 +93,10 @@ export class SellerProfileComponent implements OnInit {
   showProductForm() {
     this.isProductFormVisable = true
     this.loadFarmerProducts()
-    // this.assignNewProduct()
   }
 
   updateSelectedProductId(pid) {
     this.selectProductId=pid
-    // this.loadFarmerProducts()
   }
   
   registerNewProduct(pid, pname, pexpiryDate, pprice) {
@@ -122,7 +105,6 @@ export class SellerProfileComponent implements OnInit {
           this.assignNewProduct()  
        }
     )
-    
      this.isProductFormVisable=false
   }
 
@@ -138,12 +120,12 @@ export class SellerProfileComponent implements OnInit {
   }
 
   loadFarmerProducts() {
-    this.farmerSvc.loadAllProductsFromServer()
-        .subscribe(
-          response =>{
-            this.farmerProds = response
-            console.log(response)
-          })
+    this.farmerSvc.loadAllProductsFromServer().subscribe(
+      response => {
+        this.farmerProds = response
+        console.log(response)
+      }
+    )
   }
 
   deleteProduct(index) {

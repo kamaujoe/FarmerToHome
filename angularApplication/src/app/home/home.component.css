@@ -22,20 +22,20 @@ html {
 .est {
     font-family: 'Prata', serif;
     color: white;
-    font-size: 20pt;
+    font-size:2vw;
     text-align: left;
     padding-left: 22ch;
 }
 .title-home {
     font-family: 'Prata', serif;
     color: white;
-    font-size: 60pt;
+    font-size:6vw;
     text-align: center;
 }
 .home-subheading {
     font-family: 'Prata', serif;
     color: white;
-    font-size: 20pt;
+    font-size: 2vw;
     text-align: left;
     padding-left: 22ch;   
 }

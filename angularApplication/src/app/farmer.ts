@@ -1,5 +1,4 @@
 export interface Farmer {
-
     farmerId: number
     firstName: String
     lastName: String
@@ -8,5 +7,4 @@ export interface Farmer {
     address: String
     farmerUsername: String
     farmerPassword: String
-
 }
