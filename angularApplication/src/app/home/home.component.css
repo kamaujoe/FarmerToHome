@@ -44,12 +44,13 @@ html {
     font-family: 'Roboto', sans-serif;
     color: rgb(170, 170, 170);
     font-size: 20px;
+
     
 
-    /* border-radius: 1rem; */
+    border-radius: 1rem;
  
     padding:1rem;
-    border:1px;
+    border:0px;
 }
 
 .pagination a {
