@@ -8,7 +8,6 @@ import { Consumer } from '../consumer';
   styleUrls: ['./consumer-registration.component.css']
 })
 export class ConsumerRegistrationComponent implements OnInit {
-
   consno: number
   firstName: String
   lastName: String
@@ -17,11 +16,9 @@ export class ConsumerRegistrationComponent implements OnInit {
   phone: number
   consumerUsername: String
   consumerPassword: String
-
   consumer: Consumer[]
 
   constructor(private consumerSvc:ConsumerService) {
-  
   this.consno=1
   this.firstName
   this.lastName
@@ -30,9 +27,7 @@ export class ConsumerRegistrationComponent implements OnInit {
   this.phone
   this.consumerUsername
   this.consumerPassword
-
-  
-   }
+  }
 
   ngOnInit() {
     this.fetchCurrentConsumerFromService()
@@ -76,11 +71,10 @@ export class ConsumerRegistrationComponent implements OnInit {
   }
 
   loadAllConsumers() {
-    this.consumerSvc.loadAllUsersOnServer()
-        .subscribe(
-          response => {
-            this.consumer = response
-          }
-        )
+    this.consumerSvc.loadAllUsersOnServer().subscribe(
+      response => {
+        this.consumer = response
+      }
+    )
   }
 }

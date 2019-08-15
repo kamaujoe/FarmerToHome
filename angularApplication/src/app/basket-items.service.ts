@@ -9,25 +9,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BasketItemsService {
   rootURL : string
 
-
   constructor(private httpsvc:HttpClient) {
     this.rootURL = "http://localhost:8080/basket/"
-   }
+  }
 
-getBasketItems(basketId):Observable<Basket>{
-  return this.httpsvc.get<Basket>("http://localhost:8080/basket/find/" + basketId)
-}
+  getBasketItems(basketId):Observable<Basket>{
+    return this.httpsvc.get<Basket>("http://localhost:8080/basket/find/" + basketId)
+  }
 
-deleteFromBasket(productId, basketId):Observable<Basket>{ const httpOptions = {
-  headers: new HttpHeaders(
-    {"Content-Type" : "application/x-www-form-urlencoded"}
-  )
-}
-  var reqBody = "productId=" + productId + "&basketId=" + basketId
-    return this.httpsvc.post<Basket>(this.rootURL + "deleteFromBasket", reqBody, httpOptions)
-
-
-}
-
+  deleteFromBasket(productId, basketId):Observable<Basket>{ 
+    const httpOptions = {
+      headers: new HttpHeaders(
+        {"Content-Type" : "application/x-www-form-urlencoded"}
+      )
+    }
+    var reqBody = "productId=" + productId + "&basketId=" + basketId
+      return this.httpsvc.post<Basket>(this.rootURL + "deleteFromBasket", reqBody, httpOptions)
+  }
 
 }
