@@ -25,3 +25,8 @@ html {
     font-family: 'Boogaloo', cursive;
     font-size: 30px;
 }
+
+.responsive {
+    width: 100%;
+    height: auto;
+  }
