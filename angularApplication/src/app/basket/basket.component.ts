@@ -10,18 +10,13 @@ import { Order } from './order';
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
-<<<<<<< HEAD
 
   currentOrder : Order
   currentBasket : Order[]
-=======
-  currentBasket : Basket
->>>>>>> c350aa2377a52f50881ae74482f4a8a9ed8f203d
   total : number
   quantity: number
   basketId : number
 
-<<<<<<< HEAD
   
 
   constructor(private prodsvc: BasketItemsService, private orderService: OrderService) {
@@ -30,10 +25,6 @@ export class BasketComponent implements OnInit {
     
     
     
-=======
-  constructor(private prodsvc: BasketItemsService) {
-    this.basketId = 14 // use consumer login Id to pull basket Id
->>>>>>> c350aa2377a52f50881ae74482f4a8a9ed8f203d
   }
   
   ngOnInit() {
