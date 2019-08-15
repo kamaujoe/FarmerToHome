@@ -12,16 +12,17 @@
                         <table align="center">
                             <!-- <th>Number: </th>
                                 <td>{{farmerId}}</td> -->
-    <br>
+<br>
                                 <td><p></p></td>
                                 <td>
                                     <button 
-                                        (click)="toggleEdits()" class="btn btn-sm btn-primary btn-block text-uppercase">
+                                        (click)="toggleEdits()" 
+                                        class="btn btn-sm btn-primary btn-block text-uppercase">
                                             {{isEditable?"Save":"Edit"}}
                                     </button>
                                 </td>
-    <br>
-    <br>
+<br>
+<br>
                         <tr>
                             <th>First Name: </th>
                                 <td *ngIf="!isEditable">{{firstName}}</td>
@@ -39,7 +40,7 @@
                                 </div>
                                 </td>
                         </tr>
-    <br>
+<br>
                         <tr>
                             <th>Last Name: </th>
                                 <td *ngIf="!isEditable">{{lastName}}</td>
@@ -57,7 +58,7 @@
                                 </div>
                                 </td>
                         </tr>
-    <br>
+<br>
                         <tr>
                             <th>Email: </th>
                                 <td *ngIf="!isEditable">{{email}}</td>
@@ -65,7 +66,7 @@
                                     <input [(ngModel)]="email">
                                 </td>
                         </tr>
-    <br>
+<br>
                         <tr>
                             <th>Address: </th>
                                 <td *ngIf="!isEditable">{{address}}</td>
@@ -73,7 +74,7 @@
                                     <input [(ngModel)]="address">
                                 </td>
                         </tr>
-    <br>
+<br>
                         <tr>
                             <th>Phone: </th>
                                 <td *ngIf="!isEditable">{{phone}}</td>
@@ -81,7 +82,7 @@
                                     <input [(ngModel)]="phone">
                                 </td>
                         </tr>
-    <br>
+<br>
                         <tr>
                             <th>Username: </th>
                                 <td *ngIf="!isEditable">{{farmerUsername}}</td>
@@ -89,7 +90,7 @@
                                     <input [(ngModel)]="farmerUsername">
                                 </td>
                         </tr> 
-    <br>
+<br>
                         <tr>
                             <th>Password: </th>
                                 <td *ngIf="!isEditable">{{farmerPassword}}</td>
@@ -97,7 +98,7 @@
                                     <input [(ngModel)]="farmerPassword" type="password">
                                 </td>
                         </tr>
-    <br>
+<br>
                     </table>
                 </div>
             </div>
@@ -106,103 +107,101 @@
 
 
 <h2>Products</h2>
+
 <div class="container">
-        <!-- <div class="col-sm-9 col-md-7 col-lg-5 mx-auto"> -->
-            <div class="card card-signin my-5">
-                  <div class="card-body">
+    <div class="card card-signin my-5">
+        <div class="card-body">
                         
-                    <table width=90% align="center">
-                        <tr>
-                            <!-- <th>Number</th> -->
-                            <th>Name</th>
-                            <!-- <th>Category</th> -->
-                            <!-- <th>Size</th> -->
-                            <th>Expiry Date</th>
-                            <th>Price</th>
-                            <th>Index</th>
-                            <th><button (click)="showProductForm()" class="btn btn-lg btn-primary btn-block text-uppercase">+</button></th>
-                        </tr>
-                        <tr *ngFor="let a of farmerProds; let i = index">
-                            <!-- <td>{{a.productId}}</td> -->
-                            <td>{{a.product_name}}</td>
-                            <!-- <td>{{a.currentCategory}}</td> -->
-                            <!-- <td>{{a.size}}</td> -->
-                            <td>{{a.expiry_date}}</td>
-                            <td>{{a.price}}</td>
-                            <!-- <td>{{a.quantity}}</td> -->
-                            <td>{{i+1}}</td>
-                            <td><button (click)="deleteProduct(i)" class="btn btn-lg btn-danger btn-block text-lowercase">X</button></td>
-                        </tr>
-                    </table>
+            <table width=90% align="center">
+                <tr>
+                    <!-- <th>Number</th> -->
+                    <th>Name</th>
+                    <!-- <th>Category</th> -->
+                    <!-- <th>Size</th> -->
+                    <th>Expiry Date</th>
+                    <th>Price</th>
+                    <th>Index</th>
+                    <th>
+                        <button (click)="showProductForm()" 
+                                class="btn btn-lg btn-primary btn-block text-uppercase">
+                                +
+                        </button>
+                    </th>
+                </tr>
+                <tr *ngFor="let a of farmerProds; let i = index">
+                    <!-- <td>{{a.productId}}</td> -->
+                    <td>{{a.product_name}}</td>
+                    <!-- <td>{{a.currentCategory}}</td> -->
+                    <!-- <td>{{a.size}}</td> -->
+                    <td>{{a.expiry_date}}</td>
+                    <td>{{a.price}}</td>
+                    <!-- <td>{{a.quantity}}</td> -->
+                    <td>{{i+1}}</td>
+                    <td>
+                        <button (click)="deleteProduct(i)" 
+                                class="btn btn-lg btn-danger btn-block text-lowercase">
+                                X
+                        </button>
+                    </td>
+                </tr>
+
+            </table>
 <br>
 
-                <form *ngIf="isProductFormVisable"
-                        (submit) = "assignNewProduct()">
-                    <table>
-                        <tr>
-                                <!-- <th>product Id: </th>
-                                <td *ngIf="!isProductFormVisable">{{product.productId}}</td>
-                                <td *ngIf="isProductFormVisable">
-                                    <input [(ngModel)]="productId" name="productId" #pid> -->
-                                <th>Name: </th>
-                                <td *ngIf="!isProductFormVisable">{{product.product_name}}</td>
-                                <td *ngIf="isProductFormVisable">
-                                    <input [(ngModel)]="product_name" name="pname" #pname>
-                                </td>
-                                <th>Expiry Date: </th>
-                                <td *ngIf="!isProductFormVisable">{{product.expiry_date}}</td>
-                                <td *ngIf="isProductFormVisable">
-                                    <input [(ngModel)]="expiry_date" name="pexpiryDate" #pexpiryDate>
-                                </td>
-                                <th>Price: </th>
-                                <td *ngIf="!isProductFormVisable">{{product.price}}</td>
-                                <td *ngIf="isProductFormVisable">
-                                    <input [(ngModel)]="price" name="pprice" #pprice>
-                                </td>
-                            <!-- <td>
-                                <select name="productId" #selectProductId (change)="updateSelectedProductId(selectProductId.value)">
-                                    <option *ngFor="let p of farmerProds"
-                                            value="{{p.productId}}">
-                                                {{p.productId}}::{{p.product_name}}
-                                    </option>
-                                </select>
-                            </td> -->
-                            
-                            
-                            <td>
-                                <button value="Add" (click)="registerNewProduct(pid, pname, pexpiryDate, pprice)" class="btn btn-sm btn-secondary btn-block text-uppercase">Add</button>
+            <form *ngIf="isProductFormVisable"
+                    (submit) = "assignNewProduct()">
+                <table>
+                    <tr>
+                            <!-- <th>product Id: </th>
+                            <td *ngIf="!isProductFormVisable">{{product.productId}}</td>
+                            <td *ngIf="isProductFormVisable">
+                                <input [(ngModel)]="productId" name="productId" #pid> -->
+                            <th>Name: </th>
+                            <td *ngIf="!isProductFormVisable">{{product.product_name}}</td>
+                            <td *ngIf="isProductFormVisable">
+                                <input [(ngModel)]="product_name" 
+                                        name="pname" 
+                                        #pname>
                             </td>
-                            <td>
-                                <div [hidden]="isProductFormValid">
-                                        {{invalidFormMessage}}
-                                </div>
+                            <th>Expiry Date: </th>
+                            <td *ngIf="!isProductFormVisable">{{product.expiry_date}}</td>
+                            <td *ngIf="isProductFormVisable">
+                                <input [(ngModel)]="expiry_date" 
+                                        name="pexpiryDate" 
+                                        #pexpiryDate>
                             </td>
-                        </tr>
-                    </table>
-                </form>
-                </div>
-            <!-- </div> -->
+                            <th>Price: </th>
+                            <td *ngIf="!isProductFormVisable">{{product.price}}</td>
+                            <td *ngIf="isProductFormVisable">
+                                <input [(ngModel)]="price" 
+                                        name="pprice" 
+                                        #pprice>
+                            </td>
+                        <!-- <td>
+                            <select name="productId" #selectProductId (change)="updateSelectedProductId(selectProductId.value)">
+                                <option *ngFor="let p of farmerProds"
+                                        value="{{p.productId}}">
+                                            {{p.productId}}::{{p.product_name}}
+                                </option>
+                            </select>
+                        </td> -->
+                        
+                        
+                        <td>
+                            <button value="Add" 
+                                    (click)="registerNewProduct(pid, pname, pexpiryDate, pprice)" 
+                                    class="btn btn-sm btn-secondary btn-block text-uppercase">
+                                    Add
+                            </button>
+                        </td>
+                        <td>
+                            <div [hidden]="isProductFormValid">
+                                    {{invalidFormMessage}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
     </div>
-
-                
-<!-- <h2>Category</h2>
-<table>
-    <tr>
-        <th>
-            Number:
-        </th>
-        <td *ngIf="!isEditable">{{currentCategory.categoryId}</td>
-        <td *ngIf="isEditable">
-            <select id="cat-select" #selectCategory [(ngModel)="currentCategory"
-            (change)="updateSelection(selectCategory.value)">
-            
-            <option *ngFor="let cat of allCategories" value="{{cat.categoryId}}">
-                {{cat.categoryId}}::{{category}}
-            </option>
-        </select>
-        </td>
-    
-    </tr>
-</table> -->
-
+</div>
