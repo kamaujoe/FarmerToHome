@@ -20,6 +20,8 @@ import { SellerRegistrationComponent } from './seller-registration/seller-regist
 import { ConsumerRegistrationComponent } from './consumer-registration/consumer-registration.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 
+
+
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'basket', component: BasketComponent},
@@ -38,7 +40,8 @@ const routes: Routes = [
   { path: 'seller-profile', component: SellerProfileComponent},
   { path: 'user-buyer-profile', component: UserBuyerProfileComponent},
   { path: 'consumer-registration', component: ConsumerRegistrationComponent},
-  { path: 'about-us', component: AboutUsComponent}
+  { path: 'about-us', component: AboutUsComponent},
+
   // { path: 'farmer', component:FarmerComponent}
 
 ];
