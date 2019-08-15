@@ -15,8 +15,8 @@ export class OrderService {
    }
 
 
-getOrderByBasket(basketId):Observable<Quantity[]>{
-  return this.httpsvc.get<Quantity[]>(this.url+"fetchByBasketId/"  + basketId)
+getOrderByBasket(basketId):Observable<Order[]>{
+  return this.httpsvc.get<Order[]>(this.url+"fetchByBasketId/"  + basketId)
 }
 
 // getOrderByBasketProduct(basketId, productId):Observable<Order>{
@@ -27,15 +27,40 @@ getOrderByBasketProduct(basketId):Observable<Order>{
   return this.httpsvc.get<Order>(this.url + "getOrderByBasket/" + basketId)
 }
 
-addOrders(productId, quantity, basketId):Observable<Quantity>{const httpOptions = {
+addOrders(productId, quantity, basketId):Observable<Order[]>{const httpOptions = {
   headers: new HttpHeaders(
     {"Content-Type" : "application/x-www-form-urlencoded"}
   )
 }
   var reqBody = "productId=" + productId + "&basketId=" + basketId + "&quantity=" + quantity 
-    return this.httpsvc.post<Quantity>(this.url + "register/" + basketId + "/" + productId + "/" + quantity, reqBody, httpOptions) 
+    return this.httpsvc.post<Order[]>(this.url + "register/" + basketId + "/" + productId + "/" + quantity, reqBody, httpOptions) 
 }
 
+deleteFromBasket(productId, basketId):Observable<Order[]>{ const httpOptions = {
+  headers: new HttpHeaders(
+    {"Content-Type" : "application/x-www-form-urlencoded"}
+  )
+}
+  var reqBody = "productId=" + productId + "&basketId=" + basketId
+    return this.httpsvc.post<Order[]>("http://localhost:8080/order/deleteFromOrder", reqBody, httpOptions)
 
 
+}
+
+emptyBasket(basketId):Observable<Order[]>{const httpOptions = {
+  headers: new HttpHeaders(
+    {"Content-Type" : "application/x-www-form-urlencoded"}
+  )
+}
+var reqBody = "basketId=" + basketId
+    return this.httpsvc.post<Order[]>("http://localhost:8080/order/deleteBasket", reqBody, httpOptions)
+}
+calculateTotal(basketId):Observable<number>{const httpOptions = {
+  headers: new HttpHeaders(
+    {"Content-Type" : "application/x-www-form-urlencoded"}
+  )
+}
+var reqBody = "basketId=" + basketId
+  return this.httpsvc.post<number>("http://localhost:8080/order/calculateTotal", reqBody, httpOptions)
+}
 }

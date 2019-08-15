@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Products } from './products'
 import { Product } from './basket/product';
 import { Basket } from './basket/basket';
+import { Order } from './basket/order';
 
 @Injectable({
   providedIn: 'root'
@@ -31,13 +32,13 @@ export class ProductsService {
   }
 
 
-  addProductsToBasket(productId, basketId):Observable<Basket>{const httpOptions = {
+  addProductsToBasket(productId, basketId):Observable<Order>{const httpOptions = {
     headers: new HttpHeaders(
       {"Content-Type" : "application/x-www-form-urlencoded"}
     )
   }
     var reqBody = "productId=" + productId + "&basketId=" + basketId
-      return this.httpsvc.post<Basket>("http://localhost:8080/basket/assign/product", reqBody, httpOptions)
+      return this.httpsvc.post<Order>("http://localhost:8080/basket/assign/product", reqBody, httpOptions)
   }
 
 

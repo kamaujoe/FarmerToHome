@@ -24,12 +24,12 @@ export class HomeComponent implements OnInit {
 
   
     currentBasket : Basket[]
-    addQua : Order
+    addQua : Order[]
     currentQuantity : Quantity[]
     updateQuantity : Quantity
 
-    
-    currentOrder : Order
+    AllQuantities : number[]
+    currentOrder : Order[]
     quantity : number
     orderId : number
 
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     productId : number
     basketId : number
     products: Products[]
-    currentProduct : Basket
+    currentProduct : Order
 
     
 
@@ -60,41 +60,29 @@ export class HomeComponent implements OnInit {
      }
 
     calcQuantity(){
-      this.orderService.getOrderByBasketProduct(this.basketId).subscribe(
+      this.basketItemService.getBasketItems(this.basketId).subscribe(
         res => {
-          this.addQua = res
+          this.currentOrder = res
+          
         }
       )
-      console.log(this.addQua)
-      
-
-    }
-    
+      }
 
     addQuantity(productId, quantity){
       console.log(this.basketId, productId) // 14, 37
       this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
         res => {this.currentOrder = res}
       )
-      
-    
     }
 
-    addProducts(productId){
-      
-      this.productService.addProductsToBasket(productId,this.basketId).subscribe(
-        
-        response => {this.currentProduct = response}
-      )
-    }  
-
-    deleteProducts(productId, basketId){
+    deleteProducts(productId){
       this.basketItemService.deleteFromBasket(productId, this.basketId).subscribe(
-        res => {this.currentProduct = res})
+        res => {this.currentOrder = res})
 
-      this.orderService.addOrders(productId, 0, this.basketId).subscribe(
-        res => {this.currentOrder = res}
-      )
+        
+
+     
+      
       
 
     }

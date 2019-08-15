@@ -49,23 +49,14 @@
             <td>{{p.product_name}}</td>
             <td>{{p.price}}</td>
             <td>{{p.expiry_date}}</td>
-            <td *ngFor = "let a of addQua">
-                {{a.quantity}}
-            </td>
-      
+            <!-- <td *ngFor = "let a of currentOrder">
+                <p *ngIf = "p.productId == a.product.productId" >{{a.quantity}}</p>
+            </td> -->
+            <!-- <td>{{quantity.value}}</td> -->
+            <td><input type="number" min="1" max="24" value= "1" #quantity></td>
             
-            <td><select #quantity>
-                <option value="0">0</option >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select></td>
-            <td><button (click) = "addProducts(p.productId)" (click) = "addQuantity(p.productId, quantity.value)">+</button>
+           
+            <td><button (click) = "addQuantity(p.productId, quantity.value)">+</button>
             <button (click) = "deleteProducts(p.productId)">-</button></td>
 
         </tr>

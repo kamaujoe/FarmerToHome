@@ -1,7 +1,10 @@
+import { Product } from './product';
+
 export interface Order {
 
-    orderId : number
+    id : number
     quantity : number
+    product : Product
     
     
 }

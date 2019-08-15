@@ -1,7 +1,9 @@
+import { Product } from './product';
+
 export interface Quantity {
 
-    orderId : number
+    id : number
     basketId : number
     quantity : number
-    productId : number
+    product : Product[]
 }
