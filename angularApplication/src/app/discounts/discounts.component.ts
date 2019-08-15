@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Products } from '../products';
 import { ProductsService } from '../products.service';
 import { Basket } from '../basket/basket';
+import { Order } from '../basket/order';
 
 @Component({
   selector: 'app-discounts',
@@ -11,7 +12,7 @@ import { Basket } from '../basket/basket';
 export class DiscountsComponent implements OnInit {
   products: Products[]
   basketId : number
-  currentProduct : Basket
+  currentProduct : Order
 
   constructor(private productService: ProductsService) {
     this.basketId = 75
