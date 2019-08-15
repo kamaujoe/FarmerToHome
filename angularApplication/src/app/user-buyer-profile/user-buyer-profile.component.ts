@@ -7,7 +7,6 @@ import { ConsumerService } from '../user.service';
   styleUrls: ['./user-buyer-profile.component.css']
 })
 export class UserBuyerProfileComponent implements OnInit {
-
   consno: number
   firstName: String
   lastName: String
@@ -19,7 +18,6 @@ export class UserBuyerProfileComponent implements OnInit {
 
   isEditable: boolean
   isUserFormVisable: boolean
-
   isUserFormValid: boolean
   invalidFromMessage: boolean
 

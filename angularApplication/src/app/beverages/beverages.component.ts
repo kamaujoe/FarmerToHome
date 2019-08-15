@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Products } from '../products';
 import { ProductsService } from '../products.service';
-
 import { Basket } from '../basket/basket';
-
 
 @Component({
   selector: 'app-beverages',
@@ -18,20 +16,18 @@ export class BeveragesComponent implements OnInit {
   constructor(private productService: ProductsService) { 
     this.products=[]
     this.basketId = 75
-
-  
   }
 
   ngOnInit() {
     this.productService.fetchProductsByCategory(1).subscribe(
-      res => {
-        this.products = res}
+      response => {
+        this.products = response
+      }
     )
   }
 
   addProducts(productId){
-    this.productService.addProductsToBasket(productId, 
-      this.basketId).subscribe(
+    this.productService.addProductsToBasket(productId,this.basketId).subscribe(
       response => {
         this.currentProduct = response
       }

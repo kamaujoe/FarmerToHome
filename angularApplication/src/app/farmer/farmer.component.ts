@@ -8,7 +8,6 @@ import { FarmerService } from '../farmer.service';
   styleUrls: ['./farmer.component.css']
 })
 export class FarmerComponent implements OnInit {
-
   farmerId: number
   allFarmers: Farmer[]
   firstName: String;
@@ -18,11 +17,9 @@ export class FarmerComponent implements OnInit {
   email: String;
   farmerUsername: String;
   farmerPassword: String;
-
   farmers: Farmer[]
 
   constructor(private farmerSvc:FarmerService) { 
-
     this.farmerId=-1
     this.firstName
     this.lastName
@@ -31,25 +28,15 @@ export class FarmerComponent implements OnInit {
     this.phone
     this.farmerUsername
     this.farmerPassword
-
   }
 
   ngOnInit() {
     this.fetchCurrentFarmerFromService()
   }
 
-  // // register farmer in memory
-  // registerNewFarmer(fName, fprods, flocation){
-
-  //   this.farmers.push({farmerName:fName, products:fprods, farmLocation:flocation})
- 
-  // }
-
   showFarmer(){
     this.loadAllFarmers()
   }
-
-
 
   fetchCurrentFarmerFromService(){
     this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
@@ -66,9 +53,7 @@ export class FarmerComponent implements OnInit {
         this.farmerPassword = response.farmerPassword
       } 
     )
-
   }
-
 
   registerFarmerDetails(){
     this.farmerSvc.registerFarmerOnServer({
@@ -80,19 +65,18 @@ export class FarmerComponent implements OnInit {
       farmerUsername:this.farmerUsername,
       farmerPassword:this.farmerPassword
     }).subscribe(
-      response =>{ // perform the following operation on successful post
-              this.fetchCurrentFarmerFromService()
-          } 
-        )
-      
+      response => { // perform the following operation on successful post
+        this.fetchCurrentFarmerFromService()
+      } 
+    ) 
   }
 
   loadAllFarmers(){
-    this.farmerSvc.loadAllFarmersFromServer()
-        .subscribe(
-            response =>{
-                this.allFarmers = response
-        })
+    this.farmerSvc.loadAllFarmersFromServer().subscribe(
+      response => {
+        this.allFarmers = response
+      }
+    )
   }
 
 }
