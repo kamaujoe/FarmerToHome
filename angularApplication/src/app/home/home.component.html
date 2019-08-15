@@ -50,10 +50,12 @@
                 <p *ngIf = "p.productId == a.product.productId" >{{a.quantity}}</p>
             </td> -->
             <!-- <td>{{quantity.value}}</td> -->
-            <td><input type="number" min="1" max="24" value= "1" #quantity></td>
+            <td>
+                <input type="number" min="1" max="24" value= "1" #quantity>
+            </td>
             
            
-            <td><button (click) = "addQuantity(p.productId, quantity.value)">+</button>
+            <td><button (click) = "addQuantity(p.productId, quantity.value)" >+</button>
             <button (click) = "deleteProducts(p.productId)">-</button></td>
 
         </tr>
