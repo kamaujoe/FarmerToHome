@@ -1,59 +1,5 @@
 <html>
 <body>
-<!-- <table> -->
-    
-    <!--FARMERID ROW-->
-    <!-- <tr>
-        <td>FarmerID: </td> -->
-        <!-- <td>{{farmerId}}</td> -->
-    <!-- </tr> -->
-
-    <!--FARMER NAME ROW-->
-    <!-- <tr> -->
-        <!-- <td>FarmerName: </td> -->
-        <!-- <td>{{farmerName}}</td> -->
-        <!-- <td><input [(ngModel)]="farmerName" name="farmerName" placeholder="name" #fName></td> -->
-        <!-- <td>
-            <div>
-                <input [(ngModel)] = "farmerName"
-                #inputName="ngModel"
-                minlength="6"
-                maxlength="25"></div></td> -->
-    <!-- </tr> -->
-
-    <!--FARMER PRODUCTS DESCRIPTION ROW-->
-    <!-- <tr> -->
-        <!-- <td>FarmerProducts: </td> -->
-        <!-- <td>{{products}}</td> -->
-        <!-- <td><input [(ngModel)]="products" name="farmerProducts" placeholder="products" #fprods></td> -->
-        <!-- <td>
-            <div>
-                <input [(ngModel)] = "products"
-                #inputName="ngModel"
-                minlength="10"
-                maxlength="100"></div></td>     -->
-    <!-- </tr> -->
-
-    <!-- FARMER LOCATION ROW-->
-    <!-- <tr> -->
-        <!-- <td>FarmerLocation: </td> -->
-        <!-- <td>{{farmLocation}}</td> -->
-
-        <!-- <td><input [(ngModel)]="farmLocation" name="farmerLocation" placeholder="location" #flocation></td> -->
-        <!-- <td>
-            <div>
-                <input [(ngModel)] = "farmLocation"
-                #inputName="ngModel"
-                minlength="5"
-                maxlength="25"></div></td> -->
-    <!-- </tr>
-
-    <tr>
-        <td>
-            <button (click)="registerFarmerDetails()" routerLink="/seller-profile">Register</button>
-        </td>
-    </tr>
- </table> -->
 
  <div class="container">
         <div class="row">
@@ -68,50 +14,55 @@
                         <input 
                             [(ngModel)]="email" name="email" #femail placeholder="Email" class="form-control" required autofocus>
                   </div>
+
                   <div class="form-label-group">
                         <label for="inputfirstName">First Name</label>
                         <input 
                             [(ngModel)]="firstName" name="firstName" #ffirstName placeholder="First Name" class="form-control" required autofocus>
                   </div>
+
                   <div class="form-label-group">
                       <label for="inputlastName">Last Name</label>
                       <input 
                           [(ngModel)]="lastName" name="lastName" #flastName placeholder="Last Name" class="form-control" required autofocus>
-                </div>
-                <div class="form-label-group">
-                    <label for="inputAddress">Address</label>
-                    <input 
-                        [(ngModel)]="address" name="address" #faddress placeholder="Address" class="form-control" required autofocus>
-              </div>
-              <div class="form-label-group">
-                  <label for="inputPhone">Phone</label>
-                  <input 
-                      [(ngModel)]="phone" name="phone" #fphone placeholder="Phone Number" class="form-control" required autofocus>
-              </div>
-              <div class="form-label-group">
-                  <label for="inputfarmerUsername">Username</label>
-                  <input 
-                      [(ngModel)]="farmerUsername" name="farmerUsername" #ffarmerUsername placeholder="Username" class="form-control" required autofocus>
-            </div>
-            <div class="form-label-group">
-                <label for="inputfarmerPassword">Password</label>
-                <input 
-                    [(ngModel)]="farmerPassword" name="farmerPassword" #ffarmerPassword placeholder="Password" class="form-control" required type="password">
-            </div>
-                  <!-- <br>
-                  <br> -->
+                  </div>
+
+                  <div class="form-label-group">
+                      <label for="inputAddress">Address</label>
+                      <input 
+                          [(ngModel)]="address" name="address" #faddress placeholder="Address" class="form-control" required autofocus>
+                  </div>
+
+                  <div class="form-label-group">
+                      <label for="inputPhone">Phone</label>
+                      <input 
+                          [(ngModel)]="phone" name="phone" #fphone placeholder="Phone Number" class="form-control" required autofocus>
+                  </div>
+
+                  <div class="form-label-group">
+                      <label for="inputfarmerUsername">Username</label>
+                      <input 
+                          [(ngModel)]="farmerUsername" name="farmerUsername" #ffarmerUsername placeholder="Username" class="form-control" required autofocus>
+                  </div>
+
+                  <div class="form-label-group">
+                      <label for="inputfarmerPassword">Password</label>
+                      <input 
+                          [(ngModel)]="farmerPassword" name="farmerPassword" #ffarmerPassword placeholder="Password" class="form-control" required type="password">
+                  </div>
+                  
     
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">Remember password</label>
                   </div>
-                  <button (click)="registerFarmerDetails()" 
-                  routerLink="/seller-profile" 
-                  class="btn btn-lg btn-success btn-block text-uppercase"  
-                  >
-                  Register
-                </button>
                   <hr class="my-4">
+                        <button (click)="registerFarmerDetails()" 
+                                routerLink="/seller-login-registration" 
+                                class="btn btn-lg btn-success btn-block text-uppercase">
+                                Register
+                        </button>
+                  <hr class="my-4"> 
                   
                 </form>
               </div>
@@ -119,8 +70,5 @@
           </div>
         </div>
       </div>
-
-
 </body>
-
 </html>

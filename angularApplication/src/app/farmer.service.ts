@@ -8,30 +8,25 @@ import { Farmer } from './farmer';
   providedIn: 'root'
 })
 export class FarmerService {
-
   rootURL: string
 
   constructor(private httpsvc:HttpClient) {
-
     this.rootURL="http://localhost:8080/farmer"
-   }
+  }
 
-
-
-   findFarmerByFarmerId(farmerId):Observable<FarmerComponent>{
-    return this.httpsvc.get<FarmerComponent>(
-                  this.rootURL+"/find/"+farmerId)
+  findFarmerByFarmerId(farmerId):Observable<FarmerComponent>{
+    return this.httpsvc.get<FarmerComponent>(this.rootURL+"/find/"+farmerId)
   }
 
   loadAllFarmersFromServer():Observable<Farmer[]>{
-    return this.httpsvc.get<Farmer[]>(
-        "http://localhost:8080/farmer/list")
+    return this.httpsvc.get<Farmer[]>("http://localhost:8080/farmer/list")
   }
 
-   registerFarmerOnServer(farmer):Observable<FarmerComponent>{
+  registerFarmerOnServer(farmer):Observable<FarmerComponent>{
     const httpOptions= {
       headers: new HttpHeaders(
-        {"Content-Type":"application/x-www-form-urlencoded"})
+        {"Content-Type":"application/x-www-form-urlencoded"}
+      )
     }
     // key1=value1&keyn=valuen
     var reqBody = "farmerId="+farmer.farmerId
@@ -43,10 +38,8 @@ export class FarmerService {
                   +"&farmerUsername="+farmer.farmerUsername
                   +"&farmerPassword="+farmer.farmerPassword
     //  post(URL,body,httpOptionswithHeaders)
-    
-    return this.httpsvc.post<FarmerComponent>(
-        this.rootURL+"/register/",
-        reqBody,httpOptions)
+      return this.httpsvc.post<FarmerComponent>(
+        this.rootURL+"/register/",reqBody,httpOptions)
   }
 
 }

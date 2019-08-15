@@ -3,11 +3,9 @@ import { Products } from '../products';
 import { ProductsService } from '../products.service';
 import { Basket } from '../basket/basket';
 import { Quantity } from '../basket/quantity';
-
-
-
-
-
+import { OrderService } from '../order.service';
+import { Order } from '../basket/order';
+import { BasketItemsService } from '../basket-items.service';
 
 
 @Component({
@@ -16,26 +14,31 @@ import { Quantity } from '../basket/quantity';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-
-  
     currentBasket : Basket[]
-        
-    currentQuantity : Quantity[] = []
+    addQua : Order[]
+    currentQuantity : Quantity[]
+    updateQuantity : Quantity
+
+    AllQuantities : number[]
+    currentOrder : Order[]
+    quantity : number
+    orderId : number
 
    
     productId : number
     basketId : number
     products: Products[]
-    currentProduct : Basket
+    currentProduct : Order
 
     
 
-    constructor(private productService: ProductsService) {
+    constructor(private productService: ProductsService, private orderService: OrderService, 
+      private basketItemService: BasketItemsService) {
       
     
-     
-      this.basketId = 1
+      
+      
+      this.basketId = 14 
       this.products=[] }
 
   ngOnInit() {
@@ -43,24 +46,35 @@ export class HomeComponent implements OnInit {
     res => {
       this.products = res}
       )
-    }
+      this.calcQuantity()
+      
+     }
 
-    addProducts(productId){
-      this.productService.addProductsToBasket(productId, 
-        this.basketId).subscribe(
-        response => {
-          this.currentProduct = response
+    calcQuantity(){
+      this.basketItemService.getBasketItems(this.basketId).subscribe(
+        res => {
+          this.currentOrder = res
+          
         }
       )
-    }
-  
-    quantityAdd(currentProductId, Q){
-      console.log(Q)
-      this.currentQuantity.push({productId: currentProductId, quantity: Q})
-      
-      
-    }
-  
+      }
 
-  
+    addQuantity(productId, quantity){
+      console.log(this.basketId, productId) // 14, 37
+      this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
+        res => {this.currentOrder = res}
+      )
+    }
+
+    deleteProducts(productId){
+      this.basketItemService.deleteFromBasket(productId, this.basketId).subscribe(
+        res => {this.currentOrder = res})
+
+        
+
+     
+      
+      
+
+    }
 }

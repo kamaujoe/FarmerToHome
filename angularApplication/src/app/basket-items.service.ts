@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Basket } from './basket/basket';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Order } from './basket/order';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +10,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BasketItemsService {
   rootURL : string
 
-
   constructor(private httpsvc:HttpClient) {
     this.rootURL = "http://localhost:8080/basket/"
    }
 
-getBasketItems(basketId):Observable<Basket>{
-  return this.httpsvc.get<Basket>("http://localhost:8080/basket/find/" + basketId)
+getBasketItems(basketId):Observable<Order[]>{
+  return this.httpsvc.get<Order[]>("http://localhost:8080/order/getOrderByBasket/" + basketId)
 }
 
-deleteFromBasket(productId, basketId):Observable<Basket>{ const httpOptions = {
+deleteFromBasket(productId, basketId):Observable<Order[]>{ const httpOptions = {
   headers: new HttpHeaders(
     {"Content-Type" : "application/x-www-form-urlencoded"}
   )
 }
   var reqBody = "productId=" + productId + "&basketId=" + basketId
-    return this.httpsvc.post<Basket>(this.rootURL + "deleteFromBasket", reqBody, httpOptions)
+    return this.httpsvc.post<Order[]>("http://localhost:8080/order/deleteFromOrder", reqBody, httpOptions)
 
 
 }

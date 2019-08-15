@@ -10,6 +10,7 @@ import { Product } from '../basket/product';
 })
 export class SellerProfileComponent implements OnInit {
 
+  ///////////////////  Declaring properties for farmers/ products  //////////////////////////
   farmerId: number
   firstName: String
   lastName: String
@@ -18,11 +19,9 @@ export class SellerProfileComponent implements OnInit {
   phone: number
   farmerUsername: String
   farmerPassword: String
-  
-  farmers: Farmer[]
 
+  farmers: Farmer[]
   allFarmers: Farmer[]
-  assignedProducts: Product[]
 
   pid: number
   pname: string
@@ -40,10 +39,10 @@ export class SellerProfileComponent implements OnInit {
 
   farmerProds: Product[]
   selectProductId: number
-
+  assignedProducts: Product[]
   
   constructor(private farmerSvc:SellerService) { 
-
+    //////////////////  initialising the properties for the farmer as well as products /////////////////////////
     this.isEditable=false
     this.isSellerFormVisable=false
     this.isSellerFormValid=true
@@ -66,16 +65,7 @@ export class SellerProfileComponent implements OnInit {
     this.pexpiryDate
     this.pprice
     
-    
-    this.farmerProds =
-    [
-      // {productId:0,
-      //   product_name:"",
-      //   expiry_date:0,
-      //   size:"",
-      //   price:0,
-      //   currentCategory:[]}
-    ]
+    this.farmerProds = []
   }
 
   ngOnInit() {
@@ -93,27 +83,26 @@ export class SellerProfileComponent implements OnInit {
         this.email = response.email
         this.farmerUsername = response.farmerUsername
         this.farmerPassword = response.farmerPassword
-        
         this.farmerProds = response.farmerProds
       }
     )
   }
 
+  ///////////////  method created to determin whether a form is editable or not //////////////////////
   toggleEdits() {
     this.isEditable = !this.isEditable
     this.loadFarmerProducts()
     this.updateSellerDetails()
   }
 
+  //////////////  method to allow editable form to be visible/ invisible to user  /////////////////////
   showProductForm() {
     this.isProductFormVisable = true
     this.loadFarmerProducts()
-    // this.assignNewProduct()
   }
 
   updateSelectedProductId(pid) {
     this.selectProductId=pid
-    // this.loadFarmerProducts()
   }
   
   registerNewProduct(pid, pname, pexpiryDate, pprice) {
@@ -122,7 +111,6 @@ export class SellerProfileComponent implements OnInit {
           this.assignNewProduct()  
        }
     )
-    
      this.isProductFormVisable=false
   }
 
@@ -138,17 +126,34 @@ export class SellerProfileComponent implements OnInit {
   }
 
   loadFarmerProducts() {
-    this.farmerSvc.loadAllProductsFromServer()
-        .subscribe(
-          response =>{
-            this.farmerProds = response
-            console.log(response)
-          })
+    this.farmerSvc.loadAllProductsFromServer().subscribe(
+      response => {
+        this.farmerProds = response
+        console.log(response)
+      }
+    )
   }
 
   deleteProduct(index) {
     this.farmerProds.splice(index, 1)
     console.log(this.farmerProds)
+  }
+
+  updateSellerDetails() {
+    this.farmerSvc.updateFarmerOnServer({
+      farmerId:this.farmerId, 
+      firstName:this.firstName,
+      lastName:this.lastName,
+      address:this.address, 
+      phone:this.phone,
+      email:this.email,
+      farmerUsername:this.farmerUsername,
+      farmerPassword:this.farmerPassword
+    }).subscribe(
+      response => {
+        this.fetchCurrentSellerFromService()
+      }
+    )
   }
 
   // addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
@@ -176,22 +181,5 @@ export class SellerProfileComponent implements OnInit {
   //   }
 
   // }
-
-  updateSellerDetails() {
-    this.farmerSvc.updateFarmerOnServer({
-      farmerId:this.farmerId, 
-      firstName:this.firstName,
-      lastName:this.lastName,
-      address:this.address, 
-      phone:this.phone,
-      email:this.email,
-      farmerUsername:this.farmerUsername,
-      farmerPassword:this.farmerPassword
-    }).subscribe(
-      response => {
-        this.fetchCurrentSellerFromService()
-      }
-    )
-  }
 
 }
