@@ -8,7 +8,6 @@ import { FarmerService } from '../farmer.service';
   styleUrls: ['./seller-registration.component.css']
 })
 export class SellerRegistrationComponent implements OnInit {
-
   farmerId: number
   firstName: String
   lastName: String
@@ -17,17 +16,11 @@ export class SellerRegistrationComponent implements OnInit {
   phone: number
   farmerUsername: String
   farmerPassword: String
-
   farmers: Farmer[]
-
   allFarmers: Farmer[]
-  // farmerName: any;
-  // products: any;
-  // farmLocation: any;
 
   constructor(private farmerSvc:FarmerService) { 
-
-    this.farmerId
+    this.farmerId=1
     this.firstName
     this.lastName
     this.address
@@ -35,25 +28,15 @@ export class SellerRegistrationComponent implements OnInit {
     this.phone
     this.farmerUsername
     this.farmerPassword
-
   }
 
   ngOnInit() {
     this.fetchCurrentSellerFromService()
   }
 
-  // // register farmer in memory
-  // registerNewFarmer(fName, fprods, flocation){
-
-  //   this.farmers.push({farmerName:fName, products:fprods, farmLocation:flocation})
- 
-  // }
-
   showFarmer(){
     this.loadAllFarmers()
   }
-
-
 
   fetchCurrentSellerFromService(){
     this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
@@ -84,18 +67,17 @@ export class SellerRegistrationComponent implements OnInit {
       farmerPassword:this.farmerPassword
     }).subscribe(
       response =>{ // perform the following operation on successful post
-              this.fetchCurrentSellerFromService()
-          } 
-        )
-      
+        this.fetchCurrentSellerFromService()
+      } 
+    ) 
   }
 
   loadAllFarmers(){
-    this.farmerSvc.loadAllFarmersFromServer()
-        .subscribe(
-            response =>{
-                this.allFarmers = response
-        })
+    this.farmerSvc.loadAllFarmersFromServer().subscribe(
+      response => {
+        this.allFarmers = response
+      }
+    )
   }
 
 }

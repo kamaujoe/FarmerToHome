@@ -8,27 +8,28 @@ import { Consumer } from '../consumer';
   styleUrls: ['./consumer-registration.component.css']
 })
 export class ConsumerRegistrationComponent implements OnInit {
-
+  //declaring properties
   consno: number
   firstName: String
   lastName: String
   email: String
   address: String
   phone: number
-
+  consumerUsername: String
+  consumerPassword: String
   consumer: Consumer[]
 
   constructor(private consumerSvc:ConsumerService) {
-  
-  this.consno = 18
-  this.firstName = "First Name"
-  this.lastName = "Last Name"
-  this.email = "Email Address"
-  this.address = "Address"
-  this.phone = 12345
-
-  
-   }
+    //initialising properties inside constructor
+  this.consno=1
+  this.firstName
+  this.lastName
+  this.email
+  this.address
+  this.phone
+  this.consumerUsername
+  this.consumerPassword
+  }
 
   ngOnInit() {
     this.fetchCurrentConsumerFromService()
@@ -38,6 +39,7 @@ export class ConsumerRegistrationComponent implements OnInit {
     this.loadAllConsumers()
   }
 
+  ////////////////// fetching the current consumer by their ID  //////////////////
   fetchCurrentConsumerFromService() {
     this.consumerSvc.findUserByUserId(this.consno).subscribe(
       response => {
@@ -47,10 +49,13 @@ export class ConsumerRegistrationComponent implements OnInit {
         this.email = response.email
         this.address = response.address
         this.phone = response.phone
+        this.consumerUsername = response.consumerUsername
+        this.consumerPassword = response.consumerPassword
       }
     )
   }
 
+  //////////////////////  method for registering a new customer  /////////////////////////////
   registerConsumerDetails() {
     this.consumerSvc.registerUserOnServer({
       consno:this.consno, 
@@ -58,7 +63,9 @@ export class ConsumerRegistrationComponent implements OnInit {
       lastName:this.lastName,
       email:this.email,
       address:this.address,
-      phone:this.phone
+      phone:this.phone,
+      consumerUsername:this.consumerUsername,
+      consumerPassword:this.consumerPassword
     }).subscribe(
       response =>{
         this.fetchCurrentConsumerFromService()
@@ -66,13 +73,12 @@ export class ConsumerRegistrationComponent implements OnInit {
       }
     )
   }
-
+  
   loadAllConsumers() {
-    this.consumerSvc.loadAllUsersOnServer()
-        .subscribe(
-          response => {
-            this.consumer = response
-          }
-        )
+    this.consumerSvc.loadAllUsersOnServer().subscribe(
+      response => {
+        this.consumer = response
+      }
+    )
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Products } from '../products';
 import { ProductsService } from '../products.service';
-import { stringify } from '@angular/compiler/src/util';
 import { Basket } from '../basket/basket';
 
 @Component({
@@ -19,24 +18,15 @@ export class BakeryDairyComponent implements OnInit {
     this.basketId = 75
   }
 
-  // getProducts(){
-  //   this.productService.getAllProducts().subscribe(
-  //     res=>{this.products = res}
-  //   )
-  // }
-
   ngOnInit() {
-    // this.productService.getAllProducts().subscribe(
-    //      res=>{this.products = res}
-    // )
     this.productService.fetchProductsByCategory(3).subscribe(
-      res => {
-        this.products = res}
+      response => {
+        this.products = response
+      }
     )
   }
   addProducts(productId){
-    this.productService.addProductsToBasket(productId, 
-      this.basketId).subscribe(
+    this.productService.addProductsToBasket(productId,this.basketId).subscribe(
       response => {
         this.currentProduct = response
       }

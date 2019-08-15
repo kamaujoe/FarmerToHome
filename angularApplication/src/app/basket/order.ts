@@ -1,9 +1,10 @@
 import { Product } from './product';
 
-export interface Quantity {
+export interface Order {
 
     id : number
-    basketId : number
     quantity : number
-    product : Product[]
+    product : Product
+    
+    
 }

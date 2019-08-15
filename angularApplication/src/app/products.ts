@@ -6,5 +6,4 @@ export interface Products {
     price: number
     expiryDate: number;
     currentCategory: Category[]
-    size: string
 }

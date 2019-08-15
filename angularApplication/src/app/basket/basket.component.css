@@ -1,20 +1,23 @@
 /* background */
 html {
     background:url("https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
-    background-size: cover;
-    height: 700px;
+    background-position: center center;
+      /* Background image doesn't tile */
     background-repeat: no-repeat;
+        /* Background image is fixed in the viewport so that it doesn't move when 
+       the content's height is greater than the image's height */
     background-attachment: fixed;
-	background-position: center; 
-	border-radius: 1px;
+        /* This is what makes the background image rescale based
+       on the container's size */
+    background-size: cover;
 }
 
 .title-basket {	
     font-family: 'Prata', serif;	
     color: rgba(0, 0, 0, 0.527); 
-    font-size: 60pt;
+    font-size: 6vw;
 	text-align: center;
-	border-radius: 1px;
+	border-radius: 1rem;
 }
 
 /* bootstrap table */
@@ -23,8 +26,9 @@ html {
 }
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
-		width:20%;
+		
 		display: inline !important;
+		
 	}
 	.actions .btn{
 		width:36%;
@@ -44,6 +48,7 @@ html {
 	table#cart tbody td:before {
 		content: attr(data-th); font-weight: bold;
 		display: inline-block; width: 8rem;
+		
 	}
 	
 	
@@ -51,4 +56,8 @@ html {
 	table#cart tfoot td{display:block; }
 	table#cart tfoot td .btn{display:block;}
 	
+	}
+
+	.table {
+		border-radius: 0.5rem; 
 	}

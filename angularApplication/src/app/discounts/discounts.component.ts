@@ -13,8 +13,6 @@ export class DiscountsComponent implements OnInit {
   basketId : number
   currentProduct : Basket
 
-
-
   constructor(private productService: ProductsService) {
     this.basketId = 75
     this.products=[]
@@ -22,8 +20,9 @@ export class DiscountsComponent implements OnInit {
 
   ngOnInit() {
     this.productService.fetchProductByExpiryDate(1,5).subscribe(
-      res => {
-        this.products = res}
+      response => {
+        this.products = response
+      }
     )
   }
 

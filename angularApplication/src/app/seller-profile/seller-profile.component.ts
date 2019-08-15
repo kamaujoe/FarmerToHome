@@ -10,6 +10,7 @@ import { Product } from '../basket/product';
 })
 export class SellerProfileComponent implements OnInit {
 
+  ///////////////////  Declaring properties for farmers/ products  //////////////////////////
   farmerId: number
   firstName: String
   lastName: String
@@ -18,12 +19,14 @@ export class SellerProfileComponent implements OnInit {
   phone: number
   farmerUsername: String
   farmerPassword: String
-  
+
   farmers: Farmer[]
-
   allFarmers: Farmer[]
-  assignedProducts: Product[]
 
+  pid: number
+  pname: string
+  pexpiryDate : number
+  pprice : number
   
   isEditable: boolean
   isSellerFormVisable: boolean
@@ -36,10 +39,10 @@ export class SellerProfileComponent implements OnInit {
 
   farmerProds: Product[]
   selectProductId: number
-
+  assignedProducts: Product[]
   
   constructor(private farmerSvc:SellerService) { 
-
+    //////////////////  initialising the properties for the farmer as well as products /////////////////////////
     this.isEditable=false
     this.isSellerFormVisable=false
     this.isSellerFormValid=true
@@ -47,7 +50,7 @@ export class SellerProfileComponent implements OnInit {
     this.isProductFormVisable=false
     this.isProductFormValid=true
 
-    this.farmerId=5
+    this.farmerId = 5
     this.fetchCurrentSellerFromService
     this.firstName
     this.lastName
@@ -56,16 +59,13 @@ export class SellerProfileComponent implements OnInit {
     this.phone
     this.farmerUsername
     this.farmerPassword
+
+    this.pid=135
+    this.pname
+    this.pexpiryDate
+    this.pprice
     
-    this.farmerProds =
-    [
-      // {productId:0,
-      //   product_name:"",
-      //   expiry_date:0,
-      //   size:"",
-      //   price:0,
-      //   currentCategory:[]}
-    ]
+    this.farmerProds = []
   }
 
   ngOnInit() {
@@ -83,28 +83,36 @@ export class SellerProfileComponent implements OnInit {
         this.email = response.email
         this.farmerUsername = response.farmerUsername
         this.farmerPassword = response.farmerPassword
-        
         this.farmerProds = response.farmerProds
       }
     )
   }
 
+  ///////////////  method created to determin whether a form is editable or not //////////////////////
   toggleEdits() {
     this.isEditable = !this.isEditable
+    this.loadFarmerProducts()
     this.updateSellerDetails()
   }
 
+  //////////////  method to allow editable form to be visible/ invisible to user  /////////////////////
   showProductForm() {
     this.isProductFormVisable = true
     this.loadFarmerProducts()
-    // this.assignNewProduct()
   }
 
-  updateSelectedProductId(productId) {
-    this.selectProductId=productId
-    this.loadFarmerProducts()
+  updateSelectedProductId(pid) {
+    this.selectProductId=pid
   }
   
+  registerNewProduct(pid, pname, pexpiryDate, pprice) {
+    this.farmerSvc.registerProductOnServer(pid, pname, pexpiryDate, pprice).subscribe(
+       response => {
+          this.assignNewProduct()  
+       }
+    )
+     this.isProductFormVisable=false
+  }
 
   assignNewProduct() {
     this.farmerSvc.assignProductToSeller(
@@ -118,42 +126,17 @@ export class SellerProfileComponent implements OnInit {
   }
 
   loadFarmerProducts() {
-    this.farmerSvc.loadAllProductsFromServer()
-        .subscribe(
-          response =>{
-            this.farmerProds = response
-            console.log(response)
-          })
+    this.farmerSvc.loadAllProductsFromServer().subscribe(
+      response => {
+        this.farmerProds = response
+        console.log(response)
+      }
+    )
   }
 
   deleteProduct(index) {
     this.farmerProds.splice(index, 1)
-  }
-
-  addNewProduct(pproductId,pproduct_name,pprice,psize,pexpiry_date,pcurrentCategory) {
-    if(isNaN(pproductId))
-    {
-      this.isProductFormValid=false
-      this.invalidFormMessage="Product ID must be a number"
-    }
-    else if(pproduct_name.length<4){
-      this.isProductFormValid=false
-      this.invalidFormMessage="Product name must be greater than 4 characters"
-    }
-    else {
-      this.farmerProds.push({
-        productId:pproductId,
-        product_name:pproduct_name,
-        price:pprice,
-        size:psize,
-        expiry_date:pexpiry_date,
-        currentCategory:pcurrentCategory
-      })
-      this.isProductFormVisable=false
-      this.isProductFormValid=true
-      this.invalidFormMessage=""
-    }
-
+    console.log(this.farmerProds)
   }
 
   updateSellerDetails() {
@@ -172,5 +155,31 @@ export class SellerProfileComponent implements OnInit {
       }
     )
   }
+
+  // addNewProduct(pid,pproduct_name,pprice,pexpiry_date,pcurrentCategory) {
+  //   if(isNaN(pid))
+  //   {
+  //     this.isProductFormValid=false
+  //     this.invalidFormMessage="Product ID must be a number"
+  //   }
+  //   else if(pproduct_name.length<4){
+  //     this.isProductFormValid=false
+  //     this.invalidFormMessage="Product name must be greater than 4 characters"
+  //   }
+  //   else {
+  //     this.farmerProds.push({
+  //       productId:pid,
+  //       product_name:pproduct_name,
+  //       price:pprice,
+  //       // size:psize,
+  //       expiry_date:pexpiry_date,
+  //       currentCategory:pcurrentCategory
+  //     })
+  //     this.isProductFormVisable=false
+  //     this.isProductFormValid=true
+  //     this.invalidFormMessage=""
+  //   }
+
+  // }
 
 }

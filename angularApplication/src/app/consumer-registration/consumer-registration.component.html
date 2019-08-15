@@ -1,45 +1,6 @@
 <html>
   <body>
 
-
-<!-- <table>
-    <tr>
-        <td>User ID</td>
-        <td>{{consno}}</td>
-    </tr>
-
-    <tr>
-        <td>First Name</td>
-        <td>{{firstName}}</td>
-        <td><input [(ngModel)]="firstName" placeholder="First Name" #ffirstName></td>
-    </tr>
-    <tr>
-        <td>Last Name</td>
-        <td>{{lastName}}</td>
-        <td><input [(ngModel)]="lastName" placeholder="Last Name" #flastName></td>
-    </tr>
-    <tr>
-        <td>Email Address</td>
-        <td>{{email}}</td>
-        <td><input [(ngModel)]="email" placeholder="Email Address" #femail></td>
-    </tr>
-    <tr>
-        <td>Address</td>
-        <td>{{address}}</td>
-        <td><input [(ngModel)]="address" placeholder="Address" #faddress></td>
-    </tr>
-    <tr>
-        <td>Phone Number</td>
-        <td>{{phone}}</td>
-        <td><input [(ngModel)]="phone" placeholder="Phone Number" #fphone></td>
-    </tr>
-    <tr>
-        <td>
-            <button (click)="registerConsumerDetails()" routerLink="/user-buyer-profile">Register</button>
-        </td>
-    </tr>
-</table> -->
-
 <div class="container">
         <div class="row">
           <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -51,55 +12,100 @@
                   <div class="form-label-group">
                         <label for="inputFirstName">First Name</label>
                         <input 
-                            [(ngModel)]="firstName" name="firstName" #ffirstName placeholder="First Name" class="form-control" required autofocus>
+                            [(ngModel)]="firstName" 
+                            name="firstName" 
+                            #cfirstName 
+                            placeholder="First Name" 
+                            class="form-control" 
+                            required autofocus>
                   </div>
     
                   <div class="form-label-group">
                         <label for="inputLastName">Last Name</label>
                         <input 
-                            [(ngModel)]="lastName" name="lastName" #flastName class="form-control" placeholder="Last Name" required>
+                            [(ngModel)]="lastName" 
+                            name="lastName" 
+                            #clastName 
+                            class="form-control" 
+                            placeholder="Last Name" 
+                            required autofocus>
                   </div>
 
                   <div class="form-label-group">
                         <label for="inputEmail">Email Address</label>
                         <input 
-                            [(ngModel)]="email" name="email" #femail class="form-control" placeholder="Email@gmail.com" required>
+                            [(ngModel)]="email" 
+                            name="email" 
+                            #cemail 
+                            class="form-control" 
+                            placeholder="Email@gmail.com" 
+                            required autofocus>
                   </div>
 
                   <div class="form-label-group">
                         <label for="inputAddress">Address</label>
                         <input 
-                            [(ngModel)]="address" name="address" #faddress class="form-control" placeholder="Address" required>
+                            [(ngModel)]="address" 
+                            name="address" 
+                            #caddress 
+                            class="form-control" 
+                            placeholder="Address" 
+                            required autofocus>
                   </div>
 
                   <div class="form-label-group">
                         <label for="inputPhone">Phone</label>
                         <input 
-                            [(ngModel)]="phone" name="phone" #fphone class="form-control" placeholder="123456" required>
+                            [(ngModel)]="phone" 
+                            name="phone" 
+                            #cphone 
+                            class="form-control" 
+                            placeholder="123456" 
+                            required autofocus>
                   </div>
-                  <br>
-                  <br>
-    
-                  <!-- <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                    <label class="custom-control-label" for="customCheck1">Remember password</label>
-                  </div> -->
-                  <button (click)="registerConsumerDetails()" 
-                  routerLink="/user-buyer-profile" 
-                  class="btn btn-lg btn-success btn-block text-uppercase"  
-                  >
-                  Register
-                </button>
-                  <hr class="my-4">
                   
+                  <div class="form-label-group">
+                        <label for="inputconsumerUsername">Username</label>
+                        <input 
+                            [(ngModel)]="consumerUsername"
+                            name="consumerUsername" 
+                            #cconsumerUsername 
+                            class="form-control" 
+                            placeholder="Username" 
+                            required autofocus>
+                  </div>
+
+                  <div class="form-label-group">
+                        <label for="inputconsumerPassword">Password</label>
+                        <input 
+                            [(ngModel)]="consumerPassword" 
+                            name="consumerPassword" 
+                            #cconsumerPassword 
+                            class="form-control" 
+                            placeholder="Password" 
+                            type="password" 
+                            required>
+                  </div>
+                  
+                  <div class="custom-control custom-checkbox mb-3">
+                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                      <label class="custom-control-label" for="customCheck1">Remember password</label>
+                  </div>
+
+                  <hr class="my-4"> 
+                  <button (click)="registerConsumerDetails()" 
+                          routerLink="/consumer-login-registration" 
+                          class="btn btn-lg btn-success btn-block text-uppercase">
+                          Register
+                  </button>
+
+                  <hr class="my-4">  
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-    </body>
-    </html>
+  </body>
+</html>
     

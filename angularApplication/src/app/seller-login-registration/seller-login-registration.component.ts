@@ -42,7 +42,7 @@ export class SellerLoginRegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchCurrentFarmerFromService()
+    //this.fetchCurrentFarmerFromService()
   }
 
   // // register farmer in memory
@@ -74,30 +74,30 @@ export class SellerLoginRegistrationComponent implements OnInit {
 
 
 
-  fetchCurrentFarmerFromService(){
-    this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
-        // use the response to initialize the component properties
-      response => { // assign the data received from server
-          // as response to the current component
-          this.farmerId = response.farmerId
-          this.farmerName = response.farmerName
-          this.products=response.products
-          this.farmLocation = response.farmLocation
+  // fetchCurrentFarmerFromService(){
+  //   this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
+  //       // use the response to initialize the component properties
+  //     response => { // assign the data received from server
+  //         // as response to the current component
+  //         this.farmerId = response.farmerId
+  //         this.farmerName = response.farmerName
+  //         this.products=response.products
+  //         this.farmLocation = response.farmLocation
 
-      } 
-    )
-  }
+  //     } 
+  //   )
+  // }
 
-  registerFarmerDetails(){
-    this.farmerSvc.registerFarmerOnServer({
-      farmerId:this.farmerId, farmerName: this.farmerName, products:this.products, farmLocation:this.farmLocation
-    }).subscribe(
-      response =>{ // perform the following operation on successful post
-              this.fetchCurrentFarmerFromService()
-          } 
-        )
+  // registerFarmerDetails(){
+  //   this.farmerSvc.registerFarmerOnServer({
+  //     farmerId:this.farmerId, farmerName: this.farmerName, products:this.products, farmLocation:this.farmLocation
+  //   }).subscribe(
+  //     response =>{ // perform the following operation on successful post
+  //             this.fetchCurrentFarmerFromService()
+  //         } 
+  //       )
       
-  }
+  // }
 
   loadAllFarmers(){
     this.farmerSvc.loadAllFarmersFromServer()

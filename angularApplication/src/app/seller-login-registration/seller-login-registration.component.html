@@ -1,8 +1,6 @@
 <html>
-<head>
-
-</head>
 <body>
+
 <br>
         <div class="container">
           <div class="row">
@@ -13,27 +11,43 @@
                   <form class="form-signin">
                     
                     <div class="form-label-group">
-                        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                      <!-- <input [(ngModel)]="email" type="text" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
+                      <input type="email" 
+                              id="inputEmail" 
+                              class="form-control" 
+                              placeholder="Email address" 
+                              required autofocus>
                       <label for="inputEmail">Email address</label>
                     </div>
       
                     <div class="form-label-group">
-                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                      <!-- <input [(ngModel)]="farmerPassword" type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required> -->
+                      <input type="password" 
+                              id="inputPassword" 
+                              class="form-control" 
+                              placeholder="Password" 
+                              required>
                       <label for="inputPassword">Password</label>
                     </div>
       
                     <div class="custom-control custom-checkbox mb-3">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1">
-                      <label class="custom-control-label" for="customCheck1">Remember password</label>
+                      <input type="checkbox" 
+                              class="custom-control-input" 
+                              id="customCheck1">
+                      <label class="custom-control-label" 
+                              for="customCheck1">Remember password</label>
                     </div>
-                    
+
                     <div class="buttons">
-                    <button class="btn btn-lg btn-success btn-block" type="submit">LOGIN</button>
-                    <!-- <button (click)="checkLogin"  routerLink="/seller-profile" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button> -->
-                    <hr class="my-2">
-                    <button class="btn btn-lg btn-danger btn-block" routerLink="/seller-registration" type="submit">NOT A MEMBER? REGISTER</button>
+                      <button class="btn btn-lg btn-success btn-block" 
+                              type="submit">
+                              LOGIN
+                      </button>
+                      <hr class="my-2">
+                      <button class="btn btn-lg btn-danger btn-block" 
+                              routerLink="/seller-registration" 
+                              type="submit">
+                              NOT A MEMBER? REGISTER
+                      </button>
+                       
                   </div>
 
                   </form>
@@ -42,8 +56,9 @@
             </div>
           </div>
         </div>
-     
 
-
+                
 </body>
+
+
 </html>
