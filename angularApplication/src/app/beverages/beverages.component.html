@@ -21,7 +21,7 @@
             <td>£{{p.price}}</td>
             <!-- <td>{{p.quantity}}</td> -->
             <td>
-                <input type="number" #quantity value = 0 name = "quantity" min = "0" max = "12">
+                <input type="number" #quantity value = 1 name = "quantity" min = "1" max = "12">
             </td>
             <td><button class="btn btn-success" (click) = "addQuantity(p.productId, quantity.value)">+</button></td>
 

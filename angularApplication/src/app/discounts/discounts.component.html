@@ -27,8 +27,7 @@
             </td>
 
             <td>
-                <button (click) = "addProducts(p.productId)" 
-                        (click) = "quantityAdd(p.productId, quantity.value)">
+                <button class="btn btn-success" (click) = "addQuantity(p.productId, quantity.value)" >
                         +
                 </button>
             </td>
@@ -36,7 +35,7 @@
             <td>{{p.currentCategory.category}}</td>
  
             <td>
-                <button (click) = "addProducts(p.productId)"></button>
+                <button class="btn btn-danger" (click) = "deleteProducts(p.productId)">x</button>
             </td>
         </tr>
     </table> 

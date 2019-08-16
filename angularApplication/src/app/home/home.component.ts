@@ -70,11 +70,6 @@ export class HomeComponent implements OnInit {
       this.basketItemService.deleteFromBasket(productId, this.basketId).subscribe(
         res => {this.currentOrder = res})
 
-        
-
-     
-      
-      
 
     }
 }

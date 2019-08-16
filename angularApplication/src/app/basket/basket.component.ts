@@ -3,6 +3,7 @@ import { Basket } from './basket';
 import { BasketItemsService } from '../basket-items.service';
 import { OrderService } from '../order.service';
 import { Order } from './order';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-basket',
@@ -42,6 +43,10 @@ export class BasketComponent implements OnInit {
         console.log(this.currentBasket)
       }
     )
+    this.calculateTotal()
+    setTimeout(() => {this.calculateTotal()
+
+    }, 50)
     
   }
 
@@ -60,18 +65,30 @@ export class BasketComponent implements OnInit {
       res => {this.currentBasket = res}
     )
     
+    this.calculateTotal()
+    setTimeout(() => {this.calculateTotal()
+
+    }, 50)
+    
+    
   }
     
   calculateTotal(){ 
     this.orderService.calculateTotal(this.basketId).subscribe(
       res => {this.total = res}
     )     
+    console.log(this.total)
   }
+
  
   emptyBasket(){
     this.orderService.emptyBasket(this.basketId).subscribe(
       res => {this.currentBasket = res}
     )
+    this.calculateTotal()
+    setTimeout(() => {this.calculateTotal()
+
+    }, 50)
   }
 
 }

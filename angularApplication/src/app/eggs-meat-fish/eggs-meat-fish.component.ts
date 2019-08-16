@@ -3,6 +3,8 @@ import { Products } from '../products';
 import { ProductsService } from '../products.service';
 import { Basket } from '../basket/basket';
 import { Order } from '../basket/order';
+import { BasketItemsService } from '../basket-items.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-eggs-meat-fish',
@@ -13,10 +15,12 @@ export class EggsMeatFishComponent implements OnInit {
    products: Products[]
    basketId : number
    currentProduct : Order
+   currentOrder: Order[]
 
-   constructor(private productService: ProductsService) { 
+   constructor(private productService: ProductsService, private basketItemService: BasketItemsService,
+    private orderService: OrderService) { 
      this.products=[]
-     this.basketId = 75
+     this.basketId = 14
   }
 
   ngOnInit() {
@@ -25,14 +29,29 @@ export class EggsMeatFishComponent implements OnInit {
         this.products = response
       }
     )
+    this.calcQuantity()
   }
 
-  addProducts(productId){
-    this.productService.addProductsToBasket(productId,this.basketId).subscribe(
-      response => {
-        this.currentProduct = response
+  calcQuantity(){
+    this.basketItemService.getBasketItems(this.basketId).subscribe(
+      res => {
+        this.currentOrder = res
+        
       }
     )
+    }
+
+  addQuantity(productId, quantity){
+    console.log(this.basketId, productId) // 14, 37
+    this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
+      res => {this.currentOrder = res}
+    )
   }
-  
+
+  deleteProducts(productId){
+    this.basketItemService.deleteFromBasket(productId, this.basketId).subscribe(
+      res => {this.currentOrder = res})
+
+
+  }
 }
