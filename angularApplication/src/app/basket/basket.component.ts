@@ -29,7 +29,7 @@ export class BasketComponent implements OnInit {
   //numArr = Array.from(Array(this.v), (_,x)=>x)
   //numArr = Array.from(Array(length), (_,x)=>x)
 
-  
+
 
   constructor(private prodsvc: BasketItemsService, private orderService: OrderService, 
     public element: ElementRef) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserBuyerProfileComponent } from './user-buyer-profile/user-buyer-profile.component';
 import { Consumer } from './consumer';
@@ -28,16 +28,24 @@ export class ConsumerService {
         {"Content-Type":"application/x-www-form-urlencoded"}
       )
     }
-    var reqBody = "consno="+consumer.consno
-                +"&firstName="+consumer.firstName
-                +"&lastName="+consumer.lastName
-                +"&email="+consumer.email
-                +"&address="+consumer.address
-                +"&phone="+consumer.phone
-                +"&consumerUsername="+consumer.consumerUsername
-                +"&consumerPassword="+consumer.consumerPassword
+    const reqbody = new HttpParams()
+      .set("firstName", consumer.firstName)
+      .set("lastName", consumer.lastName)
+      .set("phone", consumer.phone)
+      .set("email", consumer.email)
+      .set("address", consumer.address)
+      .set("consumerUsername", consumer.consumerUsername)
+      .set("consumerPassword", consumer.consumerPassword)
+    // var reqBody = "consno="+consumer.consno
+    //             +"&firstName="+consumer.firstName
+    //             +"&lastName="+consumer.lastName
+    //             +"&email="+consumer.email
+    //             +"&address="+consumer.address
+    //             +"&phone="+consumer.phone
+    //             +"&consumerUsername="+consumer.consumerUsername
+    //             +"&consumerPassword="+consumer.consumerPassword
     return this.httpsvc.post<UserBuyerProfileComponent>(
-      this.rootURL+"/register",reqBody,httpOptions
+      this.rootURL+"/register",reqbody,httpOptions
     )
   }
 

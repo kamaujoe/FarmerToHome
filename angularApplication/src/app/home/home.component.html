@@ -42,7 +42,7 @@
             <td>DELETE</td>
 
         </tr>
-        <tr *ngFor ="let p of products|paginate: {itemsPerPage:10, currentPage:p} |filter:term; let i = index">
+        <tr *ngFor ="let p of products|filter:term |paginate: {itemsPerPage:10, currentPage:p}; let i = index">
             
             
             <td>{{p.product_name}}</td>

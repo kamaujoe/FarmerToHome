@@ -20,7 +20,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -73,24 +72,6 @@ public class Product implements Serializable {
 		this.items = items;
 	}
 	
-	
-	//many to many with extra column
-	
-		private Set<Order> order = new HashSet<Order>();
-		
-		
-		@OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
-		@XmlTransient
-		public Set<Order> getOrder(){
-			return order;
-		}
-		public void setOrder(Set<Order> product) {
-			this.order = product;
-		}
-		public void addOrder(Order order) {
-			this.order.add(order);
-		}
-
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	//Many to Many with Farmer

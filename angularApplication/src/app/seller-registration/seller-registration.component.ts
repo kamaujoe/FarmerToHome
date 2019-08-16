@@ -20,7 +20,7 @@ export class SellerRegistrationComponent implements OnInit {
   allFarmers: Farmer[]
 
   constructor(private farmerSvc:FarmerService) { 
-    this.farmerId=1
+    this.farmerId
     this.firstName
     this.lastName
     this.address
@@ -57,7 +57,7 @@ export class SellerRegistrationComponent implements OnInit {
 
   registerFarmerDetails(){
     this.farmerSvc.registerFarmerOnServer({
-      farmerId:this.farmerId, 
+      //farmerId:this.farmerId, 
       firstName:this.firstName,
       lastName:this.lastName,
       email:this.email, 

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Farmer } from '../farmer';
 import { FarmerService } from '../farmer.service';
+import { SellerLoginAuthenticationService } from '../seller-login-authentication.service';
+import { Router } from '@angular/router';
+import { FarmerComponent } from '../farmer/farmer.component';
 
 @Component({
   selector: 'app-seller-login-registration',
@@ -10,20 +13,32 @@ import { FarmerService } from '../farmer.service';
 export class SellerLoginRegistrationComponent implements OnInit {
 
   farmerId: number
-  farmerName: String
-  products: String
-  farmLocation: String
+  firstName: String 
+  lastName: String
+  email: String
+  phone: number
+  address:String
+  farmerUsername:String
+  farmerPassword:String
+
+  currentFarmer: Farmer
 
   farmers: Farmer[]
 
   allFarmers: Farmer[]
 
-  constructor(private farmerSvc:FarmerService) { 
+  constructor(private farmerSvc:FarmerService, private router: Router, private authenSvc:SellerLoginAuthenticationService) { 
 
     this.farmerId 
-    this.farmerName 
-    this.products 
-    this.farmLocation 
+    this.firstName 
+    this.lastName
+    this.email
+    this.phone
+    this.address
+    this.farmerUsername
+    this.farmerPassword
+    
+
 
   }
 
@@ -42,32 +57,76 @@ export class SellerLoginRegistrationComponent implements OnInit {
     this.loadAllFarmers()
   }
 
+  ////-> Joe
+  // checkLogin(){
+  //   if (this.authenSvc.authenticate(this.email, this.farmerPassword)){
+  //     this.router.navigate([""])
+  //     this.invalidLogin = false 
+  //   } else 
+  //     this.invalidLogin = true
+  //}
 
-
-  // fetchCurrentFarmerFromService(){
-  //   this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
-  //       // use the response to initialize the component properties
-  //     response => { // assign the data received from server
-  //         // as response to the current component
-  //         this.farmerId = response.farmerId
-  //         this.farmerName = response.farmerName
-  //         this.products=response.products
-  //         this.farmLocation = response.farmLocation
-
-  //     } 
-  //   )
+  // fetchCurrentSellerFromService(){
+  //   this.
   // }
 
-  // registerFarmerDetails(){
-  //   this.farmerSvc.registerFarmerOnServer({
-  //     farmerId:this.farmerId, farmerName: this.farmerName, products:this.products, farmLocation:this.farmLocation
-  //   }).subscribe(
-  //     response =>{ // perform the following operation on successful post
-  //             this.fetchCurrentFarmerFromService()
-  //         } 
-  //       )
+  //-> end
+
+  loginSeller(){
+    // this.farmerSvc.loadAllFarmersFromServer().subscribe(
+    this.farmerSvc.fetchByEmailandPassword(this.email,this.farmerPassword).subscribe(
+      response => {
+        this.firstName = response.firstName
+        this.lastName=response.lastName
+        this.email = response.email
+        this.address = response.address
+        this.phone = response.phone
+        this.farmerUsername = response.farmerUsername
+        this.farmerPassword = response.farmerPassword
+      }
+    )
+  }
+
+
+  fetchCurrentFarmerFromService(){
+    this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
+        // use the response to initialize the component properties
+      response => { // assign the data received from server
+          // as response to the current component
+          this.farmerId = response.farmerId
+          this.firstName = response.firstName
+          this.lastName=response.lastName
+          this.email = response.email
+          this.address = response.address
+          this.phone = response.phone
+          this.farmerUsername = response.farmerUsername
+          this.farmerPassword = response.farmerPassword
+      } 
+    )
+    this.validateCredentials(this.email, this.farmerPassword)
+  }
+
+  validateCredentials(email,farmerPassword) {
+    if(this.email == email && this.farmerPassword == farmerPassword){
+      this.farmerSvc.findFarmerByFarmerId(this.farmerId)
+    }
+    else {
+      this.router.navigate(["/home"])
+    }
+
+  }
+
+  registerFarmerDetails(){
+    this.farmerSvc.registerFarmerOnServer({
+      farmerId:this.farmerId, firstName: this.firstName, lastName:this.lastName, address:this.address, email:this.email, 
+      phone:this.phone, farmerUsername:this.farmerUsername, farmerPassword:this.farmerPassword
+    }).subscribe(
+      response =>{ // perform the following operation on successful post
+              this.fetchCurrentFarmerFromService()
+          } 
+        )
       
-  // }
+  }
 
   loadAllFarmers(){
     this.farmerSvc.loadAllFarmersFromServer()

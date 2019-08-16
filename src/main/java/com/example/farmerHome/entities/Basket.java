@@ -19,7 +19,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -59,6 +58,8 @@ public class Basket implements Serializable {
 		this.items = items;
 	}
 	
+<<<<<<< HEAD
+=======
 
 	//many to many extra column
 
@@ -99,6 +100,7 @@ public class Basket implements Serializable {
 
 
 	
+>>>>>>> 397aa77fe8cc7abafb8165af212f3e4afc942b6b
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	
@@ -123,7 +125,17 @@ public class Basket implements Serializable {
 	}
 	
 	
-
+	//-> Getters and Setters
+	@Id
+	@Column(name = "Basket_Id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	public int getBasketId() {
+		return basketId;
+	}
+	
+	public void setBasketId(int basketId) {
+		this.basketId = basketId;
+	}
 	
 	
 	//-> ToString
