@@ -31,8 +31,9 @@ export class FruitVegetablesComponent implements OnInit {
     products: Products[]
     currentProduct : Order
 
-   constructor(private productService: ProductsService) { 
-    this.basketId = 75 
+   constructor(private productService: ProductsService, private basketItemService: BasketItemsService, 
+    private orderService: OrderService) { 
+    this.basketId = 14
     this.products=[]
   }
 
@@ -42,13 +43,35 @@ export class FruitVegetablesComponent implements OnInit {
         this.products = response
       }
     )
+    this.calcQuantity()
   }
 
-  addProducts(productId){
-    this.productService.addProductsToBasket(productId, this.basketId).subscribe(
-      response => {
-        this.currentProduct = response
+
+  calcQuantity(){
+    this.basketItemService.getBasketItems(this.basketId).subscribe(
+      res => {
+        this.currentOrder = res
+        
       }
     )
+    }
+
+  addQuantity(productId, quantity){
+    console.log(this.basketId, productId) // 14, 37
+    this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
+      res => {this.currentOrder = res}
+    )
+  }
+
+  deleteProducts(productId){
+    this.basketItemService.deleteFromBasket(productId, this.basketId).subscribe(
+      res => {this.currentOrder = res})
+
+      
+
+   
+    
+    
+
   }
 }

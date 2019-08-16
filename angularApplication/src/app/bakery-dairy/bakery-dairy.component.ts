@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Products } from '../products';
 import { ProductsService } from '../products.service';
 import { Basket } from '../basket/basket';
+import { Order } from '../basket/order';
+import { BasketItemsService } from '../basket-items.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-bakery-dairy',
@@ -11,11 +14,13 @@ import { Basket } from '../basket/basket';
 export class BakeryDairyComponent implements OnInit {
   basketId : number
   products: Products[]
-  currentProduct: Basket
+  currentProduct: Order
+  currentOrder: Order[]
 
-  constructor(private productService: ProductsService) { 
+  constructor(private productService: ProductsService, private basketItemService: BasketItemsService,
+    private orderService: OrderService) { 
     this.products=[]
-    this.basketId = 75
+    this.basketId = 14
   }
 
   ngOnInit() {
@@ -25,12 +30,27 @@ export class BakeryDairyComponent implements OnInit {
       }
     )
   }
-  addProducts(productId){
-    this.productService.addProductsToBasket(productId,this.basketId).subscribe(
-      response => {
-        this.currentProduct = response
+  calcQuantity(){
+    this.basketItemService.getBasketItems(this.basketId).subscribe(
+      res => {
+        this.currentOrder = res
+        
       }
+    )
+    this.calcQuantity()
+    }
+
+  addQuantity(productId, quantity){
+    console.log(this.basketId, productId) // 14, 37
+    this.orderService.addOrders(productId, quantity, this.basketId).subscribe(
+      res => {this.currentOrder = res}
     )
   }
 
+  deleteProducts(productId){
+    this.basketItemService.deleteFromBasket(productId, this.basketId).subscribe(
+      res => {this.currentOrder = res})
+;
+
+  }
 }
