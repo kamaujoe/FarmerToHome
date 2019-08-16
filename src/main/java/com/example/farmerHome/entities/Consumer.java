@@ -89,7 +89,7 @@ public class Consumer implements Serializable {
 	//-> Getters and Setters
 	@Id
 	@Column(name="consumer_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getConsno() {
 		return consno;
 	}

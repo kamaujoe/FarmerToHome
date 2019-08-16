@@ -135,7 +135,7 @@ public class Order implements Serializable{
 	private int quantity;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_id")
 	public int getId() {
 		return id;		
