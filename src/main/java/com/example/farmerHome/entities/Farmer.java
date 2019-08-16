@@ -94,7 +94,7 @@ public class Farmer implements Serializable {
 	//-> Getters and Setters
 	@Id
 	@Column(name="farmer_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getFarmerId() {
 		return farmerId;
 	}

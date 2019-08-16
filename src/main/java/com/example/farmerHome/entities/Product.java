@@ -114,7 +114,7 @@ public class Product implements Serializable {
 	//-> Getters and Setters
 	@Id 
 	@Column(name="product_Id") 
-	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	public int getProductId() {
 		return productId;
 	}

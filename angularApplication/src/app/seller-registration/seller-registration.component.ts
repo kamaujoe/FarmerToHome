@@ -57,7 +57,7 @@ export class SellerRegistrationComponent implements OnInit {
 
   registerFarmerDetails(){
     this.farmerSvc.registerFarmerOnServer({
-      farmerId:this.farmerId, 
+      //farmerId:this.farmerId, 
       firstName:this.firstName,
       lastName:this.lastName,
       email:this.email, 

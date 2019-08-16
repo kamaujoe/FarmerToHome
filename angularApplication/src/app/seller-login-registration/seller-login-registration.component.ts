@@ -3,6 +3,7 @@ import { Farmer } from '../farmer';
 import { FarmerService } from '../farmer.service';
 import { SellerLoginAuthenticationService } from '../seller-login-authentication.service';
 import { Router } from '@angular/router';
+import { FarmerComponent } from '../farmer/farmer.component';
 
 @Component({
   selector: 'app-seller-login-registration',
@@ -19,6 +20,8 @@ export class SellerLoginRegistrationComponent implements OnInit {
   address:String
   farmerUsername:String
   farmerPassword:String
+
+  currentFarmer: Farmer
 
   farmers: Farmer[]
 
@@ -69,7 +72,20 @@ export class SellerLoginRegistrationComponent implements OnInit {
 
   //-> end
 
-
+  loginSeller(){
+    // this.farmerSvc.loadAllFarmersFromServer().subscribe(
+    this.farmerSvc.fetchByEmailandPassword(this.email,this.farmerPassword).subscribe(
+      response => {
+        this.firstName = response.firstName
+        this.lastName=response.lastName
+        this.email = response.email
+        this.address = response.address
+        this.phone = response.phone
+        this.farmerUsername = response.farmerUsername
+        this.farmerPassword = response.farmerPassword
+      }
+    )
+  }
 
 
   fetchCurrentFarmerFromService(){
@@ -85,9 +101,19 @@ export class SellerLoginRegistrationComponent implements OnInit {
           this.phone = response.phone
           this.farmerUsername = response.farmerUsername
           this.farmerPassword = response.farmerPassword
-
       } 
     )
+    this.validateCredentials(this.email, this.farmerPassword)
+  }
+
+  validateCredentials(email,farmerPassword) {
+    if(this.email == email && this.farmerPassword == farmerPassword){
+      this.farmerSvc.findFarmerByFarmerId(this.farmerId)
+    }
+    else {
+      this.router.navigate(["/home"])
+    }
+
   }
 
   registerFarmerDetails(){

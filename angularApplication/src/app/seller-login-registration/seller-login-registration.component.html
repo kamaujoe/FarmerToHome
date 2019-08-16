@@ -7,7 +7,9 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
               <div class="card card-signin my-5">
                 <div class="card-body">
+                  <br>
                   <h5 class="card-title text-center">Seller Login</h5>
+                  <br>
                   <form class="form-signin">
                     
                     <div class="form-label-group">
@@ -35,19 +37,24 @@
                       <label class="custom-control-label" 
                               for="customCheck1">Remember password</label>
                     </div>
+                    <br><br>
 
                     <div class="buttons">
-                      <button class="btn btn-lg btn-success btn-block" 
+                      <button 
+                              (click)="loginSeller()"
+                              routerLink="/seller-profile"
+                              class="btn btn-lg btn-success btn-block" 
                               type="submit">
                               LOGIN
                       </button>
+                      
                       <hr class="my-2">
                       <button class="btn btn-lg btn-danger btn-block" 
                               routerLink="/seller-registration" 
                               type="submit">
                               NOT A MEMBER? REGISTER
                       </button>
-                       
+                       <br><br>
                   </div>
 
                   </form>

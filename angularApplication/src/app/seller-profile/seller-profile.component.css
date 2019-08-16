@@ -15,3 +15,16 @@ html {
 #editbutton {
   width: 100%;  
 }
+
+.sellertitle {
+  font-family: 'Pacifico', cursive;
+  color: rgb(0, 0, 0);
+  font-size:6vw;
+  text-align: center;
+}
+.sellersub {
+  font-family: 'Pacifico', cursive;
+  color: rgb(0, 0, 0);
+  font-size:2vw;
+  text-align: center;
+}
