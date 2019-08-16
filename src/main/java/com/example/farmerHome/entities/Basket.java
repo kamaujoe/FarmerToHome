@@ -65,7 +65,7 @@ public class Basket implements Serializable {
 
 	@Id //declare the property as Primary Key
 	@Column(name = "Basket_Id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getBasketId() {
 		return basketId;
 	}

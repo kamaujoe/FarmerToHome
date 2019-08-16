@@ -67,7 +67,7 @@ public class Category implements Serializable {
 	//-> Getters and Setters
 	@Id
 	@Column(name="category_id")
-	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@GeneratedValue(strategy=GenerationType.IDENTITY) 
 	public int getCategoryId() {
 		return categoryId;
 	}
