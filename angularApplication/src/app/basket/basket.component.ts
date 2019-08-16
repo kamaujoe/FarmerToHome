@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Basket } from './basket';
 import { BasketItemsService } from '../basket-items.service';
 import { OrderService } from '../order.service';
 import { Order } from './order';
 import { delay } from 'q';
+
+
 
 @Component({
   selector: 'app-basket',
@@ -17,13 +19,23 @@ export class BasketComponent implements OnInit {
   total : number
   quantity: number
   basketId : number
+  length: number
+  v: number
+
+  // get numImages(): number{
+  //   //return this.element.nativeElement.querySelectorAll('img').length;
+  //   return this.currentBasket.length;
+  // }
+  //numArr = Array.from(Array(this.v), (_,x)=>x)
+  //numArr = Array.from(Array(length), (_,x)=>x)
 
   
 
-  constructor(private prodsvc: BasketItemsService, private orderService: OrderService) {
+  constructor(private prodsvc: BasketItemsService, private orderService: OrderService, 
+    public element: ElementRef) {
 
     this.basketId = 14 // use consumer login Id to pull basket Id
-    
+    this.v = 3
     
     
   }
@@ -32,7 +44,18 @@ export class BasketComponent implements OnInit {
     this.currentBasket = []
     this.fetchCurrentProductsFromBasket()
     this.calculateTotal()
+    
+
+    
   }
+
+
+  get numImages(): number{
+    //return this.element.nativeElement.querySelectorAll('img').length;
+    return this.currentBasket.length;
+  }
+  numArr = Array.from(Array(this.v), (_,x)=>x)
+
 
   deleteProduct(productId){
     
@@ -90,5 +113,9 @@ export class BasketComponent implements OnInit {
 
     }, 50)
   }
+  imageRead(){
+        
+  }
+
 
 }

@@ -27,7 +27,9 @@ import { SellerRegistrationComponent } from './seller-registration/seller-regist
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { OrderPipePipe } from './order-pipe.pipe'
+import { OrderPipePipe } from './order-pipe.pipe';
+import { NguiInViewComponent } from './ngui-in-view/ngui-in-view.component';
+
 
 
 
@@ -53,7 +55,8 @@ import { OrderPipePipe } from './order-pipe.pipe'
     ConsumerRegistrationComponent,
     SellerRegistrationComponent,
     AboutUsComponent,
-    OrderPipePipe
+    OrderPipePipe,
+    NguiInViewComponent
   ],
   imports: [
     BrowserModule,
