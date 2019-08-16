@@ -12,17 +12,13 @@ import { Router } from '@angular/router';
 export class SellerLoginRegistrationComponent implements OnInit {
 
   farmerId: number
-  farmerName: String
-  products: String
-  farmLocation: String
-
-  //-> joe
-  email = ""
-  farmerPassword = ""
-  invalidLogin = false
-
-  //->end
-
+  firstName: String 
+  lastName: String
+  email: String
+  phone: number
+  address:String
+  farmerUsername:String
+  farmerPassword:String
 
   farmers: Farmer[]
 
@@ -31,14 +27,16 @@ export class SellerLoginRegistrationComponent implements OnInit {
   constructor(private farmerSvc:FarmerService, private router: Router, private authenSvc:SellerLoginAuthenticationService) { 
 
     this.farmerId 
-    this.farmerName 
-    this.products 
-    this.farmLocation 
+    this.firstName 
+    this.lastName
+    this.email
+    this.phone
+    this.address
+    this.farmerUsername
+    this.farmerPassword
+    
 
-    //->joe
-    this.email = "kfermin2@springer.com"
-    this.farmerPassword = "WyMYIE"
-    //->end
+
   }
 
   ngOnInit() {
@@ -57,13 +55,13 @@ export class SellerLoginRegistrationComponent implements OnInit {
   }
 
   ////-> Joe
-  checkLogin(){
-    if (this.authenSvc.authenticate(this.email, this.farmerPassword)){
-      this.router.navigate([""])
-      this.invalidLogin = false 
-    } else 
-      this.invalidLogin = true
-  }
+  // checkLogin(){
+  //   if (this.authenSvc.authenticate(this.email, this.farmerPassword)){
+  //     this.router.navigate([""])
+  //     this.invalidLogin = false 
+  //   } else 
+  //     this.invalidLogin = true
+  //}
 
   // fetchCurrentSellerFromService(){
   //   this.
@@ -74,30 +72,35 @@ export class SellerLoginRegistrationComponent implements OnInit {
 
 
 
-  // fetchCurrentFarmerFromService(){
-  //   this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
-  //       // use the response to initialize the component properties
-  //     response => { // assign the data received from server
-  //         // as response to the current component
-  //         this.farmerId = response.farmerId
-  //         this.farmerName = response.farmerName
-  //         this.products=response.products
-  //         this.farmLocation = response.farmLocation
+  fetchCurrentFarmerFromService(){
+    this.farmerSvc.findFarmerByFarmerId(this.farmerId).subscribe(
+        // use the response to initialize the component properties
+      response => { // assign the data received from server
+          // as response to the current component
+          this.farmerId = response.farmerId
+          this.firstName = response.firstName
+          this.lastName=response.lastName
+          this.email = response.email
+          this.address = response.address
+          this.phone = response.phone
+          this.farmerUsername = response.farmerUsername
+          this.farmerPassword = response.farmerPassword
 
-  //     } 
-  //   )
-  // }
+      } 
+    )
+  }
 
-  // registerFarmerDetails(){
-  //   this.farmerSvc.registerFarmerOnServer({
-  //     farmerId:this.farmerId, farmerName: this.farmerName, products:this.products, farmLocation:this.farmLocation
-  //   }).subscribe(
-  //     response =>{ // perform the following operation on successful post
-  //             this.fetchCurrentFarmerFromService()
-  //         } 
-  //       )
+  registerFarmerDetails(){
+    this.farmerSvc.registerFarmerOnServer({
+      farmerId:this.farmerId, firstName: this.firstName, lastName:this.lastName, address:this.address, email:this.email, 
+      phone:this.phone, farmerUsername:this.farmerUsername, farmerPassword:this.farmerPassword
+    }).subscribe(
+      response =>{ // perform the following operation on successful post
+              this.fetchCurrentFarmerFromService()
+          } 
+        )
       
-  // }
+  }
 
   loadAllFarmers(){
     this.farmerSvc.loadAllFarmersFromServer()

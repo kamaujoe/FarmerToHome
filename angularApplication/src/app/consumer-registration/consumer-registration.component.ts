@@ -21,7 +21,7 @@ export class ConsumerRegistrationComponent implements OnInit {
 
   constructor(private consumerSvc:ConsumerService) {
     //initialising properties inside constructor
-  this.consno=1
+  this.consno
   this.firstName
   this.lastName
   this.email
